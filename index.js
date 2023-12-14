@@ -4,7 +4,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const errorHandler = require("./middlewares/errorHandler.js");
 
-const userRouter = require("./routes/users.js");
+const userRouter = require("./routes/user.js");
 
 const app = express();
 const port = 3000;
