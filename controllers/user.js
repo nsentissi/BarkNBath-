@@ -6,7 +6,7 @@ const ErrorResponse = require("../utils/ErrorResponse");
 const register = async (req, res, next) => {
     try {
       const {
-        body: { email, phoneNumber, password  },
+        body: { firstName, lastName, email, phoneNumber, password  },
       } = req;
   
       const found = await User.findOne({ email });
@@ -14,7 +14,7 @@ const register = async (req, res, next) => {
   
       const hash = await bcrypt.hash(password, 10);
   
-      const user = await User.create({ email, phoneNumber, password: hash });
+      const user = await User.create({firstName, lastName, email, phoneNumber, password: hash });
   
       res.status(201).json({ email: user.email });
     } catch (error) {
