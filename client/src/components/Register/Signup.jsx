@@ -23,11 +23,13 @@ const Signup = () => {
       <p className="message">Signup now and get full access to our app.</p>
       <div className="flex">
         <input
-        className="input" 
-        {...register("firstName", { required: true })} placeholder="firstName" />
+          className="input"
+          {...register("firstName", { required: true })}
+          placeholder="firstName"
+        />
 
         <input
-        className="input"
+          className="input"
           {...register("lastName", { required: true })}
           placeholder="lastName"
         />
@@ -51,10 +53,10 @@ const Signup = () => {
         <span>Password</span>
       </label>
       <input
-          className="input"
-          {...register("phoneNumber", { required: true })}
-          placeholder="phoneNumber"
-        />
+        className="input"
+        {...register("phoneNumber", { required: true })}
+        placeholder="phoneNumber"
+      />
       <button className="submit">Submit</button>
       <p className="signin">
         Already have an account? <a href="#">Sign in</a>
