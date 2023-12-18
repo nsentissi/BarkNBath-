@@ -18,7 +18,7 @@ const Signup = () => {
 
   return (
     <form className="flex m-4 text" onSubmit={handleSubmit(onSubmit)}>
-      <p className="">Register</p>
+      <p className="text-primary">Register</p>
       <p className="text">Signup now and get full access to our app.</p>
       <div className="flex">
         <input
