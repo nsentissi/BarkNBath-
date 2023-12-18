@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-// import './Login.css';
 
 const Login = () => {
   const { register, handleSubmit, errors } = useForm();

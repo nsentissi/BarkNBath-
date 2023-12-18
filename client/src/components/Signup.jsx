@@ -1,4 +1,3 @@
-import "./Signup.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
@@ -18,9 +17,9 @@ const Signup = () => {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit(onSubmit)}>
-      <p className="title">Register</p>
-      <p className="message">Signup now and get full access to our app.</p>
+    <form className="flex m-4 text" onSubmit={handleSubmit(onSubmit)}>
+      <p className="">Register</p>
+      <p className="text">Signup now and get full access to our app.</p>
       <div className="flex">
         <input
           className="input"
