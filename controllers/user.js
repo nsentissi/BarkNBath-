@@ -54,7 +54,15 @@ const login = async (req, res, next) => {
   }
 };
 
+const logout = async (req, res, next) => {
+  res
+    .cookie("access_token", "", { httpOnly: true, maxAge: 0 })
+    .json({ success: true })
+    console.log("you are logged out");;
+};
+
 module.exports = {
   register,
   login,
+  logout
 };
