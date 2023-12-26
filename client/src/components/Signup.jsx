@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -85,10 +86,10 @@ const Signup = () => {
               Register
             </button>
             <p>
-              Already have an account ?
-              <a href="#" className="text-blue-500 hover:text-blue-700">
-                Log in
-              </a>
+              Already have an account ? {" "}
+              <Link to="/login" className="text-blue-500 hover:text-blue-700">
+                 Log in
+              </Link>
             </p>
           </div>
         </form>
