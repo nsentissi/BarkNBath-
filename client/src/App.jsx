@@ -1,6 +1,7 @@
 import './App.css'
 import AboutUs from './components/AboutUs'
 import Login from './components/Login'
+import Services from './components/Services'
 import Signup from './components/Signup'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       {/* <Signup/>
       <Login/> */}
       <AboutUs/>
+      <Services/>
     </>
   )
 }
