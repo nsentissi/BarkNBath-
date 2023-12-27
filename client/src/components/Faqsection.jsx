@@ -7,7 +7,7 @@ const Faqsection = () => {
   ];
 
   return (
-    <div className="bg-primary p-20">
+    <div className="bg-info p-20">
       <div className="container mx-auto">
         <h2 className="text-4xl font-semibold text-center text-gray-900 mb-6">Frequently Asked Questions</h2>
         <div className="max-w-4xl mx-auto">
