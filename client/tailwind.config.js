@@ -8,11 +8,11 @@ export default {
         
 "primary": "#F5C07A",
         
-"secondary": "#D17D10",
+"secondary": "#168aad",
         
-"accent": "#8EBC38",
+"accent": "#52b69a",
         
-"neutral": "#ffffff",
+"neutral": "#ffc500",
         
 "base-100": "#ffffff",
         
