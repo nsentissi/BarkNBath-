@@ -6,7 +6,7 @@ export default {
       {
         mytheme: {
         
-"primary": "#F5C07A",
+"primary": "#19759f",
         
 "secondary": "#168aad",
         
@@ -16,7 +16,7 @@ export default {
         
 "base-100": "#ffffff",
         
-"info": "#D4E8B0",
+"info": "#F5C07A",
         
 "success": "#D4E8B0",
         
@@ -26,7 +26,6 @@ export default {
         },
       },
     ],
-  }
-  ,
+  },
   plugins: [require("daisyui")],
 };
