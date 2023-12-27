@@ -10,7 +10,7 @@ const Login = () => {
   const [user, setUser] = useState(null);
 
   const { register, handleSubmit, errors } = useForm();
-  const navigate = useNavigate();
+  /* const navigate = useNavigate(); */
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
@@ -20,7 +20,6 @@ const Login = () => {
       const userData = response.data;
       setUser(userData);
       toast("Login successful!");
-      navigate("/profile");
       console.log(response.data);
     } catch (error) {
       console.error("Login failed:", error);
