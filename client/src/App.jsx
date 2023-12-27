@@ -1,16 +1,17 @@
 import './App.css'
+import Faqsection from './components/Faqsection'
 import Journey from './components/Journey'
-import Login from './components/Login'
-import Signup from './components/Signup'
+import Footer from './components/Footer'
 
 function App() {
  
 
   return (
     <>
-      <Signup/>
-      <Login/>
+      
       <Journey/>
+      <Faqsection/>
+      <Footer/>
     </>
   )
 }

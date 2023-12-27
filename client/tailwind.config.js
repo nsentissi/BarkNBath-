@@ -5,28 +5,26 @@ export default {
     themes: [
       {
         mytheme: {
-        
-"primary": "#F5C07A",
-        
-"secondary": "#D17D10",
-        
-"accent": "#8EBC38",
-        
-"neutral": "#ffffff",
-        
-"base-100": "#ffffff",
-        
-"info": "#D4E8B0",
-        
-"success": "#D4E8B0",
-        
-"warning": "#ffffff",
-        
-"error": "#ffffff",
+          primary: "#19759f",
+
+          secondary: "#168aad",
+
+          accent: "#52b69a",
+
+          neutral: "#ffc500",
+
+          "base-100": "#ffffff",
+
+          info: "#F5C07A",
+
+          success: "#D4E8B0",
+
+          warning: "#ffffff",
+
+          error: "#ffffff",
         },
       },
     ],
-  }
-  ,
+  },
   plugins: [require("daisyui")],
 };
