@@ -23,6 +23,7 @@ export default {
 "warning": "#ffffff",
         
 "error": "#ffffff",
+
         },
       },
     ],
