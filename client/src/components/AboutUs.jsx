@@ -2,8 +2,9 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="bg-accent pt-4">
-      <section className="flex flex-wrap gap-6 justify-center w-7/12 bg-white mx-auto -mt-4 pt-2 pl-20 pb-4 rounded-b-3xl  ">
+    <>
+    <div className="bg-accent pt-0">
+      <section className="flex flex-wrap gap-4 justify-center bg-gray-100 rounded-b-3xl mx-32 pt-4 pb-8">
         <div className="flex-col w-4/12">
           <img
             className="w-10 mb-2"
@@ -90,9 +91,10 @@ const AboutUs = () => {
             Book your appointment
           </button>
         </div>
-        <img className="-mb-10" src="../src/assets/dog.svg" alt="dog picture" />
+        <img className="mb-10" src="../src/assets/dog.svg" alt="dog picture" />
       </div>
     </div>
+    </>
   );
 };
 

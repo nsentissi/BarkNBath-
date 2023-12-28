@@ -1,14 +1,16 @@
 const Faqsection = () => {
   const faqs = [
     {
-      question: 'Can you import my data?',
-      answer: 'Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.'
+      question: "Can you import my data?",
+      answer:
+        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
     },
   ];
 
   return (
+    <>
     <div className="bg-info p-20">
-      <div className="container mx-auto">
+      <div className="">
         <h2 className="text-4xl font-semibold text-center text-gray-900 mb-6">Frequently Asked Questions</h2>
         <div className="max-w-4xl mx-auto">
           {faqs.map((faq, index) => (
@@ -29,6 +31,8 @@ const Faqsection = () => {
         </div>
       </div>
     </div>
+
+      </>
   );
 };
 
