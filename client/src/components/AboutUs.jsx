@@ -13,7 +13,7 @@ const AboutUs = () => {
           />
           <h3 className="font-bold mb-1">Convenience</h3>
           <p className="w-10/12">
-            We know it can be hatd to schedule your dogs grooming appointment
+            We know it can be hated to schedule your dogs grooming appointment
             and make numerous trops to the pet salon
           </p>
         </div>
