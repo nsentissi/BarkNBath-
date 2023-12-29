@@ -28,25 +28,24 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold mb-6">BarkNBath</h1>
+    <div className="container mx-auto my-auto px-4 py-40 w-5/12">
+      <div className="bg-secondary p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">
+        {/* <h1 className="text-3xl font-bold mb-6">BarkNBath</h1> */}
+        <img src="../src/assets/tail.svg" className="mb-6 mx-auto" />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
-            <label className="block mb-2">Email</label>
+            <label className="text-white block mb-2">Email</label>
             <input
               type="email"
-              id="email"
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded-2xl"
               {...register("email", { required: true })}
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-2">Password</label>
+            <label className="text-white block mb-2">Password</label>
             <input
               type="password"
-              id="password"
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded-2xl"
               {...register("password", { required: true })}
             />
           </div>

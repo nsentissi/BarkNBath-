@@ -6,6 +6,7 @@ export default {
     themes: [
       {
         mytheme: {
+
           primary: "#19759f",
 
           secondary: "#168aad",
@@ -23,6 +24,7 @@ export default {
           warning: "#ffffff",
 
           error: "#ffffff",
+
         },
       },
     ],
