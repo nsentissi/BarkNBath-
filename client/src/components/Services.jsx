@@ -1,14 +1,32 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function Services() {
+  const cardVariants = {
+    offscreen: { y: 50, opacity: 0 },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.4,
+        duration: 1,
+      },
+    },
+  };
+
   return (
-    <div className="bg-secondary flex gap-10 justify-center p-10 leading-9 text-white">
-      <div className="card w-96 glass">
+    <div className="bg-secondary p-10 text-white">
+      <div className="flex flex-wrap justify-center gap-10">
+      <motion.div
+        className="card w-full md:w-96 glass hover:shadow-xl shadow-lg transform hover:-translate-y-2 transition duration-300 ease-in-out"
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true }}
+        variants={cardVariants}
+      >
         <figure>
-          <img
-            src="../src/assets/basic-grooming.jpg"
-            alt="basic-grooming"
-          />
+          <img src="../src/assets/basic-grooming.jpg" alt="basic-grooming" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">Basic Grooming Package</h2>
@@ -31,13 +49,16 @@ function Services() {
             <button className="btn btn-neutral">Book an appointment</button>
           </div>
         </div>
-      </div>
-      <div className="card w-96 glass mt-20">
+      </motion.div>
+      <motion.div
+        className="card w-full md:w-96 glass hover:shadow-xl shadow-lg transform hover:-translate-y-2 transition duration-300 ease-in-out"
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true }}
+        variants={cardVariants}
+      >
         <figure>
-          <img
-            src="../src/assets/luxury-grooming.jpg"
-            alt="car!"
-          />
+          <img src="../src/assets/luxury-grooming.jpg" alt="car!" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">Luxury Spa Retreat</h2>
@@ -60,13 +81,16 @@ function Services() {
             <button className="btn btn-neutral">Book an appointment</button>
           </div>
         </div>
-      </div>
-      <div className="card w-96 glass mt-40">
+      </motion.div>
+      <motion.div
+        className="card w-full md:w-96 glass hover:shadow-xl shadow-lg transform hover:-translate-y-2 transition duration-300 ease-in-out"
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true }}
+        variants={cardVariants}
+      >
         <figure>
-          <img
-            src="../src/assets/full-grooming.jpg"
-            alt="full grooming"
-          />
+          <img src="../src/assets/full-grooming.jpg" alt="full grooming" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">Full Grooming Makeover</h2>
@@ -89,13 +113,16 @@ function Services() {
             <button className="btn btn-neutral">Book an appointment</button>
           </div>
         </div>
-      </div>
-      <div className="card w-96 glass mt-60">
+      </motion.div>
+      <motion.div
+        className="card w-full md:w-96 glass hover:shadow-xl shadow-lg transform hover:-translate-y-2 transition duration-300 ease-in-out"
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true }}
+        variants={cardVariants}
+      >
         <figure>
-          <img
-            src="../src/assets/wellness-grooming.jpg"
-            alt="car!"
-          />
+          <img src="../src/assets/wellness-grooming.jpg" alt="car!" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">Wellness and Relaxation Package</h2>
@@ -118,6 +145,7 @@ function Services() {
             <button className="btn btn-neutral">Book an appointment</button>
           </div>
         </div>
+      </motion.div>
       </div>
     </div>
   );
