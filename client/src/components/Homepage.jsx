@@ -6,6 +6,8 @@ import Navbar from './Navbar'
 import Journey from './Journey'
 import Footer from './Footer'
 import Faqsection from './Faqsection'
+import GoogleMap from './GoogleMap'
+import Testimonials from './Testimonials'
 
 const Homepage = () => {
   return (
@@ -15,6 +17,8 @@ const Homepage = () => {
       <Journey/>
       <AboutUs/>
       <Services/>
+      <GoogleMap/>
+      <Testimonials/>
       <Faqsection/>
       <Footer/>
     </div>
