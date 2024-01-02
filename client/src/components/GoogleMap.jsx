@@ -36,7 +36,7 @@ const GoogleMap = () => {
   return (
     <div className="w-full h-96">
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyARdyf_3uMXYwAr3WBTTpGDudvKvsZSpWo" }}
+        bootstrapURLKeys={{ key: "AIzaSyDSSyR_KZ6-aQSbVJuZAnEU4Prs8atayTk" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >

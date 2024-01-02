@@ -15,7 +15,7 @@ export default {
 
           neutral: "#ffc500",
 
-          "base-100": "#40CCD4",
+          /* "base-100": "#40CCD4", */
 
           info: "#F5C07A",
 
