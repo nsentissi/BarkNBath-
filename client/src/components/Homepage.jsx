@@ -8,6 +8,7 @@ import Footer from './Footer'
 import Faqsection from './Faqsection'
 import GoogleMap from './GoogleMap'
 import Testimonials from './Testimonials'
+import ServicesTable from './ServicesTable'
 
 const Homepage = () => {
   return (
@@ -19,6 +20,7 @@ const Homepage = () => {
       <Services/>
       <GoogleMap/>
       <Testimonials/>
+      <ServicesTable/>
       <Faqsection/>
       <Footer/>
     </div>

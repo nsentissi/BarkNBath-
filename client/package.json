@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.1",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.16",
     "google-map-react": "^2.2.1",
+    "heroicons": "^2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.2",
