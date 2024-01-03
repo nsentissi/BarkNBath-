@@ -1,13 +1,50 @@
+import { motion } from "framer-motion";
+
+const titleVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { delay: 0.5 },
+  },
+};
+
+const stepOneVariants = {
+  hidden: { opacity: 0, x: -100 },
+  visible: { opacity: 1, x: 0, transition: { delay: 0.8, duration:1.5 } },
+};
+
+const stepTwoVariants = {
+  hidden: { opacity: 0, x: 100 },
+  visible: { opacity: 1, x: 0, duration: 2, transition: { delay: 0.8, duration:1.5 } },
+};
+
+const variants = {
+  hidden: { y: -200, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100, delay: 1, duration:1.5 } },
+};
+
 const Journey = () => (
   <div className="">
-    <div classname="overflow-y-hidden bg-gray-100">
-      <div className="mx-auto container f-f-p px-4 xl:px-0 py-24">
-        <h1 className="focus:outline-none text-center text-3xl lg:text-4xl font-extrabold lg:leading-9 tracking-wider text-gray-900">
+    <div classname="overflow-y-hidden">
+      <div className="mx-auto  container f-f-p px-4 xl:px-0 py-24">
+        <motion.h1
+          className="focus:outline-none text-center text-3xl lg:text-4xl font-extrabold lg:leading-9 tracking-wider text-gray-900"
+          variants={titleVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           How it works?
-        </h1>
+        </motion.h1>
         <div className="md:mt-24 f-f-p">
           <div className="hidden md:flex justify-center w-full">
-            <div className="flex flex-col items-center md:items-end md:pr-12 md:border-r-4 border-gray-300 relative md:w-1/2">
+            <motion.div
+              className="flex flex-col items-center md:items-end md:pr-12 md:border-r-4 border-gray-300 relative md:w-1/2"
+              variants={stepOneVariants}
+              initial="hidden"
+              whileInView="visible"
+              transition={{ duration: 0.5 }}
+            >
               <div aria-label="sign up" role="img">
                 <img
                   className="focus:outline-none mt-10"
@@ -43,8 +80,14 @@ const Journey = () => (
                 src="https://cdn.tuk.dev/assets/components/111220/Fs7/line.png"
                 alt
               />
-            </div>
-            <div className="flex flex-col items-center md:items-start md:pl-12 lg:border-gray-400 mt-20 md:mt-0 md:w-1/2">
+            </motion.div>
+            <motion.div
+              className="flex flex-col items-center md:items-start md:pl-12 lg:border-gray-400 mt-20 md:mt-0 md:w-1/2"
+              variants={stepTwoVariants}
+              initial="hidden"
+              whileInView="visible"
+              transition={{ duration: 0.5 }}
+            >
               <div aria-label={1} role="img">
                 <img
                   src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg4.svg"
@@ -82,9 +125,15 @@ const Journey = () => (
                   Start conversations right away. Why wait longer?
                 </h2>
               </div>
-            </div>
+            </motion.div>
           </div>
-          <div className="md:hidden flex flex-col items-center w-full">
+          <motion.div
+            className="md:hidden flex flex-col items-center w-full"
+            variants={stepOneVariants}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 0.5 }}
+          >
             <img
               className="focus:outline-none my-10"
               src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg1.svg"
@@ -139,10 +188,17 @@ const Journey = () => (
                 Start conversations right away. Why wait longer?
               </h2>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-      <div className=" flex flex-col md:flex-row justify-center bg-grey-100 mx-auto rounded-t-3xl lg:mx-32 p-8 gap-8 mx-4 md:mx-8 ">
+      <motion.div
+        className=" flex flex-col md:flex-row justify-center bg-gray-100 mx-auto rounded-t-3xl lg:mx-32 p-8 gap-8 mx-4 md:mx-8"
+        variants={variants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 1.8, delay: 0.5 }}
+      >
         <h2 className="text-2xl font-extrabold text-center ">About Us</h2>
         <p className="text-center">
           "Bark N Bath is dedicated to providing top-notch dog grooming and
@@ -152,7 +208,7 @@ const Journey = () => (
           eco-friendly products, making us the go-to choice for discerning pet
           owners."
         </p>
-      </div>
+      </motion.div>
     </div>
   </div>
 );
