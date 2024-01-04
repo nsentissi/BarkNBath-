@@ -8,7 +8,7 @@ function Navbar() {
   return (
     <div className="navbar fixed flex-row z-50 bg-transparent">
       <div className="flex-1">
-        <img  className="w-48" src="../src/assets/barkNBath.webp"></img>
+        <img  className="w-48" style={{ boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.3)' }} src="../src/assets/barkNBath.webp"></img>
       </div>
       <div className="flex-none text-indigo-50">
         <ul className="menu menu-horizontal px-1">
@@ -40,7 +40,7 @@ function Navbar() {
           <button onClick={logout}>Logout</button>
         </div>
       ) : (
-        <Link to="/login">Login</Link>
+        <Link to="/login" >Login</Link>
       )}
         </ul>
       </div>
