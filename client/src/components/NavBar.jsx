@@ -1,6 +1,10 @@
 import React from "react";
+import { useAuth } from "../hooks/AuthContext";
+import { Link } from "react-router-dom";
 
 function Navbar() {
+
+  const { currentUser, logout } = useAuth(); 
   return (
     <div className="navbar fixed flex-row z-50 bg-transparent">
       <div className="flex-1">
@@ -30,9 +34,14 @@ function Navbar() {
             </details>
             
           </li>
-          <li>
-            <a href="/login">Log in</a>
-          </li>
+          {currentUser ? (
+        <div>
+          <Link to="/profile" className="mr-2">Welcome, {currentUser.firstName}</Link>
+          <button onClick={logout}>Logout</button>
+        </div>
+      ) : (
+        <Link to="/login">Login</Link>
+      )}
         </ul>
       </div>
     </div>

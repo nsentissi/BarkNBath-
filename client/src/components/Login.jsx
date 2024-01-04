@@ -5,13 +5,15 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import Profile from "./Profile";
+import { useAuth } from "../hooks/AuthContext";
 
 const Login = () => {
-  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const { register, handleSubmit, errors } = useForm();
-  /* const navigate = useNavigate(); */
-  const onSubmit = async (data) => {
+
+  /* const onSubmit = async (data) => {
     try {
       const response = await axios.post(
         "http://localhost:3000/auth/login",
@@ -25,8 +27,20 @@ const Login = () => {
       console.error("Login failed:", error);
       toast.error(error.response.data);
     }
-  };
+  }; */
 
+  const onSubmit = async (data) => {
+    try {
+      await login(data.email, data.password);
+      toast("Login successful!");
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+    } catch (error) {
+      console.error("Login failed:", error);
+      toast.error(error.response.data);
+    }
+  };
   return (
     <div className="container mx-auto my-auto px-4 py-40 w-5/12">
       <div className="bg-secondary p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">

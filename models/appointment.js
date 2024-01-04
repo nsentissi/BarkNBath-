@@ -8,8 +8,7 @@ const appointmentSchema = new Schema({
   service: { type: String, required: true },
   lastGroom: { type: Date },
   address: {type: String, required: true},
-  /* feedback: feedbackSchema, */
-});
+ });
 
 const Appointment = model("Appointment", appointmentSchema);
 

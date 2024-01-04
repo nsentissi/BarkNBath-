@@ -1,19 +1,22 @@
-import React from "react";
+import React from 'react'
+import { useAuth } from '../hooks/AuthContext'
 
-const Profile = ({ user }) => {
+const Profile = () => {
+  const { currentUser } = useAuth();
+
+  if (!currentUser) {
+    return <div>Please log in.</div>;
+  }
+
   return (
     <div>
-      <h2>Welcome</h2>
-      {user ? (
-        <>
-          <p>Email: {user.email}</p>
-          <p>ID: {user.id}</p>
-        </>
-      ) : (
-        <p>Loading...</p>
-      )}
+      <h2>Profile</h2>
+      <p>Email: {currentUser.email}</p>
+      <p>Phone Number: {currentUser.phoneNumber}</p>
+      <p>First Name: {currentUser.firstName}</p>
+      <p>Last Name: {currentUser.LastName} </p>
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile

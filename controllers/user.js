@@ -41,13 +41,24 @@ const login = async (req, res, next) => {
     if (!match) throw new ErrorResponse("Wrong Password", 403);
     if (match) console.log("you are logged in");
 
-    const payload = { id: user._id, email: user.email };
+    const payload = {
+      id: user._id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      phoneNumber: user.phoneNumber,
+    };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "500m",
     });
 
     res
-      .cookie("access_token", token, { httpOnly: true, maxAge: 480000 })
+      .cookie("access_token", token, {
+        httpOnly: true,
+        maxAge: 480000,
+        /* secure: process.env.NODE_ENV === "production", */
+        sameSite: "lax",
+      })
       .json(payload);
   } catch (error) {
     next(error);
@@ -57,12 +68,23 @@ const login = async (req, res, next) => {
 const logout = async (req, res, next) => {
   res
     .cookie("access_token", "", { httpOnly: true, maxAge: 0 })
-    .json({ success: true })
-    console.log("you are logged out");
+    .json({ success: true });
+  console.log("you are logged out");
 };
+
+const getProfile = async(req, res, next) =>{
+  const {id} = req.user
+  try {
+    const user = await User.findOne({_id: id})
+    res.json(user)
+  } catch (error) {
+    next(error)
+  }
+}
 
 module.exports = {
   register,
   login,
-  logout
+  logout,
+  getProfile
 };
