@@ -4,6 +4,7 @@ import mapGeoJson from '../data/map.json'
 
 
 
+
 const GoogleMap = () => {
   const defaultProps = {
     center: {
@@ -27,7 +28,7 @@ const GoogleMap = () => {
   return (
     <div style={{ height: '500px', width: '100%' }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyDSSyR_KZ6-aQSbVJuZAnEU4Prs8atayTk" }}
+        bootstrapURLKeys={{ key: import.meta.env.VITE_GOOGLE_MAPS_API_KEY }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
         yesIWantToUseGoogleMapApiInternals
