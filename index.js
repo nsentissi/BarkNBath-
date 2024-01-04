@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const errorHandler = require("./middlewares/errorHandler.js");
 
 const userRouter = require("./routes/user.js");
+const appointmentRouter = require("./routes/appointment.js")
 
 const app = express();
 const port = 3000;
@@ -19,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/auth", userRouter);
-
+app.use("/appointment", appointmentRouter)
 
 app.use(errorHandler);
 
