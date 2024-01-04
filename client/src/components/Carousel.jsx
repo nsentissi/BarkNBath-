@@ -28,6 +28,8 @@ const Carousel = ({ options }) => {
 
   const onInit = useCallback(api => {
     setScrollSnaps(api.scrollSnapList());
+    setPrevBtnDisabled(!api.canScrollPrev());
+    setNextBtnDisabled(!api.canScrollNext());
   }, []);
 
   const onSelect = useCallback(api => {
@@ -53,12 +55,12 @@ const Carousel = ({ options }) => {
   }, [emblaApi, onInit, onSelect]);
 
   return (
-    <div className="pt-8 px-10">
-      <div className="" ref={emblaRef}>
-        <div className="flex w-4/5 gap-10">
+    <div className="pt-8 px-4 sm:px-10">
+      <div className="overflow-x-auto" ref={emblaRef}>
+        <div className="flex w-auto gap-4 sm:gap-10">
           {slides.map((slide, index) => (
-            <div className="flex-none w-1/4" key={index}>
-              <img className="rounded-lg" src={slide.url} alt={slide.alt} />
+            <div className="flex-none w-full sm:w-1/4" key={index}>
+              <img className="rounded-lg w-full max-w-xs object-contain" src={slide.url} alt={slide.alt} />
             </div>
           ))}
         </div>

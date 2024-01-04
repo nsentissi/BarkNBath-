@@ -36,8 +36,8 @@ const GoogleMap = () => {
           </p>
           
         </div>
-      <div   style={{ height: '400px', width: '45%' }}>
-      <GoogleMapReact 
+      <div style={{ height: '400px', width: '45%' }}>
+      <GoogleMapReact
         bootstrapURLKeys={{ key: import.meta.env.VITE_GOOGLE_MAPS_API_KEY }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
