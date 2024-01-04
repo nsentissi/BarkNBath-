@@ -26,8 +26,18 @@ const GoogleMap = () => {
   };
 
   return (
-    <div style={{ height: '500px', width: '100%' }}>
-      <GoogleMapReact
+    <section className="flex flex-col md:flex-row items-center justify-center space-y-10 md:space-y-0 md:space-x-10 mt-10 w-full gap-20" style={{ backgroundImage: 'url("./src/assets/testimonials-background.webp")', height: '500px' }}>
+      <div className="w-full md:w-4/12 px-6 bg-info text-white p-8 rounded-lg" >
+          <h1 className="text-4xl md:text-7xl text-center md:text-left font-bold">
+          Explore our Locations
+          </h1>
+          <p className="mt-4 text-sm md:text-lg text-center md:text-left">
+          Easily find us at various locations to pamper your furry friends with stress-free grooming experiences. We look forward to welcoming you!
+          </p>
+          
+        </div>
+      <div   style={{ height: '400px', width: '45%' }}>
+      <GoogleMapReact 
         bootstrapURLKeys={{ key: import.meta.env.VITE_GOOGLE_MAPS_API_KEY }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
@@ -37,6 +47,7 @@ const GoogleMap = () => {
 
       </GoogleMapReact>
     </div>
+    </section>
   );
 };
 
