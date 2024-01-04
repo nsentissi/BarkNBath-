@@ -6,7 +6,6 @@ const userRouter = express.Router();
 userRouter.post("/login", login);
 userRouter.post("/signup", register);
 userRouter.get("/logout", logout)
-
- userRouter.get("/profile", verifyToken, getProfile  );
+userRouter.get("/profile", verifyToken, getProfile);
 
 module.exports = userRouter;
