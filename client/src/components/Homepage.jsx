@@ -20,7 +20,7 @@ const Homepage = () => {
       <Services/>
       <GoogleMap/>
       <Testimonials/>
-      <ServicesTable/>
+      {/* <ServicesTable/> */}
       <Faqsection/>
       <Footer/>
     </div>
