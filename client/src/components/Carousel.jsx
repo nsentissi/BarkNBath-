@@ -1,19 +1,21 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import {
-  DotButton,
-  PrevButton,
-  NextButton,
-} from "./EmblaCarouselArrowsDotsButtons";
+import { DotButton, PrevButton, NextButton } from "./EmblaCarouselArrowsDotsButtons";
 import dog1 from '../assets/carousel-1.jpg';
-import dog2 from '../assets/carousel-.jpg';
+import dog2 from '../assets/carousel-2.jpg';
+import dog3 from '../assets/carousel-3.jpg';
+import dog4 from '../assets/carousel-4.jpg';
+import dog5 from '../assets/carousel-5.jpg';
 
 const slides = [
   { url: dog1, alt: "Description for Image 1" },
   { url: dog2, alt: "Description for Image 2" },
+  { url: dog3, alt: "Description for Image 3" },
+  { url: dog4, alt: "Description for Image 4" },
+  { url: dog5, alt: "Description for Image 5" },
 ];
 
-const Carousel = ({ slides = [], options }) => {
+const Carousel = ({ options }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
@@ -51,38 +53,33 @@ const Carousel = ({ slides = [], options }) => {
   }, [emblaApi, onInit, onSelect]);
 
   return (
-    <>
-      <div className="embla">
-        <div className="embla__viewport" ref={emblaRef}>
-          <div className="embla__container">
-            {slides.map((slide, index) => (
-              <div className="embla__slide" key={index}>
-                <img
-                  className="embla__slide__img"
-                  src={slide.url}
-                  alt={slide.alt}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="embla__buttons">
-          <PrevButton onClick={scrollPrev} disabled={prevBtnDisabled} />
-          <NextButton onClick={scrollNext} disabled={nextBtnDisabled} />
+    <div className="pt-8 px-10">
+      <div className="" ref={emblaRef}>
+        <div className="flex w-4/5 gap-10">
+          {slides.map((slide, index) => (
+            <div className="flex-none w-1/4" key={index}>
+              <img className="rounded-lg" src={slide.url} alt={slide.alt} />
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="embla__dots">
+      <div className="flex justify-between mt-4">
+        <PrevButton onClick={scrollPrev} disabled={prevBtnDisabled} />
+        <NextButton onClick={scrollNext} disabled={nextBtnDisabled} />
+      </div>
+
+      <div className="flex justify-center mt-2">
         {scrollSnaps.map((_, index) => (
           <DotButton
             key={index}
             onClick={() => scrollTo(index)}
-            className={"embla__dot" + (index === selectedIndex ? " embla__dot--selected" : "")}
+            className={`mx-1 ${index === selectedIndex ? "bg-blue-500" : "bg-gray-300"}`}
+            style={{ height: "20px", width: "20px" }}
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
