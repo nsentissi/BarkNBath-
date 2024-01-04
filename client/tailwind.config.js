@@ -2,6 +2,17 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 
+
+  theme: {
+    extend: {
+      fontFamily: {
+        chewy: ['Chewy', 'cursive'],
+        dosis: ['Dosis', 'sans-serif'],
+      },
+    },
+  },
+
+
   daisyui: {
     themes: [
       {

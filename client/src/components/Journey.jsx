@@ -28,7 +28,7 @@ const Journey = () => (
     <div classname="overflow-y-hidden">
       <div className="mx-auto  container f-f-p px-4 xl:px-0 py-24">
         <motion.h1
-          className="focus:outline-none text-center text-3xl lg:text-4xl font-extrabold lg:leading-9 tracking-wider text-gray-900"
+          className=" font-chewy focus:outline-none text-center text-3xl lg:text-4xl font-extrabold lg:leading-9 tracking-wider text-gray-900"
           variants={titleVariants}
           initial="hidden"
           whileInView="visible"
@@ -47,20 +47,20 @@ const Journey = () => (
             >
               <div aria-label="sign up" role="img">
                 <img
-                  className="focus:outline-none mt-10"
-                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg1.svg"
+                  className="focus:outline-none w-38 mt-10"
+                  src=".\src\assets\createacc.png"
                   alt="how it work"
                 />
               </div>
               <div aria-label={2} role="img">
                 <img
-                  className="focus:outline-none mt-24"
-                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg2.svg"
+                  className="focus:outline-none w-14 mt-24"
+                  src=".\src\assets\nr2.png"
                   alt
                 />
               </div>
               <div className="flex mt-12 flex-col items-center lg:items-end md:w-8/12">
-                <h1 className="focus:outline-none text-xl font-bold leading-5">
+                <h1 className="focus:outline-none text-xl font-bold leading-5 font-chewy">
                   Create your Pet's Profile
                 </h1>
                 <h2 className="focus:outline-none text-gray-500 mt-3 pl-3 text-center md:text-right text-base leading-6 tracking-wide">
@@ -70,8 +70,8 @@ const Journey = () => (
               </div>
               <div aria-label="transactions" role="img">
                 <img
-                  className="focus:outline-none mt-24"
-                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg3.svg"
+                  className="focus:outline-none w-38 mt-24"
+                  src=".\src\assets\community.png"
                   alt
                 />
               </div>
@@ -90,12 +90,13 @@ const Journey = () => (
             >
               <div aria-label={1} role="img">
                 <img
-                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg4.svg"
+                className="focus:outline-none w-14 "
+                  src=".\src\assets\nr1.png"
                   alt
                 />
               </div>
               <div className="flex mt-6 flex-col items-center md:items-start md:w-8/12">
-                <h1 className="focus:outline-none text-xl font-bold leading-5">
+                <h1 className=" font-chewy focus:outline-none text-xl font-bold leading-5">
                   Sign Up for an Account
                 </h1>
                 <h2 className="focus:outline-none text-gray-500 mt-3 text-base leading-6 tracking-wide">
@@ -105,20 +106,20 @@ const Journey = () => (
               </div>
               <div aria-label="wallet" role="img">
                 <img
-                  className="focus:outline-none mt-32"
-                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg5.svg"
+                  className="focus:outline-none w-38 mt-32"
+                  src=".\src\assets\doghearts.png"
                   alt
                 />
               </div>
               <div aria-label={3} role="img">
                 <img
-                  className="focus:outline-none mt-20"
-                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg6.svg"
+                  className="focus:outline-none w-14 mt-20"
+                  src=".\src\assets\nr3.png"
                   alt
                 />
               </div>
               <div className="flex mt-6 flex-col items-center md:items-start md:w-8/12">
-                <h1 className="focus:outline-none text-xl font-bold leading-5">
+                <h1 className=" font-chewy focus:outline-none text-xl font-bold leading-5">
                   Join our community and services!
                 </h1>
                 <h2 className="focus:outline-none text-gray-500 mt-3 text-base leading-6 tracking-wide">
@@ -127,6 +128,8 @@ const Journey = () => (
               </div>
             </motion.div>
           </div>
+
+          {/* MOBILE VERSION  */}
           <motion.div
             className="md:hidden flex flex-col items-center w-full"
             variants={stepOneVariants}
@@ -134,16 +137,18 @@ const Journey = () => (
             whileInView="visible"
             transition={{ duration: 0.5 }}
           >
-            <img
-              className="focus:outline-none my-10"
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg1.svg"
-              alt="how it work"
-            />
-            <img
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg4.svg"
+              <img
+            className="w-16 my-10"
+              src=".\src\assets\nr1.png"
               alt
             />
-            <div className="mt-10">
+            <img
+              className="focus:outline-none w-38 "
+              src=".\src\assets\createacc.png"
+              alt="how it work"
+            />
+          
+            <div className="mt-9">
               <h1 className="text-xl text-center tracking-wide leading-5 font-bold">
                 Sign Up for an Account
               </h1>
@@ -153,14 +158,16 @@ const Journey = () => (
               </h2>
             </div>
             <img
-              className="focus:outline-none my-10"
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg5.svg"
+            className="w-16 my-10"
+              src=".\src\assets\nr2.png"
               alt
             />
             <img
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg2.svg"
+              className="focus:outline-none my-2"
+              src=".\src\assets\doghearts.png"
               alt
             />
+          
             <div className="mt-10">
               <h1 className="text-xl tracking-wide text-center leading-5 font-bold">
                 Create your Pet's Profile
@@ -170,16 +177,18 @@ const Journey = () => (
                 are comfortable with. Paypal, Visa and more..
               </h2>
             </div>
+            
             <img
-              className="focus:outline-none my-10"
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg3.svg"
+              className ='w-16 my-10'
+              src=".\src\assets\nr3.png"
               alt
             />
             <img
-              className
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/3_step_center_aligned_how_it_worksSvg6.svg"
+              className="focus:outline-none my-2"
+              src=".\src\assets\community.png"
               alt
             />
+            
             <div className="flex mt-10 flex-col items-center md:items-start md:w-8/12">
               <h1 className="text-xl text-center tracking-wide leading-5 font-bold">
                 Join our community and services!
@@ -192,15 +201,15 @@ const Journey = () => (
         </div>
       </div>
       <motion.div
-        className=" flex flex-col md:flex-row justify-center bg-gray-100 mx-auto rounded-t-3xl lg:mx-32 p-8 gap-8 mx-4 md:mx-8"
+        className=" flex flex-col md:flex-row justify-center bg-info mx-auto rounded-t-3xl lg:mx-32 p-10 gap-20 mx-4 md:mx-8  "
         variants={variants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         transition={{ duration: 1.8, delay: 0.5 }}
       >
-        <h2 className="text-2xl font-extrabold text-center ">About Us</h2>
-        <p className="text-center">
+        <h2 className="text-3xl font-extrabold text-center font-chewy">About Us</h2>
+        <p className="text-center font-chewy">
           "Bark N Bath is dedicated to providing top-notch dog grooming and
           cleaning services. Our passionate team, skilled in the latest grooming
           techniques, ensures your furry friend looks and feels their best. We
