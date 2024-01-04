@@ -13,6 +13,7 @@
     "@clerk/clerk-react": "^4.30.2",
     "@heroicons/react": "^2.1.1",
     "axios": "^1.6.2",
+    "embla-carousel-react": "^8.0.0-rc18",
     "framer-motion": "^10.16.16",
     "google-map-react": "^2.2.1",
     "heroicons": "^2.1.1",
