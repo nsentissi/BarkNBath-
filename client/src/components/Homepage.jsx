@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { useAuth } from '../hooks/AuthContext'; 
-
+import Profile from './Profile'
 import AboutUs from './AboutUs';
 import Services from './Services';
 import Landingpage from './Landingpage';
@@ -14,11 +15,17 @@ import ServicesTable from './ServicesTable';
 import Carousel from './Carousel';
 
 const Homepage = () => {
-  const { currentUser } = useAuth(); 
+  const { currentUser } = useAuth();
+   const [isProfileModalOpen, setProfileModalOpen] = useState(false)
+   const handleOpenProfileModal = () => setProfileModalOpen(true)
+  const handleCloseProfileModal = () => setProfileModalOpen(false)
 
   return (
     <div>
-      <Navbar />
+      <Navbar onProfileClick={handleOpenProfileModal} />
+      <Modal isOpen={isProfileModalOpen} onClose={handleCloseProfileModal} >
+        <Profile/>
+      </Modal>
       {!currentUser && (
         <>
           <Landingpage />
@@ -33,6 +40,7 @@ const Homepage = () => {
           <Footer />
         </>
       )}
+
     </div>
   );
 };

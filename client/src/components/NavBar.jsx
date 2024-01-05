@@ -1,8 +1,9 @@
-import React from 'react';
-import { useAuth } from '../hooks/AuthContext';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { useAuth } from "../hooks/AuthContext";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+
+const Navbar = ({ onProfileClick }) => {
   const { currentUser, logout, pets } = useAuth();
 
   return (
@@ -23,7 +24,7 @@ const Navbar = () => {
         <div className="flex items-center md:order-2">
   {currentUser ? (
     <React.Fragment>
-      <button className="mr-4">Your account</button>
+      <button onClick={onProfileClick} className="mr-4">Your account</button>
       <div className="flex items-center mr-4">
         <span>Welcome, {currentUser.firstName}</span>
         {pets && pets.length > 0 && (
@@ -54,6 +55,7 @@ const Navbar = () => {
             </ul>
           </div>
         )}
+
       </div>
     </nav>
   );

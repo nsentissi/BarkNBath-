@@ -72,19 +72,45 @@ const logout = async (req, res, next) => {
   console.log("you are logged out");
 };
 
-const getProfile = async(req, res, next) =>{
-  const {id} = req.user
+const getProfile = async (req, res, next) => {
+  const { id } = req.user;
   try {
-    const user = await User.findOne({_id: id})
-    res.json(user)
+    const user = await User.findOne({ _id: id });
+    res.json(user);
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
+};
+
+const updateUser = async (req, res, next) => {
+  try {
+    const { id } = req.user;
+    const { newPassword, newPhoneNumber } = req.body;
+
+    if (!newPassword && !newPhoneNumber) {
+      throw new ErrorResponse("No new data provided", 400);
+    }
+    
+    const user = await User.findOne({ _id: id });
+    if (!user) throw new ErrorResponse("User not found", 404);
+
+    if (newPassword) {
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedPassword;
+    }
+
+    if (newPhoneNumber) {
+      user.phoneNumber = newPhoneNumber;
+    }
+
+    await User.save();
+    res.status(200).json({ message: "User updated successfully" });
+  } catch (error) {}
+};
 
 module.exports = {
   register,
   login,
   logout,
-  getProfile
+  getProfile,
 };
