@@ -3,7 +3,6 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import locationData from "../data/map.json";
 
-// Set a fixed position for the map's center
 const position = [52.5314560163944, 13.403370226299785];
 
 const Map = () => {
