@@ -6,10 +6,12 @@ import Navbar from './Navbar'
 import Journey from './Journey'
 import Footer from './Footer'
 import Faqsection from './Faqsection'
-import GoogleMap from './GoogleMap'
+/* import GoogleMap from './GoogleMap'
+ */
 import Testimonials from './Testimonials'
 import ServicesTable from './ServicesTable'
 import Carousel from './Carousel'
+import GoogleMapsComponent from './GoogleMapsComponent'
 
 const Homepage = () => {
   return (
@@ -19,7 +21,7 @@ const Homepage = () => {
       <Journey/>
       <AboutUs/>
       <Services/>
-      <GoogleMap/>
+      <GoogleMapsComponent/>
       <Carousel/>
       <Testimonials/>
       {/* <ServicesTable/> */}

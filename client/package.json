@@ -12,6 +12,7 @@
   "dependencies": {
     "@clerk/clerk-react": "^4.30.2",
     "@heroicons/react": "^2.1.1",
+    "@react-google-maps/api": "^2.19.2",
     "axios": "^1.6.2",
     "embla-carousel-react": "^8.0.0-rc18",
     "framer-motion": "^10.16.16",
