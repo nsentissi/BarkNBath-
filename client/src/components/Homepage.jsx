@@ -9,6 +9,7 @@ import Faqsection from './Faqsection'
 import GoogleMap from './GoogleMap'
 import Testimonials from './Testimonials'
 import ServicesTable from './ServicesTable'
+import Carousel from './Carousel'
 
 const Homepage = () => {
   return (
@@ -19,6 +20,7 @@ const Homepage = () => {
       <AboutUs/>
       <Services/>
       <GoogleMap/>
+      <Carousel/>
       <Testimonials/>
       {/* <ServicesTable/> */}
       <Faqsection/>
