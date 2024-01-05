@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useAuth } from "../hooks/AuthContext";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ onProfileClick }) => {
+const Navbar = ({ onProfileClick, petName }) => {
+  
   const { currentUser, logout } = useAuth();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -28,11 +29,13 @@ const Navbar = ({ onProfileClick }) => {
              
               <span className="mr-4 hidden md:block">Welcome, {currentUser.firstName}</span>
               <Link
-                          to="/add-pet"
+            
+                          to="/pet/create"
                           className="mr-4 hidden md:block"
                         >
                           Add your puffy friend
                         </Link>
+                        
               <button onClick={onProfileClick} className="mr-4 hidden md:block">
                 Your account
               </button>

@@ -13,6 +13,8 @@ import GoogleMap from './GoogleMap';
 import Testimonials from './Testimonials';
 import ServicesTable from './ServicesTable';
 import Carousel from './Carousel';
+import AddPetForm from './AddPetForm';
+
 
 const Homepage = () => {
   const { currentUser } = useAuth();
