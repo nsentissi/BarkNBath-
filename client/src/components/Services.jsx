@@ -16,7 +16,7 @@ function Services() {
   };
 
   return (
-    <div className="bg-secondary p-10 text-white">
+    <div className=" p-10 text-white">
       <div className="flex flex-wrap justify-center gap-10">
       <motion.div
         className="card w-full md:w-96 glass hover:shadow-xl shadow-lg transform hover:-translate-y-2 transition duration-300 ease-in-out"

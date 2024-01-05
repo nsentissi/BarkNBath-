@@ -26,9 +26,11 @@ const AboutUs = () => {
   };
 
   return (
-    <div className="bg-accent pt-0">
+    <div className="bg-primary pt-0 ">
       <motion.section
-        className="flex flex-wrap gap-4 justify-center bg-info rounded-b-3xl mx-4 md:mx-8 lg:mx-32 pt-4 pb-8"
+
+        className="flex flex-wrap gap-4 justify-center bg-info  mx-auto  rounded-b-3xl mx-4 md:mx-8 lg:mx-32 pt-4 pb-8  "
+
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}

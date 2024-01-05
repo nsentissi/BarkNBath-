@@ -22,7 +22,7 @@ const Homepage = () => {
       <GoogleMap/>
       <Carousel/>
       <Testimonials/>
-      <ServicesTable/>
+      {/* <ServicesTable/> */}
       <Faqsection/>
       <Footer/>
     </div>
