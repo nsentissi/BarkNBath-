@@ -6,14 +6,15 @@ const ErrorResponse = require('../utils/ErrorResponse');
 const createPet = async (req, res, next) => {
   try {
     const { name, breed, age, weight, Bio } = req.body;
-
-    const newPet = await Pet.create({ name, breed, age, weight, Bio });
-    
+    const userId = req.user.id; 
+    const newPet = new Pet({ owner: userId, name, breed, age, weight, Bio });
+    await newPet.save();
     res.status(201).json(newPet);
   } catch (error) {
-    next(error);
+    next(error); 
   }
 };
+
 
 // pet details
 

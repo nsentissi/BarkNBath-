@@ -7,6 +7,8 @@ const errorHandler = require("./middlewares/errorHandler.js");
 
 const userRouter = require("./routes/user.js");
 const appointmentRouter = require("./routes/appointment.js")
+const petRouter = require('./routes/pet.js');
+
 
 const app = express();
 const port = 3000;
@@ -21,6 +23,7 @@ app.use(cookieParser());
 
 app.use("/auth", userRouter);
 app.use("/appointment", appointmentRouter)
+app.use('/pet', petRouter);
 
 app.use(errorHandler);
 
