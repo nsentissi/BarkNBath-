@@ -14,7 +14,7 @@ const Profile = () => {
       <p>Email: {currentUser.email}</p>
       <p>Phone Number: {currentUser.phoneNumber}</p>
       <p>First Name: {currentUser.firstName}</p>
-      <p>Last Name: {currentUser.LastName} </p>
+      <p>Last Name: {currentUser.lastName} </p>
     </div>
   )
 }

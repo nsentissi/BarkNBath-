@@ -36,7 +36,7 @@ const Login = () => {
       setTimeout(() => {
         navigate('/');
       }, 2000);
-    } catch (error) {
+    } catch (error) { 
       console.error("Login failed:", error);
       toast.error(error.response.data);
     }
