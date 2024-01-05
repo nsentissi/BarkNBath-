@@ -7,7 +7,6 @@ import {
   DirectionsService,
   DirectionsRenderer,
 } from "@react-google-maps/api";
-import map from "../data/map.json";
 
 const mapContainerStyle = {
   height: "400px",
@@ -16,8 +15,31 @@ const mapContainerStyle = {
 
 const center = { lat: 52.52, lng: 13.405 };
 
+// Define your location data directly in the component
+const locations = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [13.403370226299785, 52.5314560163944],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [13.408823890711005, 52.52987336402461],
+        "type": "Point"
+      }
+    },
+    // ... Add all your other locations here
+  ]
+};
+
 const GoogleMapsComponent = () => {
-  console.log("GeoJSON Data:", map);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [requestDirections, setRequestDirections] = useState(false);
@@ -45,7 +67,7 @@ const GoogleMapsComponent = () => {
   };
 
   return (
-    <LoadScript googleMapsApiKey= {import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+    <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={center}
@@ -53,7 +75,7 @@ const GoogleMapsComponent = () => {
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-        {map.features.map((feature, index) => (
+        {locations.features.map((feature, index) => (
           <Marker
             key={index}
             position={{

@@ -11,7 +11,7 @@ import Faqsection from './Faqsection'
 import Testimonials from './Testimonials'
 import ServicesTable from './ServicesTable'
 import Carousel from './Carousel'
-import GoogleMapsComponent from './GoogleMapsComponent'
+import Map from './Map'
 
 const Homepage = () => {
   return (
@@ -21,7 +21,7 @@ const Homepage = () => {
       <Journey/>
       <AboutUs/>
       <Services/>
-      <GoogleMapsComponent/>
+      <Map/>
       <Carousel/>
       <Testimonials/>
       {/* <ServicesTable/> */}

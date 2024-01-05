@@ -13,22 +13,6 @@ const Login = () => {
 
   const { register, handleSubmit, errors } = useForm();
 
-  /* const onSubmit = async (data) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/auth/login",
-        data
-      );
-      const userData = response.data;
-      setUser(userData);
-      toast("Login successful!");
-      console.log(response.data);
-    } catch (error) {
-      console.error("Login failed:", error);
-      toast.error(error.response.data);
-    }
-  }; */
-
   const onSubmit = async (data) => {
     try {
       await login(data.email, data.password);
@@ -41,11 +25,11 @@ const Login = () => {
       toast.error(error.response.data);
     }
   };
+
   return (
-    <div className="container mx-auto my-auto px-4 py-40 w-5/12">
-      <div className="bg-secondary p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">
-        {/* <h1 className="text-3xl font-bold mb-6">BarkNBath</h1> */}
-        <img src="../src/assets/tail.svg" className="mb-6 mx-auto" />
+    <div className="container mx-auto px-4 py-10 w-full sm:w-8/12 md:w-6/12 lg:w-5/12 xl:w-4/12">
+      <div className="bg-secondary p-6 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">
+        <img src="../src/assets/tail.svg" className="mb-6 mx-auto" alt="Logo" />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label className="text-white block mb-2">Email</label>
@@ -63,7 +47,6 @@ const Login = () => {
               {...register("password", { required: true })}
             />
           </div>
-
           <div className="flex items-center justify-between">
             <button
               type="submit"
@@ -71,7 +54,6 @@ const Login = () => {
             >
               Login
             </button>
-           {/*  <Profile user={user} /> */}
             <p>
               Don't have an account?
               <Link to="/signup" className="text-blue-500 hover:text-blue-700">
