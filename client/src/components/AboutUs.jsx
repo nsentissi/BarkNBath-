@@ -26,108 +26,170 @@ const AboutUs = () => {
   };
 
   return (
-    <div className="bg-primary pt-0 ">
-      <motion.section
-
-        className="flex flex-wrap gap-4 justify-center bg-info  mx-auto  rounded-b-3xl mx-4 md:mx-8 lg:mx-32 pt-4 pb-8  "
-
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+    <div>
+    <motion.section
+      className="flex flex-wrap w-3/4 gap-4 justify-center bg-info  mx-auto  rounded-b-3xl mx-4 md:mx-8 lg:mx-32 pt-4 pb-8  "
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      variants={variants}
+    >
+      <motion.div
+        className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-28 lg:gap-y-16 w-3/4"
         variants={variants}
       >
+        <div class="relative group h-48 flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+          <a href="#" class="block">
+            <div class="h-28">
+              <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40  group-hover:top-[-40%] group-hover:opacity-[0.9]   duration-300 w-[90%] h-48 bg-secondary rounded-xl justify-items-center align-middle">
+                <img
+                  class="w-36 h-36  mt-6 m-auto"
+                  src="../src/assets/heart.png"
+                  alt="paw icon"
+                  loading="lazy"
+                  width="150"
+                  height="200"
+                ></img>
+              </div>
+            </div>
+            <div class="p-6   z-10 w-full   ">
+              <p class="mb-2 inline-block text-tg text-center w-full  text-xl  font-sans  font-semibold leading-snug tracking-normal   antialiased">
+                Convenience
+              </p>
+            </div>
+          </a>
+        </div>
+
         <motion.div
-          className="flex flex-col items-center w-full md:w-6/12 lg:w-4/12 px-4"
+          class="relative group h-48 flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md "
           variants={variants}
         >
-          <img
-            className="w-10 mb-2"
-            src="../src/assets/heart.png"
-            alt="paw icon"
-          />
-          <h3 className="font-bold mb-1">Convenience</h3>
-          <p className="w-10/12">
-            We know it can be hatd to schedule your dogs grooming appointment
-            and make numerous trops to the pet salon
-          </p>
+          <a href="#" class="block">
+            <div class="h-28">
+              <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40  group-hover:top-[-40%] group-hover:opacity-[0.9]   duration-300 w-[90%] h-48 bg-secondary rounded-xl justify-items-center align-middle">
+                <img
+                  class="w-36 h-36  mt-6 m-auto"
+                  src="../src/assets/Paw.png"
+                  alt="paw icon"
+                  loading="lazy"
+                  width="150"
+                  height="200"
+                ></img>
+              </div>
+            </div>
+            <div class="p-6   z-10 w-full   ">
+              <p class="mb-2 inline-block text-tg text-center w-full  text-xl  font-sans  font-semibold leading-snug tracking-normal   antialiased">
+                No Cages
+              </p>
+            </div>
+          </a>
         </motion.div>
+
         <motion.div
-          className="flex flex-col items-center w-full md:w-6/12 lg:w-4/12 px-4"
+          class="relative group h-48 flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
           variants={variants}
         >
-          <img
-            className="w-10 mb-2"
-            src="../src/assets/Paw.png"
-            alt="paw icon"
-          />
-          <h3 className="font-bold mb-1">No Cages</h3>
-          <p className="w-10/12">
-            Your dog will never see the inside of a cage. He/she will receive
-            one-on-one completely specialized attention
-          </p>
+          <a href="#" class="block">
+            <div class="h-28">
+              <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40  group-hover:top-[-40%] group-hover:opacity-[0.9]   duration-300 w-[90%] h-48 bg-secondary rounded-xl justify-items-center align-middle">
+                <img
+                  src="../src/assets/dog-icon.png"
+                  alt="paw icon"
+                  class="w-36 h-36  mt-6 m-auto"
+                  title="Automotive"
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                ></img>
+              </div>
+            </div>
+            <div class="p-6   z-10 w-full   ">
+              <p class="mb-2 inline-block text-tg text-center w-full  text-xl  font-sans  font-semibold leading-snug tracking-normal   antialiased">
+                Less Stress
+              </p>
+            </div>
+          </a>
         </motion.div>
         <motion.div
-          className="flex flex-col items-center w-full md:w-6/12 lg:w-4/12 px-4"
+          class="relative group h-48 flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
           variants={variants}
         >
-          <img
-            className="w-10 mb-2"
-            src="../src/assets/time.png"
-            alt="paw icon"
-          />
-          <h3 className="font-bold mb-1">It's Fast</h3>
-          <p className="w-10/12">
-            We arrive on time for your dogs appointment so you can sit back and
-            relax while we make your dog look and feel their very best
-          </p>
+          <a href="#" class="block">
+            <div class="h-28">
+              <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40  group-hover:top-[-40%] group-hover:opacity-[0.9]   duration-300 w-[90%] h-48 bg-secondary rounded-xl justify-items-center align-middle">
+                <img
+                  src="../src/assets/time.png"
+                  class="w-36 h-36  mt-6 m-auto"
+                  alt="Automotive"
+                  title="Automotive"
+                  loading="lazy"
+                  width="150"
+                  height="200"
+                ></img>
+              </div>
+            </div>
+            <div class="p-6   z-10 w-full   ">
+              <p class="mb-2 inline-block text-tg text-center w-full  text-xl  font-sans  font-semibold leading-snug tracking-normal   antialiased">
+                Its Fast
+              </p>
+            </div>
+          </a>
         </motion.div>
         <motion.div
-          className="flex flex-col items-center w-full md:w-6/12 lg:w-4/12 px-4"
+          class="relative group h-48 flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
           variants={variants}
         >
-          <img
-            className="w-10 mb-2"
-            src="../src/assets/dog-icon.png"
-            alt="paw icon"
-          />
-          <h3 className="font-bold mb-1">Less Stress</h3>
-          <p className="w-10/12">
-            We eliminate the stress and anxiety of a traditional noisy, chaotic
-            grooming shop environment
-          </p>
+          <a href="#" class="block">
+            <div class="h-28">
+              <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40  group-hover:top-[-40%] group-hover:opacity-[0.9]   duration-300 w-[90%] h-48 bg-secondary rounded-xl justify-items-center align-middle">
+                <img
+                  src="../src/assets/grooming.png"
+                  class="w-36 h-36  mt-6 m-auto"
+                  alt="Automotive"
+                  title="Automotive"
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                ></img>
+              </div>
+            </div>
+            <div class="p-6   z-10 w-full   ">
+              <p class="mb-2 inline-block text-tg text-center w-full  text-xl  font-sans  font-semibold leading-snug tracking-normal   antialiased">
+                Groomers know your Pet
+              </p>
+            </div>
+          </a>
         </motion.div>
         <motion.div
-          className="flex flex-col items-center w-full md:w-6/12 lg:w-4/12 px-4"
+          class="relative group h-48 flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
           variants={variants}
         >
-          <img
-            className="w-10 mb-2"
-            src="../src/assets/grooming.png"
-            alt="paw icon"
-          />
-          <h3 className="font-bold mb-1">Groomers know your Pet</h3>
-          <p className="w-10/12">
-            It is our mission to provide a caring, quality and professional
-            grooming service to your dog
-          </p>
+          <a href="#" class="block">
+            <div class="h-28">
+              <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40  group-hover:top-[-40%] group-hover:opacity-[0.9]   duration-300 w-[90%] h-48 bg-secondary rounded-xl justify-items-center align-middle">
+                <img
+                  src="../src/assets/privacy.png"
+                  class="w-36 h-36  mt-6 m-auto"
+                  alt="Automotive"
+                  title="Automotive"
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                ></img>
+              </div>
+            </div>
+            <div class="p-6   z-10 w-full   ">
+              <p class="mb-2 inline-block text-tg text-center w-full  text-xl  font-sans  font-semibold leading-snug tracking-normal   antialiased">
+                Privacy for your Pet
+              </p>
+            </div>
+          </a>
         </motion.div>
-        <motion.div
-          className="flex flex-col items-center w-full md:w-6/12 lg:w-4/12 px-4"
-          variants={variants}
-        >
-          <img
-            className="w-10 mb-2"
-            src="../src/assets/privacy.png"
-            alt="paw icon"
-          />
-          <h3 className="font-bold mb-1">Privacy for your Pet</h3>
-          <p className="w-10/12">
-            No other animals or people are allowed in our mobile grooming trucks
-            during your dogs appointment.
-          </p>
-        </motion.div>
-      </motion.section>
+      </motion.div>
+    </motion.section>
+
+
 
       <div className="flex flex-col md:flex-row items-center justify-center space-y-10 md:space-y-0 md:space-x-10 mt-10 w-full">
         <motion.div className="w-full md:w-4/12 px-6" variants={variants}>
