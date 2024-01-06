@@ -48,15 +48,16 @@ const login = async (req, res, next) => {
       firstName: user.firstName,
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
+      password: user.password
     };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "500m",
+      expiresIn: "5000m",
     });
 
     res
       .cookie("access_token", token, {
         httpOnly: true,
-        maxAge: 480000,
+        maxAge: 980000,
         /* secure: process.env.NODE_ENV === "production", */
         sameSite: "lax",
       })
@@ -79,6 +80,7 @@ const getProfile = async (req, res, next) => {
     const user = await User.findOne({ _id: id });
     res.json(user);
   } catch (error) {
+    console.log(error)
     next(error);
   }
 };
@@ -104,9 +106,11 @@ const updateUser = async (req, res, next) => {
       user.phoneNumber = newPhoneNumber;
     }
 
-    await User.save();
+    await user.save();
     res.status(200).json({ message: "User updated successfully" });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 module.exports = {
@@ -114,4 +118,5 @@ module.exports = {
   login,
   logout,
   getProfile,
+  updateUser
 };
