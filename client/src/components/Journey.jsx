@@ -25,7 +25,7 @@ const variants = {
 
 const Journey = () => (
   <div className="">
-    <div classname="overflow-y-hidden">
+    <div className="overflow-y-hidden">
       <div className="mx-auto  container f-f-p px-4 xl:px-0 py-24">
         <motion.h1
           className=" font-chewy focus:outline-none text-center text-3xl lg:text-4xl font-extrabold lg:leading-9 tracking-wider text-gray-900"
@@ -56,7 +56,7 @@ const Journey = () => (
                 <img
                   className="focus:outline-none w-14 mt-24"
                   src=".\src\assets\nr2.png"
-                  alt
+                 
                 />
               </div>
               <div className="flex mt-12 flex-col items-center lg:items-end md:w-8/12">
@@ -72,13 +72,13 @@ const Journey = () => (
                 <img
                   className="focus:outline-none w-38 mt-24"
                   src=".\src\assets\community.png"
-                  alt
+                  
                 />
               </div>
               <img
                 className="hidden md:block absolute right-0 top-0 -mt-2 -mr-1"
                 src="https://cdn.tuk.dev/assets/components/111220/Fs7/line.png"
-                alt
+                
               />
             </motion.div>
             <motion.div
@@ -92,7 +92,7 @@ const Journey = () => (
                 <img
                 className="focus:outline-none w-14 "
                   src=".\src\assets\nr1.png"
-                  alt
+                  
                 />
               </div>
               <div className="flex mt-6 flex-col items-center md:items-start md:w-8/12">
@@ -108,14 +108,14 @@ const Journey = () => (
                 <img
                   className="focus:outline-none w-38 mt-32"
                   src=".\src\assets\doghearts.png"
-                  alt
+                 
                 />
               </div>
               <div aria-label={3} role="img">
                 <img
                   className="focus:outline-none w-14 mt-20"
                   src=".\src\assets\nr3.png"
-                  alt
+                
                 />
               </div>
               <div className="flex mt-6 flex-col items-center md:items-start md:w-8/12">
@@ -140,7 +140,7 @@ const Journey = () => (
               <img
             className="w-16 my-10"
               src=".\src\assets\nr1.png"
-              alt
+            
             />
             <img
               className="focus:outline-none w-38 "
@@ -160,12 +160,12 @@ const Journey = () => (
             <img
             className="w-16 my-10"
               src=".\src\assets\nr2.png"
-              alt
+              
             />
             <img
               className="focus:outline-none my-2"
               src=".\src\assets\doghearts.png"
-              alt
+            
             />
           
             <div className="mt-10">
@@ -181,12 +181,12 @@ const Journey = () => (
             <img
               className ='w-16 my-10'
               src=".\src\assets\nr3.png"
-              alt
+              
             />
             <img
               className="focus:outline-none my-2"
               src=".\src\assets\community.png"
-              alt
+              
             />
             
             <div className="flex mt-10 flex-col items-center md:items-start md:w-8/12">
