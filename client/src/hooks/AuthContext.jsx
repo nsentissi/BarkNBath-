@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const verifyToken = async () => {
+      
       try {
         const response = await axios.get('http://localhost:3000/auth/profile', { withCredentials: true });
         if (response.data) {

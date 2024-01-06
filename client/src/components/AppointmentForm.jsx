@@ -1,10 +1,17 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from "react-toastify";
+import { useAuth } from '../hooks/AuthContext'
 import axios from 'axios';
 
 const AppointmentForm = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { currentUser } = useAuth();
+
+  if (!currentUser) {
+    return <div>Please log in.</div>;
+  }
+
 
   const onSubmit = async (data) => {
     try {
