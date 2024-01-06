@@ -50,13 +50,13 @@ const login = async (req, res, next) => {
       password: user.password
     };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "500m",
+      expiresIn: "5000m",
     });
 
     res
       .cookie("access_token", token, {
         httpOnly: true,
-        maxAge: 480000,
+        maxAge: 980000,
         /* secure: process.env.NODE_ENV === "production", */
         sameSite: "lax",
       })

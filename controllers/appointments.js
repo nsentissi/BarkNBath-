@@ -13,7 +13,26 @@ const createAppointment = async (req, res, next) => {
     }
 }
 
+const getAppointments = async (req, res) => {
+    try {
+      const date = req.query.date
+  
+      if (!date) {
+        const appointments = await Appointment.find()
+  
+        return res.status(200).json(appointments)
+      }
+  
+      const appointments = await Appointment.find({ date })
+  
+      res.status(200).json(appointments)
+    } catch (error) {
+      res.status(400).json({ message: error.message })
+    }
+  }
+
 
 module.exports = {
-    createAppointment
+    createAppointment,
+    getAppointments
 }
