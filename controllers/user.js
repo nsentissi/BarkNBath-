@@ -8,7 +8,7 @@ const register = async (req, res, next) => {
     const {
       body: { firstName, lastName, email, phoneNumber, password },
     } = req;
-
+    const userWithPets = await User.findById(user._id).populate('pets').exec();
     const found = await User.findOne({ email });
     if (found) throw new ErrorResponse("User Already Exist", 409);
 
@@ -20,6 +20,7 @@ const register = async (req, res, next) => {
       email,
       phoneNumber,
       password: hash,
+      pets: userWithPets.pets,
     });
 
     res.status(201).json({ email: user.email });
