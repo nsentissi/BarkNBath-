@@ -1,67 +1,71 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+
 const Landingpage = () => {
   const textVariants = {
-    hidden: { opacity: 0, x: 100 },
+    hidden: { opacity: 0, y: 100 }, 
     visible: {
       opacity: 1,
-      x: 0,
-      transition: { type: "spring", stiffness: 80, duration: 14, delay: 1 },
+      y: 0,
+      transition: { type: "spring", stiffness: 80, duration: 1, delay: 1 },
     },
   };
-
+  
+  const parkingSignVariants = {
+    hidden: { y: "-100vh" },
+    visible: {
+      y: 0,
+      transition: { type: "spring", duration: 3, delay: 1 }
+    }
+  };
+  
   const vanVariants = {
-    hidden: { x: "100%" },
+    hidden: { x: "100vw" }, 
     visible: {
-      opacity: 1,
       x: 0,
-      transition: { type: "spring", duration: 3, delay: 1, bounce: 0.2 },
-    },
+      transition: { 
+        type: "spring", 
+        duration: 3, 
+        delay: 2, 
+        bounce: 0.3 
+      }
+    }
   };
+  
 
   return (
-    <div
-      style={{
-        backgroundImage: `url('./src/assets/homepage.svg')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-        height: "100vh",
-      }}
-    >
-      <motion.div
-        className="flex flex-col items-center justify-center"
-        variants={textVariants}
-        style={{ position: "absolute", bottom: 380, right: 400 }}
-        initial="hidden"
-        animate="visible"
-      >
-        <h1 className="text-6xl text-white font-chewy">Pamper Your Dog </h1>
+    <div className="flex items-center justify-center h-screen bg-cover bg-center landing-page-bg"
+         style={{ backgroundImage: `url('./src/assets/homepage.svg')` }}
+        >
+
+      {/* Text  */}
+      <motion.div className="absolute top-1/4 md:top-1/3 lg:top-1/2 text-center"
+                  variants={textVariants}
+                  initial="hidden"
+                  animate="visible">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl text-white font-chewy">
+          Pamper Your Dog
+        </h1>
       </motion.div>
 
-      <motion.img
-        src="./src/assets/van.png"
-        alt="Van"
-        style={{ position: "absolute", bottom: 0, right: 0 }}
-        variants={vanVariants}
-        initial="hidden"
-        animate="visible"
-      />
-      <motion.img
-        style={{
-          backgroundColor: "rgba(255, 255, 255, 0.5)",
-          borderRadius: "50%",
-          overflow: "hidden",
-          position: "absolute",
-          bottom: 370,
-          right: 300,
-        }}
-        src="./src/assets/parkingspace.png"
-        alt="Van"
-        variants={textVariants}
-        initial="hidden"
-        animate="visible"
-      />
+      {/* Van  */}
+      <motion.img className="absolute bottom-10 right-14 md:right-32 lg:right-80 transform lg:-translate-x-1/2 lg:translate-y-0 w-1/2 md:w-1/3 lg:w-38vw"
+                  src="./src/assets/van.png"
+                  alt="Van"
+                  variants={vanVariants}
+                  initial="hidden"
+                  animate="visible"
+                  style={{ maxWidth: '900px' }} />
+
+      {/* Parking Sign  */}
+      <motion.img className="absolute bottom-14 right-60  md:right-96 lg:right-1/2 lg:mr-36 transform lg:-translate-x-1/2 lg:translate-y-0  w-1/5 md:w-1/5 lg:w-20vw"
+                  src="./src/assets/parking.png"
+                  alt="Parking Sign"
+                  variants={parkingSignVariants}
+                  initial="hidden"
+                  animate="visible" 
+                  style={{ maxWidth: '200px' }}/>
     </div>
   );
 };

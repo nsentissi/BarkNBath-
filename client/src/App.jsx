@@ -6,7 +6,7 @@ import Homepage from "./components/Homepage"
 import Profile from "./components/Profile";
 import { AuthProvider } from "./hooks/AuthContext";
 import AppointmentForm from "./components/AppointmentForm";
-
+import AddPetForm from "./components/AddPetForm";
 
 
 function App() {
@@ -21,6 +21,8 @@ function App() {
       <Route path="/login" element={<Login/>} />
       {/* <Route path="/profile" element={<Profile/>}/> */}
       <Route path="/appointment" element={<AppointmentForm/>}/>
+      <Route path="/pet/create"  element={<AddPetForm/>} />
+
       </Routes>
       </AuthProvider>
     </>

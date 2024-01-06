@@ -46,7 +46,7 @@ function Services() {
             Ideal for maintenance between full grooming sessions
           </h3>
           <div className="card-actions justify-end">
-            <button className="btn btn-neutral">Book an appointment</button>
+            
           </div>
         </div>
       </motion.div>
@@ -78,7 +78,7 @@ function Services() {
             Perfect for pet owners looking to spoil their furry friends.
           </h3>
           <div className="card-actions justify-end">
-            <button className="btn btn-neutral">Book an appointment</button>
+           
           </div>
         </div>
       </motion.div>
@@ -110,7 +110,7 @@ function Services() {
             Great for pets requiring a more comprehensive grooming session.
           </h3>
           <div className="card-actions justify-end">
-            <button className="btn btn-neutral">Book an appointment</button>
+           
           </div>
         </div>
       </motion.div>
@@ -142,11 +142,13 @@ function Services() {
             Designed to reduce stress and promote overall pet wellness.
           </h3>
           <div className="card-actions justify-end">
-            <button className="btn btn-neutral">Book an appointment</button>
+           
           </div>
         </div>
       </motion.div>
+      
       </div>
+      <button className="btn btn-neutral">Book an appointment</button>
     </div>
   );
 }

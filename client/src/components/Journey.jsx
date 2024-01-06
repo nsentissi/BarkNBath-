@@ -56,7 +56,7 @@ const Journey = () => (
                 <img
                   className="focus:outline-none w-14 mt-24"
                   src=".\src\assets\nr2.png"
-                 
+
                 />
               </div>
               <div className="flex mt-12 flex-col items-center lg:items-end md:w-8/12">
@@ -108,14 +108,14 @@ const Journey = () => (
                 <img
                   className="focus:outline-none w-38 mt-32"
                   src=".\src\assets\doghearts.png"
-                 
+
                 />
               </div>
               <div aria-label={3} role="img">
                 <img
                   className="focus:outline-none w-14 mt-20"
                   src=".\src\assets\nr3.png"
-                
+
                 />
               </div>
               <div className="flex mt-6 flex-col items-center md:items-start md:w-8/12">
@@ -140,7 +140,7 @@ const Journey = () => (
               <img
             className="w-16 my-10"
               src=".\src\assets\nr1.png"
-            
+
             />
             <img
               className="focus:outline-none w-38 "
@@ -165,7 +165,7 @@ const Journey = () => (
             <img
               className="focus:outline-none my-2"
               src=".\src\assets\doghearts.png"
-            
+
             />
           
             <div className="mt-10">
@@ -181,7 +181,7 @@ const Journey = () => (
             <img
               className ='w-16 my-10'
               src=".\src\assets\nr3.png"
-              
+
             />
             <img
               className="focus:outline-none my-2"
