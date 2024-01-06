@@ -1,3 +1,4 @@
+
 import Modal from './Modal'
 import React ,{useState} from 'react';
 import { useAuth } from '../hooks/AuthContext'; 
@@ -9,10 +10,15 @@ import Navbar from './NavBar';
 import Journey from './Journey';
 import Footer from './Footer';
 import Faqsection from './Faqsection';
-import GoogleMap from './GoogleMap';
+/* import GoogleMap from './GoogleMap'; */
 import Testimonials from './Testimonials';
 import ServicesTable from './ServicesTable';
 import Carousel from './Carousel';
+
+import AddPetForm from './AddPetForm';
+import Map from './Map'
+
+
 
 
 const Homepage = () => {
@@ -23,7 +29,10 @@ const Homepage = () => {
 
   return (
     <div>
+
+
       
+
       <Navbar onProfileClick={handleOpenProfileModal} />
       <Modal isOpen={isProfileModalOpen} onClose={handleCloseProfileModal} >
         <Profile/>
@@ -35,7 +44,8 @@ const Homepage = () => {
           <Journey />
           <AboutUs />
           <Services />
-          <GoogleMap />
+        <Map/>
+         
           <Carousel />
           <Testimonials />
           {/* <ServicesTable/> */}
@@ -43,6 +53,7 @@ const Homepage = () => {
           <Footer />
         </>
       )}
+
 
     </div>
   );
