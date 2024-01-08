@@ -8,7 +8,7 @@ const register = async (req, res, next) => {
     const {
       body: { firstName, lastName, email, phoneNumber, password },
     } = req;
-    const userWithPets = await User.findById(user._id).populate('pets').exec();
+    
     const found = await User.findOne({ email });
     if (found) throw new ErrorResponse("User Already Exist", 409);
 
@@ -20,7 +20,7 @@ const register = async (req, res, next) => {
       email,
       phoneNumber,
       password: hash,
-      pets: userWithPets.pets,
+    
     });
 
     res.status(201).json({ email: user.email });
@@ -35,7 +35,7 @@ const login = async (req, res, next) => {
       body: { email, password },
     } = req;
 
-    const user = await User.findOne({ email }).select("+password");
+    const user = await User.findOne({ email }).select("+password").populate("pets");
     if (!user) throw new ErrorResponse("User Doesn't Exist", 404);
 
     const match = await bcrypt.compare(password, user.password);
@@ -48,7 +48,8 @@ const login = async (req, res, next) => {
       firstName: user.firstName,
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
-      password: user.password
+      password: user.password,
+      // pets: user.pets
     };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "5000m",
@@ -61,7 +62,7 @@ const login = async (req, res, next) => {
         /* secure: process.env.NODE_ENV === "production", */
         sameSite: "lax",
       })
-      .json(payload);
+      .json({...payload, pets: user.pets});
   } catch (error) {
     next(error);
   }
@@ -77,7 +78,7 @@ const logout = async (req, res, next) => {
 const getProfile = async (req, res, next) => {
   const { id } = req.user;
   try {
-    const user = await User.findOne({ _id: id });
+    const user = await User.findOne({ _id: id }).populate("pets");
     res.json(user);
   } catch (error) {
     console.log(error)
