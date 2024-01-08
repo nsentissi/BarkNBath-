@@ -200,8 +200,9 @@ const Journey = () => (
           </motion.div>
         </div>
       </div>
+      <div className="flex justify-center">
       <motion.div
-        className=" flex flex-col md:flex-row justify-center bg-info mx-auto rounded-t-3xl lg:mx-32 p-10 gap-20 mx-4 md:mx-8  "
+        className="flex flex-wrap w-3/4 gap-4 justify-center bg-neutral  mx-auto  rounded-t-3xl mx-4 md:mx-8 lg:mx-32 pt-4 pb-8 "
         variants={variants}
         initial="hidden"
         whileInView="visible"
@@ -209,7 +210,7 @@ const Journey = () => (
         transition={{ duration: 1.8, delay: 0.5 }}
       >
         <h2 className="text-3xl font-extrabold text-center font-chewy">About Us</h2>
-        <p className="text-center font-chewy">
+        <p className="text-center font-chewy p-10 pt-0">
           "Bark N Bath is dedicated to providing top-notch dog grooming and
           cleaning services. Our passionate team, skilled in the latest grooming
           techniques, ensures your furry friend looks and feels their best. We
@@ -218,6 +219,7 @@ const Journey = () => (
           owners."
         </p>
       </motion.div>
+      </div>
     </div>
   </div>
 );
