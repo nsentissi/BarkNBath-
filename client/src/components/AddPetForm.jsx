@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
+import { PetContext } from '../hooks/PetContext';
 
 const AddPetForm = () => {
+  const { setPetName } = useContext(PetContext);
     const [error, setError] = useState('');
   const [petData, setPetData] = useState({
     name: '',
@@ -25,7 +26,7 @@ const AddPetForm = () => {
       const response = await axios.post('http://localhost:3000/pet/create', petData, { withCredentials: true });
       
       if (response && response.data) {
-       
+        setPetName(petData.name);
         console.log(response.data);
         toast("Pet created!");
         

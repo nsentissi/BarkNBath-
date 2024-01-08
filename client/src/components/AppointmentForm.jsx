@@ -21,10 +21,12 @@ const AppointmentForm = () => {
 
   const onSubmit = async (data) => {
     try {
+      console.log(data)
       const response = await axios.post(
         "http://localhost:3000/appointment/create",
         data,
         { withCredentials: true }
+        
       );
       toast("Appointment booked!");
       console.log(response.data);
@@ -35,9 +37,9 @@ const AppointmentForm = () => {
   };
 
   const getDisabledDate = (time) => {
-    const exists = appointments.find((a) => a.time === time)
-    return !!exists
-  }
+    const exists = appointments.find((a) => a.time === time);
+    return !!exists;
+  };
 
   return (
     <div>
@@ -54,7 +56,10 @@ const AppointmentForm = () => {
               required: true,
               onChange: async (e) => {
                 const date = new Date(e.target.value).toISOString();
-                const response = await axios.get(`http://localhost:3000/appointment?date=${date}`, { withCredentials: true } );
+                const response = await axios.get(
+                  `http://localhost:3000/appointment?date=${date}`,
+                  { withCredentials: true }
+                );
                 setAppointments(response.data);
                 console.log();
               },
@@ -66,7 +71,17 @@ const AppointmentForm = () => {
             <span className="text-red-500 text-sm">Date is required</span>
           )}
         </div>
-
+        <div className="flex flex-col">
+        <label  className="mb-2 font-semibold">
+            pet:
+          </label>
+          <select {...register("pet")}  type="text" className="flex flex-col border p-2 rounded">
+          <option >Select a pet</option>
+            {currentUser.pets.map((pet, index) => (
+              <option value={pet._id} key={index}> {pet.name}</option>
+            ))}
+          </select>
+        </div>
         <div className="flex flex-col">
           <label htmlFor="time" className="mb-2 font semibild">
             time:

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useAuth } from "../hooks/AuthContext";
 import { Link } from "react-router-dom";
+import { PetContext } from '../hooks/PetContext';
 
-const Navbar = ({ onProfileClick, petName }) => {
-  
+
+const Navbar = ({ onProfileClick }) => {
+  const { petName } = useContext(PetContext);
   const { currentUser, logout } = useAuth();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -26,7 +28,11 @@ const Navbar = ({ onProfileClick, petName }) => {
           {currentUser ? (
             <React.Fragment>
               {/* Desktop Links for Logged-in User */}
-             
+              <ul className="mr-4">
+  {currentUser.pets.map((pet, index) => (
+    <li key={index}> {pet.name}</li>
+  ))}
+</ul>
               <span className="mr-4 hidden md:block">Welcome, {currentUser.firstName}</span>
               <Link
             

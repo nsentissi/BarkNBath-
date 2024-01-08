@@ -1,4 +1,5 @@
 const Pet = require('../models/pet'); 
+const User = require('../models/user');
 const ErrorResponse = require('../utils/ErrorResponse');
 
 //  creating a new pet
@@ -9,12 +10,25 @@ const createPet = async (req, res, next) => {
     const userId = req.user.id; 
     const newPet = new Pet({ owner: userId, name, breed, age, weight, Bio });
     await newPet.save();
+    await User.findByIdAndUpdate(userId, { $push: { pets: newPet._id } });
     res.status(201).json(newPet);
   } catch (error) {
     next(error); 
   }
 };
 
+
+const getPetName = async (req, res) => {
+  try {
+    const userId = req.user.id; 
+    const user = await User.findById(userId).populate('pets');
+    const pets = user.pets;
+
+    res.json({ pets});
+  } catch (error) {
+    res.status(500).send('Server Error');
+  }
+};
 
 // pet details
 
@@ -80,4 +94,5 @@ module.exports = {
   getPetDetails,
   updatePet,
   deletePet,
+  getPetName
 };
