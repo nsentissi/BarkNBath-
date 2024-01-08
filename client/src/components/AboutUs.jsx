@@ -56,7 +56,7 @@ const AboutUs = () => {
                 <img src=".\src\assets\knowing1.png" class="h-16 w-16" />
               </div>
               <h2 class="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
-              Groomers Know Your Pet
+              Certified groomers
               </h2>
               <p class="font-semibold text-sm text-gray-700   mb-3">
               We understand your pet's needs.  With us, your furry friend will be in the hands of professionals who truly 'Know Your Pet,' ensuring a comfortable and enjoyable grooming experience.

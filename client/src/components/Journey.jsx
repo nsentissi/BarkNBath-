@@ -210,7 +210,7 @@ const Journey = () => (
         transition={{ duration: 1.8, delay: 0.3 }}
       >
          <h2 className="text-3xl font-extrabold text-center font-chewy">About Us</h2>
-        <p className="text-center  font-chewy p-10 py-0">
+        <p className="text-center font-light font-chewy p-10 py-0">
           "Bark N Bath offers awesome dog grooming and cleaning. Our crew, experts in cool grooming techniques, makes sure your furry pal looks and feels great. We're all about a chill vibe, custom care, and eco-friendly stuff, making us a top pick for pet lovers."
         </p> 
    
