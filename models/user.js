@@ -8,7 +8,7 @@ const userSchema = new Schema({
   email: { type: String, required: true, unique: true },
   phoneNumber: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  pets: { type: Schema.Types.ObjectId, ref: "Pet"},
+  pets: [{ type: Schema.Types.ObjectId, ref: "Pet" }]
 });
 
 const User = model("User", userSchema);

@@ -49,7 +49,7 @@ const login = async (req, res, next) => {
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
       password: user.password,
-      // pets: user.pets
+      pets: user.pets
     };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "5000m",
