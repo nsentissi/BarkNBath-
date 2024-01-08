@@ -7,7 +7,9 @@ const petSchema = new Schema({
   breed: { type: String, required: true },
   age: { type: Number, required: true },
   weight: { type: Number, required: true },
+
   /* appointments: [{ type: Schema.Types.ObjectId, ref: "Appointment" }], */
+
   Bio: { type: String, required: true },
   profilePhoto: { type: Buffer },
 });
