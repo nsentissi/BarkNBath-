@@ -14,8 +14,10 @@ import Faqsection from './Faqsection';
 import Testimonials from './Testimonials';
 import ServicesTable from './ServicesTable';
 import Carousel from './Carousel';
+
 import AddPetForm from './AddPetForm';
 import Map from './Map'
+
 
 
 
@@ -28,10 +30,14 @@ const Homepage = () => {
   return (
     <div>
 
+
+      
+
       <Navbar onProfileClick={handleOpenProfileModal} />
       <Modal isOpen={isProfileModalOpen} onClose={handleCloseProfileModal} >
         <Profile/>
       </Modal>
+      
       {!currentUser && (
         <>
           <Landingpage />
