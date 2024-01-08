@@ -34,7 +34,11 @@ const Profile = () => {
       <p>Phone Number: {currentUser.phoneNumber}</p>
       <p>First Name: {currentUser.firstName}</p>
       <p>Last Name: {currentUser.lastName} </p>
-      
+      {/* <ul className="mr-4">
+  {currentUser.pets.map((pet, index) => (
+    <li key={index}> {pet.name}</li>
+  ))}
+</ul> */}
 
       <button onClick={() => setEditMode(!editMode)}>Edit</button>
 
