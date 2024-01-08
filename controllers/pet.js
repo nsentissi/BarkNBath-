@@ -22,9 +22,11 @@ const getPetName = async (req, res) => {
   try {
     const userId = req.user.id; 
     const user = await User.findById(userId).populate('pets');
-    const petName = user.pets[0]?.name; 
 
-    res.json({ petName });
+    const pets = user.pets;
+
+    res.json({ pets});
+
   } catch (error) {
     res.status(500).send('Server Error');
   }
