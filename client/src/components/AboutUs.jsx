@@ -26,7 +26,7 @@ const AboutUs = () => {
   };
 
   return (
-    <div className="bg-secondary pt-0 ">
+    <div className="bg-secondary py-0 ">
       <div className="flex justify-center">
         <motion.section
           className="flex flex-wrap w-4/6 gap-4 justify-center bg-success  mx-auto  rounded-b-3xl mx-4 md:mx-8 lg:mx-32 pt-4 pb-8 "
@@ -37,178 +37,77 @@ const AboutUs = () => {
           variants={variants}
         >
           <motion.div
-            className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-28 lg:gap-y-16 w-3/4"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 md:gap-y-16 w-full md:w-3/4 mx-auto"
             variants={variants}
           >
-                <motion.div
-              class="relative group h-40  flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md"
-              variants={variants}
-            >
-              <a href="#" class="block">
-                <div class="h-28">
-                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-40 bg-transparent rounded-xl justify-items-center align-middle">
-                    <div>
-                      <img
-                        src="../src/assets/less.png"
-                        alt="paw icon"
-                        class="w-36 h-38 mt-16 m-auto"
-                        title="Automotive"
-                        loading="lazy"
-                      ></img>
-                      <p class="absolute top-2 left-0 z-50 mb-2 mt-[-20px] inline-block text-black text-center w-full text-sm tracking-wide font-chewy  leading-snug tracking-normal antialiased">
-                        Less Stress
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6   z-10 w-full   ">
-                  <p class="mb-2 mt-[-48px] inline-block text-tg text-center   w-full  text-sm  font-chewy  leading-snug tracking-normal   antialiased">
-                   
-                  </p>
-                </div>
-              </a>
+            <motion.div class="p-4 py-0" variants={variants}>
+              <div class="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
+                <img src=".\src\assets\conv1.png" class="h-16 w-16" />
+              </div>
+              <h2 class="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
+              Convenience
+              </h2>
+              <p class="font-semibold text-sm text-gray-700  mb-3">
+              We're here to simplify your life. With straightforward scheduling and a dedication to your comfort, we're committed to providing you with a stress-free experience at every turn.
+              </p>
             </motion.div>
-            <motion.div
-              class="relative group h-40  flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md"
-              variants={variants}
-            >
-              <a href="#" class="block">
-                <div class="h-28">
-                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-40 bg-transparent rounded-xl justify-items-center align-middle">
-                    <div class="">
-                      <img
-                        src="../src/assets/conv1.png"
-                        alt="paw icon"
-                        class="w-36 h-28 mt-14 m-auto"
-                        title="Automotive"
-                        loading="lazy"
-                      ></img>
-                      <p class="absolute top-2 left-0 z-50 mb-2 mt-[-20px] inline-block text-black text-center w-full text-xl tracking-wider font-chewy  leading-snug tracking-normal antialiased">
-                        Convenience
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6   z-10 w-full   ">
-                  <p class="mb-2 mt-[-20px] inline-block text-tg text-center   w-full  text-sm  font-chewy  leading-snug tracking-normal   antialiased">
-                   
-                  </p>
-                </div>
-              </a>
+            <motion.div class="p-4 py-0" variants={variants}>
+              <div class="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
+                <img src=".\src\assets\knowing1.png" class="h-16 w-16" />
+              </div>
+              <h2 class="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
+              Groomers Know Your Pet
+              </h2>
+              <p class="font-semibold text-sm text-gray-700   mb-3">
+              We understand your pet's needs.  With us, your furry friend will be in the hands of professionals who truly 'Know Your Pet,' ensuring a comfortable and enjoyable grooming experience.
+              </p>
             </motion.div>
-
-            <motion.div
-              class="relative group h-40  flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md"
-              variants={variants}
-            >
-              <a href="#" class="block">
-                <div class="h-28">
-                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-40 bg-transparent rounded-xl justify-items-center align-middle">
-                    <div class="">
-                      <img
-                        src="../src/assets/time1.png"
-                        alt="paw icon"
-                        class="w-32 h-32 mt-14 m-auto"
-                        title="Automotive"
-                        loading="lazy"
-                      ></img>
-                      <p class="absolute top-2 left-0 z-50 mb-2 mt-[-20px] inline-block text-black text-center w-full text-xl tracking-wider font-chewy  leading-snug tracking-normal antialiased">
-                        Its fast
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6   z-10 w-full   ">
-                  <p class="mb-2 mt-[-20px] inline-block text-tg text-center   w-full  text-sm  font-chewy  leading-snug tracking-normal   antialiased">
-                    
-                  </p>
-                </div>
-              </a>
+            <motion.div class="p-4 py-0" variants={variants}>
+              <div class="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
+                <img src=".\src\assets\time1.png" class="h-16 w-16" />
+              </div>
+              <h2 class="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
+                TIME-SAVING
+              </h2>
+              <p class="font-semibold text-sm text-gray-700   mb-3">
+              Our expert therapists bring the spa experience directly to your doorstep, eliminating the need for travel and saving you precious hours in your busy day. 
+              </p>
             </motion.div>
-            <motion.div
-              class="relative group h-40  flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md"
-              variants={variants}
-            >
-              <a href="#" class="block">
-                <div class="h-28">
-                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-40 bg-transparent rounded-xl justify-items-center align-middle">
-                    <div class="relative">
-                      <img
-                        src="../src/assets/knowing1.png"
-                        alt="paw icon"
-                        class="w-36 h-36 mt-8 m-auto"
-                        title="Automotive"
-                        loading="lazy"
-                      ></img>
-                      <p class="absolute top-2 left-0 z-50 mb-2 mt-[-20px] inline-block text-black text-center w-full text-xl tracking-wider font-chewy  leading-snug tracking-normal antialiased">
-                        Groomer know your pet
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6   z-10 w-full   ">
-                  <p class="mb-2 mt-[-20px] inline-block text-tg text-center   w-full  text-sm  font-chewy  leading-snug tracking-normal   antialiased">
-                   
-                  </p>
-                </div>
-              </a>
+            <motion.div class="p-4 py-0" variants={variants}>
+              <div class="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
+                <img src=".\src\assets\less.png" class="h-16 w-16" />
+              </div>
+              <h2 class="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
+              More Relaxed
+              </h2>
+              <p class="font-semibold text-sm text-gray-700   mb-3">
+              Give your beloved pets the treatment they deserve. Our pet services are designed to minimize their stress and maximize the comfort for your furry friends. 
+              </p>
             </motion.div>
-            <motion.div
-              class="relative group h-40  flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md"
-              variants={variants}
-            >
-              <a href="#" class="block">
-                <div class="h-28">
-                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-40 bg-transparent rounded-xl justify-items-center align-middle">
-                    <div class="relative">
-                      <img
-                        src="../src/assets/cages.png"
-                        alt="paw icon"
-                        class="w-36 h-28 mt-8 m-auto"
-                        title="Automotive"
-                        loading="lazy"
-                      ></img>
-                      <p class="absolute top-2 left-0 z-50 mb-2 mt-[-20px] inline-block text-black text-center w-full text-xl tracking-wider font-chewy  leading-snug tracking-normal antialiased">
-                        No cages
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6   z-10 w-full   ">
-                  <p class="mb-2 mt-[-20px] inline-block text-tg text-center   w-full  text-sm  font-chewy  leading-snug tracking-normal   antialiased">
-                   
-                  </p>
-                </div>
-              </a>
+            <motion.div class="p-4 py-0" variants={variants}>
+              <div class="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
+                <img src=".\src\assets\cages.png" class="h-16 w-16" />
+              </div>
+              <h2 class="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
+              No Cages
+              </h2>
+              <p class="font-semibold text-sm text-gray-700   mb-3">
+              Say goodbye to cramped, uncomfortable cages, and rest assured that your pet will have the freedom they deserve with us.
+              </p>
             </motion.div>
-            <motion.div
-              class="relative group h-40  flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md"
-              variants={variants}
-            >
-              <a href="#" class="block">
-                <div class="h-28">
-                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-40 bg-transparent rounded-xl justify-items-center align-middle">
-                    <div class="relative">
-                      <img
-                        src="../src/assets/a2.png"
-                        alt="paw icon"
-                        class="w-36 h-36 mt-8 m-auto"
-                        title="Automotive"
-                        loading="lazy"
-                      ></img>
-                      <p class="absolute top-2 left-0 z-50 mb-2 mt-[-20px] inline-block text-black text-center w-full text-xl tracking-wider font-chewy  leading-snug tracking-normal antialiased">
-                        Less Stress
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6   z-10 w-full   ">
-                  <p class="mb-2 mt-[-20px] inline-block text-tg text-center   w-full  text-sm  font-chewy  leading-snug tracking-normal   antialiased">
-                   
-                  </p>
-                </div>
-              </a>
+            
+            <motion.div class="p-4 py-0" variants={variants}>
+              <div class="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
+                <img src=".\src\assets\privacy1.png" class="h-16 w-16" />
+              </div>
+              <h2 class="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
+                Pet Privacy
+              </h2>
+              <p class="font-semibold text-sm text-gray-700  mb-3">
+              Protecting your pet's privacy is our priority. We understand that your furry companion deserves respect and care, not just in their grooming or care routine but also in safeguarding their personal space.
+              </p>
             </motion.div>
+           
           </motion.div>
         </motion.section>
       </div>
