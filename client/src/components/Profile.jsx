@@ -34,6 +34,8 @@ const Profile = () => {
       <p>Phone Number: {currentUser.phoneNumber}</p>
       <p>First Name: {currentUser.firstName}</p>
       <p>Last Name: {currentUser.lastName} </p>
+      
+
       <button onClick={() => setEditMode(!editMode)}>Edit</button>
 
       {editMode && (

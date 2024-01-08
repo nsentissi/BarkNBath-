@@ -28,7 +28,11 @@ const Navbar = ({ onProfileClick }) => {
           {currentUser ? (
             <React.Fragment>
               {/* Desktop Links for Logged-in User */}
-              {petName && <div>{petName}</div>}
+              <ul className="mr-4">
+  {currentUser.pets.map((pet, index) => (
+    <li key={index}> {pet.name}</li>
+  ))}
+</ul>
               <span className="mr-4 hidden md:block">Welcome, {currentUser.firstName}</span>
               <Link
             
