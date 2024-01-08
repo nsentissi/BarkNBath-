@@ -19,7 +19,7 @@ const Navbar = ({ onProfileClick }) => {
 
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src=".\src\assets\barkNBath.webp" className="h-20 w-38" alt="barknbath Logo" />
+          <img src=".\src\assets\barkNBath.png" className="h-28 w-38" alt="barknbath Logo" />
         </Link>
 
         {/* Right Side */}

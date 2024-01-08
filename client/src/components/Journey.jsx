@@ -202,7 +202,7 @@ const Journey = () => (
       </div>
       <div className="flex justify-center">
       <motion.div
-        className="flex flex-wrap w-3/4 gap-4 justify-center bg-neutral  mx-auto  rounded-t-3xl mx-4 md:mx-8 lg:mx-32 pt-4 pb-8 "
+        className="flex flex-wrap w-4/6 gap-4 justify-center bg-success   mx-auto  rounded-t-3xl mx-4 md:mx-8 lg:mx-32 pt-4 pb-8 "
         variants={variants}
         initial="hidden"
         whileInView="visible"

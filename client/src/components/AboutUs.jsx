@@ -26,10 +26,10 @@ const AboutUs = () => {
   };
 
   return (
-    <div className="bg-primary pt-0 ">
+    <div className="bg-secondary pt-0 ">
       <div className="flex justify-center">
         <motion.section
-          className="flex flex-wrap w-3/4 gap-4 justify-center bg-info  mx-auto  rounded-b-3xl mx-4 md:mx-8 lg:mx-32 pt-4 pb-8 "
+          className="flex flex-wrap w-4/6 gap-4 justify-center bg-success  mx-auto  rounded-b-3xl mx-4 md:mx-8 lg:mx-32 pt-4 pb-8 "
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -40,69 +40,161 @@ const AboutUs = () => {
             className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-28 lg:gap-y-16 w-3/4"
             variants={variants}
           >
-            <div class="relative group h-48 flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-              <a href="#" class="block">
-                <div class="h-28">
-                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40  group-hover:top-[-40%] group-hover:opacity-[0.9]   duration-300 w-[90%] h-48 bg-secondary rounded-xl justify-items-center align-middle">
-                    <img
-                      class="w-36 h-36  mt-6 m-auto"
-                      src="../src/assets/heart.png"
-                      alt="paw icon"
-                      loading="lazy"
-                      width="150"
-                      height="200"
-                    ></img>
-                  </div>
-                </div>
-                <div class="p-6   z-10 w-full   ">
-                  <p class="mb-2 inline-block text-tg text-center w-full  text-xl  font-sans  font-semibold leading-snug tracking-normal   antialiased">
-                    Convenience
-                  </p>
-                </div>
-              </a>
-            </div>
-
-            <motion.div
-              class="relative group h-48 flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md "
+                <motion.div
+              class="relative group h-40  flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md"
               variants={variants}
             >
               <a href="#" class="block">
                 <div class="h-28">
-                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40  group-hover:top-[-40%] group-hover:opacity-[0.9]   duration-300 w-[90%] h-48 bg-secondary rounded-xl justify-items-center align-middle">
-                    <img
-                      class="w-36 h-36  mt-6 m-auto"
-                      src="../src/assets/Paw.png"
-                      alt="paw icon"
-                      loading="lazy"
-                      width="150"
-                      height="200"
-                    ></img>
+                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-40 bg-transparent rounded-xl justify-items-center align-middle">
+                    <div>
+                      <img
+                        src="../src/assets/less.png"
+                        alt="paw icon"
+                        class="w-36 h-38 mt-16 m-auto"
+                        title="Automotive"
+                        loading="lazy"
+                      ></img>
+                      <p class="absolute top-2 left-0 z-50 mb-2 mt-[-20px] inline-block text-black text-center w-full text-sm tracking-wide font-chewy  leading-snug tracking-normal antialiased">
+                        Less Stress
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div class="p-6   z-10 w-full   ">
-                  <p class="mb-2 inline-block text-tg text-center w-full  text-xl  font-sans  font-semibold leading-snug tracking-normal   antialiased">
-                    No Cages
+                  <p class="mb-2 mt-[-48px] inline-block text-tg text-center   w-full  text-sm  font-chewy  leading-snug tracking-normal   antialiased">
+                   
+                  </p>
+                </div>
+              </a>
+            </motion.div>
+            <motion.div
+              class="relative group h-40  flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md"
+              variants={variants}
+            >
+              <a href="#" class="block">
+                <div class="h-28">
+                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-40 bg-transparent rounded-xl justify-items-center align-middle">
+                    <div class="">
+                      <img
+                        src="../src/assets/conv1.png"
+                        alt="paw icon"
+                        class="w-36 h-28 mt-14 m-auto"
+                        title="Automotive"
+                        loading="lazy"
+                      ></img>
+                      <p class="absolute top-2 left-0 z-50 mb-2 mt-[-20px] inline-block text-black text-center w-full text-xl tracking-wider font-chewy  leading-snug tracking-normal antialiased">
+                        Convenience
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6   z-10 w-full   ">
+                  <p class="mb-2 mt-[-20px] inline-block text-tg text-center   w-full  text-sm  font-chewy  leading-snug tracking-normal   antialiased">
+                   
                   </p>
                 </div>
               </a>
             </motion.div>
 
             <motion.div
-              class="relative group h-48 flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
+              class="relative group h-40  flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md"
               variants={variants}
             >
               <a href="#" class="block">
                 <div class="h-28">
-                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-48 bg-secondary rounded-xl justify-items-center align-middle">
+                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-40 bg-transparent rounded-xl justify-items-center align-middle">
+                    <div class="">
+                      <img
+                        src="../src/assets/time1.png"
+                        alt="paw icon"
+                        class="w-32 h-32 mt-14 m-auto"
+                        title="Automotive"
+                        loading="lazy"
+                      ></img>
+                      <p class="absolute top-2 left-0 z-50 mb-2 mt-[-20px] inline-block text-black text-center w-full text-xl tracking-wider font-chewy  leading-snug tracking-normal antialiased">
+                        Its fast
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6   z-10 w-full   ">
+                  <p class="mb-2 mt-[-20px] inline-block text-tg text-center   w-full  text-sm  font-chewy  leading-snug tracking-normal   antialiased">
+                    
+                  </p>
+                </div>
+              </a>
+            </motion.div>
+            <motion.div
+              class="relative group h-40  flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md"
+              variants={variants}
+            >
+              <a href="#" class="block">
+                <div class="h-28">
+                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-40 bg-transparent rounded-xl justify-items-center align-middle">
                     <div class="relative">
                       <img
-                        src="../src/assets/dog-icon.png"
+                        src="../src/assets/knowing1.png"
                         alt="paw icon"
                         class="w-36 h-36 mt-8 m-auto"
                         title="Automotive"
                         loading="lazy"
-                        width="200"
-                        height="200"
+                      ></img>
+                      <p class="absolute top-2 left-0 z-50 mb-2 mt-[-20px] inline-block text-black text-center w-full text-xl tracking-wider font-chewy  leading-snug tracking-normal antialiased">
+                        Groomer know your pet
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6   z-10 w-full   ">
+                  <p class="mb-2 mt-[-20px] inline-block text-tg text-center   w-full  text-sm  font-chewy  leading-snug tracking-normal   antialiased">
+                   
+                  </p>
+                </div>
+              </a>
+            </motion.div>
+            <motion.div
+              class="relative group h-40  flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md"
+              variants={variants}
+            >
+              <a href="#" class="block">
+                <div class="h-28">
+                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-40 bg-transparent rounded-xl justify-items-center align-middle">
+                    <div class="relative">
+                      <img
+                        src="../src/assets/cages.png"
+                        alt="paw icon"
+                        class="w-36 h-28 mt-8 m-auto"
+                        title="Automotive"
+                        loading="lazy"
+                      ></img>
+                      <p class="absolute top-2 left-0 z-50 mb-2 mt-[-20px] inline-block text-black text-center w-full text-xl tracking-wider font-chewy  leading-snug tracking-normal antialiased">
+                        No cages
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6   z-10 w-full   ">
+                  <p class="mb-2 mt-[-20px] inline-block text-tg text-center   w-full  text-sm  font-chewy  leading-snug tracking-normal   antialiased">
+                   
+                  </p>
+                </div>
+              </a>
+            </motion.div>
+            <motion.div
+              class="relative group h-40  flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md"
+              variants={variants}
+            >
+              <a href="#" class="block">
+                <div class="h-28">
+                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40 group-hover:top-[-40%] group-hover:opacity-[0.9] duration-300 w-[90%] h-40 bg-transparent rounded-xl justify-items-center align-middle">
+                    <div class="relative">
+                      <img
+                        src="../src/assets/a2.png"
+                        alt="paw icon"
+                        class="w-36 h-36 mt-8 m-auto"
+                        title="Automotive"
+                        loading="lazy"
                       ></img>
                       <p class="absolute top-2 left-0 z-50 mb-2 mt-[-20px] inline-block text-black text-center w-full text-xl tracking-wider font-chewy  leading-snug tracking-normal antialiased">
                         Less Stress
@@ -112,83 +204,7 @@ const AboutUs = () => {
                 </div>
                 <div class="p-6   z-10 w-full   ">
                   <p class="mb-2 mt-[-20px] inline-block text-tg text-center   w-full  text-sm  font-chewy  leading-snug tracking-normal   antialiased">
-                    We eliminate the stress and anxiety of a traditional noisy,
-                    chaotic grooming shop environment
-                  </p>
-                </div>
-              </a>
-            </motion.div>
-            <motion.div
-              class="relative group h-48 flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
-              variants={variants}
-            >
-              <a href="#" class="block">
-                <div class="h-28">
-                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40  group-hover:top-[-40%] group-hover:opacity-[0.9]   duration-300 w-[90%] h-48 bg-secondary rounded-xl justify-items-center align-middle">
-                    <img
-                      src="../src/assets/time.png"
-                      class="w-36 h-36  mt-6 m-auto"
-                      alt="Automotive"
-                      title="Automotive"
-                      loading="lazy"
-                      width="150"
-                      height="200"
-                    ></img>
-                  </div>
-                </div>
-                <div class="p-6   z-10 w-full   ">
-                  <p class="mb-2 inline-block text-tg text-center w-full  text-xl  font-sans  font-semibold leading-snug tracking-normal   antialiased">
-                    Its Fast
-                  </p>
-                </div>
-              </a>
-            </motion.div>
-            <motion.div
-              class="relative group h-48 flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
-              variants={variants}
-            >
-              <a href="#" class="block">
-                <div class="h-28">
-                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40  group-hover:top-[-40%] group-hover:opacity-[0.9]   duration-300 w-[90%] h-48 bg-secondary rounded-xl justify-items-center align-middle">
-                    <img
-                      src="../src/assets/grooming.png"
-                      class="w-36 h-36  mt-6 m-auto"
-                      alt="Automotive"
-                      title="Automotive"
-                      loading="lazy"
-                      width="200"
-                      height="200"
-                    ></img>
-                  </div>
-                </div>
-                <div class="p-6   z-10 w-full   ">
-                  <p class="mb-2 inline-block text-tg text-center w-full  text-xl  font-sans  font-semibold leading-snug tracking-normal   antialiased">
-                    Groomers know your Pet
-                  </p>
-                </div>
-              </a>
-            </motion.div>
-            <motion.div
-              class="relative group h-48 flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
-              variants={variants}
-            >
-              <a href="#" class="block">
-                <div class="h-28">
-                  <div class="absolute -top-20 lg:top-[-10%] left-[5%] z-40  group-hover:top-[-40%] group-hover:opacity-[0.9]   duration-300 w-[90%] h-48 bg-secondary rounded-xl justify-items-center align-middle">
-                    <img
-                      src="../src/assets/privacy.png"
-                      class="w-36 h-36  mt-6 m-auto"
-                      alt="Automotive"
-                      title="Automotive"
-                      loading="lazy"
-                      width="200"
-                      height="200"
-                    ></img>
-                  </div>
-                </div>
-                <div class="p-6   z-10 w-full   ">
-                  <p class="mb-2 inline-block text-tg text-center w-full  text-xl  font-sans  font-semibold leading-snug tracking-normal   antialiased">
-                    Privacy for your Pet
+                   
                   </p>
                 </div>
               </a>

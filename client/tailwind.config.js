@@ -25,13 +25,13 @@ export default {
 
           accent: "#52b69a",
 
-          neutral: "#fe7f2d",
+          neutral: "#ee3e54",
 
           /* "base-100": "#40CCD4", */
 
           info: "#F5C07A",
 
-          success: "#D4E8B0",
+          success: "#fbcd59",
 
           warning: "#ffffff",
 
