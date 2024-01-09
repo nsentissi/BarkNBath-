@@ -1,11 +1,10 @@
 import React, { useState, useContext } from "react";
 import { useAuth } from "../hooks/AuthContext";
 import { Link } from "react-router-dom";
-import { PetContext } from '../hooks/PetContext';
-
+import { PetContext } from "../hooks/PetContext";
 
 const Navbar = ({ onProfileClick }) => {
-  const { petName } = useContext(PetContext);
+  /* const { petName } = useContext(PetContext); */
   const { currentUser, logout } = useAuth();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -16,10 +15,16 @@ const Navbar = ({ onProfileClick }) => {
   return (
     <nav className="bg-transparent dark:bg-transparent fixed w-full z-20 top-0 start-0 font-chewy">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
-
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src=".\src\assets\barkNBath.webp" className="h-20 w-38" alt="barknbath Logo" />
+        <Link
+          to="/"
+          className="flex items-center space-x-3 rtl:space-x-reverse"
+        >
+          <img
+            src=".\src\assets\barkNBath.webp"
+            className="h-20 w-38"
+            alt="barknbath Logo"
+          />
         </Link>
 
         {/* Right Side */}
@@ -28,20 +33,18 @@ const Navbar = ({ onProfileClick }) => {
           {currentUser ? (
             <React.Fragment>
               {/* Desktop Links for Logged-in User */}
-              <ul className="mr-4">
+              {/*               <ul className="mr-4">
   {currentUser.pets.map((pet, index) => (
     <li key={index}> {pet.name}</li>
   ))}
-</ul>
-              <span className="mr-4 hidden md:block">Welcome, {currentUser.firstName}</span>
-              <Link
-            
-                          to="/pet/create"
-                          className="mr-4 hidden md:block"
-                        >
-                          Add your puffy friend
-                        </Link>
-                        
+</ul> */}
+              <span className="mr-4 hidden md:block">
+                Welcome, {currentUser.firstName}
+              </span>
+              <Link to="/pet/create" className="mr-4 hidden md:block">
+                Add your puffy friend
+              </Link>
+
               <button onClick={onProfileClick} className="mr-4 hidden md:block">
                 Your account
               </button>
@@ -66,12 +69,18 @@ const Navbar = ({ onProfileClick }) => {
                         </Link>
                       </li>
                       <li>
-                        <button onClick={onProfileClick} className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200 dark:text-black dark:hover:bg-gray-800">
+                        <button
+                          onClick={onProfileClick}
+                          className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200 dark:text-black dark:hover:bg-gray-800"
+                        >
                           Your account
                         </button>
                       </li>
                       <li>
-                        <button onClick={logout} className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200 dark:text-black dark:hover:bg-gray-800">
+                        <button
+                          onClick={logout}
+                          className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200 dark:text-black dark:hover:bg-gray-800"
+                        >
                           Logout
                         </button>
                       </li>
@@ -91,12 +100,18 @@ const Navbar = ({ onProfileClick }) => {
                   <div className="absolute mt-0 right-0 w-64 z-10">
                     <ul className="bg-gray-50 font-medium rounded-lg dark:bg-transparent">
                       <li>
-                        <Link to="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-200 dark:text-black dark:hover:bg-gray-800">
+                        <Link
+                          to="/"
+                          className="block px-4 py-2 text-gray-800 hover:bg-gray-200 dark:text-black dark:hover:bg-gray-800"
+                        >
                           Home
                         </Link>
                       </li>
                       <li>
-                        <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200 dark:text-black dark:hover:bg-gray-800">
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-gray-800 hover:bg-gray-200 dark:text-black dark:hover:bg-gray-800"
+                        >
                           About Us
                         </a>
                       </li>
@@ -114,10 +129,8 @@ const Navbar = ({ onProfileClick }) => {
 
         {/* menu - Hidden when logged in */}
         {!currentUser && (
-
           <div className="hidden md:block">
             <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-transparent md:dark:bg-transparent ">
-
               <li>
                 <Link to="/" className="navbar-link">
                   Home
