@@ -1,9 +1,12 @@
-import React from "react";
-import { useState } from "react";
+
+import React, {useState} from 'react'
+
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import { useAuth } from "../hooks/AuthContext";
 import axios from "axios";
+import Modal from './Modal';
+import ServicesTable from "./ServicesTable"
 
 const AppointmentForm = () => {
   const {
@@ -14,6 +17,10 @@ const AppointmentForm = () => {
   } = useForm();
   const [appointments, setAppointments] = useState([]);
   const { currentUser } = useAuth();
+  const [isServiceListModalOpen, setServiceListModalOpen] = useState(false);
+  const handleOpenServiceListModal = () => setServiceListModalOpen(true);
+  const handleCloseServiceListModal = () => setServiceListModalOpen(false);
+
 
   if (!currentUser) {
     return <div>Please log in.</div>;
@@ -168,6 +175,12 @@ const AppointmentForm = () => {
         </button>
       </form>
       <ToastContainer />
+      <div>
+      <button onClick={handleOpenServiceListModal}>View Services</button>
+      <Modal isOpen={isServiceListModalOpen} onClose={handleCloseServiceListModal}>
+        <ServicesTable/>
+        </Modal>
+      </div>
     </div>
   );
 };
