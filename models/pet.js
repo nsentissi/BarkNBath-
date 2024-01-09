@@ -11,7 +11,8 @@ const petSchema = new Schema({
   /* appointments: [{ type: Schema.Types.ObjectId, ref: "Appointment" }], */
 
   Bio: { type: String, required: true },
-  profilePhoto: { type: Buffer },
+  profilePhotoUrl: { type: String }
+
 });
 
 const Pet = model("Pet", petSchema);
