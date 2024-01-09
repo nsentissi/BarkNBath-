@@ -1,13 +1,20 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import PasswordChecklist from "react-password-checklist";
 
 const Signup = () => {
   const { register, handleSubmit, errors } = useForm();
+  const [password, setPassword] = useState("");
+  const [passwordAgain, setPasswordAgain] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+
 
   const onSubmit = async (data) => {
+    console.log(data);
     try {
       const response = await axios.post(
         "http://localhost:3000/auth/signup",
@@ -75,13 +82,32 @@ const Signup = () => {
               type="password"
               className="w-full p-2 border border-gray-300 rounded-xl"
               {...register("password", { required: true })}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          <div className="mb-4">
+          <label htmlFor="passwordAgain" className="text-white block mb-2">
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            className="w-full p-2 border border-gray-300 rounded-xl"
+            onChange={(e) => setPasswordAgain(e.target.value)}
+          />
+        </div>
+        <PasswordChecklist
+          rules={["minLength", "specialChar", "number", "capital", "match"]}
+          minLength={5}
+          value={password}
+          valueAgain={passwordAgain}
+          onChange={(isValid) => setIsFormValid(isValid)}
+        />
 
           <div className="flex flex-col sm:flex-row items-center justify-between">
             <button
               type="submit"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl mb-2 sm:mb-0"
+              disabled={!isFormValid}
             >
               Register
             </button>
