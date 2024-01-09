@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-
+import styles from "./bubble.module.css";
 
 const Landingpage = () => {
   const textVariants = {
@@ -40,13 +40,13 @@ const Landingpage = () => {
         >
 
       {/* Text  */}
-      <motion.div className="absolute top-1/4 md:top-1/3 lg:top-1/2 text-center"
+      <motion.div className="absolute top-1/10 md:top-1/5 lg:top-1/4 text-center"
                   variants={textVariants}
                   initial="hidden"
                   animate="visible">
-        <h1 className="text-3xl md:text-5xl lg:text-6xl text-white font-chewy">
-          Pamper Your Dog
-        </h1>
+        <div className="text-2xl md:text-4xl lg:text-5xl text-white font-chewy">
+      <BubbleText />
+    </div>
       </motion.div>
 
       {/* Van  */}
@@ -69,5 +69,15 @@ const Landingpage = () => {
     </div>
   );
 };
-
+const BubbleText = () => {
+  return (
+    <h2 className="text-4xl md:text-7xl lg:text-6xl xl:text-8xl font-thin text-info text-center">
+      {"Bubbbbbbbble text".split("").map((child, idx) => (
+        <span className={styles.hoverText} key={idx}>
+          {child}
+        </span>
+      ))}
+    </h2>
+  );
+};
 export default Landingpage;
