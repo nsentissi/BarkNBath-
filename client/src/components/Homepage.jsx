@@ -4,7 +4,7 @@ import React ,{useState} from 'react';
 import { useAuth } from '../hooks/AuthContext'; 
 
 import AboutUs from './AboutUs';
-import Services from './Services';
+import Services from './Services/Services';
 import Landingpage from './Landingpage/Landingpage';
 import Journey from './Journey';
 // import Footer from './Footer';

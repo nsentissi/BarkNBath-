@@ -1,15 +1,16 @@
 import anime from "animejs";
 
+
 const WaterDropGrid = () => {
   return (
-    <div className="relative grid place-content-center bg-slate-900 px-8 py-12">
+    <div className="relative grid place-content-center bg-white px-8 py-12 water-drop-grid">
       <DotGrid />
     </div>
   );
 };
 
-const GRID_WIDTH = 25;
-const GRID_HEIGHT = 20;
+const GRID_WIDTH = 100;
+const GRID_HEIGHT = 100;
 
 const DotGrid = () => {
   const handleDotClick = (e) => {
