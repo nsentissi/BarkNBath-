@@ -57,6 +57,9 @@ const PetList = () => {
       <div className="flex flex-wrap">
         {currentUser.pets?.map((pet, index) => (
           <div className="flex flex-col items-center justify-between p-2 border border-gray-200 mr-4" key={index}>
+            {pet.profilePhotoUrl && (
+              <img src={pet.profilePhotoUrl} alt={pet.name} style={{ width: '100px', height: '100px' }} />
+            )}
             <h2 className="font-bold">{pet.name}</h2>
             <div>
               <h3 className="font-bold">Past Appointments</h3>

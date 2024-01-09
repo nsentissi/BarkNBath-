@@ -2,13 +2,18 @@ const Pet = require('../models/pet');
 const User = require('../models/user');
 const ErrorResponse = require('../utils/ErrorResponse');
 
+
 //  creating a new pet
 
 const createPet = async (req, res, next) => {
   try {
     const { name, breed, age, weight, Bio } = req.body;
+    if (!req.file) {
+      return res.status(400).send('No file uploaded.');
+    }
+    const profilePhotoUrl = req.file.path;
     const userId = req.user.id; 
-    const newPet = new Pet({ owner: userId, name, breed, age, weight, Bio });
+    const newPet = new Pet({ owner: userId, name, breed, age, weight, Bio, profilePhotoUrl });
     await newPet.save();
     await User.findByIdAndUpdate(userId, { $push: { pets: newPet._id } });
     res.status(201).json(newPet);
