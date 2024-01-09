@@ -4,10 +4,10 @@ import React ,{useState} from 'react';
 import { useAuth } from '../hooks/AuthContext'; 
 
 import AboutUs from './AboutUs';
-import Services from './Services';
-import Landingpage from './Landingpage';
+import Services from './Services/Services';
+import Landingpage from './Landingpage/Landingpage';
 import Journey from './Journey';
-import Footer from './Footer';
+// import Footer from './Footer';
 import Faqsection from './Faqsection';
 /* import GoogleMap from './GoogleMap'; */
 import Testimonials from './Testimonials';
@@ -51,7 +51,7 @@ const Homepage = () => {
           <Testimonials />
            {/* <ServicesTable/>  */}
           <Faqsection />
-          <Footer />
+          {/* <Footer /> */}
         </>
       )}
 
