@@ -41,6 +41,7 @@ const AboutUs = () => {
             variants={variants}
           >
             <motion.div class="p-4 py-0" variants={variants}>
+            <div class="relative border-l-2 border-t-2 border-primary p-4">
               <div class="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
                 <img src=".\src\assets\conv1.png" class="h-16 w-16" />
               </div>
@@ -50,8 +51,10 @@ const AboutUs = () => {
               <p class="font-semibold text-sm text-gray-700  mb-3">
               We're here to simplify your life. With straightforward scheduling and a dedication to your comfort, we're committed to providing you with a stress-free experience at every turn.
               </p>
+              </div>
             </motion.div>
             <motion.div class="p-4 py-0" variants={variants}>
+            <div class="relative  border-t-2 border-primary p-4">
               <div class="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
                 <img src=".\src\assets\knowing1.png" class="h-16 w-16" />
               </div>
@@ -61,8 +64,10 @@ const AboutUs = () => {
               <p class="font-semibold text-sm text-gray-700   mb-3">
               We understand your pet's needs.  With us, your furry friend will be in the hands of professionals who truly 'Know Your Pet,' ensuring a comfortable and enjoyable grooming experience.
               </p>
+              </div>
             </motion.div>
             <motion.div class="p-4 py-0" variants={variants}>
+            <div class="relative border-r-2 border-t-2 border-primary p-4">
               <div class="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
                 <img src=".\src\assets\time1.png" class="h-16 w-16" />
               </div>
@@ -72,8 +77,10 @@ const AboutUs = () => {
               <p class="font-semibold text-sm text-gray-700   mb-3">
               Our expert therapists bring the spa experience directly to your doorstep, eliminating the need for travel and saving you precious hours in your busy day. 
               </p>
+              </div>
             </motion.div>
             <motion.div class="p-4 py-0" variants={variants}>
+            <div class="relative border-l-2 border-b-2 border-primary p-4">
               <div class="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
                 <img src=".\src\assets\less.png" class="h-16 w-16" />
               </div>
@@ -83,8 +90,10 @@ const AboutUs = () => {
               <p class="font-semibold text-sm text-gray-700   mb-3">
               Give your beloved pets the treatment they deserve. Our pet services are designed to minimize their stress and maximize the comfort for your furry friends. 
               </p>
+              </div>
             </motion.div>
             <motion.div class="p-4 py-0" variants={variants}>
+              
               <div class="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
                 <img src=".\src\assets\cages.png" class="h-16 w-16" />
               </div>
@@ -97,6 +106,7 @@ const AboutUs = () => {
             </motion.div>
             
             <motion.div class="p-4 py-0" variants={variants}>
+            <div class="relative border-r-2 border-b-2 border-primary p-4">
               <div class="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
                 <img src=".\src\assets\privacy1.png" class="h-16 w-16" />
               </div>
@@ -106,9 +116,11 @@ const AboutUs = () => {
               <p class="font-semibold text-sm text-gray-700  mb-3">
               Protecting your pet's privacy is our priority. We understand that your furry companion deserves respect and care, not just in their grooming or care routine but also in safeguarding their personal space.
               </p>
+              </div>
             </motion.div>
            
           </motion.div>
+
         </motion.section>
       </div>
 
