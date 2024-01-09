@@ -3,8 +3,16 @@ import { useAuth } from "../hooks/AuthContext";
 import { Link } from "react-router-dom";
 import { PetContext } from "../hooks/PetContext";
 
+
+
+
+
+
+
+
 const Navbar = ({ onProfileClick }) => {
   /* const { petName } = useContext(PetContext); */
+
   const { currentUser, logout } = useAuth();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -16,15 +24,11 @@ const Navbar = ({ onProfileClick }) => {
     <nav className="bg-transparent dark:bg-transparent fixed w-full z-20 top-0 start-0 font-chewy">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
         {/* Logo */}
-        <Link
-          to="/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <img
-            src=".\src\assets\barkNBath.webp"
-            className="h-20 w-38"
-            alt="barknbath Logo"
-          />
+
+        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src=".\src\assets\barkNBath.png" className="h-28 w-38" alt="barknbath Logo" />
+
+
         </Link>
 
         {/* Right Side */}
@@ -33,17 +37,15 @@ const Navbar = ({ onProfileClick }) => {
           {currentUser ? (
             <React.Fragment>
               {/* Desktop Links for Logged-in User */}
-              {/*               <ul className="mr-4">
-  {currentUser.pets.map((pet, index) => (
-    <li key={index}> {pet.name}</li>
-  ))}
-</ul> */}
+
+
               <span className="mr-4 hidden md:block">
                 Welcome, {currentUser.firstName}
               </span>
               <Link to="/pet/create" className="mr-4 hidden md:block">
                 Add your puffy friend
               </Link>
+
 
               <button onClick={onProfileClick} className="mr-4 hidden md:block">
                 Your account

@@ -1,393 +1,151 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import image1 from "../assets/portrait1.jpg";
+import image2 from "../assets/portrait2.jpg";
+import image3 from "../assets/portrait5.jpg";
+import image5 from "../assets/portrait8.jpg";
+import image6 from "../assets/portrait7.jpg";
+import image7 from "../assets/portrait6.jpg";
+import image8 from "../assets/portrait9.jpg";
 
-export default function Testimonials() {
+// Testimonials data
+const testimonialsData = [
+  {
+    img: image1,
+    quote:
+      "Absolutely love this mobile spa van! It's so convenient and saves so much time. My pet was relaxed and happy throughout the whole experience. Highly recommend!",
+    name: "Jessie Benett",
+  },
+  {
+    img: image8,
+    quote:
+      "The best decision I made for my pet's grooming needs! The mobile spa van offers a stress-free and super convenient service. It's fast, efficient, and my pet looks and feels great afterwards. Love it!",
+    name: "Aiden Nguyen",
+  },
+  {
+    img: image3,
+    quote:
+      "Incredible! The mobile spa van is a game-changer. It's so convenient, coming right to our doorstep. My pet enjoyed the pampering, and I loved the efficiency. Will definitely use again.",
+    name: "Alvin Wander",
+  },
+  {
+    img: image5,
+    quote:
+      "I'm so impressed with this mobile spa service! It's the perfect solution for busy pet owners. Quick, efficient, and very convenient. My pet was calm and enjoyed every bit of it. Highly recommended!",
+    name: "Isabella García",
+  },
+  {
+    img: image6,
+    quote:
+      "This mobile spa van is awesome! It brought the spa experience to us, making it so much easier for my pet who gets anxious with travel. The staff were amazing and the service was top-notch.",
+    name: "Lucas Graham",
+  },
+  {
+    img: image2,
+    quote:
+      "What a fantastic service! The mobile van made the spa experience super easy and stress-free for both me and my furry friend. The team was professional and caring. A big thumbs up!",
+    name: "Oliver Kim",
+  },
+  {
+    img: image7,
+    quote:
+      "This mobile spa van is a lifesaver! It fits into my tight schedule perfectly, and my pet gets the best care without any stress. The team is professional and really knows how to handle pets with care.",
+    name: "Sofia Moreno",
+  },
+];
+const variants = {
+  hidden: { opacity: 0, y: -100 },
+  visible: (custom) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: custom * 0.7 },
+  }),
+};
+
+const Testimonials = () => {
+  const [active, setActive] = useState(0);
+  const autorotateTiming = 10000;
+  const [ref, inView] = useInView({
+    threshold: 0.1, // Trigger when 10% of the element is visible
+    triggerOnce: false, // Only trigger once
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive((prevActive) => (prevActive + 1) % testimonialsData.length);
+    }, autorotateTiming);
+
+    return () => clearInterval(interval);
+  }, [testimonialsData.length]);
+
   return (
-    <>
-      <div>
-        <h2 className="text-2xl leading-6 text-gray-800 text-center px-4 pt-10">
-          Testimonials
-        </h2>
-        <h1 className="lg:text-5xl md:text-4xl text-2xl font-semibold px-4 leading-10 text-gray-800 mt-6 text-center">
-          What our clients say
-        </h1>
-        <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:px-20 px-10 py-20 gap-6">
-          <div>
-            <div className="group w-full bg-white relative flex flex-col items-center hover:bg-indigo-700 cursor-pointer shadow-md md:p-12 p-6">
-              <div className="text-gray-600 group-hover:text-white flex flex-col items-center">
-                <svg
-                  width={26}
-                  height={27}
-                  viewBox="0 0 26 27"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clipPath="url(#clip0)">
-                    <path
-                      d="M25.2578 14.3309H19.2969C19.3988 9.55819 20.6309 9.01642 22.1785 8.86178L22.7753 8.78051V3.53242L22.0874 3.57292C20.0666 3.69783 17.8323 4.09805 16.3417 6.11965C15.035 7.89183 14.459 10.7871 14.459 15.2316V23.4673H25.2578V14.3309Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M11.48 23.4673V14.3309H5.59859C5.70049 9.55819 6.89283 9.01642 8.44042 8.86178L8.99749 8.78051V3.53242L8.34931 3.57292C6.32844 3.69783 4.07421 4.09805 2.5836 6.11965C1.27707 7.89183 0.681147 10.7871 0.681147 15.2316V23.4673H11.48Z"
-                      fill="currentColor"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0">
-                      <rect
-                        width="24.5767"
-                        height={27}
-                        fill="white"
-                        transform="translate(25.2578 27) rotate(-180)"
-                      />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <p className="xl:w-80 text-base leading-normal text-center mt-4">
-                  When our designs need an expert opinion or approval, I know I
-                  can rely on your agency Thank you for all your help-I will be
-                  recommending you to everyone
-                </p>
-              </div>
-              <div className="text-white group-hover:text-indigo-700 absolute bottom-0 -mb-6">
-                <svg
-                  width={34}
-                  height={28}
-                  viewBox="0 0 34 28"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g filter="url(#filter0_dd)">
-                    <path
-                      d="M17 19L28.2583 3.25H5.74167L17 19Z"
-                      fill="currentColor"
-                    />
-                  </g>
-                  <defs>
-                    <filter
-                      id="filter0_dd"
-                      x="0.741699"
-                      y="0.25"
-                      width="32.5167"
-                      height="27.75"
-                      filterUnits="userSpaceOnUse"
-                      colorInterpolationFilters="sRGB"
-                    >
-                      <feFlood floodOpacity={0} result="BackgroundImageFix" />
-                      <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      />
-                      <feMorphology
-                        radius={1}
-                        operator="erode"
-                        in="SourceAlpha"
-                        result="effect1_dropShadow"
-                      />
-                      <feOffset dy={4} />
-                      <feGaussianBlur stdDeviation={3} />
-                      <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in2="BackgroundImageFix"
-                        result="effect1_dropShadow"
-                      />
-                      <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      />
-                      <feOffset dy={2} />
-                      <feGaussianBlur stdDeviation="2.5" />
-                      <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in2="effect1_dropShadow"
-                        result="effect2_dropShadow"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in="SourceGraphic"
-                        in2="effect2_dropShadow"
-                        result="shape"
-                      />
-                    </filter>
-                  </defs>
-                </svg>
-              </div>
-            </div>
-            <div className="flex flex-col items-center justify-center mt-10">
-              <img
-                src="https://i.ibb.co/ZgF5Zzz/avatar-1.png"
-                alt="profile pictre"
-                className="w-12 h-12"
+    <motion.section
+    ref={ref}
+    className="relative min-h-screen flex flex-col justify-center mx-auto my-10 bg-success overflow-hidden"
+    style={{ minHeight: "60vh" }}
+    initial="hidden"
+    animate={inView ? "visible" : "hidden"}
+    variants={variants}
+  >
+    <div className="w-full max-w-4xl mx-auto px-4 md:px-6 ">
+      <div className="flex justify-center ">
+        <div className="w-full max-w-5xl mx-auto text-center ">
+          {testimonialsData.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              variants={variants}
+              custom={index}
+              className={`transition-all duration-150 ease-in-out ${
+                active === index ? "block" : "hidden"
+              }`}
+            >
+              <motion.img
+                className="mx-auto "
+                src={testimonial.img}
+                alt={testimonial.name}
+                variants={variants}
+                custom={4}
+                style={{
+                  width: "150px",
+                  height: "150px",
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                }}
               />
-              <p className="text-base font-semibold leading-4 my-2 text-gray-800">
-                Tom Koch
-              </p>
-              <p className="text-base leading-4 text-center text-gray-600">
-                Developer
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="group w-full bg-white relative flex flex-col items-center hover:bg-indigo-700 cursor-pointer shadow-md md:p-12 p-6">
-              <div className="text-gray-600 group-hover:text-white flex flex-col items-center">
-                <svg
-                  width={26}
-                  height={27}
-                  viewBox="0 0 26 27"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clipPath="url(#clip0)">
-                    <path
-                      d="M25.2578 14.3309H19.2969C19.3988 9.55819 20.6309 9.01642 22.1785 8.86178L22.7753 8.78051V3.53242L22.0874 3.57292C20.0666 3.69783 17.8323 4.09805 16.3417 6.11965C15.035 7.89183 14.459 10.7871 14.459 15.2316V23.4673H25.2578V14.3309Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M11.48 23.4673V14.3309H5.59859C5.70049 9.55819 6.89283 9.01642 8.44042 8.86178L8.99749 8.78051V3.53242L8.34931 3.57292C6.32844 3.69783 4.07421 4.09805 2.5836 6.11965C1.27707 7.89183 0.681147 10.7871 0.681147 15.2316V23.4673H11.48Z"
-                      fill="currentColor"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0">
-                      <rect
-                        width="24.5767"
-                        height={27}
-                        fill="white"
-                        transform="translate(25.2578 27) rotate(-180)"
-                      />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <p className="xl:w-80 text-base leading-normal text-center mt-4">
-                  When our designs need an expert opinion or approval, I know I
-                  can rely on your agency Thank you for all your help-I will be
-                  recommending you to everyone
-                </p>
-              </div>
-              <div className="text-white group-hover:text-indigo-700 absolute bottom-0 -mb-6">
-                <svg
-                  width={34}
-                  height={28}
-                  viewBox="0 0 34 28"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g filter="url(#filter0_dd)">
-                    <path
-                      d="M17 19L28.2583 3.25H5.74167L17 19Z"
-                      fill="currentColor"
-                    />
-                  </g>
-                  <defs>
-                    <filter
-                      id="filter0_dd"
-                      x="0.741699"
-                      y="0.25"
-                      width="32.5167"
-                      height="27.75"
-                      filterUnits="userSpaceOnUse"
-                      colorInterpolationFilters="sRGB"
-                    >
-                      <feFlood floodOpacity={0} result="BackgroundImageFix" />
-                      <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      />
-                      <feMorphology
-                        radius={1}
-                        operator="erode"
-                        in="SourceAlpha"
-                        result="effect1_dropShadow"
-                      />
-                      <feOffset dy={4} />
-                      <feGaussianBlur stdDeviation={3} />
-                      <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in2="BackgroundImageFix"
-                        result="effect1_dropShadow"
-                      />
-                      <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      />
-                      <feOffset dy={2} />
-                      <feGaussianBlur stdDeviation="2.5" />
-                      <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in2="effect1_dropShadow"
-                        result="effect2_dropShadow"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in="SourceGraphic"
-                        in2="effect2_dropShadow"
-                        result="shape"
-                      />
-                    </filter>
-                  </defs>
-                </svg>
-              </div>
-            </div>
-            <div className="flex flex-col items-center justify-center mt-10">
-              <img
-                src="https://i.ibb.co/8BLjmqz/avatar-2.png"
-                alt="profile pictre"
-                className="w-12 h-12"
-              />
-              <p className="text-base font-semibold leading-4 my-2 text-gray-800">
-                Alan Max
-              </p>
-              <p className="text-base leading-4 text-center text-gray-600">
-                Designer
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="group w-full bg-white relative flex flex-col items-center hover:bg-indigo-700 cursor-pointer shadow-md md:p-12 p-6">
-              <div className="text-gray-600 group-hover:text-white flex flex-col items-center">
-                <svg
-                  width={26}
-                  height={27}
-                  viewBox="0 0 26 27"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clipPath="url(#clip0)">
-                    <path
-                      d="M25.2578 14.3309H19.2969C19.3988 9.55819 20.6309 9.01642 22.1785 8.86178L22.7753 8.78051V3.53242L22.0874 3.57292C20.0666 3.69783 17.8323 4.09805 16.3417 6.11965C15.035 7.89183 14.459 10.7871 14.459 15.2316V23.4673H25.2578V14.3309Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M11.48 23.4673V14.3309H5.59859C5.70049 9.55819 6.89283 9.01642 8.44042 8.86178L8.99749 8.78051V3.53242L8.34931 3.57292C6.32844 3.69783 4.07421 4.09805 2.5836 6.11965C1.27707 7.89183 0.681147 10.7871 0.681147 15.2316V23.4673H11.48Z"
-                      fill="currentColor"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0">
-                      <rect
-                        width="24.5767"
-                        height={27}
-                        fill="white"
-                        transform="translate(25.2578 27) rotate(-180)"
-                      />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <p className="xl:w-80 text-base leading-normal text-center mt-4">
-                  When our designs need an expert opinion or approval, I know I
-                  can rely on your agency Thank you for all your help-I will be
-                  recommending you to everyone
-                </p>
-              </div>
-              <div className="text-white group-hover:text-indigo-700 absolute bottom-0 -mb-6">
-                <svg
-                  width={34}
-                  height={28}
-                  viewBox="0 0 34 28"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g filter="url(#filter0_dd)">
-                    <path
-                      d="M17 19L28.2583 3.25H5.74167L17 19Z"
-                      fill="currentColor"
-                    />
-                  </g>
-                  <defs>
-                    <filter
-                      id="filter0_dd"
-                      x="0.741699"
-                      y="0.25"
-                      width="32.5167"
-                      height="27.75"
-                      filterUnits="userSpaceOnUse"
-                      colorInterpolationFilters="sRGB"
-                    >
-                      <feFlood floodOpacity={0} result="BackgroundImageFix" />
-                      <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      />
-                      <feMorphology
-                        radius={1}
-                        operator="erode"
-                        in="SourceAlpha"
-                        result="effect1_dropShadow"
-                      />
-                      <feOffset dy={4} />
-                      <feGaussianBlur stdDeviation={3} />
-                      <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in2="BackgroundImageFix"
-                        result="effect1_dropShadow"
-                      />
-                      <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      />
-                      <feOffset dy={2} />
-                      <feGaussianBlur stdDeviation="2.5" />
-                      <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in2="effect1_dropShadow"
-                        result="effect2_dropShadow"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in="SourceGraphic"
-                        in2="effect2_dropShadow"
-                        result="shape"
-                      />
-                    </filter>
-                  </defs>
-                </svg>
-              </div>
-            </div>
-            <div className="flex flex-col items-center justify-center mt-10">
-              <img
-                src="https://i.ibb.co/y0KCX7p/avatar-3.png"
-                alt="profile pictre"
-                className="w-12 h-12"
-              />
-              <p className="text-base font-semibold leading-4 my-2 text-gray-800">
-                Kera Joo
-              </p>
-              <p className="text-base leading-4 text-center text-gray-600">
-                Support
-              </p>
-            </div>
-          </div>
+              <motion.div
+                className="text-2xl font-bold font-dosis text-slate-900 my-8"
+                variants={variants}
+                custom={3}
+                style={{ fontStyle: "italic" }}
+              >
+                {`"${testimonial.quote}"`}
+              </motion.div>
+            </motion.div>
+          ))}
+          <motion.div className="flex flex-wrap justify-center -m-1.5"    variants={variants}
+      custom={2} 
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"} >
+            {testimonialsData.map((testimonial, index) => (
+              <button 
+                key={index}
+                className={`text-bold font-dosis inline-flex justify-center whitespace-nowrap rounded-full px-3.5 py-2 m-1.5 text-xs shadow-sm focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150 ${
+                  active === index
+                    ? "bg-primary text-white shadow-indigo-950/10"
+                    : "bg-white hover:bg-primary text-slate-900"
+                }`}
+                onClick={() => setActive(index)}
+              >
+                {testimonial.name}
+              </button>
+            ))}
+          </motion.div>
         </div>
       </div>
-    </>
+    </div>
+  </motion.section>
   );
-}
+};
+
+export default Testimonials;

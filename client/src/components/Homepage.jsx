@@ -49,7 +49,7 @@ const Homepage = () => {
          
           <Carousel />
           <Testimonials />
-           <ServicesTable/> 
+           {/* <ServicesTable/>  */}
           <Faqsection />
           <Footer />
         </>
