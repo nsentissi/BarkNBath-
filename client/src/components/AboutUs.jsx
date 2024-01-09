@@ -100,9 +100,11 @@ const AboutUs = () => {
               <h2 class="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
               No Cages
               </h2>
+              
               <p class="font-semibold text-sm text-gray-700   mb-3">
               Say goodbye to cramped, uncomfortable cages, and rest assured that your pet will have the freedom they deserve with us.
               </p>
+              
             </motion.div>
             
             <motion.div class="p-4 py-0" variants={variants}>
