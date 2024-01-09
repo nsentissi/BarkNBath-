@@ -8,12 +8,17 @@ const position = [52.5314560163944, 13.403370226299785];
 const Map = () => {
   return (
     <>
-      <div className="flex justify-center p-4">
+      <div className="flex flex-col md:flex-row justify-end px-4 py-4 gap-4 bg-[url('../../src/assets/map-background.png')] h-auto md:h-100 w-full bg-no-repeat">
+        <div className="w-full md:w-2/4 lg:w-2/5 px-4 py-2 md:p-12 bg-info rounded-lg">
+          <h4 className="text-base md:text-lg lg:text-xl w-full md:w-2/4 lg:w-3/4 p-4 md:p-20">
+            Explore our locations
+          </h4>
+        </div>
         <MapContainer
           center={position}
           zoom={12}
           scrollWheelZoom={false}
-          className="w-full md:w-3/4 lg:w-1/2 h-96 rounded-lg shadow-lg"
+          className="w-full md:w-2/4 lg:w-3/5 h-96 rounded-lg shadow-lg flex-col"
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
