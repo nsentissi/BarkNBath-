@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useAuth } from '../hooks/AuthContext'; 
 import PetList from './PetList';
-import Navbar from './NavBar';
+import Navbartwo from './Navbartwo';
 import Modal from './Modal';
 import Profile from './Profile'
 
@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Navbar onProfileClick={handleOpenProfileModal} />
+      <Navbartwo onProfileClick={handleOpenProfileModal} />
       <Modal isOpen={isProfileModalOpen} onClose={handleCloseProfileModal} >
         <Profile/>
       </Modal>

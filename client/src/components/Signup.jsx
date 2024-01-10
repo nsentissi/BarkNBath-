@@ -32,7 +32,7 @@ const Signup = () => {
   };
 
   return (
-    <div class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-gray-100 h-screen flex items-center justify-center">
       {/* <!-- Background Image --> */}
     <div class="absolute inset-0 z-0">
         <img src="./src/assets/homepagelog.png" alt=""
@@ -40,8 +40,8 @@ const Signup = () => {
     </div>
 
     {/* <!-- Signup Form --> */}
-      <div className="bg-secondary z-10  p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">
-        <img src="../src/assets/barkNBath.png" className="mb-6 mx-auto w-2/4" />
+      <div className="bg-secondary z-10 h-screen  p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">
+        <img src="../src/assets/barkNBath.png" className="mb-6 mx-auto w-1/4" />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label htmlFor="firstName" className="text-white font-semibold  block mb-2">
