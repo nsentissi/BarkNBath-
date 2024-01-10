@@ -32,7 +32,7 @@ const HorizontalScrollCarousel = () => {
   return (
     <section
       ref={targetRef}
-      className="relative h-[400vh] bg-info  w-full max-w-screen-xl mx-auto "
+      className="relative h-[400vh] bg-transparent  w-full max-w-screen-xl mx-auto "
       
     >
       <div className="sticky top-0  flex h-screen items-center overflow-hidden">

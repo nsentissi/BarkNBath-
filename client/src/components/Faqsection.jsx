@@ -9,13 +9,13 @@ const Faqsection = () => {
 
   return (
     <>
-    <div className="bg-info p-20">
+    <div className="bg-white p-20">
       <div className="">
         <h2 className="text-4xl font-semibold text-center text-gray-900 mb-6">Frequently Asked Questions</h2>
         <div className="max-w-4xl mx-auto">
           {faqs.map((faq, index) => (
             <div key={index} className="mb-4">
-              <details className="p-4 bg-white shadow rounded-lg group">
+              <details className="p-4 bg-success shadow rounded-lg group">
                 <summary className="text-lg font-medium cursor-pointer">
                   {faq.question}
                   <span className="float-right mt-1">
