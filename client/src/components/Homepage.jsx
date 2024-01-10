@@ -17,7 +17,7 @@ import Carouseltwo from './Carouseltwo'
 import AddPetForm from './AddPetForm';
 import Map from './Map'
 import Dashboard from './Dashboard';
-import Navbar from './NavBar';
+import NavBar from './NavBar';
 
 
 
@@ -40,7 +40,7 @@ const Homepage = () => {
       
       {!currentUser && (
         <>
-          <Navbar/>
+          <NavBar/>
           <Landingpage />
           <Journey />
           <AboutUs />
