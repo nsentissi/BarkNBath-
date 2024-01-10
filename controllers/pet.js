@@ -96,10 +96,21 @@ const deletePet = async (req, res, next) => {
   }
 };
 
+const getAllPets = async (req, res, next) => {
+  try {
+    const dogs = await Pet.find()
+    res.json(dogs)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
 module.exports = {
   createPet,
   getPetDetails,
   updatePet,
   deletePet,
-  getPetName
+  getPetName,
+  getAllPets
 };
