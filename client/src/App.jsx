@@ -8,7 +8,11 @@ import { AuthProvider } from "./hooks/AuthContext";
 import AppointmentForm from "./components/AppointmentForm";
 import AddPetForm from "./components/AddPetForm";
 import { PetProvider } from './hooks/PetContext';
+
 import Admin from "./components/Admin";
+
+import React from 'react';
+
 
 function App() {
   return (

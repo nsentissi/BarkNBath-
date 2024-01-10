@@ -1,22 +1,30 @@
 import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
+import React from 'react';
 
 const Example = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-3/4 min-h-screen">
-    <div className="bg-transparent">
-      <div className="flex h-48 items-center justify-center">
-        <span className="font-semibold uppercase text-neutral-500">
-          Scroll down
-        </span>
+    <div className="w-3/4 mx-auto min-h-screen flex justify-center items-center py-20">
+      <div className="bg-transparent">
+        <div className="flex  items-center justify-center ">
+        <span className="inline-block animate-pulse bg-success rounded-full w-1/4 p-4 text-white text-center font-chewy text-xl">SCROLL DOWN
+        <svg className="w-6 h-6 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
+        </svg>
+    </span>
+        </div>
+        <HorizontalScrollCarousel />
+  
+        <div className="flex h-48 items-center justify-center">
+        <span className="inline-block animate-pulse bg-success rounded-full w-1/4 p-4 text-white text-center font-chewy text-xl">
+  <svg className="w-6 h-6 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11l7-7 7 7M5 19l7-7 7 7" /> 
+  </svg>
+  SCROLL UP</span>
+
+
+        </div>
       </div>
-      <HorizontalScrollCarousel />
-      <div className="flex h-48 items-center justify-center">
-        <span className="font-semibold uppercase text-neutral-500">
-          Scroll up
-        </span>
-      </div>
-    </div>
     </div>
   );
 };
@@ -30,9 +38,17 @@ const HorizontalScrollCarousel = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[400vh] bg-neutral-900">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div style={{ x }} className="flex gap-4">
+    <section
+      ref={targetRef}
+      className="relative h-[400vh] bg-transparent  w-full max-w-screen-xl mx-auto "
+      
+    >
+      <div className="sticky top-0  flex h-screen items-center overflow-hidden">
+        <motion.div
+          style={{ x }}
+          className="flex MT-0 gap-4 sm:gap-2 md:gap-4 lg:gap-8 xl:gap-12"
+          
+        >
           {cards.map((card) => {
             return <Card card={card} key={card.id} />;
           })}
@@ -46,7 +62,7 @@ const Card = ({ card }) => {
   return (
     <div
       key={card.id}
-      className="group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200"
+      className="group relative h-[250px] w-[250px] sm:h-[350px] sm:w-[350px] md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[400px] xl:h-[450px] xl:w-[450px] overflow-hidden bg-neutral-200"
     >
       <div
         style={{
@@ -56,11 +72,7 @@ const Card = ({ card }) => {
         }}
         className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
       ></div>
-      <div className="absolute inset-0 z-10 grid place-content-center">
-        <p className="bg-gradient-to-br from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg">
-          {card.title}
-        </p>
-      </div>
+    
     </div>
   );
 };
@@ -69,37 +81,47 @@ export default Example;
 
 const cards = [
   {
-    url: "/imgs/abstract/1.jpg",
+    url: "./src/assets/carousel1.jpg",
     title: "Title 1",
     id: 1,
   },
   {
-    url: "/imgs/abstract/2.jpg",
+    url: "./src/assets/carousel2.jpg",
     title: "Title 2",
     id: 2,
   },
   {
-    url: "/imgs/abstract/3.jpg",
+    url: "./src/assets/carousel5.jpg",
     title: "Title 3",
     id: 3,
   },
   {
-    url: "/imgs/abstract/4.jpg",
+    url: "./src/assets/carousel6.jpg",
     title: "Title 4",
     id: 4,
   },
   {
-    url: "/imgs/abstract/5.jpg",
+    url: "./src/assets/carousel3.jpg",
     title: "Title 5",
     id: 5,
   },
   {
-    url: "/imgs/abstract/6.jpg",
+    url: "./src/assets/carousel8.jpg",
     title: "Title 6",
     id: 6,
   },
   {
-    url: "/imgs/abstract/7.jpg",
+    url: "./src/assets/carousel9.jpg",
+    title: "Title 7",
+    id: 7,
+  },
+  {
+    url: "./src/assets/carousel4.jpg",
+    title: "Title 7",
+    id: 7,
+  },
+  {
+    url: "./src/assets/carousel10.jpg",
     title: "Title 7",
     id: 7,
   },
