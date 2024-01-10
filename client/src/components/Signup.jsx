@@ -10,28 +10,9 @@ const Signup = () => {
   const { register, handleSubmit, errors } = useForm();
   const [password, setPassword] = useState("");
   const [passwordAgain, setPasswordAgain] = useState("");
-  const [showPasswordChecklist, setShowPasswordChecklist] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    if (e.target.value.length > 0) {
-      setShowPasswordChecklist(true);
-    }
-  };
-
-  const handlePasswordAgainChange = (e) => {
-    setPasswordAgain(e.target.value);
-    if (e.target.value.length > 0) {
-      setShowPasswordChecklist(true);
-    }
-  };
-
-  const handlePasswordBlur = () => {
-    if (password.length === 0 && passwordAgain.length === 0) {
-      setShowPasswordChecklist(false);
-    }
-  };
+  
    
 
   
@@ -110,8 +91,7 @@ const Signup = () => {
               type="password"
               className="w-full p-2 border border-gray-300 rounded-xl"
               {...register("password", { required: true })}
-              onChange={handlePasswordChange}
-              onBlur={handlePasswordBlur}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="mb-4">
@@ -121,20 +101,16 @@ const Signup = () => {
           <input
             type="password"
             className="w-full p-2 border border-gray-300 rounded-xl"
-           
-            onChange={handlePasswordAgainChange}
-            onBlur={handlePasswordBlur}
+            onChange={(e) => setPasswordAgain(e.target.value)}
           />
         </div>
-        {showPasswordChecklist && (
-          <PasswordChecklist
-            rules={["minLength", "specialChar", "number", "capital", "match"]}
-            minLength={5}
-            value={password}
-            valueAgain={passwordAgain}
-            onChange={(isValid) => setIsFormValid(isValid)}
-          />
-        )}
+        <PasswordChecklist
+          rules={["minLength", "specialChar", "number", "capital", "match"]}
+          minLength={5}
+          value={password}
+          valueAgain={passwordAgain}
+          onChange={(isValid) => setIsFormValid(isValid)}
+        />
 
           <div className="flex flex-col sm:flex-col gap-2 md:gap-4 gap-6-lg items-center justify-between">
             <button
