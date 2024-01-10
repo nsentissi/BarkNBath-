@@ -3,10 +3,10 @@ import React, {useState} from 'react'
 
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
-import { useAuth } from "../hooks/AuthContext";
+import { useAuth } from "../../hooks/AuthContext";
 import axios from "axios";
 import Modal from './Modal';
-import ServicesTable from "./ServicesTable"
+import ServicesTable from "../ServicesTable"
 
 const AppointmentForm = () => {
   const {

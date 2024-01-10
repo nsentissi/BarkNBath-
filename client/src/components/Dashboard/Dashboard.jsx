@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import { useAuth } from '../hooks/AuthContext'; 
+import { useAuth } from '../../hooks/AuthContext'; 
 import PetList from './PetList';
 // import Navbartwo from './Navbartwo';
-import NavBar from './NavBar'
+import NavBar from '../NavBar'
 import Modal from './Modal';
-import Profile from './Profile'
+import Profile from '../Profile'
 
 const Dashboard = () => {
   const { currentUser } = useAuth();
