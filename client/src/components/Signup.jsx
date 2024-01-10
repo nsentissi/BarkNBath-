@@ -10,9 +10,31 @@ const Signup = () => {
   const { register, handleSubmit, errors } = useForm();
   const [password, setPassword] = useState("");
   const [passwordAgain, setPasswordAgain] = useState("");
+  const [showPasswordChecklist, setShowPasswordChecklist] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
 
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    if (e.target.value.length > 0) {
+      setShowPasswordChecklist(true);
+    }
+  };
 
+  const handlePasswordAgainChange = (e) => {
+    setPasswordAgain(e.target.value);
+    if (e.target.value.length > 0) {
+      setShowPasswordChecklist(true);
+    }
+  };
+
+  const handlePasswordBlur = () => {
+    if (password.length === 0 && passwordAgain.length === 0) {
+      setShowPasswordChecklist(false);
+    }
+  };
+   
+
+  
   const onSubmit = async (data) => {
     console.log(data);
     try {
@@ -29,13 +51,19 @@ const Signup = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 w-full sm:w-3/4 md:w-2/3">
-      <div className="bg-secondary p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">
-        {/* <h1 className="text-3xl text-white text-center font-bold mb-6">BarkNBath</h1> Add Logo and ensure that all images are in png format. */}
-        <img src="../src/assets/tail.svg" className="mb-6 mx-auto" />
+    <div class="bg-gray-100 min-h-screen flex items-center justify-center">
+      {/* <!-- Background Image --> */}
+    <div class="absolute inset-0 z-0">
+        <img src="./src/assets/homepagelog.png" alt=""
+            class="w-full h-full object-cover filter blur-lg brightness-50"/>
+    </div>
+
+    {/* <!-- Signup Form --> */}
+      <div className="bg-secondary z-10  p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">
+        <img src="../src/assets/barkNBath.png" className="mb-6 mx-auto w-2/4" />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
-            <label htmlFor="firstName" className="text-white block mb-2">
+            <label htmlFor="firstName" className="text-white font-semibold  block mb-2">
               First Name
             </label>
             <input
@@ -45,7 +73,7 @@ const Signup = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="lastName" className="text-white block mb-2">
+            <label htmlFor="lastName" className="text-white font-semibold  block mb-2">
               Last Name
             </label>
             <input
@@ -55,7 +83,7 @@ const Signup = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="phoneNumber" className="text-white block mb-2">
+            <label htmlFor="phoneNumber" className="text-white font-semibold  block mb-2">
               Phone Number
             </label>
             <input
@@ -65,7 +93,7 @@ const Signup = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="email" className="text-white block mb-2">
+            <label htmlFor="email" className="text-white font-semibold  block mb-2">
               Email
             </label>
             <input
@@ -75,45 +103,52 @@ const Signup = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className="text-white block mb-2">
+            <label htmlFor="password" className="text-white font-semibold  block mb-2">
               Password
             </label>
             <input
               type="password"
               className="w-full p-2 border border-gray-300 rounded-xl"
               {...register("password", { required: true })}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
+              onBlur={handlePasswordBlur}
             />
           </div>
           <div className="mb-4">
-          <label htmlFor="passwordAgain" className="text-white block mb-2">
+          <label htmlFor="passwordAgain" className="text-white font-semibold  block mb-2">
             Confirm Password
           </label>
           <input
             type="password"
             className="w-full p-2 border border-gray-300 rounded-xl"
-            onChange={(e) => setPasswordAgain(e.target.value)}
+           
+            onChange={handlePasswordAgainChange}
+            onBlur={handlePasswordBlur}
           />
         </div>
-        <PasswordChecklist
-          rules={["minLength", "specialChar", "number", "capital", "match"]}
-          minLength={5}
-          value={password}
-          valueAgain={passwordAgain}
-          onChange={(isValid) => setIsFormValid(isValid)}
-        />
+        {showPasswordChecklist && (
+          <PasswordChecklist
+            rules={["minLength", "specialChar", "number", "capital", "match"]}
+            minLength={5}
+            value={password}
+            valueAgain={passwordAgain}
+            onChange={(isValid) => setIsFormValid(isValid)}
+          />
+        )}
 
-          <div className="flex flex-col sm:flex-row items-center justify-between">
+          <div className="flex flex-col sm:flex-col gap-2 md:gap-4 gap-6-lg items-center justify-between">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl mb-2 sm:mb-0"
+              className="bg-success  hover:bg-primary text-white font-bold py-2 px-4 rounded-xl w-2/4 sm:w-2/4 mb-2 sm:mb-0"
               disabled={!isFormValid}
             >
               Register
             </button>
-            <p className="text-sm text-center sm:text-left">
+            <p className="text-sm font-dosis font-semibold text-gray-900">
               Already have an account?{" "}
-              <Link to="/login" className="text-blue-500 hover:text-blue-700">
+              </p>
+              <p>
+              <Link to="/login" className="text-success hover:text-neutral font-dosis font-semibold">
                 Log in
               </Link>
             </p>
