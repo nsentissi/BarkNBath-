@@ -1,30 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useAuth } from "../hooks/AuthContext";
 import { Link } from "react-router-dom";
+import { PetContext } from "../hooks/PetContext";
+
+
+
+
+
+
+
 
 const Navbar = ({ onProfileClick }) => {
+  /* const { petName } = useContext(PetContext); */
+
   const { currentUser, logout } = useAuth();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
-  useEffect(() => {
-    const navLinks = document.querySelectorAll('.navbar-link');
-    const animationDiv = document.getElementById('animation-div');
-
-    navLinks.forEach(link => {
-      link.addEventListener('mouseover', (event) => {
-        animationDiv.style.width = event.target.offsetWidth + 'px';
-        animationDiv.style.left = event.target.offsetLeft + 'px';
-        // Customize the color change as needed
-        animationDiv.style.backgroundColor = '#1abc9c';
-      });
-    });
-
-    return () => {
-      navLinks.forEach(link => {
-        link.removeEventListener('mouseover', null);
-      });
-    };
-  }, []);
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);

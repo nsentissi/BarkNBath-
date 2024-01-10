@@ -49,7 +49,14 @@ const AppointmentForm = () => {
   };
 
   return (
-    <div>
+    <div class="bg-gray-100 min-h-screen flex items-center justify-center px-4">
+      {/* Background Image */}
+      <div class="absolute inset-0 z-0">
+        <img src="./src/assets/homepagelog.png" alt=""
+            class="w-full h-full object-cover filter blur-lg brightness-50"/>
+      </div>
+    <div className="bg-secondary z-20 p-6 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-md w-full">
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-md mx-auto mt-10 space-y-4"
@@ -89,6 +96,7 @@ const AppointmentForm = () => {
             ))}
           </select>
         </div>
+        
         <div className="flex flex-col">
           <label htmlFor="time" className="mb-2 font semibild">
             time:
@@ -181,6 +189,7 @@ const AppointmentForm = () => {
         <ServicesTable/>
         </Modal>
       </div>
+    </div>
     </div>
   );
 };

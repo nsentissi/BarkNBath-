@@ -3,7 +3,7 @@ import { useAuth } from "../../hooks/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import styles from './Back.module.css'
+
 
 
 const PetList = () => {
@@ -52,8 +52,8 @@ const PetList = () => {
   };
 
   return (
-    <div className={styles.area}>
-    <div className=" font-sans leading-normal tracking-normal pt-32 pl-4 pr-4" >
+    
+    <div className=" font-sans leading-normal bg- tracking-normal pt-32 pl-4 pr-4" >
       <div className="flex flex-col justify-center">
       <h1 className=" pt-4 md:pt-10">
         Welcome {currentUser.firstName} {currentUser.lastName}
@@ -142,19 +142,7 @@ const PetList = () => {
         ))}
         </div>
         
-			<ul className={styles.circles}>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-		</div>
+		
       </div>
    
   );
