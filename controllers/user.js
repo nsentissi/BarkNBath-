@@ -114,10 +114,20 @@ const updateUser = async (req, res, next) => {
   }
 };
 
+const getAllUsers = async (req, res, next) => {
+  try {
+    const users = await User.find()
+    res.json(users)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   register,
   login,
   logout,
   getProfile,
-  updateUser
+  updateUser, 
+  getAllUsers
 };
