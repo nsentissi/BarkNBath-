@@ -3,20 +3,20 @@ import { useRef } from "react";
 
 const Example = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-3/4 min-h-screen">
-    <div className="bg-transparent">
-      <div className="flex h-48 items-center justify-center">
-        <span className="font-semibold uppercase text-neutral-500">
-          Scroll down
-        </span>
+    <div className="w-full min-h-screen flex justify-center items-center">
+      <div className="bg-transparent">
+        <div className="flex h-48 items-center justify-center">
+          <span className="font-semibold uppercase text-neutral-500">
+            Scroll down
+          </span>
+        </div>
+        <HorizontalScrollCarousel />
+        <div className="flex h-48 items-center justify-center">
+          <span className="font-semibold uppercase text-neutral-500">
+            Scroll up
+          </span>
+        </div>
       </div>
-      <HorizontalScrollCarousel />
-      <div className="flex h-48 items-center justify-center">
-        <span className="font-semibold uppercase text-neutral-500">
-          Scroll up
-        </span>
-      </div>
-    </div>
     </div>
   );
 };
@@ -30,9 +30,17 @@ const HorizontalScrollCarousel = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[400vh] bg-neutral-900">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div style={{ x }} className="flex gap-4">
+    <section
+      ref={targetRef}
+      className="relative h-[400vh] bg-transparent  w-full max-w-screen-xl mx-auto "
+      
+    >
+      <div className="sticky top-0  flex h-screen items-center overflow-hidden">
+        <motion.div
+          style={{ x }}
+          className="flex  gap-4 sm:gap-2 md:gap-4 lg:gap-8 xl:gap-12"
+          
+        >
           {cards.map((card) => {
             return <Card card={card} key={card.id} />;
           })}
@@ -46,7 +54,7 @@ const Card = ({ card }) => {
   return (
     <div
       key={card.id}
-      className="group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200"
+      className="group relative h-[250px] w-[250px] sm:h-[350px] sm:w-[350px] md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[400px] xl:h-[450px] xl:w-[450px] overflow-hidden bg-neutral-200"
     >
       <div
         style={{
