@@ -1,17 +1,31 @@
-const express = require('express');
-const port = 3000;
+require("dotenv/config");
+require("./db.js");
+const express = require("express");
+const cors = require('cors')
+const cookieParser = require("cookie-parser");
+const errorHandler = require("./middlewares/errorHandler.js");
+
+const userRouter = require("./routes/user.js");
+const appointmentRouter = require("./routes/appointment.js")
+const petRouter = require('./routes/pet.js');
+
 
 const app = express();
+const port = 3000;
+const corsOptions = {
+  origin: 'http://localhost:5173',  
+  credentials: true,
+};
 
+app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cors());
+app.use(cookieParser());
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+app.use("/auth", userRouter);
+app.use("/appointment", appointmentRouter)
+app.use('/pet', petRouter);
 
-
-
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
