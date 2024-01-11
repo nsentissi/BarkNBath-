@@ -1,28 +1,50 @@
 import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
-import React from 'react';
+import React from "react";
 
 const Example = () => {
   return (
     <div className="w-3/4 mx-auto min-h-screen flex justify-center items-center py-20">
       <div className="bg-transparent">
         <div className="flex  items-center justify-center ">
-        <span className="inline-block animate-pulse bg-success rounded-full w-1/4 p-4 text-white text-center font-chewy text-xl">SCROLL DOWN
-        <svg className="w-6 h-6 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
-        </svg>
-    </span>
+          <span className="inline-block animate-pulse bg-success rounded-full w-1/4 p-4 text-white text-center font-chewy text-xl">
+            SCROLL DOWN
+            <svg
+              className="w-6 h-6 mx-auto"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
+              />
+            </svg>
+          </span>
         </div>
         <HorizontalScrollCarousel />
-  
+
         <div className="flex h-48 items-center justify-center">
-        <span className="inline-block animate-pulse bg-success rounded-full w-1/4 p-4 text-white text-center font-chewy text-xl">
-  <svg className="w-6 h-6 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11l7-7 7 7M5 19l7-7 7 7" /> 
-  </svg>
-  SCROLL UP</span>
-
-
+          <span className="inline-block animate-pulse bg-success rounded-full w-1/4 p-4 text-white text-center font-chewy text-xl">
+            <svg
+              className="w-6 h-6 mx-auto"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 11l7-7 7 7M5 19l7-7 7 7"
+              />
+            </svg>
+            SCROLL UP
+          </span>
         </div>
       </div>
     </div>
@@ -41,13 +63,11 @@ const HorizontalScrollCarousel = () => {
     <section
       ref={targetRef}
       className="relative h-[400vh] bg-transparent  w-full max-w-screen-xl mx-auto "
-      
     >
       <div className="sticky top-0  flex h-screen items-center overflow-hidden">
         <motion.div
           style={{ x }}
           className="flex MT-0 gap-4 sm:gap-2 md:gap-4 lg:gap-8 xl:gap-12"
-          
         >
           {cards.map((card) => {
             return <Card card={card} key={card.id} />;
@@ -72,7 +92,6 @@ const Card = ({ card }) => {
         }}
         className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
       ></div>
-    
     </div>
   );
 };
