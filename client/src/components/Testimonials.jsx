@@ -83,7 +83,7 @@ const Testimonials = () => {
     <motion.section
     ref={ref}
     className="relative min-h-screen flex flex-col justify-center mx-auto my-10 bg-success overflow-hidden"
-    style={{ minHeight: "60vh" }}
+    style={{ minHeight: "80vh" }}
     initial="hidden"
     animate={inView ? "visible" : "hidden"}
     variants={variants}

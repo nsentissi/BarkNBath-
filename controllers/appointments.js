@@ -49,8 +49,20 @@ const getPetAppointmentById = async (req, res) => {
   }
 };
 
+const getAllAppointments = async ( req, res) => {
+  try {
+    const appointments = await Appointment.find()
+      .populate('owner', 'firstName lastName') 
+      .populate('pet', 'name'); 
+    res.json(appointments);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+}
+
 module.exports = {
   createAppointment,
   getAppointments,
-  getPetAppointmentById
+  getPetAppointmentById,
+  getAllAppointments
 };

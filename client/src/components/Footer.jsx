@@ -1,3 +1,6 @@
+import React from 'react';
+
+
 const Footer = () => {
   return (
 <div  style={{
@@ -8,7 +11,9 @@ const Footer = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-      }} className="h-screen bg-cover bg-center "> </div>
+      }} className="h-screen bg-cover bg-center "> 
+      </div>
+      
   );
 };
 export default Footer;

@@ -12,12 +12,10 @@ import Faqsection from './Faqsection';
 /* import GoogleMap from './GoogleMap'; */
 import Testimonials from './Testimonials';
 import ServicesTable from './ServicesTable';
-import Carousel from './Carousel';
 import Carouseltwo from './Carouseltwo'
-import AddPetForm from './AddPetForm';
 import Map from './Map'
-import Dashboard from './Dashboard';
-import Navbar from './NavBar';
+import Dashboard from './Dashboard/Dashboard';
+import NavBar from './NavBar';
 
 
 
@@ -40,7 +38,7 @@ const Homepage = () => {
       
       {!currentUser && (
         <>
-          <Navbar/>
+          <NavBar/>
           <Landingpage />
           <Journey />
           <AboutUs />
