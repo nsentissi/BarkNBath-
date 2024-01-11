@@ -75,19 +75,19 @@ const Admin = () => {
               <table class="min-w-full divide-y-2 divide-gray-200 bg-transparent text-sm">
                 <thead class="ltr:text-left rtl:text-right">
                   <tr>
-                    <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                       Owner Name
                     </th>
-                    <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                       Pet Name
                     </th>
-                    <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                       Date
                     </th>
-                    <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                       Time
                     </th>
-                    <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                       Service
                     </th>
                   </tr>
@@ -96,20 +96,20 @@ const Admin = () => {
                 <tbody class="divide-y divide-gray-200">
                   {appointments.map((appointment, index) => (
                     <tr key={index}>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                      <td class="whitespace-nowrap px-4 py-4 font-medium text-white">
                         {appointment.owner?.firstName}{" "}
                         {appointment.owner?.lastName}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-white">
+                      <td class="whitespace-nowrap px-4 py-4 text-white">
                         {appointment.pet?.name}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-white">
+                      <td class="whitespace-nowrap px-4 py-4 text-white">
                         {new Date(appointment.date).toDateString()}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-white">
+                      <td class="whitespace-nowrap px-4 py-4 text-white">
                         {appointment.time}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-white">
+                      <td class="whitespace-nowrap px-4 py-4 text-white">
                         {appointment.service}
                       </td>
                     </tr>
@@ -127,16 +127,16 @@ const Admin = () => {
                 <table class="min-w-full divide-y-2 divide-gray-200 bg-transparent text-sm">
                   <thead class="ltr:text-left rtl:text-right">
                     <tr>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                          First Name 
                       </th>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                          Last name
                       </th>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                         Email
                       </th>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                         Phone Number
                       </th>
                     </tr>
@@ -145,17 +145,17 @@ const Admin = () => {
                   <tbody class="divide-y divide-gray-200">
                     {users.map((user, index) => (
                       <tr key={index}>
-                        <td class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                        <td class="whitespace-nowrap px-4 py-4 font-medium text-white">
                           {user?.firstName}
                         </td>
-                        <td class="whitespace-nowrap px-4 py-2 text-white">
+                        <td class="whitespace-nowrap px-4 py-4 text-white">
                         {user?.lastName}
                           
                         </td>
-                        <td class="whitespace-nowrap px-4 py-2 text-white">
+                        <td class="whitespace-nowrap px-4 py-4 text-white">
                         {user?.email}
                         </td>
-                        <td class="whitespace-nowrap px-4 py-2 text-white">
+                        <td class="whitespace-nowrap px-4 py-4 text-white">
                           {user?.phoneNumber}
                         </td>
                       </tr>
@@ -173,16 +173,16 @@ const Admin = () => {
                 <table class="min-w-full divide-y-2 divide-gray-200 bg-transparent text-sm">
                   <thead class="ltr:text-left rtl:text-right">
                     <tr>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                          Name
                       </th>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                          Breed
                       </th>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                         Age
                       </th>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
                         Weight
                       </th>
                     </tr>
@@ -191,17 +191,17 @@ const Admin = () => {
                   <tbody class="divide-y divide-gray-200">
                     {pets.map((pet, index) => (
                       <tr key={index}>
-                        <td class="whitespace-nowrap px-4 py-2 font-medium text-white">
+                        <td class="whitespace-nowrap px-4 py-4 font-medium text-white">
                           {pet?.name}
                         </td>
-                        <td class="whitespace-nowrap px-4 py-2 text-white">
+                        <td class="whitespace-nowrap px-4 py-4 text-white">
                         {pet?.breed}
                           
                         </td>
-                        <td class="whitespace-nowrap px-4 py-2 text-white">
+                        <td class="whitespace-nowrap px-4 py-4 text-white">
                         {pet?.age}
                         </td>
-                        <td class="whitespace-nowrap px-4 py-2 text-white">
+                        <td class="whitespace-nowrap px-4 py-4 text-white">
                           {pet?.weight}
                         </td>
                       </tr>
