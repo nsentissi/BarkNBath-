@@ -11,6 +11,10 @@ const PetList = () => {
   const navigate = useNavigate();
   const [petAppointments, setPetAppointments] = useState({});
 
+  const handleCreatePostClick = (petId) => {
+    navigate(`/create-blog/${petId}`)
+  }
+
   useEffect(() => {
     const fetchAppointments = async () => {
       if (!currentUser || !currentUser.pets) return;
@@ -51,6 +55,8 @@ const PetList = () => {
     });
   };
 
+ 
+
   return (
     
     <div className=" font-sans leading-normal bg- tracking-normal pt-32 pl-4 pr-4" >
@@ -70,22 +76,22 @@ const PetList = () => {
      
         {currentUser.pets?.map((pet, index) => (
           <div className="bg-success rounded-lg profile-card w-96  p-6 mb-4" key={index}>
-            <div class="flex justify-between items-center mb-4">
-                <div class="flex items-center">
-                    <span class="ml-2 text-lg font-semibold text-gray-800">Pet Profile</span>
+            <div className="flex justify-between items-center mb-4">
+                <div className="flex items-center">
+                    <span className="ml-2 text-lg font-semibold text-gray-800">Pet Profile</span>
                 </div>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={(e)=>{handleCreatePostClick(pet._id)}}>
                     create post 
                 </button>
             </div>
             {/* OVERVIEW  */}
-            <div class="flex justify-center mb-4">
-                  <div class="border-b-2 border-gray-200 w-full">
-                    <ul class="flex justify-around">
-                      <li class="text-center">
+            <div className="flex justify-center mb-4">
+                  <div className="border-b-2 border-gray-200 w-full">
+                    <ul className="flex justify-around">
+                      <li className="text-center">
                         <a
                           href="#"
-                          class="text-blue-500 pb-2 border-b-2 border-blue-500 font-semibold"
+                          className="text-blue-500 pb-2 border-b-2 border-blue-500 font-semibold"
                         >
                           Overview
                         </a>
