@@ -17,9 +17,12 @@ const Login = () => {
     try {
       await login(data.email, data.password);
       toast("Login successful!");
-      setTimeout(() => {
-        navigate('/');
-      }, 2000);
+
+      if (data.email === "client@gmail.com") {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       console.error("Login failed:", error);
       toast.error(error.response.data);

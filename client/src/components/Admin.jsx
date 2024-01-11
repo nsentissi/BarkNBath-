@@ -3,13 +3,25 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "../hooks/AuthContext";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 
 const Admin = () => {
   const [selected, setSelected] = useState(0);
   const [appointments, setAppointments] = useState([]);
   const [users, setUsers] = useState([]);
   const [pets, setPets] = useState([]);
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (error) {
+      console.error("Failed to log out", error);
+    }
+  };
 
   useEffect(() => {
     const fetchAllAppointments = async () => {
@@ -25,6 +37,7 @@ const Admin = () => {
       }
     };
 
+  
     const fetchAllUsers = async () => {
       try {
         const response = await axios.get("http://localhost:3000/auth/all", {
@@ -207,6 +220,12 @@ const Admin = () => {
       <div className="w-full">
         <div className="h-[35px] m-4 rounded border-2 border-dashed border-slate-600 bg-slate-800">
           Admin{" "}
+          <button
+            onClick={handleLogout}
+            className=""
+          >
+            Logout
+          </button>
         </div>
         <div className="h-screen m-4 rounded border-2 border-dashed border-slate-600 bg-slate-800">
           {getContent()}

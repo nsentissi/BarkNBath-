@@ -8,7 +8,7 @@ import { AuthProvider } from "./hooks/AuthContext";
 import AppointmentForm from "./components/Dashboard/AppointmentForm";
 import AddPetForm from "./components/Dashboard/AddPetForm";
 import { PetProvider } from './hooks/PetContext';
-
+import ProtectedRoute from "./components/ProtectedRoute";
 import Admin from "./components/Admin";
 
 import React from 'react';
@@ -28,7 +28,14 @@ function App() {
       {/* <Route path="/profile" element={<Profile/>}/> */}
       <Route path="/appointment" element={<AppointmentForm/>}/>
       <Route path="/pet/create"  element={<AddPetForm/>} />
-      <Route path="/admin" element={<Admin/>}/>
+      <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <Admin />
+                </ProtectedRoute>
+              }
+            />
       </Routes>
      </PetProvider>
       </AuthProvider>
