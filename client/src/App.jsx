@@ -5,8 +5,8 @@ import {Routes, Route} from 'react-router-dom'
 import Homepage from "./components/Homepage"
 import Profile from "./components/Profile";
 import { AuthProvider } from "./hooks/AuthContext";
-import AppointmentForm from "./components/AppointmentForm";
-import AddPetForm from "./components/AddPetForm";
+import AppointmentForm from "./components/Dashboard/AppointmentForm";
+import AddPetForm from "./components/Dashboard/AddPetForm";
 import { PetProvider } from './hooks/PetContext';
 
 import Admin from "./components/Admin";

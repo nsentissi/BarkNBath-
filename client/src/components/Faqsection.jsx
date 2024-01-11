@@ -4,7 +4,42 @@ import React from 'react';
 const Faqsection = () => {
   const faqs = [
     {
-      question: "Can you import my data?",
+      question: "What services does BarkNBath offer?",
+      answer:
+        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+    },
+    {
+      question: "How do I book a spa appointment through the app?",
+      answer:
+        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+    },
+    {
+      question: "What are your operating hours?",
+      answer:
+        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+    },
+    {
+      question: "How long does a typical spa session last?",
+      answer:
+        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+    },
+    {
+      question: "How can I update or change my appointment details?",
+      answer:
+        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+    },
+    {
+      question: "Can I request the same therapist for future appointments?",
+      answer:
+        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+    },
+    {
+      question: "Are your services allergy-friendly and customizable?",
+      answer:
+        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+    },
+    {
+      question: "What is the policy for handling late arrivals or no-shows?",
       answer:
         "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
     },
