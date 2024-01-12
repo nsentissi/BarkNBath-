@@ -31,7 +31,7 @@ const addBlogPost = async (req, res, next) => {
 
 const getBlogsByPetId = async (req, res) => {
   try {
-    const petId = req.params.petId;
+    const {petId} = req.params;
     const blogs = await Blog.find({ pet: petId })
       .populate("owner", "firstName lastName") 
       .populate("pet", "name"); 

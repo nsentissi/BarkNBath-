@@ -2,15 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-
 const CreateBlog = () => {
   const [formData, setFormData] = useState({
     title: "",
     paragraph: "",
   });
   const [selectedFile, setSelectedFile] = useState(null);
-  const [blogs, setBlogs] = useState([])
-  const {id} = useParams();
+  const [blogs, setBlogs] = useState([]);
+  const { id } = useParams();
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,6 +39,7 @@ const CreateBlog = () => {
         }
       );
       console.log("Response:", response);
+      setBlogs([ response.data, ...blogs])
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -50,16 +50,19 @@ const CreateBlog = () => {
 
   const fetchBlogs = async (e) => {
     try {
-       const response = await axios.get(`http://localhost:3000/blog/${id}}`, {withCredentials:true})
-       setBlogs(response)
+      const response = await axios.get(`http://localhost:3000/blog/get/${id}`, {
+        withCredentials: true,
+      });
+      console.log(response.data);
+      setBlogs(response.data);
     } catch (error) {
-        console.log(error)
+      console.log(error.response);
     }
-  }
+  };
 
-  useEffect(()=> {
-    fetchBlogs()
-  }, [])
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
 
   return (
     <div>
@@ -91,14 +94,17 @@ const CreateBlog = () => {
         <button type="submit">Submit Blog</button>
       </form>
       <div>
-       {blogs.map((blog)=>{
-        <ul key={blog._id}>
-            <li>{blog.title}</li>
-            <li>{blog.owner.firstName}</li>
-            <li>{blog.pet.name}</li>
-            <img src={blog.photo} alt={blog.title} />
-        </ul>
-       })}
+        {blogs.map((blog) => {
+          return (
+            <ul key={blog._id}>
+              <li>{blog.title}</li>
+              <li>{blog.paragraph}</li>
+              <li>{blog.owner.firstName}</li>
+              <li>{blog.pet.name}</li>
+              <img src={blog.photo} alt={blog.title} />
+            </ul>
+          );
+        })}
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ blogRouter.get("/getAll", verifyToken, getAllBlogPosts);
 blogRouter.delete("/delete/:petId", verifyToken, deleteBlogPost);
 blogRouter.post("/:blogId/comment", verifyToken, addComment);
 blogRouter.get("/:blogId/comments", verifyToken, getComments);
-blogRouter.get("/:petId", verifyToken, getBlogsByPetId )
+blogRouter.get("/get/:petId", verifyToken, getBlogsByPetId )
 
 
 module.exports = blogRouter;
