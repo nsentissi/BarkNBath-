@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Admin from "./components/Admin";
 
 import React from 'react';
+import CreateBlog from "./components/Dashboard/CreateBlog";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
       {/* <Route path="/profile" element={<Profile/>}/> */}
       <Route path="/appointment" element={<AppointmentForm/>}/>
       <Route path="/pet/create"  element={<AddPetForm/>} />
+      <Route path="/create-blog/:id" element={<CreateBlog/>} />
       <Route
               path="/admin"
               element={

@@ -9,6 +9,10 @@ const PetList = () => {
   const navigate = useNavigate();
   const [petAppointments, setPetAppointments] = useState({});
 
+  const handleCreatePostClick = (petId) => {
+    navigate(`/create-blog/${petId}`)
+  }
+
   useEffect(() => {
     const fetchAppointments = async () => {
       if (!currentUser || !currentUser.pets) return;
@@ -49,7 +53,10 @@ const PetList = () => {
     });
   };
 
+ 
+
   return (
+
     <div class="flex flex-wrap gap-x-4 gap-y-8">
         <div className="w-full  flex flex-wrap justify-center gap-4 pt-10">
           {currentUser.pets?.map((pet, index) => (
@@ -63,9 +70,10 @@ const PetList = () => {
                     Pet Profile
                   </span>
                 </div>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button onClick={(e)=>{handleCreatePostClick(pet._id)}} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   create post
                 </button>
+
               </div>
               {/* OVERVIEW  */}
               <div class="flex justify-center mb-4">
