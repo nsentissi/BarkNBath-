@@ -65,7 +65,8 @@ const CreateBlog = () => {
   }, []);
 
   return (
-    <div>
+	
+<div>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title</label>
@@ -107,6 +108,8 @@ const CreateBlog = () => {
         })}
       </div>
     </div>
+
+
   );
 };
 

@@ -4,9 +4,8 @@ import PetList from "./PetList";
 import AddPetForm from "./AddPetForm";
 import AppointmentForm from "./AppointmentForm";
 
-
 const Dashboardtwo = ({ onProfileClick }) => {
-  const { logout } = useAuth();
+  const { currentUser ,logout } = useAuth();
 
   const [activeContent, setActiveContent] = useState("overview");
 
@@ -48,11 +47,13 @@ const Dashboardtwo = ({ onProfileClick }) => {
   };
 
   return (
-    <div class="bg-slate-200 flex h-screen">
+    <div class="bg-success flex h-screen">
+      {/* <!-- Sidebar --> */}
       <aside class="fixed z-50 md:relative">
+        <input type="checkbox" class="peer hidden" id="sidebar-open" />
         <label
           class="peer-checked:rounded-full peer-checked:p-2 peer-checked:right-6 peer-checked:bg-gray-600 peer-checked:text-white absolute top-8 z-20 mx-4 cursor-pointer md:hidden"
-          htmlf="sidebar-open"
+          for="sidebar-open"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -71,14 +72,14 @@ const Dashboardtwo = ({ onProfileClick }) => {
         </label>
         <nav
           aria-label="Sidebar Navigation"
-          class="peer-checked:w-64 left-0 z-10 flex h-screen w-0 flex-col overflow-hidden bg-primary text-white transition-all md:h-screen md:w-64 lg:w-72"
+          class="peer-checked:w-64 left-0 z-10 flex h-screen w-0 flex-col  bg-primary text-white transition-all md:h-screen md:w-64 lg:w-72"
         >
-          <div class="bg-success mt-5 py-1 px-16 md:mt-10">
+          <div class="bg-success mt-5 py-1 px-16 md:mt-20">
             <span class="">
               <span class="">
                 <img
                   src=".\src\assets\barkNBath.png"
-                  className="h-28 w-38"
+                  className="h-28 w-38 "
                   alt="barknbath Logo"
                 />
               </span>
@@ -87,8 +88,6 @@ const Dashboardtwo = ({ onProfileClick }) => {
           <ul class="mt-8 space-y-3 md:mt-20">
             <li class="relative">
               <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
-                
-               
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -105,16 +104,11 @@ const Dashboardtwo = ({ onProfileClick }) => {
                     />
                   </svg>
                 </span>
-                  <div onClick={() => setActiveContent("overview")}>
-                    Overview
-                  </div>
-                </button>
-              
+                <div onClick={() => setActiveContent("overview")}>Overview</div>
+              </button>
             </li>
             <li class="relative">
               <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 font-semibold focus:outline-none">
-                
-               
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -131,10 +125,9 @@ const Dashboardtwo = ({ onProfileClick }) => {
                     />
                   </svg>{" "}
                 </span>
-                  <div onClick={() => setActiveContent("addpet")}>
-                    Add your puffy friend
-                  </div>
-                
+                <div onClick={() => setActiveContent("addpet")}>
+                  Add your puffy friend
+                </div>
               </button>
               <svg
                 class="text-slate-200 absolute -right-1 -top-1/2 z-10 hidden h-32 w-8 md:block"
@@ -151,8 +144,6 @@ const Dashboardtwo = ({ onProfileClick }) => {
             </li>
             <li class="relative">
               <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
-              
-             
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -169,13 +160,11 @@ const Dashboardtwo = ({ onProfileClick }) => {
                     />
                   </svg>
                 </span>
-                  <div onClick={() => setActiveContent("book")}>
-                    Book an appointment
-                  </div>
-          
+                <div onClick={() => setActiveContent("book")}>
+                  Book an appointment
+                </div>
               </button>
             </li>
-
             <li class="relative">
               <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
                 <span>
@@ -207,14 +196,18 @@ const Dashboardtwo = ({ onProfileClick }) => {
           </ul>
 
           <div class="my-6 mt-auto ml-10 flex cursor-pointer">
-            <p class="font-thin italic">Dashboard</p>
+            <div class="ml-3">
+              <p class="font-medium">Dashboard</p>
+            </div>
           </div>
         </nav>
       </aside>
-
       <div class="flex h-full w-full flex-col">
-        <header class="relative flex flex-col items-center bg-white px-4 py-4 shadow sm:flex-row md:h-20">
-          <div class="flex w-full flex-col justify-between overflow-hidden transition-all sm:max-h-full sm:flex-row sm:items-center">
+        <header class="relative flex flex-col items-center bg-primary px-4 py-4 shadow sm:flex-row md:h-20">
+          <div class="flex w-full flex-col justify-between  transition-all sm:max-h-full sm:flex-row sm:items-center">
+          <h1 className="text-center font-chewy text-3xl font-bold">
+        Welcome {currentUser.firstName} {currentUser.lastName}
+      </h1>
             <div class="relative ml-10 flex items-center justify-between rounded-md sm:ml-auto"></div>
 
             <ul class="mx-auto mt-4 flex space-x-6 sm:mx-5 sm:mt-0">
@@ -251,14 +244,9 @@ const Dashboardtwo = ({ onProfileClick }) => {
           </div>
         </header>
 
-        <div class="h-full overflow-hidden pl-10">
-          <main
-            id="dashboard-main"
-            class="h-[calc(100vh-10rem)] overflow-auto px-4 py-10"
-          >
-            
-              {renderContent()}
-            
+        <div class="h-full  pl-10">
+          <main id="dashboard-main" class="h-[calc(100vh-10rem)] px-4 py-0">
+            {renderContent()}
           </main>
         </div>
       </div>
