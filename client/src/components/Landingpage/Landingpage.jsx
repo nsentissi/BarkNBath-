@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, } from "framer-motion";
+import { motion } from "framer-motion";
 import styles from "./bubble.module.css";
 
 const Landingpage = () => {
@@ -35,7 +35,7 @@ const Landingpage = () => {
 
   return (
     <div className={styles.area}>
-         <ul className={styles.circles}>
+      <ul className={styles.circles}>
         <li></li>
         <li></li>
         <li></li>
@@ -59,20 +59,89 @@ const Landingpage = () => {
           animate="visible"
         >
           <div className=" flex justify-between items-center md:flex lg-flex mb-10 p-10">
-          {/* <div classNameName="text-2xl md:text-4xl lg:text-5xl  tracking-widest text-white font-chewy">
-            <BubbleText />
-            <BubbleText2 />
-          </div> */}
-
-          <div className="">
-            <h3 className="text-3xl font-chewy line-through mb-2">Sadness?</h3>
-            <h3 className="text-3xl font-chewy line-through mb-2">Boredom?</h3>
-            <h3 className="text-3xl font-chewy line-through mb-4">No motivation?</h3>
-            <h2 className="text-5xl font-bold font-chewy mx-auto"><BubbleText /></h2>
-            <p className="mb-10 font-chewy"><BubbleText2 /></p>
-        </div>
-        
-        </div>
+            <div className="">
+              <div className="flex flex-col md:flex-row items-start justify-center space-y-10 md:space-y-0 md:space-x-10 mx-auto  w-full">
+                <motion.div className="w-full md:w-6/12 px-6 leading-8">
+                <h2 className="text-5xl font-bold font-chewy mx-auto">
+                    <BubbleText />
+                  </h2>
+                  <p className="mb-10 font-chewy">
+                    <BubbleText2 />
+                  </p>
+                  <p className="mt-8 mb-8  text-white text-center font-dosis font-semibold  md:text-left">
+                    <p className="italic">
+                      Pamper Your Purry friend on the Go!{" "}
+                    </p>
+                    <div className="flex flex-row items-center ">
+                      <p className="text-success font-chewy tracking-widest font-bold py-2 px-4 mb-2 sm:mb-0 mr-2">
+                        Sign up
+                      </p>
+                      <svg
+                        className="w-6 h-8 -ml-2  animate-pulse  "
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>{" "}
+                    <div className="flex flex-row items-center">
+                      <p className="text-success font-chewy tracking-widest font-bold py-2 px-4 mb-2 sm:mb-0 mr-2">
+                        Book the Mobile Spa Session
+                      </p>
+                      <svg
+                        className="w-6 h-8 -ml-2  animate-pulse "
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                    <p className="italic">
+                      and Share Your Furry Friend's Blissful Experience with Our
+                      Community. Join Us Now and Treat Your Pet to the Ultimate
+                      Indulgence!
+                    </p>
+                  </p>
+                </motion.div>
+                <div>
+                  
+                  <div className="flex  items-center justify-center ">
+                    <span className="inline-block animate-bounce   p-8 text-success tracking-widest font-chewy text-xl">
+                      Find out more
+                      <svg
+                        className="w-6 h-8 mx-auto"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="4"
+                          d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </motion.div>
         {/* Van  */}
         <motion.img
@@ -96,7 +165,6 @@ const Landingpage = () => {
           style={{ maxWidth: "200px" }}
         />
       </div>
-   
     </div>
   );
 };
