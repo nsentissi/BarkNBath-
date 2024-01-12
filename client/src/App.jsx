@@ -5,9 +5,16 @@ import {Routes, Route} from 'react-router-dom'
 import Homepage from "./components/Homepage"
 import Profile from "./components/Profile";
 import { AuthProvider } from "./hooks/AuthContext";
-import AppointmentForm from "./components/AppointmentForm";
-import AddPetForm from "./components/AddPetForm";
+import AppointmentForm from "./components/Dashboard/AppointmentForm";
+import AddPetForm from "./components/Dashboard/AddPetForm";
 import { PetProvider } from './hooks/PetContext';
+import ProtectedRoute from "./components/ProtectedRoute";
+import Admin from "./components/Admin";
+import ViewBlogs from "./components/Dashboard/ViewBlogs"
+import React from 'react';
+import CreateBlog from "./components/Dashboard/CreateBlog";
+import AllBlogs from "./components/Dashboard/AllBlogs";
+
 
 function App() {
   return (
@@ -23,7 +30,16 @@ function App() {
       {/* <Route path="/profile" element={<Profile/>}/> */}
       <Route path="/appointment" element={<AppointmentForm/>}/>
       <Route path="/pet/create"  element={<AddPetForm/>} />
-
+      <Route path="/create-blog/:id" element={<CreateBlog/>} />
+      <Route path="/blogs" element={<AllBlogs/>}/>
+      <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <Admin />
+                </ProtectedRoute>
+              }
+            />
       </Routes>
      </PetProvider>
       </AuthProvider>

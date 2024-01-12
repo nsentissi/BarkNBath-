@@ -6,18 +6,17 @@ import { useAuth } from '../hooks/AuthContext';
 import AboutUs from './AboutUs';
 import Services from './Services/Services';
 import Landingpage from './Landingpage/Landingpage';
-import Journey from './Journey';
-import Footer from './Footer';
+import Journey from './Jorney/Journey';
+import Footer from './Footer/Footer';
 import Faqsection from './Faqsection';
 /* import GoogleMap from './GoogleMap'; */
 import Testimonials from './Testimonials';
 import ServicesTable from './ServicesTable';
-import Carousel from './Carousel';
-import Carouseltwo from './Carouseltwo'
-import AddPetForm from './AddPetForm';
+import Carouseltwo from './Carousel/Carouseltwo'
 import Map from './Map'
-import Dashboard from './Dashboard';
-import Navbar from './NavBar';
+import Dashboard from './Dashboard/Dashboard';
+import NavBar from './NavBar';
+import MapComponent from './MapComponent';
 
 
 
@@ -40,12 +39,12 @@ const Homepage = () => {
       
       {!currentUser && (
         <>
-          <Navbar/>
+          <NavBar/>
           <Landingpage />
           <Journey />
           <AboutUs />
           <Services />
-        <Map/>
+          <MapComponent/>
          
           <Carouseltwo />
           {/* <Carousel/> */}
