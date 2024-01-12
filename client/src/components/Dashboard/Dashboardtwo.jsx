@@ -1,9 +1,9 @@
 import React, { Suspense, useState } from "react";
 import { useAuth } from "../../hooks/AuthContext";
+import PetList from "./PetList";
+import AddPetForm from "./AddPetForm";
+import AppointmentForm from "./AppointmentForm";
 
-const PetList = React.lazy(() => import("./PetList"));
-const AddPetForm = React.lazy(() => import("./AddPetForm"));
-const AppointmentForm = React.lazy(() => import("./AppointmentForm"));
 
 const Dashboardtwo = ({ onProfileClick }) => {
   const { logout } = useAuth();
@@ -256,9 +256,9 @@ const Dashboardtwo = ({ onProfileClick }) => {
             id="dashboard-main"
             class="h-[calc(100vh-10rem)] overflow-auto px-4 py-10"
           >
-            <Suspense fallback={<div>Loading...</div>}>
+            
               {renderContent()}
-            </Suspense>
+            
           </main>
         </div>
       </div>
