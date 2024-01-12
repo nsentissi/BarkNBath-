@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React from 'react';
+import styles from "./jorney.module.css";
 
 const titleVariants = {
   hidden: { opacity: 0 },
@@ -25,6 +26,19 @@ const variants = {
 };
 
 const Journey = () => (
+  <div className={styles.area}>
+  <ul className={styles.circles}>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
   <div className="">
     <div className="overflow-y-hidden">
       <div className="mx-auto  container f-f-p px-4 xl:px-0 py-24">
@@ -129,7 +143,7 @@ const Journey = () => (
               </div>
             </motion.div>
           </div>
-
+          </div>
           {/* MOBILE VERSION  */}
           <motion.div
             className="md:hidden flex flex-col items-center w-full"
@@ -220,6 +234,7 @@ const Journey = () => (
       </div>
     </div>
   </div>
+ 
 );
 
 export default Journey;
