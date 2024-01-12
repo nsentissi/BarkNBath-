@@ -3,8 +3,7 @@ import { useAuth } from "../../hooks/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 const PetList = () => {
   const { currentUser } = useAuth();
@@ -119,64 +118,62 @@ const PetList = () => {
             <div className="text-center mb-4">
               <h2 className="text-xl font-semibold">{pet.name}</h2>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-            <Tabs>
-    <TabList>
-      <Tab>Past Appointments</Tab>
-      <Tab>Upcoming Appointments</Tab>
-    </TabList>
+            <div className="">
+              <Tabs>
+                <TabList>
+                  <Tab>Past Appointments</Tab>
+                  <Tab>Upcoming Appointments</Tab>
+                </TabList>
 
-    <TabPanel>
-    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
-                <h3 className="text-lg font-semibold">Past Appointments</h3>
-                {filterAppointments(petAppointments[pet._id] || [], false).map(
-                  (appointment, idx) => (
-                    <div className="p-4 flex items-center" key={idx}>
-                      <div className="pr-4 bg-blue-500 p-2 rounded-lg text-center">
-                        <p className="text-4xl font-bold text-white">
-                          {formatDate(appointment.date)}
-                        </p>
-                      </div>
-                      <div className="ml-4">
-                        <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-                          {appointment.time}
+                <TabPanel>
+                  <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+                    {filterAppointments(
+                      petAppointments[pet._id] || [],
+                      false
+                    ).map((appointment, idx) => (
+                      <div className="p-4 flex items-center" key={idx}>
+                        <div className="pr-4 bg-blue-500 p-2 rounded-lg text-center">
+                          <p className="text-4xl font-bold text-white">
+                            {formatDate(appointment.date)}
+                          </p>
                         </div>
-                        <p className="mt-2 text-gray-500">
-                          {appointment.service}
-                        </p>
-                      </div>
-                    </div>
-                  )
-                )}
-              </div>
-    </TabPanel>
-    <TabPanel>
-    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
-                <h3 className="text-lg font-semibold">Upcoming Appointments</h3>
-                {filterAppointments(petAppointments[pet._id] || [], true).map(
-                  (appointment, idx) => (
-                    <div className="p-4 flex items-center" key={idx}>
-                      <div className="pr-4 bg-blue-500 p-2 rounded-lg text-center">
-                        <p className="text-4xl font-bold text-white">
-                          {formatDate(appointment.date)}
-                        </p>
-                      </div>
-                      <div className="ml-4">
-                        <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-                          {appointment.time}
+                        <div className="ml-4">
+                          <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                            {appointment.time}
+                          </div>
+                          <p className="mt-2 text-gray-500">
+                            {appointment.service}
+                          </p>
                         </div>
-                        <p className="mt-2 text-gray-500">
-                          {appointment.service}
-                        </p>
                       </div>
-                    </div>
-                  )
-                )}
-              </div>
-    </TabPanel>
-  </Tabs>
-             
-        
+                    ))}
+                  </div>
+                </TabPanel>
+                <TabPanel>
+                  <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+                    {filterAppointments(
+                      petAppointments[pet._id] || [],
+                      true
+                    ).map((appointment, idx) => (
+                      <div className="p-4 flex items-center" key={idx}>
+                        <div className="pr-4 bg-blue-500 p-2 rounded-lg text-center">
+                          <p className="text-4xl font-bold text-white">
+                            {formatDate(appointment.date)}
+                          </p>
+                        </div>
+                        <div className="ml-4">
+                          <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                            {appointment.time}
+                          </div>
+                          <p className="mt-2 text-gray-500">
+                            {appointment.service}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </TabPanel>
+              </Tabs>
             </div>
           </div>
         ))}
