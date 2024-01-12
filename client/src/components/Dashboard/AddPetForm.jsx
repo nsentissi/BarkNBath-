@@ -38,7 +38,7 @@ const AddPetForm = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/blog/create', formData, {
+      const response = await axios.post('http://localhost:3000/pet/create', formData, {
         withCredentials: true,
         headers: { 'Content-Type': 'multipart/form-data' },
       });

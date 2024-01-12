@@ -10,9 +10,10 @@ import AddPetForm from "./components/Dashboard/AddPetForm";
 import { PetProvider } from './hooks/PetContext';
 import ProtectedRoute from "./components/ProtectedRoute";
 import Admin from "./components/Admin";
-
+import ViewBlogs from "./components/Dashboard/ViewBlogs"
 import React from 'react';
 import CreateBlog from "./components/Dashboard/CreateBlog";
+import AllBlogs from "./components/Dashboard/AllBlogs";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
       <Route path="/appointment" element={<AppointmentForm/>}/>
       <Route path="/pet/create"  element={<AddPetForm/>} />
       <Route path="/create-blog/:id" element={<CreateBlog/>} />
+      <Route path="/blogs" element={<AllBlogs/>}/>
       <Route
               path="/admin"
               element={
