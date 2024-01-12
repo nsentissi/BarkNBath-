@@ -16,6 +16,7 @@ import Carouseltwo from './Carousel/Carouseltwo'
 import Map from './Map'
 import Dashboard from './Dashboard/Dashboard';
 import NavBar from './NavBar';
+import MapComponent from './MapComponent';
 
 
 
@@ -43,7 +44,7 @@ const Homepage = () => {
           <Journey />
           <AboutUs />
           <Services />
-        <Map/>
+          <MapComponent/>
          
           <Carouseltwo />
           {/* <Carousel/> */}
