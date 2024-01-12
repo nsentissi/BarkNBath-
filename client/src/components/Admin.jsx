@@ -96,21 +96,26 @@ const Admin = () => {
                 <tbody class="divide-y divide-gray-200">
                   {appointments.map((appointment, index) => (
                     <tr key={index}>
-                      <td class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                      <td class="whitespace-nowrap px-4 py-4 font-medium text-center text-white">
                         {appointment.owner?.firstName}{" "}
                         {appointment.owner?.lastName}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-4 text-white">
+                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
                         {appointment.pet?.name}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-4 text-white">
+                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
                         {new Date(appointment.date).toDateString()}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-4 text-white">
+                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
                         {appointment.time}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-4 text-white">
+                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
                         {appointment.service}
+                      </td>
+                      <td className="justify-center">
+                        <button>
+                        <img src="../src/assets/delete.png" alt="delete-icon" className="w-4" />
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -145,19 +150,24 @@ const Admin = () => {
                   <tbody class="divide-y divide-gray-200">
                     {users.map((user, index) => (
                       <tr key={index}>
-                        <td class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                        <td class="whitespace-nowrap px-4 py-4 font-medium text-center text-white">
                           {user?.firstName}
                         </td>
-                        <td class="whitespace-nowrap px-4 py-4 text-white">
+                        <td class="whitespace-nowrap px-4 py-4 text-center text-white">
                         {user?.lastName}
                           
                         </td>
-                        <td class="whitespace-nowrap px-4 py-4 text-white">
+                        <td class="whitespace-nowrap px-4 py-4 text-center text-white">
                         {user?.email}
                         </td>
-                        <td class="whitespace-nowrap px-4 py-4 text-white">
+                        <td class="whitespace-nowrap px-4 py-4 text-center text-white">
                           {user?.phoneNumber}
                         </td>
+                        <td className="justify-center">
+                        <button>
+                        <img src="../src/assets/delete.png" alt="delete-icon" className="w-4" />
+                        </button>
+                      </td>
                       </tr>
                     ))}
                   </tbody>
@@ -191,17 +201,17 @@ const Admin = () => {
                   <tbody class="divide-y divide-gray-200">
                     {pets.map((pet, index) => (
                       <tr key={index}>
-                        <td class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                        <td class="whitespace-nowrap px-4 py-4 font-medium text-center text-white">
                           {pet?.name}
                         </td>
-                        <td class="whitespace-nowrap px-4 py-4 text-white">
+                        <td class="whitespace-nowrap px-4 py-4 text-center text-white">
                         {pet?.breed}
                           
                         </td>
-                        <td class="whitespace-nowrap px-4 py-4 text-white">
+                        <td class="whitespace-nowrap px-4 py-4 text-center text-white">
                         {pet?.age}
                         </td>
-                        <td class="whitespace-nowrap px-4 py-4 text-white">
+                        <td class="whitespace-nowrap px-4 py-4 text-center text-white">
                           {pet?.weight}
                         </td>
                       </tr>

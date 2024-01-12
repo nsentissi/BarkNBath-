@@ -31,10 +31,10 @@ const addBlogPost = async (req, res, next) => {
 
 const getBlogsByPetId = async (req, res) => {
   try {
-    const {petId} = req.params;
+    const { petId } = req.params;
     const blogs = await Blog.find({ pet: petId })
-      .populate("owner", "firstName lastName") 
-      .populate("pet", "name"); 
+      .populate("owner", "firstName lastName")
+      .populate("pet", "name photo");
 
     res.json(blogs);
   } catch (error) {
@@ -44,13 +44,22 @@ const getBlogsByPetId = async (req, res) => {
 
 const getAllBlogPosts = async (req, res, next) => {
   try {
-    const blogPosts = await Blog.find().populate(
-      "owner pet",
-      "firstName lastName name"
-    );
-    res.status(200).json(blogPosts);
+      const currentUserId = req.user.id;
+
+      const blogPosts = await Blog.find({ owner: { $ne: currentUserId } })
+          .populate("owner", "firstName lastName")
+          .populate("pet", "name")
+          .populate({
+              path: "comments",
+              populate: {
+                  path: "author",
+                  select: "firstName lastName"
+              }
+          });
+
+      res.status(200).json(blogPosts);
   } catch (error) {
-    next(error);
+      next(error);
   }
 };
 

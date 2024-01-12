@@ -4,10 +4,21 @@ import PetList from "./PetList";
 import AddPetForm from "./AddPetForm";
 import AppointmentForm from "./AppointmentForm";
 
+import { useNavigate } from "react-router-dom";
+
+
+  
+
+
 const Dashboardtwo = ({ onProfileClick }) => {
   const { currentUser ,logout } = useAuth();
+const navigate = useNavigate();
 
   const [activeContent, setActiveContent] = useState("overview");
+
+  const handleViewBlogsClick = () => {
+    navigate(`/blogs`);
+  };
 
   const renderOverview = () => {
     return (
@@ -240,12 +251,17 @@ const Dashboardtwo = ({ onProfileClick }) => {
                   </a>
                 </div>
               </button>
+              <div>
+                <button onClick={handleViewBlogsClick}>View All blogs</button>
+              </div>
             </ul>
           </div>
         </header>
 
+
         <div class="h-full  pl-10">
           <main id="dashboard-main" class="h-[calc(100vh-10rem)] px-4 py-0">
+
             {renderContent()}
           </main>
         </div>

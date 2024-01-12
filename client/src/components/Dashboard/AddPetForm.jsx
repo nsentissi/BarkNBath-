@@ -37,6 +37,7 @@ const AddPetForm = () => {
     }
 
     try {
+
       const response = await axios.post(
         "http://localhost:3000/pet/create",
         formData,
@@ -45,6 +46,7 @@ const AddPetForm = () => {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
+
 
       if (response && response.data) {
         setPetName(petData.name);
