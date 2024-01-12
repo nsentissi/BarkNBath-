@@ -49,12 +49,8 @@ const AppointmentForm = () => {
   };
 
   return (
-    <div class="bg-gray-100 min-h-screen flex items-center justify-center px-4">
-      {/* Background Image */}
-      <div class="absolute inset-0 z-0">
-        <img src="./src/assets/homepagelog.png" alt=""
-            class="w-full h-full object-cover filter blur-lg brightness-50"/>
-      </div>
+    <div class=" min-h-screen flex items-center justify-center px-4">
+     
     <div className="bg-secondary z-20 p-6 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-md w-full">
 
       <form
