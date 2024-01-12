@@ -130,9 +130,9 @@ const Landingpage = () => {
                         stroke="currentColor"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="4"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="4"
                           d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
                         />
                       </svg>
@@ -168,17 +168,7 @@ const Landingpage = () => {
     </div>
   );
 };
-const BubbleText3 = () => {
-  return (
-    <h2 className="text-3xl md:text-4xl lg:text-4xl xl:text-3xl font-thin text-white text-center pt-12">
-      {"Indulge Your Pet in Luxury".split("").map((child, idx) => (
-        <span className={styles.hoverText} key={idx}>
-          {child}
-        </span>
-      ))}
-    </h2>
-  );
-};
+
 const BubbleText = () => {
   return (
     <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-thin text-white text-center">

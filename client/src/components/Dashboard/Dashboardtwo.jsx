@@ -1,18 +1,14 @@
-import React, { Suspense,useState} from "react";
+import React, { Suspense, useState } from "react";
 import { useAuth } from "../../hooks/AuthContext";
 
-const PetList = React.lazy(() => import('./PetList'));
-const AddPetForm = React.lazy(() => import('./AddPetForm'));
-const AppointmentForm = React.lazy(() => import('./AppointmentForm'));
+const PetList = React.lazy(() => import("./PetList"));
+const AddPetForm = React.lazy(() => import("./AddPetForm"));
+const AppointmentForm = React.lazy(() => import("./AppointmentForm"));
 
 const Dashboardtwo = ({ onProfileClick }) => {
   const { logout } = useAuth();
 
   const [activeContent, setActiveContent] = useState("overview");
-
-
-
-
 
   const renderOverview = () => {
     return (
@@ -56,7 +52,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
       <aside class="fixed z-50 md:relative">
         <label
           class="peer-checked:rounded-full peer-checked:p-2 peer-checked:right-6 peer-checked:bg-gray-600 peer-checked:text-white absolute top-8 z-20 mx-4 cursor-pointer md:hidden"
-          for="sidebar-open"
+          htmlf="sidebar-open"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -91,6 +87,8 @@ const Dashboardtwo = ({ onProfileClick }) => {
           <ul class="mt-8 space-y-3 md:mt-20">
             <li class="relative">
               <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+                
+               
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -107,13 +105,16 @@ const Dashboardtwo = ({ onProfileClick }) => {
                     />
                   </svg>
                 </span>
-                <span onClick={() => setActiveContent("overview")}>
-                  Overview
-                </span>
-              </button>
+                  <div onClick={() => setActiveContent("overview")}>
+                    Overview
+                  </div>
+                </button>
+              
             </li>
             <li class="relative">
               <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 font-semibold focus:outline-none">
+                
+               
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -130,9 +131,10 @@ const Dashboardtwo = ({ onProfileClick }) => {
                     />
                   </svg>{" "}
                 </span>
-                <span onClick={() => setActiveContent("addpet")}>
-                  Add your puffy friend
-                </span>
+                  <div onClick={() => setActiveContent("addpet")}>
+                    Add your puffy friend
+                  </div>
+                
               </button>
               <svg
                 class="text-slate-200 absolute -right-1 -top-1/2 z-10 hidden h-32 w-8 md:block"
@@ -149,6 +151,8 @@ const Dashboardtwo = ({ onProfileClick }) => {
             </li>
             <li class="relative">
               <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+              
+             
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -165,9 +169,10 @@ const Dashboardtwo = ({ onProfileClick }) => {
                     />
                   </svg>
                 </span>
-                <span onClick={() => setActiveContent("book")}>
-                  Book an appointment
-                </span>
+                  <div onClick={() => setActiveContent("book")}>
+                    Book an appointment
+                  </div>
+          
               </button>
             </li>
 
@@ -195,7 +200,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
                   </svg>
                 </span>
                 <span class="">
-                  <span onClick={onProfileClick}>Your account</span>
+                  <div onClick={onProfileClick}>Your account</div>
                 </span>
               </button>
             </li>
@@ -213,63 +218,35 @@ const Dashboardtwo = ({ onProfileClick }) => {
             <div class="relative ml-10 flex items-center justify-between rounded-md sm:ml-auto"></div>
 
             <ul class="mx-auto mt-4 flex space-x-6 sm:mx-5 sm:mt-0">
-              <button
-                onClick={logout}
-                className=" "
-              >
-                          <div className="flex justify-center">
-            <a
-              href="#_"
-              className="group relative  inline-flex items-center justify-center overflow-hidden rounded-xl border-2 border-success p-4 px-5 py-2.5 font-medium text-white shadow-md transition duration-300 ease-out"
-            >
-              <span className="absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-info text-white duration-300 group-hover:translate-x-0">
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  ></path>
-                </svg>
-              </span>
-              <span className="absolute flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
-                LOG OUT
-              </span>
-              <span className="invisible relative">LOG </span>
-            </a>
-          </div>
-              </button>
-             
-              <li class="">
-                <button class="flex h-8 w-8 items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    
+              <button onClick={logout} className=" ">
+                <div className="flex justify-center">
+                  <a
+                    href="#_"
+                    className="group relative  inline-flex items-center justify-center overflow-hidden rounded-xl border-2 border-success p-4 px-5 py-2.5 font-medium text-white shadow-md transition duration-300 ease-out"
                   >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                    />
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                </button>
-              </li>
+                    <span className="absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-info text-white duration-300 group-hover:translate-x-0">
+                      <svg
+                        className="h-6 w-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        ></path>
+                      </svg>
+                    </span>
+                    <span className="absolute flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
+                      LOG OUT
+                    </span>
+                    <span className="invisible relative">LOG </span>
+                  </a>
+                </div>
+              </button>
             </ul>
           </div>
         </header>
@@ -280,8 +257,8 @@ const Dashboardtwo = ({ onProfileClick }) => {
             class="h-[calc(100vh-10rem)] overflow-auto px-4 py-10"
           >
             <Suspense fallback={<div>Loading...</div>}>
-      {renderContent()}
-    </Suspense>
+              {renderContent()}
+            </Suspense>
           </main>
         </div>
       </div>

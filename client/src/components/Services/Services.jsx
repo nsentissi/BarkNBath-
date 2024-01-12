@@ -41,16 +41,16 @@ function Services() {
     //     <WaterDropGrid />
     //   </div> */}
       <div className="w-full min-h-screen flex flex-col justify-center items-center py-20">
-        <div class="text-center py-10">
-          <h1 class="font-bold text-4xl mb-4 uppercase font-chewy tracking-widest">
+        <div className="text-center py-10">
+          <h1 className="font-bold text-4xl mb-4 uppercase font-chewy tracking-widest">
             Dog Grooming Overview
           </h1>
-          <h1 class="text-xl">The Complete Grooming Experience</h1>
+          <h1 className="text-xl">The Complete Grooming Experience</h1>
         </div>
 
         <section
           id="Projects"
-          class="w-3/4 mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-10 gap-x-2 mt-10 mb-5"
+          className="w-3/4 mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-10 gap-x-2 mt-10 mb-5"
         >
           <motion.div
             ref={card1Ref}
@@ -63,21 +63,21 @@ function Services() {
               <img
                 src="./src/assets/bathing.jpg"
                 alt="Product"
-                class="h-80 w-80 object-cover rounded-t-xl"
+                className="h-80 w-80 object-cover rounded-t-xl"
               />
-              <div class="px-4 py-3 w-72">
-                <span class="text-gray-400 mr-3 uppercase text-xs">
+              <div className="px-4 py-3 w-72">
+                <span className="text-gray-400 mr-3 uppercase text-xs">
                   Package
                 </span>
 
-                <div class="flex items-center">
-                  <p class="text-lg font-bold text-black truncate block capitalize">
+                <div className="flex items-center">
+                  <p className="text-lg font-bold text-black truncate block capitalize">
                     Premium Bath
                   </p>
 
-                  <div class="ml-auto"></div>
+                  <div className="ml-auto"></div>
                 </div>
-                <p class="text-sm font-semibold text-black cursor-auto my-3">
+                <p className="text-sm font-semibold text-black cursor-auto my-3">
                   Warm Filtered Water Massage and Nutrient-Enhanced Wash,
                   Tailored for Breed and Coat Type
                 </p>
@@ -96,21 +96,21 @@ function Services() {
               <img
                 src="./src/assets/pawcare.jpg"
                 alt="Product"
-                class="h-80 w-80 object-cover rounded-t-xl"
+                className="h-80 w-80 object-cover rounded-t-xl"
               />
-              <div class="px-4 py-3 w-72">
-                <span class="text-gray-400 mr-3 uppercase text-xs">
+              <div className="px-4 py-3 w-72">
+                <span className="text-gray-400 mr-3 uppercase text-xs">
                   Package
                 </span>
 
-                <div class="flex items-center">
-                  <p class="text-lg font-bold text-black truncate block capitalize">
+                <div className="flex items-center">
+                  <p className="text-lg font-bold text-black truncate block capitalize">
                     Ultimate Paw Care
                   </p>
 
-                  <div class="ml-auto"></div>
+                  <div className="ml-auto"></div>
                 </div>
-                <p class="text-sm font-semibold text-black cursor-auto my-3">
+                <p className="text-sm font-semibold text-black cursor-auto my-3">
                   Pad Shaving, Nail Clipping, Feet Scissoring and More!
                 </p>
               </div>
@@ -127,21 +127,21 @@ function Services() {
               <img
                 src="./src/assets/haircut.jpg"
                 alt="Product"
-                class="h-80 w-80 object-cover rounded-t-xl"
+                className="h-80 w-80 object-cover rounded-t-xl"
               />
-              <div class="px-4 py-3 w-72">
-                <span class="text-gray-400 mr-3 uppercase text-xs">
+              <div className="px-4 py-3 w-72">
+                <span className="text-gray-400 mr-3 uppercase text-xs">
                   Package
                 </span>
 
-                <div class="flex items-center">
-                  <p class="text-lg font-bold text-black truncate block capitalize">
+                <div className="flex items-center">
+                  <p className="text-lg font-bold text-black truncate block capitalize">
                     Doggy Haircut
                   </p>
 
-                  <div class="ml-auto"></div>
+                  <div className="ml-auto"></div>
                 </div>
-                <p class="text-sm font-semibold text-black cursor-auto my-3">
+                <p className="text-sm font-semibold text-black cursor-auto my-3">
                   A perfect trim for a perfect pup!
                 </p>
               </div>
@@ -159,21 +159,21 @@ function Services() {
               <img
                 src="./src/assets/breed.jpg"
                 alt="Product"
-                class="h-80 w-80 object-cover rounded-t-xl"
+                className="h-80 w-80 object-cover rounded-t-xl"
               />
-              <div class="px-4 py-3 w-72">
-                <span class="text-gray-400 mr-3 uppercase text-xs">
+              <div className="px-4 py-3 w-72">
+                <span className="text-gray-400 mr-3 uppercase text-xs">
                   Package
                 </span>
 
-                <div class="flex items-center">
-                  <p class="text-lg font-bold text-black truncate block capitalize">
+                <div className="flex items-center">
+                  <p className="text-lg font-bold text-black truncate block capitalize">
                     Breed Standard
                   </p>
 
-                  <div class="ml-auto"></div>
+                  <div className="ml-auto"></div>
                 </div>
-                <p class="text-sm font-semibold text-black cursor-auto my-3">
+                <p className="text-sm font-semibold text-black cursor-auto my-3">
                   Full Service Styling According To Your Breed - Show Ready
                 </p>
               </div>
@@ -192,21 +192,21 @@ function Services() {
               <img
                 src="./src/assets/thework.jpg"
                 alt="Product"
-                class="h-80 w-80 object-cover rounded-t-xl"
+                className="h-80 w-80 object-cover rounded-t-xl"
               />
-              <div class="px-4 py-3 w-72">
-                <span class="text-gray-400 mr-3 uppercase text-xs">
+              <div className="px-4 py-3 w-72">
+                <span className="text-gray-400 mr-3 uppercase text-xs">
                   Package
                 </span>
 
-                <div class="flex items-center">
-                  <p class="text-lg font-bold text-black truncate block capitalize">
+                <div className="flex items-center">
+                  <p className="text-lg font-bold text-black truncate block capitalize">
                     The Works
                   </p>
 
-                  <div class="ml-auto"></div>
+                  <div className="ml-auto"></div>
                 </div>
-                <p class="text-sm font-semibold text-black cursor-auto my-3">
+                <p className="text-sm font-semibold text-black cursor-auto my-3">
                   De-shedding, Brushing & Hand Blow Drying
                 </p>
               </div>
@@ -224,21 +224,21 @@ function Services() {
               <img
                 src="./src/assets/dental.jpg"
                 alt="Product"
-                class="h-80 w-80 object-cover rounded-t-xl"
+                className="h-80 w-80 object-cover rounded-t-xl"
               />
-              <div class="px-4 py-3 w-72">
-                <span class="text-gray-400 mr-3 uppercase text-xs">
+              <div className="px-4 py-3 w-72">
+                <span className="text-gray-400 mr-3 uppercase text-xs">
                   Package
                 </span>
 
-                <div class="flex items-center">
-                  <p class="text-lg font-bold text-black truncate block capitalize">
+                <div className="flex items-center">
+                  <p className="text-lg font-bold text-black truncate block capitalize">
                     Doggy Dental Brushing
                   </p>
 
-                  <div class="ml-auto"></div>
+                  <div className="ml-auto"></div>
                 </div>
-                <p class="text-sm font-semibold text-black cursor-auto my-3">
+                <p className="text-sm font-semibold text-black cursor-auto my-3">
                   Keep Your Dog's K-9's clean and strong with a thorough
                   brushing and fresh breath spray
                 </p>
