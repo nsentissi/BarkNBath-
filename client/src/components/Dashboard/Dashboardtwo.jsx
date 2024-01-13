@@ -3,7 +3,7 @@ import { useAuth } from "../../hooks/AuthContext";
 import PetList from "./PetList";
 import AddPetForm from "./AddPetForm";
 import AppointmentForm from "./AppointmentForm";
-import "./Dashboard.css";
+import styles from "./Dashboard.module.css";
 import { useNavigate } from "react-router-dom";
 
 const Dashboardtwo = ({ onProfileClick }) => {
@@ -35,7 +35,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
   const renderBook = () => {
     return (
       <div>
-        <AppointmentForm setActiveContent={setActiveContent} />
+        <AppointmentForm  setActiveContent={setActiveContent} />
       </div>
     );
   };
@@ -54,7 +54,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
   };
 
   return (
-    <div className="bg-white flex h-screen">
+    <div className="item-dash flex h-screen">
       {/* <!-- Sidebar --> */}
       <aside className="fixed z-50  md:relative">
         <input type="checkbox" className="peer hidden" id="sidebar-open" />
@@ -81,7 +81,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
           aria-label="Sidebar Navigation"
           className="peer-checked:w-64 left-0 z-10 flex h-screen w-0 flex-col overflow-hidden bg-primary text-white transition-all md:h-screen md:w-64 lg:w-72"
         >
-          <div className="item-1 mt-5 py-1 px-16 md:mt-8">
+          <div className={`${styles['item-1']} mt-5  py-1 px-16 md:mt-8`}>
             <span className="">
               <span className="">
                 <img
@@ -149,7 +149,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
                 />
               </svg>
             </li>
-            <li className="relative">
+            <li className="relative ">
               <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
                 <span>
                   <svg
@@ -209,8 +209,8 @@ const Dashboardtwo = ({ onProfileClick }) => {
           </div>
         </nav>
       </aside>
-      <div className="flex h-full w-full flex-col">
-        <header className="relative flex flex-col items-center  px-4 py-4 shadow sm:flex-row md:h-20">
+      <div className="flex h-full  py-12 px-10 w-full flex-col">
+        <header className="relative rounded-full flex flex-col items-center  px-4 py-4 shadow sm:flex-row md:h-20">
           <div className="flex w-full flex-col justify-between  transition-all sm:max-h-full sm:flex-row sm:items-center">
             <div className="flex w-full flex-col justify-center transition-all sm:max-h-full sm:flex-row sm:items-center sm:justify-between">
               <h1 className="text-center text-white font-chewy text-3xl font-bold">
@@ -256,11 +256,28 @@ const Dashboardtwo = ({ onProfileClick }) => {
             </ul>
           </div>
         </header>
-
-        <div className="h-full  pl-10">
-          <main id="dashboard-main" className="h-[calc(100vh-10rem)] px-4 py-0">
-            {renderContent()}
-          </main>
+        
+          <div className="h-full z-0 pl-10">
+          <div className={styles.area}>
+          <ul className={styles.circles}>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+            <main
+              id="dashboard-main"
+              className="h-[calc(100vh-10rem)] z-0 px-4 py-0"
+            >
+              {renderContent()}
+            </main>
+          </div>
         </div>
       </div>
     </div>

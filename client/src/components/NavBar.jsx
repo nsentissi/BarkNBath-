@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 
 const Navbar = () => {
+
+  
   return (
-    <nav className="bg-transparent dark:bg-transparent fixed w-full z-20 top-0 start-0 font-chewy">
+    <nav className="bg-transparent dark:bg-transparent fixed w-full z-20 top-0 start-0 ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
         {/* Logo */}
 

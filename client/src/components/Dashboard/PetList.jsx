@@ -65,8 +65,8 @@ const PetList = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-x-4 gap-y-14">
-      <h1 className="text-center font-chewy text-xl font-bold">
+    <div className="flex  flex-wrap  gap-x-4 gap-y-10">
+      <h1 className="font-chewy  text-xl font-bold">
         Here you find all your puffy friends
       </h1>
       <div className="w-full flex flex-wrap justify-center gap-4 pt-10">
