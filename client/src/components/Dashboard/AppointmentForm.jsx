@@ -53,13 +53,13 @@ const AppointmentForm = ({setActiveContent}) => {
   };
 
   return (
-    <div class=" min-h-screen flex items-center justify-center px-4">
+    <div class=" min-h-screen z-0 flex items-center justify-center  px-4">
      
-    <div className="bg-secondary z-20 p-6 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-md w-full">
+    <div className="bg-secondary z-1 p-4 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-md w-full">
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="max-w-md mx-auto mt-10 space-y-4"
+        className="max-w-md mx-auto mt-12 space-y-4"
       >
         <div className="flex flex-col">
           <label htmlFor="date" className="mb-2 font-semibold">

@@ -3,16 +3,12 @@ import { useAuth } from "../../hooks/AuthContext";
 import PetList from "./PetList";
 import AddPetForm from "./AddPetForm";
 import AppointmentForm from "./AppointmentForm";
-
+import styles from "./Dashboard.module.css";
 import { useNavigate } from "react-router-dom";
 
-
-  
-
-
 const Dashboardtwo = ({ onProfileClick }) => {
-  const { currentUser ,logout } = useAuth();
-const navigate = useNavigate();
+  const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
 
   const [activeContent, setActiveContent] = useState("overview");
 
@@ -23,7 +19,7 @@ const navigate = useNavigate();
   const renderOverview = () => {
     return (
       <div>
-        <PetList setActiveContent={setActiveContent}/>
+        <PetList setActiveContent={setActiveContent} />
       </div>
     );
   };
@@ -38,8 +34,8 @@ const navigate = useNavigate();
 
   const renderBook = () => {
     return (
-      <div >
-        <AppointmentForm setActiveContent={setActiveContent} />
+      <div>
+        <AppointmentForm  setActiveContent={setActiveContent} />
       </div>
     );
   };
@@ -58,36 +54,36 @@ const navigate = useNavigate();
   };
 
   return (
-    <div class="bg-success flex h-screen">
+    <div className="item-dash flex h-screen">
       {/* <!-- Sidebar --> */}
-      <aside class="fixed z-50  md:relative">
-        <input type="checkbox" class="peer hidden" id="sidebar-open" />
+      <aside className="fixed z-50  md:relative">
+        <input type="checkbox" className="peer hidden" id="sidebar-open" />
         <label
-          class="peer-checked:rounded-full peer-checked:p-2 peer-checked:right-6 peer-checked:bg-gray-600 peer-checked:text-white absolute top-8 z-20 mx-4 cursor-pointer md:hidden"
-          for="sidebar-open"
+          className="peer-checked:rounded-full peer-checked:p-2 peer-checked:right-6 peer-checked:bg-gray-600 peer-checked:text-white absolute top-8 z-20 mx-4 cursor-pointer md:hidden"
+          htmlf="sidebar-open"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
+            className="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-width="2"
+            strokeWidth="2"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
         </label>
         <nav
           aria-label="Sidebar Navigation"
-          class="peer-checked:w-64 left-0 z-10 flex h-screen w-0 flex-col overflow-hidden bg-primary text-white transition-all md:h-screen md:w-64 lg:w-72"
+          className="peer-checked:w-64 left-0 z-10 flex h-screen w-0 flex-col overflow-hidden bg-primary text-white transition-all md:h-screen md:w-64 lg:w-72"
         >
-          <div class="bg-success mt-5 py-1 px-16 md:mt-20">
-            <span class="">
-              <span class="">
+          <div className={`${styles['item-1']} mt-5  py-1 px-16 md:mt-8`}>
+            <span className="">
+              <span className="">
                 <img
                   src=".\src\assets\barkNBath.png"
                   className="h-28 w-38 "
@@ -96,21 +92,21 @@ const navigate = useNavigate();
               </span>
             </span>
           </div>
-          <ul class="mt-8 space-y-3 md:mt-20">
-            <li class="relative">
-              <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-2 text-gray-300 focus:outline-none">
+          <ul className="mt-8 space-y-3 md:mt-20">
+            <li className="relative">
+              <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-2 text-gray-300 focus:outline-none">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
+                    className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
                     />
                   </svg>
@@ -118,20 +114,20 @@ const navigate = useNavigate();
                 <div onClick={() => setActiveContent("overview")}>Overview</div>
               </button>
             </li>
-            <li class="relative">
-              <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 font-semibold focus:outline-none">
+            <li className="relative">
+              <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 font-semibold focus:outline-none">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
+                    className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
                     />
                   </svg>{" "}
@@ -141,7 +137,7 @@ const navigate = useNavigate();
                 </div>
               </button>
               <svg
-                class="text-slate-200 absolute -right-1 -top-1/2 z-10 hidden h-32 w-8 md:block"
+                className="text-slate-200 absolute -right-1 -top-1/2 z-10 hidden h-32 w-8 md:block"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="399.349 57.696 100.163 402.081"
                 width="1em"
@@ -153,20 +149,20 @@ const navigate = useNavigate();
                 />
               </svg>
             </li>
-            <li class="relative">
-              <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+            <li className="relative ">
+              <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
+                    className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
                     />
                   </svg>
@@ -176,52 +172,58 @@ const navigate = useNavigate();
                 </div>
               </button>
             </li>
-            <li class="relative">
-              <button class="focus:bg-slate-600 hover:bg-slate-600  flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+            <li className="relative">
+              <button className="focus:bg-slate-600 hover:bg-slate-600  flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
+                    className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
                     />
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
                 </span>
-                <span class="">
+                <span className="">
                   <div onClick={onProfileClick}>Your account</div>
                 </span>
               </button>
             </li>
           </ul>
 
-          <div class="my-6 mt-auto ml-10 flex cursor-pointer">
-            <div class="ml-3">
-              <p class="font-medium">Dashboard</p>
+          <div className="my-6 mt-auto ml-10 flex cursor-pointer">
+            <div className="ml-3">
+              <p className="font-medium">Dashboard</p>
             </div>
           </div>
         </nav>
       </aside>
-      <div class="flex h-full w-full flex-col">
-        <header class="relative flex flex-col items-center bg-black px-4 py-4 shadow sm:flex-row md:h-20">
-          <div class="flex w-full flex-col justify-between  transition-all sm:max-h-full sm:flex-row sm:items-center">
-          <h1 className="text-center text-white font-chewy text-3xl font-bold">
-        Welcome {currentUser.firstName} {currentUser.lastName}
-      </h1>
-            <div class="relative ml-10 flex items-center justify-between rounded-md sm:ml-auto"></div>
+      <div className="flex h-full  py-12 px-10 w-full flex-col">
+        <header className="relative rounded-full flex flex-col items-center  px-4 py-4 shadow sm:flex-row md:h-20">
+          <div className="flex w-full flex-col justify-between  transition-all sm:max-h-full sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col justify-center transition-all sm:max-h-full sm:flex-row sm:items-center sm:justify-between">
+              <h1 className="text-center text-white font-chewy text-3xl font-bold">
+                Welcome {currentUser.firstName} {currentUser.lastName}
+              </h1>
 
-            <ul class="mx-auto mt-4 flex space-x-6 sm:mx-5 sm:mt-0">
+              <div className="mt-4 sm:mt-0">
+                <button onClick={handleViewBlogsClick}>View All Blogs</button>
+              </div>
+            </div>
+            <div className="relative ml-10 flex items-center justify-between rounded-md sm:ml-auto"></div>
+
+            <ul className="mx-auto mt-4 flex space-x-6 sm:mx-5 sm:mt-0">
               <button onClick={logout} className=" ">
                 <div className="flex justify-center">
                   <a
@@ -251,19 +253,31 @@ const navigate = useNavigate();
                   </a>
                 </div>
               </button>
-              <div>
-                <button onClick={handleViewBlogsClick}>View All blogs</button>
-              </div>
             </ul>
           </div>
         </header>
-
-
-        <div class="h-full  pl-10">
-          <main id="dashboard-main" class="h-[calc(100vh-10rem)] px-4 py-0">
-
-            {renderContent()}
-          </main>
+        
+          <div className="h-full z-0 pl-10">
+          <div className={styles.area}>
+          <ul className={styles.circles}>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+            <main
+              id="dashboard-main"
+              className="h-[calc(100vh-10rem)] z-0 px-4 py-0"
+            >
+              {renderContent()}
+            </main>
+          </div>
         </div>
       </div>
     </div>

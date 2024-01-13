@@ -11,6 +11,7 @@ export default {
       fontFamily: {
         chewy: ['Chewy', 'cursive'],
         dosis: ['Dosis', 'sans-serif'],
+        playful: ['Pacifico', 'cursive'],
       },
     },
   },
@@ -25,7 +26,7 @@ export default {
 
           secondary: "#168aad",
 
-          accent: "#52b69a",
+          accent: "#cc7744",
 
           neutral: "#ee3e54",
 

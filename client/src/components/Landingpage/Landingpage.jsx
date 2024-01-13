@@ -32,6 +32,14 @@ const Landingpage = () => {
       },
     },
   };
+  const newImageVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 1, delay: 4 } // Delay of 4 seconds (2 seconds after the van)
+    },
+  };
+  
 
   return (
     <div className={styles.area}>
@@ -53,96 +61,51 @@ const Landingpage = () => {
       >
         {/* Text  */}
         <motion.div
-          className="absolute top-1/10  md:top-1/5 lg:top-1/4 text-center"
+          className="absolute top-1/10  md:top-1/5 lg:top-1/4 text-center "
           variants={textVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className=" flex justify-between items-center md:flex lg-flex mb-10 p-10">
-            <div className="">
-              <div className="flex flex-col md:flex-row items-start justify-center space-y-10 md:space-y-0 md:space-x-10 mx-auto  w-full">
-                <motion.div className="w-full md:w-6/12 px-6 leading-8">
-                  <div className="text-5xl font-bold font-chewy mx-auto">
-                    <BubbleText />
-                  </div>
-                  <div className="mb-10 font-chewy">
-                    <BubbleText2 />
-                  </div>
-                  <h2 className="mt-8 mb-8 italic text-white text-center font-dosis font-semibold  md:text-left">
-                    Pamper Your Purry friend on the Go!{" "}
-                    <div className="flex flex-row items-center ">
-                      <p className="text-success font-chewy tracking-widest font-bold py-2 px-4 mb-2 sm:mb-0 mr-2">
-                        Sign up
-                      </p>
-                      <svg
-                        className="w-6 h-8 -ml-2  animate-pulse  "
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
-                        />
-                      </svg>
-                    </div>{" "}
-                    <div className="flex flex-row items-center">
-                      <p className="text-success font-chewy tracking-widest font-bold py-2 px-4 mb-2 sm:mb-0 mr-2">
-                        Book the Mobile Spa Session
-                      </p>
-                      <svg
-                        className="w-6 h-8 -ml-2  animate-pulse "
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
-                        />
-                      </svg>
-                    </div>
-                    <p className="italic">
-                      and Share Your Furry Friend's Blissful Experience with Our
-                      Community. Join Us Now and Treat Your Pet to the Ultimate
-                      Indulgence!
-                    </p>
-                  </h2>
-                </motion.div>
-                <div>
-                  <div className="flex  items-center justify-center ">
-                    <span className="inline-block animate-bounce   p-8 text-success tracking-widest font-chewy text-xl">
-                      Find out more
-                      <svg
-                        className="w-6 h-8 mx-auto"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="4"
-                          d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-              </div>
+           <div className=" font-chewy mx-auto">
+              <BubbleText />
             </div>
+            <div className=" font-chewy">
+              <BubbleText2 />
+            </div>
+          <div>
+            <div className="flex mt-4 items-center justify-center ">
+              <span className="inline-block animate-bounce p-8  text-accent text:hover-accent tracking-widest font-playful font-bold text-xl">
+                Find out more
+                <svg
+                  className="w-6 h-8 mx-auto"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="4"
+                    d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </div>
+           
+            <div className="flex justify-center md:justify-start">
+            <button className="bg-accent animate-pulse hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-xl">
+              Book your appointment
+            </button>
+          </div>
           </div>
         </motion.div>
+       
+      
+       
         {/* Van  */}
         <motion.img
-          className="absolute bottom-10 right-14 md:right-32 lg:right-80 transform lg:-translate-x-1/2 lg:translate-y-0 w-1/2 md:w-1/3 lg:w-38vw"
+          className="absolute bottom-10 right-14 md:right-32 lg:right-50 transform lg:-translate-x-1/2 lg:translate-y-0 w-1/2 md:w-1/3 lg:w-38vw"
           src="./src/assets/van.png"
           alt="Van"
           variants={vanVariants}
@@ -153,7 +116,7 @@ const Landingpage = () => {
 
         {/* Parking Sign  */}
         <motion.img
-          className="absolute bottom-14 right-60  md:right-96 lg:right-1/2 lg:mr-36 transform lg:-translate-x-1/2 lg:translate-y-0  w-1/5 md:w-1/5 lg:w-20vw"
+          className="absolute bottom-16 right-60  md:right-96 lg:right-1/2 lg:mr-36 transform lg:-translate-x-1/2 lg:translate-y-0  w-1/5 md:w-1/5 lg:w-20vw"
           src="./src/assets/parking.png"
           alt="Parking Sign"
           variants={parkingSignVariants}
@@ -161,16 +124,21 @@ const Landingpage = () => {
           animate="visible"
           style={{ maxWidth: "200px" }}
         />
+        
       </div>
     </div>
   );
 };
 
+
+
+
+
 const BubbleText = () => {
   return (
     <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-thin text-white text-center">
-      {"Spa Day".split("").map((child, idx) => (
-        <span className={styles.hoverText} key={idx}>
+      {"Spa Day".split("").map((child, index) => (
+        <span className={styles.hoverText} key={index}>
           {child}
         </span>
       ))}
