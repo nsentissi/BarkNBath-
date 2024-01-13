@@ -1,4 +1,5 @@
-import { SiTailwindcss, SiReact, SiJavascript } from "react-icons/si";
+import { MdHomeRepairService } from "react-icons/md";
+import { FaUser, FaDog } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "../hooks/AuthContext";
 import React, { useState, useEffect } from "react";
@@ -40,6 +41,22 @@ const Admin = () => {
     }
   };
 
+  const handleDeleteAppointment = async (appointmentId) => {
+    try {
+      await axios.delete(`http://localhost:3000/appointment/delete/${appointmentId}`, {withCredentials:true});
+
+      const updatedAppointments = appointments.filter(
+        (appointment) => appointment._id !== appointmentId
+      );
+
+      setAppointments(updatedAppointments);
+
+      console.log("Appointment deleted successfully");
+    } catch (error) {
+      console.error("Failed to delete the appointment:", error);
+    }
+  };
+
   const handlereturnUser = async (userId) => {
     try {
       const response = await axios.delete(
@@ -65,12 +82,26 @@ const Admin = () => {
           "http://localhost:3000/appointment/all",
           { withCredentials: true }
         );
-        setAppointments(response.data);
-        console.log(response.data);
+        const allAppointments = response.data;
+  
+        
+        allAppointments.forEach(appointment => {
+          console.log('Original date:', appointment.date, 'Parsed date:', new Date(appointment.date));
+        });
+  
+  
+        const sortedAppointments = allAppointments.sort((a, b) => {
+          return new Date(a.date) - new Date(b.date);
+        });
+  
+        setAppointments(sortedAppointments);
+        console.log('Sorted appointments:', sortedAppointments);
       } catch (error) {
         console.error("Error fetching appointments:", error);
       }
     };
+  
+  
 
     const fetchAllUsers = async () => {
       try {
@@ -104,24 +135,24 @@ const Admin = () => {
       case 0:
         return (
           <div className="admin-appointments">
-            <h1>All Appointments</h1>
+            <h1 className="text-xl font-bold text-white mb-4">All Appointments</h1>
             <div class="overflow-x-auto">
               <table class="min-w-full divide-y-2 divide-gray-200 bg-transparent text-sm">
                 <thead class="ltr:text-left rtl:text-right">
                   <tr>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Owner Name
                     </th>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Pet Name
                     </th>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Date
                     </th>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Time
                     </th>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Service
                     </th>
                   </tr>
@@ -129,26 +160,25 @@ const Admin = () => {
 
                 <tbody class="divide-y divide-gray-200">
                   {appointments.map((appointment, index) => (
-                    
                     <tr key={index}>
-                      <td class="whitespace-nowrap px-4 py-4 font-medium text-center text-white">
+                      <td class="px-4 py-4 text-center text-white">
                         {appointment.owner?.firstName}{" "}
                         {appointment.owner?.lastName}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                      <td class="px-4 py-4 text-center text-white">
                         {appointment.pet?.name}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                      <td class="px-4 py-4 text-center text-white">
                         {new Date(appointment.date).toDateString()}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                      <td class="px-4 py-4 text-center text-white">
                         {appointment.time}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                      <td class="px-4 py-4 text-center text-white">
                         {appointment.service}
                       </td>
                       <td className="justify-center">
-                        <button>
+                      <button onClick={() => handleDeleteAppointment(appointment._id)}>
                           <img
                             src="../src/assets/delete.png"
                             alt="delete-icon"
@@ -166,24 +196,24 @@ const Admin = () => {
       case 1:
         return (
           <div className="admin-appointments">
-            <h1>All Users </h1>
+            <h1 className="text-xl font-bold text-white mb-4">All Users </h1>
             <div class="overflow-x-auto">
               <table class="min-w-full divide-y-2 divide-gray-200 bg-transparent text-sm">
                 <thead class="ltr:text-left rtl:text-right">
                   <tr>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       First Name
                     </th>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Last name
                     </th>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Email
                     </th>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Phone Number
                     </th>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Active
                     </th>
                   </tr>
@@ -192,19 +222,19 @@ const Admin = () => {
                 <tbody class="divide-y divide-gray-200">
                   {users.map((user, index) => (
                     <tr key={index}>
-                      <td class="whitespace-nowrap px-4 py-4 font-medium text-center text-white">
+                      <td class="px-4 py-4 text-center text-white">
                         {user?.firstName}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                      <td class="px-4 py-4 text-center text-whitee">
                         {user?.lastName}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                      <td class="px-4 py-4 text-center text-white">
                         {user?.email}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                      <td class="px-4 py-4 text-center text-white">
                         {user?.phoneNumber}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                      <td class="px-4 py-4 text-center text-white">
                         {user.isActive ? <p> Active</p> : <p>Not active</p>}
                       </td>
                       <td className="justify-center">
@@ -217,12 +247,12 @@ const Admin = () => {
                             />
                           </button>
                         ) : (
-                          <button onClick={()=> handlereturnUser(user._id)}>
-                          <img
-                            src="../src/assets/returnIcon.png"
-                            alt="delete-icon"
-                            className="w-4"
-                          />
+                          <button onClick={() => handlereturnUser(user._id)}>
+                            <img
+                              src="../src/assets/returnIcon.png"
+                              alt="delete-icon"
+                              className="w-4"
+                            />
                           </button>
                         )}
                       </td>
@@ -236,21 +266,21 @@ const Admin = () => {
       case 2:
         return (
           <div className="admin-appointments">
-            <h1>All pets </h1>
+            <h1 className="text-xl font-bold text-white mb-4">All pets </h1>
             <div class="overflow-x-auto">
               <table class="min-w-full divide-y-2 divide-gray-200 bg-transparent text-sm">
                 <thead class="ltr:text-left rtl:text-right">
                   <tr>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Name
                     </th>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Breed
                     </th>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Age
                     </th>
-                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                    <th class="px-4 py-4 font-medium text-white bg-gray-700">
                       Weight
                     </th>
                   </tr>
@@ -285,9 +315,9 @@ const Admin = () => {
     <div className="bg-slate-900 text-slate-100 flex">
       <SideNav selected={selected} setSelected={setSelected} />
       <div className="w-full">
-        <div className="h-[35px] m-4 rounded border-2 border-dashed border-slate-600 bg-slate-800">
+        <div className="flex justify-between items-center m-4 rounded border-2 border-dashed border-slate-600 bg-slate-800 px-4 py-2">
           Admin{" "}
-          <button onClick={handleLogout} className="">
+          <button onClick={handleLogout} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Logout
           </button>
         </div>
@@ -303,13 +333,13 @@ const SideNav = ({ selected, setSelected }) => {
   return (
     <nav className="h-[500px] w-fit bg-slate-950 p-4 flex flex-col items-center gap-2">
       <NavItem selected={selected === 0} id={0} setSelected={setSelected}>
-        <SiTailwindcss />
+      <MdHomeRepairService />
       </NavItem>
       <NavItem selected={selected === 1} id={1} setSelected={setSelected}>
-        <SiReact />
+      <FaUser/>
       </NavItem>
       <NavItem selected={selected === 2} id={2} setSelected={setSelected}>
-        <SiJavascript />
+      <FaDog />
       </NavItem>
       {/* <NavItem selected={selected === 3} id={3} setSelected={setSelected}>
         <SiFramer />

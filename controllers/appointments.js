@@ -51,17 +51,17 @@ const getPetAppointmentById = async (req, res) => {
 
 const getAllAppointments = async (req, res) => {
   try {
-    
     const appointments = await Appointment.find()
       .populate({
-        path: 'owner',
-        match: { isActive: true }, 
-        select: 'firstName lastName'
+        path: "owner",
+        match: { isActive: true },
+        select: "firstName lastName",
       })
-      .populate('pet', 'name');
+      .populate("pet", "name");
 
-    
-    const validAppointments = appointments.filter(appointment => appointment.owner);
+    const validAppointments = appointments.filter(
+      (appointment) => appointment.owner
+    );
 
     res.json(validAppointments);
   } catch (error) {
@@ -69,9 +69,25 @@ const getAllAppointments = async (req, res) => {
   }
 };
 
+const deleteAppointment = async (req, res) => {
+  try {
+    const { appointmentId } = req.params;
+
+    const appointment = await Appointment.findByIdAndDelete(appointmentId);
+
+    if (!appointment) {
+      return res.status(404).json({ message: "Appointment not found" });
+    }
+    res.status(200).json({ message: "Appointment deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createAppointment,
   getAppointments,
   getPetAppointmentById,
-  getAllAppointments
+  getAllAppointments,
+  deleteAppointment,
 };

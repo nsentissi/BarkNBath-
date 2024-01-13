@@ -9,7 +9,6 @@ const verifyToken = async (req, res, next) => {
     const payload = await jwt.verify(token, process.env.JWT_SECRET);
 
     req.user = payload;
-
     next();
   } catch (error) {
     next(error);
