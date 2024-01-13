@@ -62,16 +62,14 @@ const Landingpage = () => {
             <div className="">
               <div className="flex flex-col md:flex-row items-start justify-center space-y-10 md:space-y-0 md:space-x-10 mx-auto  w-full">
                 <motion.div className="w-full md:w-6/12 px-6 leading-8">
-                <h2 className="text-5xl font-bold font-chewy mx-auto">
+                  <div className="text-5xl font-bold font-chewy mx-auto">
                     <BubbleText />
-                  </h2>
-                  <p className="mb-10 font-chewy">
+                  </div>
+                  <div className="mb-10 font-chewy">
                     <BubbleText2 />
-                  </p>
-                  <p className="mt-8 mb-8  text-white text-center font-dosis font-semibold  md:text-left">
-                    <p className="italic">
-                      Pamper Your Purry friend on the Go!{" "}
-                    </p>
+                  </div>
+                  <h2 className="mt-8 mb-8 italic text-white text-center font-dosis font-semibold  md:text-left">
+                    Pamper Your Purry friend on the Go!{" "}
                     <div className="flex flex-row items-center ">
                       <p className="text-success font-chewy tracking-widest font-bold py-2 px-4 mb-2 sm:mb-0 mr-2">
                         Sign up
@@ -115,10 +113,9 @@ const Landingpage = () => {
                       Community. Join Us Now and Treat Your Pet to the Ultimate
                       Indulgence!
                     </p>
-                  </p>
+                  </h2>
                 </motion.div>
                 <div>
-                  
                   <div className="flex  items-center justify-center ">
                     <span className="inline-block animate-bounce   p-8 text-success tracking-widest font-chewy text-xl">
                       Find out more

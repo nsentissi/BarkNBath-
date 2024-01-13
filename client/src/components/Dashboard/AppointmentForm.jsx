@@ -8,7 +8,7 @@ import axios from "axios";
 import Modal from './Modal';
 import ServicesTable from "../ServicesTable"
 
-const AppointmentForm = () => {
+const AppointmentForm = ({setActiveContent}) => {
   const {
     register,
     handleSubmit,
@@ -35,11 +35,15 @@ const AppointmentForm = () => {
         { withCredentials: true }
         
       );
+      setActiveContent("overview")
       toast("Appointment booked!");
+      
       console.log(response.data);
+
       reset();
     } catch (error) {
-      console.error("Error submitting form", error.response.data);
+      
+      console.error("Error submitting form", error);
     }
   };
 

@@ -23,7 +23,7 @@ const navigate = useNavigate();
   const renderOverview = () => {
     return (
       <div>
-        <PetList />
+        <PetList setActiveContent={setActiveContent}/>
       </div>
     );
   };
@@ -31,15 +31,15 @@ const navigate = useNavigate();
   const renderAddpet = () => {
     return (
       <div>
-        <AddPetForm />
+        <AddPetForm setActiveContent={setActiveContent} />
       </div>
     );
   };
 
   const renderBook = () => {
     return (
-      <div>
-        <AppointmentForm />
+      <div >
+        <AppointmentForm setActiveContent={setActiveContent} />
       </div>
     );
   };
@@ -60,7 +60,7 @@ const navigate = useNavigate();
   return (
     <div class="bg-success flex h-screen">
       {/* <!-- Sidebar --> */}
-      <aside class="fixed z-50 md:relative">
+      <aside class="fixed z-50  md:relative">
         <input type="checkbox" class="peer hidden" id="sidebar-open" />
         <label
           class="peer-checked:rounded-full peer-checked:p-2 peer-checked:right-6 peer-checked:bg-gray-600 peer-checked:text-white absolute top-8 z-20 mx-4 cursor-pointer md:hidden"
@@ -83,7 +83,7 @@ const navigate = useNavigate();
         </label>
         <nav
           aria-label="Sidebar Navigation"
-          class="peer-checked:w-64 left-0 z-10 flex h-screen w-0 flex-col  bg-primary text-white transition-all md:h-screen md:w-64 lg:w-72"
+          class="peer-checked:w-64 left-0 z-10 flex h-screen w-0 flex-col overflow-hidden bg-primary text-white transition-all md:h-screen md:w-64 lg:w-72"
         >
           <div class="bg-success mt-5 py-1 px-16 md:mt-20">
             <span class="">
@@ -98,7 +98,7 @@ const navigate = useNavigate();
           </div>
           <ul class="mt-8 space-y-3 md:mt-20">
             <li class="relative">
-              <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+              <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-2 text-gray-300 focus:outline-none">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +177,7 @@ const navigate = useNavigate();
               </button>
             </li>
             <li class="relative">
-              <button class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+              <button class="focus:bg-slate-600 hover:bg-slate-600  flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -214,9 +214,9 @@ const navigate = useNavigate();
         </nav>
       </aside>
       <div class="flex h-full w-full flex-col">
-        <header class="relative flex flex-col items-center bg-primary px-4 py-4 shadow sm:flex-row md:h-20">
+        <header class="relative flex flex-col items-center bg-black px-4 py-4 shadow sm:flex-row md:h-20">
           <div class="flex w-full flex-col justify-between  transition-all sm:max-h-full sm:flex-row sm:items-center">
-          <h1 className="text-center font-chewy text-3xl font-bold">
+          <h1 className="text-center text-white font-chewy text-3xl font-bold">
         Welcome {currentUser.firstName} {currentUser.lastName}
       </h1>
             <div class="relative ml-10 flex items-center justify-between rounded-md sm:ml-auto"></div>
