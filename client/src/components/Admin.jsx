@@ -129,6 +129,7 @@ const Admin = () => {
 
                 <tbody class="divide-y divide-gray-200">
                   {appointments.map((appointment, index) => (
+                    
                     <tr key={index}>
                       <td class="whitespace-nowrap px-4 py-4 font-medium text-center text-white">
                         {appointment.owner?.firstName}{" "}

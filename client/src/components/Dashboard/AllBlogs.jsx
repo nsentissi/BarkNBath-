@@ -52,7 +52,7 @@ const addComment = async (blogId, text) => {
                             blog.comments.map((comment) => (
                                 <div key={comment._id} className="border-t border-gray-200 mt-2 pt-2">
                                     <p className="text-sm text-gray-600">{comment.text}</p>
-                                    <p className="text-xs text-gray-500">By: {comment.author.firstName} {comment.author.lastName}</p>
+                                    <p className="text-xs text-gray-500">By: {comment.author?.firstName} {comment.author?.lastName}</p>
                                 </div>
                             ))
                         ) : (

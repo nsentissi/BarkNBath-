@@ -49,16 +49,25 @@ const getPetAppointmentById = async (req, res) => {
   }
 };
 
-const getAllAppointments = async ( req, res) => {
+const getAllAppointments = async (req, res) => {
   try {
+    
     const appointments = await Appointment.find()
-      .populate('owner', 'firstName lastName') 
-      .populate('pet', 'name'); 
-    res.json(appointments);
+      .populate({
+        path: 'owner',
+        match: { isActive: true }, 
+        select: 'firstName lastName'
+      })
+      .populate('pet', 'name');
+
+    
+    const validAppointments = appointments.filter(appointment => appointment.owner);
+
+    res.json(validAppointments);
   } catch (error) {
     res.status(500).send(error);
   }
-}
+};
 
 module.exports = {
   createAppointment,
