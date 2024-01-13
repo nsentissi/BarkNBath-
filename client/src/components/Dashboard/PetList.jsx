@@ -65,7 +65,7 @@ const PetList = () => {
   };
 
   return (
-    <div class="flex flex-wrap gap-x-4 gap-y-14">
+    <div className="flex flex-wrap gap-x-4 gap-y-14">
       <h1 className="text-center font-chewy text-xl font-bold">
         Here you find all your puffy friends
       </h1>
@@ -75,9 +75,9 @@ const PetList = () => {
             className="bg-primary rounded-lg profile-card w-96  p-6 mb-4"
             key={index}
           >
-            <div class="flex justify-between items-center mb-4">
-              <div class="flex items-center">
-                <span class="ml-2 text-lg font-semibold text-white">
+            <div className="flex justify-between items-center mb-4">
+              <div className="flex items-center">
+                <span className="ml-2 text-lg font-semibold text-white">
                   Pet Profile
                 </span>
               </div>
@@ -85,20 +85,20 @@ const PetList = () => {
                 onClick={(e) => {
                   handleCreatePostClick(pet._id);
                 }}
-                class="bg-success hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="bg-success hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               >
                 Create post
               </button>
             </div>
             {/* OVERVIEW  */}
             <div className="py-2 border-b-2">
-            <div class="flex justify-center mb-8">
-              <div class="border-b-2 border-success w-full">
-                <ul class="flex justify-around">
-                  <li class="text-center">
+            <div className="flex justify-center mb-8">
+              <div className="border-b-2 border-success w-full">
+                <ul className="flex justify-around">
+                  <li className="text-center">
                     <a
                       href="#"
-                      class="text-white pb-2 border-b-2 border-white text-sm font-semibold"
+                      className="text-white pb-2 border-b-2 border-white text-sm font-semibold"
                     >
                       Overview
                     </a>
