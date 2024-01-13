@@ -44,22 +44,28 @@ const getBlogsByPetId = async (req, res) => {
 
 const getAllBlogPosts = async (req, res, next) => {
   try {
-      const currentUserId = req.user.id;
+    const currentUserId = req.user.id;
 
-      const blogPosts = await Blog.find({ owner: { $ne: currentUserId } })
-          .populate("owner", "firstName lastName")
-          .populate("pet", "name")
-          .populate({
-              path: "comments",
-              populate: {
-                  path: "author",
-                  select: "firstName lastName"
-              }
-          });
+    const blogPosts = await Blog.find({ owner: { $ne: currentUserId } })
+      .populate({
+        path: "owner",
+        match: { isActive: true },
+        select: "firstName lastName",
+      })
+      .populate("pet", "name")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "author",
+          select: "firstName lastName",
+        },
+      });
 
-      res.status(200).json(blogPosts);
+    const activeBlogPosts = blogPosts.filter((post) => post.owner);
+
+    res.status(200).json(activeBlogPosts);
   } catch (error) {
-      next(error);
+    next(error);
   }
 };
 

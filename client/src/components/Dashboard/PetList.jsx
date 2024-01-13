@@ -14,6 +14,23 @@ const PetList = () => {
     navigate(`/create-blog/${petId}`);
   };
 
+  const handleDeleteAppointment = async (appointmentId) => {
+    try {
+      console.log("Deleting appointment with ID:", appointmentId);
+      await axios.delete(`http://localhost:3000/appointment/delete/${appointmentId}`, {withCredentials:true});
+
+      const updatedAppointments = petAppointments?.filter(
+        (appointment) => appointment._id !== appointmentId
+      );
+
+      setPetAppointments(updatedAppointments);
+      console.log("Updated appointments:", updatedAppointments);
+      console.log("Appointment deleted successfully");
+    } catch (error) {
+      console.error("Failed to delete the appointment:", error);
+    }
+  };
+
   useEffect(() => {
     const fetchAppointments = async () => {
       if (!currentUser || !currentUser.pets) return;
@@ -157,6 +174,7 @@ const PetList = () => {
                             {appointment.service}
                           </p>
                         </div>
+                        <button onClick={() => handleDeleteAppointment(appointment._id)} className="text-black">Cancel</button>
                       </div>
                     ))}
                   </div>
@@ -183,8 +201,11 @@ const PetList = () => {
                           <p className="mt-2 font-bold text-gray-500">
                             {appointment.service}
                           </p>
+                          
                         </div>
+                      
                       </div>
+                      
                     ))}
                   </div>
                 </TabPanel>
