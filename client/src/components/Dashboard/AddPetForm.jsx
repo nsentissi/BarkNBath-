@@ -3,9 +3,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { PetContext } from "../../hooks/PetContext";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/AuthContext";
 
-const AddPetForm = () => {
-  
+
+const AddPetForm = ({setActiveContent}) => {
+  const { currentUser,dispatch } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [petData, setPetData] = useState({
@@ -47,15 +49,13 @@ const AddPetForm = () => {
         }
       );
 
-
-      if (response && response.data) {
-        setPetName(petData.name);
-        toast("Pet created!");
-        navigate("/");
-      } else {
-        console.error("Response data is undefined.");
-      }
+        dispatch({ type: 'LOGIN', payload: {...currentUser, pets: [...currentUser.pets, response.data]}}); 
+   
+        toast("Pet created!"); 
+        setActiveContent("overview")
+ 
     } catch (err) {
+      console.log(err)
       setError(err.response?.data?.message || "An error occurred");
     }
   };
