@@ -5,9 +5,8 @@ import { PetContext } from "../../hooks/PetContext";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/AuthContext";
 
-
-const AddPetForm = ({setActiveContent}) => {
-  const { currentUser,dispatch } = useAuth();
+const AddPetForm = ({ setActiveContent }) => {
+  const { currentUser, dispatch } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [petData, setPetData] = useState({
@@ -39,7 +38,6 @@ const AddPetForm = ({setActiveContent}) => {
     }
 
     try {
-
       const response = await axios.post(
         "http://localhost:3000/pet/create",
         formData,
@@ -49,13 +47,15 @@ const AddPetForm = ({setActiveContent}) => {
         }
       );
 
-        dispatch({ type: 'LOGIN', payload: {...currentUser, pets: [...currentUser.pets, response.data]}}); 
-   
-        toast("Pet created!"); 
-        setActiveContent("overview")
- 
+      dispatch({
+        type: "LOGIN",
+        payload: { ...currentUser, pets: [...currentUser.pets, response.data] },
+      });
+
+      toast("Pet created!");
+      setActiveContent("overview");
     } catch (err) {
-      console.log(err)
+      console.log(err);
       setError(err.response?.data?.message || "An error occurred");
     }
   };
@@ -103,13 +103,17 @@ const AddPetForm = ({setActiveContent}) => {
             placeholder="Weight"
             required
           />
-
-          <input
-            className="w-full p-2 border border-gray-300 rounded-2xl"
-            type="file"
-            name="profilePhoto"
-            onChange={handleChange}
-          />
+          <div>
+            <label class="block text-sm font-medium text-gray-700">
+              Cover photo
+            </label>
+            <input
+              className="w-full p-2 border border-gray-300 rounded-2xl"
+              type="file"
+              name="profilePhoto"
+              onChange={handleChange}
+            />
+          </div>
 
           <textarea
             className="w-full p-2 border border-gray-300 rounded-2xl"
