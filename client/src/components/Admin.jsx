@@ -3,8 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "../hooks/AuthContext";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
   const [selected, setSelected] = useState(0);
@@ -17,9 +16,45 @@ const Admin = () => {
   const handleLogout = async () => {
     try {
       await logout();
-      navigate('/');
+      navigate("/");
     } catch (error) {
       console.error("Failed to log out", error);
+    }
+  };
+
+  const handleDeleteUser = async (userId) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/auth/delete/${userId}`,
+        { withCredentials: true }
+      );
+      const newUsers = users.map((user) => {
+        if (user._id === userId) {
+          return response.data;
+        }
+        return user;
+      });
+      setUsers(newUsers);
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+
+  const handlereturnUser = async (userId) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/auth/return/${userId}`,
+        { withCredentials: true }
+      );
+      const newUsers = users.map((user) => {
+        if (user._id === userId) {
+          return response.data;
+        }
+        return user;
+      });
+      setUsers(newUsers);
+    } catch (error) {
+      console.error("Error deleting user:", error);
     }
   };
 
@@ -37,7 +72,6 @@ const Admin = () => {
       }
     };
 
-  
     const fetchAllUsers = async () => {
       try {
         const response = await axios.get("http://localhost:3000/auth/all", {
@@ -50,19 +84,19 @@ const Admin = () => {
     };
 
     const fetchAllPets = async () => {
-        try {
-          const response = await axios.get("http://localhost:3000/pet/all", {
-            withCredentials: true,
-          });
-          setPets(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
+      try {
+        const response = await axios.get("http://localhost:3000/pet/all", {
+          withCredentials: true,
+        });
+        setPets(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
     fetchAllAppointments();
     fetchAllUsers();
-    fetchAllPets()
+    fetchAllPets();
   }, []);
 
   const getContent = () => {
@@ -114,7 +148,11 @@ const Admin = () => {
                       </td>
                       <td className="justify-center">
                         <button>
-                        <img src="../src/assets/delete.png" alt="delete-icon" className="w-4" />
+                          <img
+                            src="../src/assets/delete.png"
+                            alt="delete-icon"
+                            className="w-4"
+                          />
                         </button>
                       </td>
                     </tr>
@@ -125,102 +163,120 @@ const Admin = () => {
           </div>
         ); //appointments
       case 1:
-         return (
-            <div className="admin-appointments">
-              <h1>All Users </h1>
-              <div class="overflow-x-auto">
-                <table class="min-w-full divide-y-2 divide-gray-200 bg-transparent text-sm">
-                  <thead class="ltr:text-left rtl:text-right">
-                    <tr>
-                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
-                         First Name 
-                      </th>
-                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
-                         Last name
-                      </th>
-                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
-                        Email
-                      </th>
-                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
-                        Phone Number
-                      </th>
-                    </tr>
-                  </thead>
-  
-                  <tbody class="divide-y divide-gray-200">
-                    {users.map((user, index) => (
-                      <tr key={index}>
-                        <td class="whitespace-nowrap px-4 py-4 font-medium text-center text-white">
-                          {user?.firstName}
-                        </td>
-                        <td class="whitespace-nowrap px-4 py-4 text-center text-white">
-                        {user?.lastName}
-                          
-                        </td>
-                        <td class="whitespace-nowrap px-4 py-4 text-center text-white">
-                        {user?.email}
-                        </td>
-                        <td class="whitespace-nowrap px-4 py-4 text-center text-white">
-                          {user?.phoneNumber}
-                        </td>
-                        <td className="justify-center">
-                        <button>
-                        <img src="../src/assets/delete.png" alt="delete-icon" className="w-4" />
-                        </button>
+        return (
+          <div className="admin-appointments">
+            <h1>All Users </h1>
+            <div class="overflow-x-auto">
+              <table class="min-w-full divide-y-2 divide-gray-200 bg-transparent text-sm">
+                <thead class="ltr:text-left rtl:text-right">
+                  <tr>
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                      First Name
+                    </th>
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                      Last name
+                    </th>
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                      Email
+                    </th>
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                      Phone Number
+                    </th>
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                      Active
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody class="divide-y divide-gray-200">
+                  {users.map((user, index) => (
+                    <tr key={index}>
+                      <td class="whitespace-nowrap px-4 py-4 font-medium text-center text-white">
+                        {user?.firstName}
                       </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                        {user?.lastName}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                        {user?.email}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                        {user?.phoneNumber}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                        {user.isActive ? <p> Active</p> : <p>Not active</p>}
+                      </td>
+                      <td className="justify-center">
+                        {user.isActive ? (
+                          <button onClick={() => handleDeleteUser(user._id)}>
+                            <img
+                              src="../src/assets/delete.png"
+                              alt="delete-icon"
+                              className="w-4"
+                            />
+                          </button>
+                        ) : (
+                          <button onClick={()=> handlereturnUser(user._id)}>
+                          <img
+                            src="../src/assets/returnIcon.png"
+                            alt="delete-icon"
+                            className="w-4"
+                          />
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          ); // list of users
+          </div>
+        ); // list of users
       case 2:
         return (
-            <div className="admin-appointments">
-              <h1>All pets </h1>
-              <div class="overflow-x-auto">
-                <table class="min-w-full divide-y-2 divide-gray-200 bg-transparent text-sm">
-                  <thead class="ltr:text-left rtl:text-right">
-                    <tr>
-                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
-                         Name
-                      </th>
-                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
-                         Breed
-                      </th>
-                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
-                        Age
-                      </th>
-                      <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
-                        Weight
-                      </th>
-                    </tr>
-                  </thead>
-  
-                  <tbody class="divide-y divide-gray-200">
-                    {pets.map((pet, index) => (
-                      <tr key={index}>
-                        <td class="whitespace-nowrap px-4 py-4 font-medium text-center text-white">
-                          {pet?.name}
-                        </td>
-                        <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+          <div className="admin-appointments">
+            <h1>All pets </h1>
+            <div class="overflow-x-auto">
+              <table class="min-w-full divide-y-2 divide-gray-200 bg-transparent text-sm">
+                <thead class="ltr:text-left rtl:text-right">
+                  <tr>
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                      Name
+                    </th>
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                      Breed
+                    </th>
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                      Age
+                    </th>
+                    <th class="whitespace-nowrap px-4 py-4 font-medium text-white">
+                      Weight
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody class="divide-y divide-gray-200">
+                  {pets.map((pet, index) => (
+                    <tr key={index}>
+                      <td class="whitespace-nowrap px-4 py-4 font-medium text-center text-white">
+                        {pet?.name}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
                         {pet?.breed}
-                          
-                        </td>
-                        <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
                         {pet?.age}
-                        </td>
-                        <td class="whitespace-nowrap px-4 py-4 text-center text-white">
-                          {pet?.weight}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-4 text-center text-white">
+                        {pet?.weight}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          ); // list of users// list of pets
+          </div>
+        ); // list of users// list of pets
     }
   };
 
@@ -230,10 +286,7 @@ const Admin = () => {
       <div className="w-full">
         <div className="h-[35px] m-4 rounded border-2 border-dashed border-slate-600 bg-slate-800">
           Admin{" "}
-          <button
-            onClick={handleLogout}
-            className=""
-          >
+          <button onClick={handleLogout} className="">
             Logout
           </button>
         </div>
