@@ -12,6 +12,22 @@ export default {
         chewy: ['Chewy', 'cursive'],
         dosis: ['Dosis', 'sans-serif'],
         playful: ['Pacifico', 'cursive'],
+        
+      },
+      keyframes: {
+        wave: {
+          '0%': { transform: 'rotate(0.0deg)' },
+          '10%': { transform: 'rotate(14deg)' },
+          '20%': { transform: 'rotate(-8deg)' },
+          '30%': { transform: 'rotate(14deg)' },
+          '40%': { transform: 'rotate(-4deg)' },
+          '50%': { transform: 'rotate(10.0deg)' },
+          '60%': { transform: 'rotate(0.0deg)' },
+          '100%': { transform: 'rotate(0.0deg)' },
+        },
+      },
+      animation: {
+        'waving-hand': 'wave 2s linear infinite',
       },
     },
   },
@@ -28,7 +44,7 @@ export default {
 
           accent: "#cc7744",
 
-          neutral: "#ee3e54",
+          neutral: "#f5f5f5",
 
           /* "base-100": "#40CCD4", */
 

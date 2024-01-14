@@ -54,7 +54,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
   };
 
   return (
-    <div className="item-dash flex h-screen">
+    <div className=" flex h-screen bg-neutral">
       {/* <!-- Sidebar --> */}
       <aside className="fixed z-50  md:relative">
         <input type="checkbox" className="peer hidden" id="sidebar-open" />
@@ -211,10 +211,10 @@ const Dashboardtwo = ({ onProfileClick }) => {
       </aside>
       <div className="flex h-full  py-12 px-10 w-full flex-col">
         <header className="relative rounded-full flex flex-col items-center  px-4 py-4 shadow sm:flex-row md:h-20">
-          <div className="flex w-full flex-col justify-between  transition-all sm:max-h-full sm:flex-row sm:items-center">
+          <div className="flex w-full flex-col justify-between p-12 transition-all sm:max-h-full sm:flex-row sm:items-center">
             <div className="flex w-full flex-col justify-center transition-all sm:max-h-full sm:flex-row sm:items-center sm:justify-between">
-              <h1 className="text-center text-white font-chewy text-3xl font-bold">
-                Welcome {currentUser.firstName} {currentUser.lastName}
+              <h1 className="flex text-center gap-4 text-white font-chewy text-3xl font-bold">
+                Welcome <span className="animate-waving-hand">👋🏻</span> {currentUser.firstName} {currentUser.lastName}
               </h1>
 
               <div className="mt-4 sm:mt-0">
