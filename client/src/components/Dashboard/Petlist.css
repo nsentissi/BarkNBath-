@@ -1,6 +1,6 @@
 .button {
     height: 50px;
-    width: 150px;
+    width: 180px;
     
     position: relative;
     background-color: transparent;
@@ -8,14 +8,27 @@
     border: 2px solid #fbcd59;
     overflow: hidden;
     border-radius: 30px;
-    color: #333;
+    color: #030000;
     transition: all 0.5s ease-in-out;
   }
-  
+  .type1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.5s ease-in-out;
+    background-color: #333;
+    border-radius: 30px;
+    visibility: hidden;
+    height: 10px;
+    width: 10px;
+    z-index: -1;
+  }
   .btnTxt {
     z-index: 1;
     font-weight: 800;
     letter-spacing: 4px;
+   
   }
 
   
@@ -26,4 +39,21 @@
     border: none;
   }
   
- 
+  .type1:hover::after {
+    visibility: visible;
+    transform: scale(100) translateX(2px);
+  }
+
+ /* Petlist.css */
+
+/* Add a stronger shadow and larger transformation for a more visible 3D effect */
+.profile-card {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Increase the transformation when hovering over the card for a more visible effect */
+.profile-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}

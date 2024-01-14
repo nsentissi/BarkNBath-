@@ -104,7 +104,7 @@
 	list-style: none;
 	width: 20px;
 	height: 20px;
-	background: rgb(25, 117, 159);
+	background: rgb(110, 186, 221);
 	animation: animate 7s linear infinite;
 	bottom: -150px;
 	border-radius: 50%;
@@ -223,3 +223,6 @@
 /*
 -- End BackGround Animation 
 */
+.yellow { color: #fbcd59; }
+.orange { color: #cc7744; }
+.blue { color: #19759f; }

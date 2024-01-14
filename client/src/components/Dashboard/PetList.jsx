@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import styles from './Petlist.css'
+import  './Petlist.css'
 
 
 const PetList = () => {
@@ -87,29 +87,34 @@ const PetList = () => {
   };
 
   return (
-    <div className="flex  flex-wrap  gap-x-4 gap-y-10">
-      <h1 className="font-chewy  text-xl font-bold">
-        Here you find all your puffy friends
-      </h1>
+    <div className="flex flex-col gap-x-4 gap-y-10">
+      <div className="text-center">
+    <h1 className="font-chewy tracking-widest pt-8 text-xl font-bold">
+      All your puffy friends
+    </h1>
+  </div>
       <div className="w-full flex flex-wrap justify-center gap-4 pt-10">
+    
         {currentUser.pets?.map((pet, index) => (
           <div
             className="bg-primary rounded-lg profile-card w-96  p-6 mb-4"
             key={index}
           >
+       
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center">
-                <span className="ml-2 text-lg font-semibold text-white">
+                <span className="ml-2 text-lg font-playful font-semibold text-white">
                   Pet Profile
                 </span>
               </div>
               <button
-                className={styles.type1}
+                className="button type1"
+                
                 onClick={(e) => {
                   handleCreatePostClick(pet._id);
                 }}
               >
-                <span className={styles.btnTxt}>Create Post</span>
+                <span className="btnTxt font-playful font-bold px-2">Create Post</span>
               </button>
       
             </div>
@@ -121,7 +126,7 @@ const PetList = () => {
                     <li className="text-center">
                       <a
                         href="#"
-                        className="text-white pb-2 border-b-2 border-white text-sm font-semibold"
+                        className="text-white font-playful tracking-widest pb-2 border-b-2 border-white text-sm font-semibold"
                       >
                         Overview
                       </a>
@@ -140,17 +145,17 @@ const PetList = () => {
                 )}
               </div>
               <div className="text-center mb-4">
-                <h2 className="text-xl font-chewy tracking-widest text-white  font-semibold">
+                <h2 className="text-xl font-chewy tracking-widest text-accent  font-semibold">
                   {pet.name}
                 </h2>
               </div>
               <div className="text-center mb-4">
-                <h2 className="text-xl font-chewy tracking-widest text-white  font-semibold">
+                <h2 className="text-sm font-playful tracking-widest text-white  font-semibold">
                   Breed: {pet.breed}
                 </h2>
               </div>
               <div className="text-center  mb-8">
-                <h2 className="text-xl font-chewy tracking-widest text-white  font-semibold">
+                <h2 className="text-sm font-playful tracking-widest text-white  font-semibold">
                   Weight: {pet.weight} kg
                 </h2>
               </div>
