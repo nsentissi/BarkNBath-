@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 import React from 'react';
 import styles from "./jorney.module.css";
+import createacc from "../../assets/createacc.png"
+import nr2 from "../../assets/nr2.png"
+import nr1 from "../../assets/nr1.png"
+import community from "../../assets/community.png"
+import doghearts from "../../assets/community.png"
+import nr3 from "../../assets/nr3.png"
 
 const titleVariants = {
   hidden: { opacity: 0 },
@@ -63,14 +69,14 @@ const Journey = () => (
               <div aria-label="sign up" role="img">
                 <img
                   className="focus:outline-none w-38 mt-10"
-                  src=".\src\assets\createacc.png"
+                  src={createacc}
                   alt="how it work"
                 />
               </div>
               <div aria-label={2} role="img">
                 <img
                   className="focus:outline-none w-14 mt-24"
-                  src=".\src\assets\nr2.png"
+                  src={nr2}
 
                 />
               </div>
@@ -86,7 +92,7 @@ const Journey = () => (
               <div aria-label="transactions" role="img">
                 <img
                   className="focus:outline-none w-38 mt-24"
-                  src=".\src\assets\community.png"
+                  src={community}
                   
                 />
               </div>
@@ -106,7 +112,7 @@ const Journey = () => (
               <div aria-label={1} role="img">
                 <img
                 className="focus:outline-none w-14 "
-                  src=".\src\assets\nr1.png"
+                  src={nr1}
                   
                 />
               </div>
@@ -122,14 +128,14 @@ const Journey = () => (
               <div aria-label="wallet" role="img">
                 <img
                   className="focus:outline-none w-38 mt-32"
-                  src=".\src\assets\doghearts.png"
+                  src={doghearts}
 
                 />
               </div>
               <div aria-label={3} role="img">
                 <img
                   className="focus:outline-none w-14 mt-20"
-                  src=".\src\assets\nr3.png"
+                  src={nr3}
 
                 />
               </div>
@@ -154,12 +160,12 @@ const Journey = () => (
           >
               <img
             className="w-16 my-10"
-              src=".\src\assets\nr1.png"
+              src={nr1}
 
             />
             <img
               className="focus:outline-none w-38 "
-              src=".\src\assets\createacc.png"
+              src={createacc}
               alt="how it work"
             />
           
@@ -174,12 +180,12 @@ const Journey = () => (
             </div>
             <img
             className="w-16 my-10"
-              src=".\src\assets\nr2.png"
+              src={nr2}
               
             />
             <img
               className="focus:outline-none my-2"
-              src=".\src\assets\doghearts.png"
+              src={doghearts}
 
             />
           
@@ -195,7 +201,7 @@ const Journey = () => (
             
             <img
               className ='w-16 my-10'
-              src=".\src\assets\nr3.png"
+              src={nr3}
 
             />
             <img

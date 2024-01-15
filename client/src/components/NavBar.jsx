@@ -1,10 +1,10 @@
 import React from "react";
 import { useAuth } from "../hooks/AuthContext";
 import { Link } from "react-router-dom";
+import logo from "../assets/barkNBath.png"
 import "./navbar.css";
 
 const Navbar = () => {
-
   const { currentUser, isLoading, logout } = useAuth();
 
   return (
@@ -16,11 +16,7 @@ const Navbar = () => {
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img
-            src=".\src\assets\barkNBath.png"
-            className="h-28 w-38"
-            alt="barknbath Logo"
-          />
+          <img src={logo} className="h-28 w-38" alt="barknbath Logo" />
         </Link>
 
         <React.Fragment>
@@ -78,7 +74,6 @@ const Navbar = () => {
             </div>
           </Link>
         )}
-
       </div>
     </nav>
   );

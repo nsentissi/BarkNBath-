@@ -1,6 +1,11 @@
 import React, { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "./bubble.module.css";
+import van from "../../assets/van.png"
+import parkingSign from "../../assets/parking.png"
+import backgroundImage from "../../assets/homepage.svg"
+import dirtyDog from "../../assets/dirtydog.png"
+import cleandog from "../../assets/cleandog.png"
 
 const Landingpage = () => {
 
@@ -64,12 +69,13 @@ const Landingpage = () => {
       </ul>
       <div
         className="flex items-center justify-center h-screen z-0 bg-cover bg-center  landing-page-bg"
-        style={{ backgroundImage: `url('./src/assets/homepage.svg')` }}
+        style={{ backgroundImage: `url(${backgroundImage})` }}
       >
          <div className="flex flex-col md:flex-row   items-center z-0 justify-center h-screen">
       {/* Dirty Dog Image */}
       <motion.div
-        className="w-32 h-40 md:w-48 md:h-96 rounded-full bg-[url('../../src/assets/dirtydog.png')] bg-cover bg-start "
+        className="w-32 h-40 md:w-48 md:h-96 rounded-full bg-cover bg-start "
+        style= {{backgroundImage: `url(${dirtyDog})`}}
         variants={newImageVariants}
         initial="hidden"
         animate="visible"
@@ -82,7 +88,8 @@ const Landingpage = () => {
       </div>
       {/* Clean Dog Image */}
       <motion.div
-        className="w-32 h-40 md:w-48 md:h-96 rounded-full bg-[url('../../src/assets/cleandog.png')] bg-cover bg-start"
+        className="w-32 h-40 md:w-48 md:h-96 rounded-full bg-cover bg-start"
+        style= {{backgroundImage: `url(${cleandog})`}}
         variants={newImageVariants}
         initial="hidden"
         animate="visible"
@@ -102,7 +109,7 @@ const Landingpage = () => {
   </motion.div>
         <motion.img
           className="absolute bottom-10 right-14 md:right-32 lg:right-50 transform lg:-translate-x-1/2 lg:translate-y-0 w-1/2 md:w-1/3 lg:w-38vw"
-          src="./src/assets/van.png"
+          src={van}
           alt="Van"
           variants={vanVariants}
           initial="hidden"
@@ -113,7 +120,7 @@ const Landingpage = () => {
         {/* Parking Sign  */}
         <motion.img
           className="absolute bottom-16 right-60  md:right-96 lg:right-1/2 lg:mr-36 transform lg:-translate-x-1/2 lg:translate-y-0  w-1/5 md:w-1/5 lg:w-20vw"
-          src="./src/assets/parking.png"
+          src={parkingSign}
           alt="Parking Sign"
           variants={parkingSignVariants}
           initial="hidden"

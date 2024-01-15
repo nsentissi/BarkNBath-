@@ -1,11 +1,14 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import axios from "axios";
+import axiosClient from "../../axiosClient";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import Profile from "./Profile";
 import { useAuth } from "../hooks/AuthContext";
+import homepagelog from "../assets/homepagelog.png"
+import barkNBath from "../assets/barkNBath.png"
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -34,7 +37,7 @@ const Login = () => {
       {/* Background Image */}
       <div class="absolute inset-0 z-0">
         <img
-          src="./src/assets/homepagelog.png"
+          src={homepagelog}
           alt=""
           class="w-full h-full object-cover filter blur-lg brightness-50"
         />
@@ -43,7 +46,7 @@ const Login = () => {
       {/* Login Form */}
       <div className="bg-secondary z-10 p-6 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-md w-full">
         <img
-          src="../src/assets/barkNBath.png"
+          src={barkNBath}
           className="mb-6 mx-auto"
           alt="Logo"
         />

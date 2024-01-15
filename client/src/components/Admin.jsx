@@ -3,8 +3,10 @@ import { FaUser, FaDog } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "../hooks/AuthContext";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axiosClient from "../../axiosClient";
 import { useNavigate } from "react-router-dom";
+import deleteIcon from "../assets/delete.png"
+import returnIcon from "../assets/returnIcon.png"
 
 const Admin = () => {
   const [selected, setSelected] = useState(0);
@@ -25,8 +27,8 @@ const Admin = () => {
 
   const handleDeleteUser = async (userId) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3000/auth/delete/${userId}`,
+      const response = await axiosClient.delete(
+        `/auth/delete/${userId}`,
         { withCredentials: true }
       );
       const newUsers = users.map((user) => {
@@ -43,7 +45,7 @@ const Admin = () => {
 
   const handleDeleteAppointment = async (appointmentId) => {
     try {
-      await axios.delete(`http://localhost:3000/appointment/delete/${appointmentId}`, {withCredentials:true});
+      await axiosClient.delete(`/appointment/delete/${appointmentId}`, {withCredentials:true});
 
       const updatedAppointments = appointments.filter(
         (appointment) => appointment._id !== appointmentId
@@ -59,8 +61,8 @@ const Admin = () => {
 
   const handlereturnUser = async (userId) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3000/auth/return/${userId}`,
+      const response = await axiosClient.delete(
+        `/auth/return/${userId}`,
         { withCredentials: true }
       );
       const newUsers = users.map((user) => {
@@ -78,8 +80,8 @@ const Admin = () => {
   useEffect(() => {
     const fetchAllAppointments = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3000/appointment/all",
+        const response = await axiosClient.get(
+          "/appointment/all",
           { withCredentials: true }
         );
         const allAppointments = response.data;
@@ -105,7 +107,7 @@ const Admin = () => {
 
     const fetchAllUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/auth/all", {
+        const response = await axiosClient.get("/auth/all", {
           withCredentials: true,
         });
         setUsers(response.data);
@@ -116,7 +118,7 @@ const Admin = () => {
 
     const fetchAllPets = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/pet/all", {
+        const response = await axiosClient.get("/pet/all", {
           withCredentials: true,
         });
         setPets(response.data);
@@ -180,7 +182,7 @@ const Admin = () => {
                       <td className="justify-center">
                       <button onClick={() => handleDeleteAppointment(appointment._id)}>
                           <img
-                            src="../src/assets/delete.png"
+                            src={deleteIcon}
                             alt="delete-icon"
                             className="w-4"
                           />
@@ -241,7 +243,7 @@ const Admin = () => {
                         {user.isActive ? (
                           <button onClick={() => handleDeleteUser(user._id)}>
                             <img
-                              src="../src/assets/delete.png"
+                              src={deleteIcon}
                               alt="delete-icon"
                               className="w-4"
                             />
@@ -249,8 +251,8 @@ const Admin = () => {
                         ) : (
                           <button onClick={() => handlereturnUser(user._id)}>
                             <img
-                              src="../src/assets/returnIcon.png"
-                              alt="delete-icon"
+                              src={returnIcon}
+                              alt="return-icon"
                               className="w-4"
                             />
                           </button>

@@ -1,5 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import conv1 from "../assets/conv1.png"
+import knowing1 from "../assets/conv1.png"
+import time1 from "../assets/time1.png"
+import less from "../assets/less.png"
+import cages from "../assets/cages.png"
+import privacy1 from "../assets/privacy1.png"
+import dog from "../assets/dog.svg"
 
 const AboutUs = () => {
   const variants = {
@@ -43,7 +50,7 @@ const AboutUs = () => {
             <motion.div className="p-4 py-0" variants={variants}>
             <div className="relative border-l-2 border-t-2 border-primary p-4">
               <div className="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
-                <img src=".\src\assets\conv1.png" className="h-16 w-16" />
+                <img src={conv1} className="h-16 w-16" />
               </div>
               <h2 className="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
               Convenience
@@ -56,7 +63,7 @@ const AboutUs = () => {
             <motion.div className="p-4 py-0" variants={variants}>
             <div className="relative  border-t-2 border-primary p-4">
               <div className="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
-                <img src=".\src\assets\knowing1.png" className="h-16 w-16" />
+                <img src={knowing1} className="h-16 w-16" />
               </div>
               <h2 className="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
               Certified groomers
@@ -69,7 +76,7 @@ const AboutUs = () => {
             <motion.div className="p-4 py-0" variants={variants}>
             <div className="relative border-r-2 border-t-2 border-primary p-4">
               <div className="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
-                <img src=".\src\assets\time1.png" className="h-16 w-16" />
+                <img src={time1} className="h-16 w-16" />
               </div>
               <h2 className="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
                 TIME-SAVING
@@ -82,7 +89,7 @@ const AboutUs = () => {
             <motion.div className="p-4 py-0" variants={variants}>
             <div className="relative border-l-2 border-b-2 border-primary p-4">
               <div className="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
-                <img src=".\src\assets\less.png" className="h-16 w-16" />
+                <img src={less} className="h-16 w-16" />
               </div>
               <h2 className="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
               More Relaxed
@@ -95,7 +102,7 @@ const AboutUs = () => {
             <motion.div className="p-4 py-0" variants={variants}>
               
               <div className="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
-                <img src=".\src\assets\cages.png" className="h-16 w-16" />
+                <img src={cages} className="h-16 w-16" />
               </div>
               <h2 className="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
               No Cages
@@ -110,7 +117,7 @@ const AboutUs = () => {
             <motion.div className="p-4 py-0" variants={variants}>
             <div className="relative border-r-2 border-b-2 border-primary p-4">
               <div className="bg-transparent rounded-full w-16 h-16 flex justify-center items-center text-indigo-500 shadow-2xl">
-                <img src=".\src\assets\privacy1.png" className="h-16 w-16" />
+                <img src={privacy1} className="h-16 w-16" />
               </div>
               <h2 className="uppercase mt-6 text-black font-chewy tracking-wider font-medium mb-3">
                 Pet Privacy
@@ -146,7 +153,7 @@ const AboutUs = () => {
           className="-mb-10 w-full md:w-auto"
           initial="offscreen"
           whileInView="onscreen"
-          src="../src/assets/dog.svg"
+          src={dog}
           alt="dog picture"
           viewport={{ once: true }}
           variants={dogImageVariants}

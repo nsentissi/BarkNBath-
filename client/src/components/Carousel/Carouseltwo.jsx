@@ -2,6 +2,15 @@ import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
 import React from "react";
 import styles from "./carousel.module.css";
+import carousel1 from "../../assets/carousel1.jpg"
+import carousel2 from "../../assets/carousel2.jpg"
+import carousel3 from "../../assets/carousel3.jpg"
+import carousel4 from "../../assets/carousel4.jpg"
+import carousel5 from "../../assets/carousel5.jpg"
+import carousel6 from "../../assets/carousel6.jpg"
+import carousel7 from "../../assets/carousel7.jpg"
+import carousel8 from "../../assets/carousel8.jpg"
+import carousel9 from "../../assets/carousel9.jpg"
 
 const Example = () => {
   return (
@@ -105,47 +114,47 @@ export default Example;
 
 const cards = [
   {
-    url: "./src/assets/carousel1.jpg",
+    url: carousel1,
     title: "Title 1",
     id: 1,
   },
   {
-    url: "./src/assets/carousel2.jpg",
+    url: carousel2,
     title: "Title 2",
     id: 2,
   },
   {
-    url: "./src/assets/carousel5.jpg",
+    url: carousel3,
     title: "Title 3",
     id: 3,
   },
   {
-    url: "./src/assets/carousel6.jpg",
+    url: carousel4,
     title: "Title 4",
     id: 4,
   },
   {
-    url: "./src/assets/carousel3.jpg",
+    url: carousel5,
     title: "Title 5",
     id: 5,
   },
   {
-    url: "./src/assets/carousel8.jpg",
+    url: carousel6,
     title: "Title 6",
     id: 6,
   },
   {
-    url: "./src/assets/carousel9.jpg",
+    url: carousel7,
     title: "Title 7",
     id: 7,
   },
   {
-    url: "./src/assets/carousel4.jpg",
+    url: carousel8,
     title: "Title 7",
     id: 7,
   },
   {
-    url: "./src/assets/carousel10.jpg",
+    url: carousel9,
     title: "Title 7",
     id: 7,
   },

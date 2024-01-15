@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../hooks/AuthContext";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import axiosClient from "../../axiosClient";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -18,7 +18,7 @@ const Profile = () => {
 
   const onSubmit = async (data) => {
     try {
-      await axios.put("http://localhost:3000/auth/updateUser", data, { withCredentials: true });
+      await axiosClient.put("/auth/updateUser", data, { withCredentials: true });
       toast.success("Profile updated successfully!");
       setEditMode(false);
     } catch (error) {
