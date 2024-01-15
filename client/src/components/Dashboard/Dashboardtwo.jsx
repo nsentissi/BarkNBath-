@@ -17,8 +17,8 @@ const Dashboardtwo = ({ onProfileClick }) => {
   };
 
   const handleHomeClick = () => {
-    navigate(`/`)
-  }
+    navigate(`/`);
+  };
 
   const renderOverview = () => {
     return (
@@ -39,7 +39,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
   const renderBook = () => {
     return (
       <div>
-        <AppointmentForm  setActiveContent={setActiveContent} />
+        <AppointmentForm setActiveContent={setActiveContent} />
       </div>
     );
   };
@@ -58,7 +58,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
   };
 
   return (
-    <div className=" flex h-screen bg-neutral">
+    <div className=" flex h-screen bg-cover bg-center "  >
       {/* <!-- Sidebar --> */}
       <aside className="fixed z-50  md:relative">
         <input type="checkbox" className="peer hidden" id="sidebar-open" />
@@ -85,7 +85,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
           aria-label="Sidebar Navigation"
           className="peer-checked:w-64 left-0 z-10 flex h-screen w-0 flex-col overflow-hidden bg-primary text-white transition-all md:h-screen md:w-64 lg:w-72"
         >
-          <div className={`${styles['item-1']} mt-5  py-1 px-16 md:mt-8`}>
+          <div className={`${styles["item-1"]} mt-5  py-1 px-16 md:mt-8`}>
             <span className="">
               <span className="">
                 <img
@@ -214,21 +214,47 @@ const Dashboardtwo = ({ onProfileClick }) => {
         </nav>
       </aside>
       <div className="flex h-full  py-12 px-10 w-full flex-col">
-        <header className="relative rounded-full flex flex-col items-center  px-4 py-4 shadow sm:flex-row md:h-20">
+        <header className="relative rounded-full flex flex-col items-center  px-4 py-4 shadow md:flex-row md:h-20">
           <div className="flex w-full flex-col justify-between p-12 transition-all sm:max-h-full sm:flex-row sm:items-center">
             <div className="flex w-full flex-col justify-center transition-all sm:max-h-full sm:flex-row sm:items-center sm:justify-between">
-              <h1 className="flex text-center gap-4 text-white font-chewy text-3xl font-bold">
-                Welcome <span className="animate-waving-hand">👋🏻</span> {currentUser.firstName} {currentUser.lastName}
+              <h1 className="flex text-center gap-4 text-white font-playful text-3xl font-bold">
+                Welcome <span className="animate-waving-hand">👋🏻</span>{" "}
+                {currentUser.firstName} {currentUser.lastName}
               </h1>
-
-              <div className="mt-4 sm:mt-0">
-                <button onClick={handleViewBlogsClick}>View All Blogs</button>
-              </div>
             </div>
             <div className="relative ml-10 flex items-center justify-between rounded-md sm:ml-auto"></div>
 
             <ul className="mx-auto mt-4 flex space-x-6 sm:mx-5 sm:mt-0">
-            <button onClick={handleHomeClick} className=" ">
+              <button onClick={handleViewBlogsClick} className=" ">
+                <div className="flex justify-center">
+                  <a
+                    href="#_"
+                    className="group relative  inline-flex items-center justify-center overflow-hidden rounded-xl border-4 border-primary p-4 px-5 py-2.5 font-medium text-white shadow-md transition duration-300 ease-out"
+                  >
+                    <span className="absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-info text-white duration-300 group-hover:translate-x-0">
+                      <svg
+                        className="h-6 w-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        ></path>
+                      </svg>
+                    </span>
+                    <span className="absolute text-white flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
+                      BLOGS
+                    </span>
+                    <span className="invisible relative">LOG </span>
+                  </a>
+                </div>
+              </button>
+              <button onClick={handleHomeClick} className=" ">
                 <div className="flex justify-center">
                   <a
                     href="#_"
@@ -250,7 +276,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
                         ></path>
                       </svg>
                     </span>
-                    <span className="absolute flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
+                    <span className="absolute text-white flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
                       Homepage
                     </span>
                     <span className="invisible relative">LOG </span>
@@ -279,7 +305,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
                         ></path>
                       </svg>
                     </span>
-                    <span className="absolute flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
+                    <span className="absolute text-white flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
                       LOG OUT
                     </span>
                     <span className="invisible relative">LOG </span>
@@ -289,24 +315,24 @@ const Dashboardtwo = ({ onProfileClick }) => {
             </ul>
           </div>
         </header>
-        
-          <div className="h-full z-0 pl-10">
+
+        <div className="h-screen z-0 pl-10">
           <div className={styles.area}>
-          <ul className={styles.circles}>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+            <ul className={styles.circles}>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
             <main
               id="dashboard-main"
-              className="h-[calc(100vh-10rem)] z-0 px-4 py-0"
+              className="h-[calc(100vh-10rem)] z-0 px-4 overflow-hidden py-0"
             >
               {renderContent()}
             </main>

@@ -1,5 +1,5 @@
 header {
-  background: linear-gradient(to right, #cc7744, #fbcd59,#cc7744);
+  background: linear-gradient(to right, #323c41,#cc7744, #000000f9,#f0af86,#2e3436);
 }
 
 .item-1 {
@@ -70,7 +70,7 @@ header {
 .area {
   background: transparent;
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   z-index: -1;
   position: relative;
   z-index: -2;
@@ -214,3 +214,5 @@ header {
 /*
 -- End BackGround Animation 
 */
+/* Petlist.css */
+

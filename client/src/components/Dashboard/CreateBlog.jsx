@@ -85,7 +85,7 @@ const CreateBlog = () => {
   }, []);
 
   return (
-    <div className="h-screen overflow-y-scroll ">
+    <div className="h-screen overflow-y-scroll bg-neutral ">
       <div className="flex items-center justify-around py-8">
         <h4 className="text-gray-800 font-semibold text-4xl text-center ">
           Your Blogs
@@ -153,10 +153,10 @@ const CreateBlog = () => {
             </div> */}
             <form
               onSubmit={handleSubmit}
-              className="border-4 border-accent px-2 py-3 mt-60"
+              className="border-4 border-accent px-6 py-10 mt-60"
             >
               {/* <!-- Post Content Section --> */}
-              <h3 className="text-center font-bold text-gray-700 text-xl">
+              <h3 className="text-center font-bold text-gray-700 text-xl " >
                 Post a blog
               </h3>
               <div>
