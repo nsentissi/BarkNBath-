@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import { useAuth } from "../../hooks/AuthContext";
-import axios from "axios";
+import axiosClient from "../../../axiosClient";
 import TimePicker from "react-time-picker";
 import Modal from "./Modal";
 import ServicesTable from "../ServicesTable";
+import map from "../../assets/map.png"
+
 
 import NewMap from "../MapContainer";
 
@@ -40,10 +42,9 @@ const AppointmentForm = ({ setActiveContent }) => {
   const onSubmit = async (data) => {
     try {
       console.log(data);
-      const response = await axios.post(
-        "http://localhost:3000/appointment/create",
+      const response = await axiosClient.post(
+        "/appointment/create",
         data,
-        { withCredentials: true }
       );
       setActiveContent("overview");
       toast("Appointment booked!");
@@ -62,8 +63,8 @@ const AppointmentForm = ({ setActiveContent }) => {
   };
 
   return (
-    <div class=" min-h-screen z-0 flex items-center justify-center  px-4">
-      <div className="bg-secondary z-1 p-4 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-2xl w-5/6">
+    <div class=" max-h-screen mt-6 z-0 flex items-center justify-center  px-4">
+      <div className="bg-secondary z-1 p-8 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-2xl w-5/6">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="max-w-xl mx-auto mt-12 space-y-4"
@@ -77,8 +78,8 @@ const AppointmentForm = ({ setActiveContent }) => {
                 required: true,
                 onChange: async (e) => {
                   const date = new Date(e.target.value).toISOString();
-                  const response = await axios.get(
-                    `http://localhost:3000/appointment?date=${date}`,
+                  const response = await axiosClient.get(
+                    `/appointment?date=${date}`,
                     { withCredentials: true }
                   );
                   setAppointments(response.data);
@@ -193,7 +194,7 @@ const AppointmentForm = ({ setActiveContent }) => {
                 type="button"
                 className="bg-gray-200 mt-4 mx-auto w-1/4 text-black p-2 rounded-r hover:bg-gray-300"
               >
-                <img className="w-1/2" src="../src/assets/map.png"/>
+                <img className="w-1/2" src={map}/>
               </button>
               <Modal isOpen={isMapModalOpen} onClose={handleCloseMapModal}>
                 <NewMap onMarkerClick={handleAddressSelect} />

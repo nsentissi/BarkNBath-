@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import axios from "axios";
+import axiosClient from "../../../axiosClient";
 import { toast } from "react-toastify";
 
 import { useNavigate } from "react-router-dom";
@@ -38,8 +38,8 @@ const AddPetForm = ({ setActiveContent }) => {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/pet/create",
+      const response = await axiosClient.post(
+        "/pet/create",
         formData,
         {
           withCredentials: true,

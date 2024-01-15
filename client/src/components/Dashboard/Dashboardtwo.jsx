@@ -5,6 +5,7 @@ import AddPetForm from "./AddPetForm";
 import AppointmentForm from "./AppointmentForm";
 import styles from "./Dashboard.module.css";
 import { useNavigate } from "react-router-dom";
+import barkNBath from "../../assets/barkNBath.png"
 
 const Dashboardtwo = ({ onProfileClick }) => {
   const { currentUser, logout } = useAuth();
@@ -89,7 +90,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
             <span className="">
               <span className="">
                 <img
-                  src=".\src\assets\barkNBath.png"
+                  src={barkNBath}
                   className="h-28 w-38 "
                   alt="barknbath Logo"
                 />

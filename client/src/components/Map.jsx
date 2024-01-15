@@ -2,13 +2,15 @@ import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import locationData from "../data/map.json";
+import mapBackground from "../assets/map-background.png"
 
 const position = [52.5314560163944, 13.403370226299785];
 
 const Map = () => {
   return (
     <>
-      <div className="bg-[url('../../src/assets/map-background.png')] bg-cover bg-center h-auto md:h-full bg-no-repeat">
+      <div className=" bg-cover bg-center h-auto md:h-full bg-no-repeat" 
+       style={{ backgroundImage: `url(${mapBackground})` }} >
       <div className="mx-auto flex flex-col md:flex-row justify-center px-4 py-14 gap-4 h-auto md:h-full">
         <div className="px-4 py-10 md:p-12 bg-success h-1/4 lg rounded-lg">
           <h4 className="text-base md:text-lg lg:text-xl w-full p-4 md:p-20">
