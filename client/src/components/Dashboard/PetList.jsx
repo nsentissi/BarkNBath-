@@ -8,6 +8,11 @@ import  './Petlist.css'
 
 
 const PetList = () => {
+  const [activeTab, setActiveTab] = useState('tab1');
+
+  const handleTabClick = (tab) => {
+      setActiveTab(tab);
+  };
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const [petAppointments, setPetAppointments] = useState([]);
@@ -167,8 +172,12 @@ const PetList = () => {
                   Appointments
                 </h3>
                 <TabList className={"flex justify-around px-8 "}>
-                  <Tab>Upcoming</Tab>
-                  <Tab>Past </Tab>
+                <div className="w-full max-w-md mx-auto">
+            <div className="flex border-b border-gray-300">
+                  <Tab onClick={() => handleTabClick('tab1')}>Upcoming</Tab>
+                  <Tab onClick={() => handleTabClick('tab2')}>Past </Tab>
+                  </div>
+                  </div>
                 </TabList>
 
                 <TabPanel>
