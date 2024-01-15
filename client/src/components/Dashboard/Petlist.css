@@ -5,7 +5,7 @@
     position: relative;
     background-color: transparent;
     cursor: pointer;
-    border: 2px solid #fbcd59;
+    border: 4px solid #cc7744;
     overflow: hidden;
     border-radius: 30px;
     color: #030000;
@@ -27,7 +27,7 @@
   .btnTxt {
     z-index: 1;
     font-weight: 800;
-    letter-spacing: 4px;
+    letter-spacing: 1px;
    
   }
 
@@ -46,14 +46,3 @@
 
  /* Petlist.css */
 
-/* Add a stronger shadow and larger transformation for a more visible 3D effect */
-.profile-card {
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* Increase the transformation when hovering over the card for a more visible effect */
-.profile-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}

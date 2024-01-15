@@ -4,16 +4,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import  './Petlist.css'
-
+import "./Petlist.css";
 
 const PetList = () => {
-  const [activeTab, setActiveTab] = useState('tab1');
-
-  const handleTabClick = (tab) => {
-      setActiveTab(tab);
-  };
   const { currentUser } = useAuth();
+  const [activeTab, setActiveTab] = useState('upcoming');
   const navigate = useNavigate();
   const [petAppointments, setPetAppointments] = useState([]);
 
@@ -94,96 +89,60 @@ const PetList = () => {
   return (
     <div className="flex flex-col gap-x-4 gap-y-10">
       <div className="text-center">
-    <h1 className="font-chewy tracking-widest pt-8 text-xl font-bold">
-      All your puffy friends
-    </h1>
-  </div>
-      <div className="w-full flex flex-wrap justify-center gap-4 pt-10">
-    
+        <h1 className="font-playful tracking-widest pt-8 text-4xl font-bold">
+          Your puffy friends
+        </h1>
+      </div>
+      <div className="flex flex-wrap  justify-center gap-14 mt-12">
         {currentUser.pets?.map((pet, index) => (
-          <div
-            className="bg-primary rounded-lg profile-card w-96  p-6 mb-4"
-            key={index}
-          >
-       
-            <div className="flex justify-between items-center mb-4">
-              <div className="flex items-center">
-                <span className="ml-2 text-lg font-playful font-semibold text-white">
-                  Pet Profile
-                </span>
-              </div>
-              <button
-                className="button type1"
+          <div key={index} className="relative w-1/3 rounded-xl bg-neutral bg-clip-border text-gray-700 bg-cover bg-center " >
+            <div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-clip-border text-white  bg-secondary">
+              <div className=" flex justify-around p-8 gap-4">
+                <button
+                  className="button type1"
+                  onClick={(e) => {
+                    handleCreatePostClick(pet._id);
+                  }}
+                >
+                  <span className="btnTxt font-playful text-xl text-white font-bold px-2">
+                    Post a blog
+                  </span>
+                </button>{" "}
                 
-                onClick={(e) => {
-                  handleCreatePostClick(pet._id);
-                }}
-              >
-                <span className="btnTxt font-playful font-bold px-2">Create Post</span>
-              </button>
-      
+                <img
+                  className="rounded-full border-4 border-success p-1"
+                  src={pet.profilePhotoUrl}
+                  alt={pet.name}
+                  style={{ width: "100px", height: "100px" }}
+                />
+              </div>
+              
             </div>
-            {/* OVERVIEW  */}
-            <div className="py-2 border-b-2">
-              <div className="flex justify-center mb-8">
-                <div className="border-b-2 border-success w-full">
-                  <ul className="flex justify-around">
-                    <li className="text-center">
-                      <a
-                        href="#"
-                        className="text-white font-playful tracking-widest pb-2 border-b-2 border-white text-sm font-semibold"
-                      >
-                        Overview
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="flex justify-center mb-6">
-                {pet.profilePhotoUrl && (
-                  <img
-                    className="rounded-full border-4 border-success p-1"
-                    src={pet.profilePhotoUrl}
-                    alt={pet.name}
-                    style={{ width: "130px", height: "150px" }}
-                  />
-                )}
-              </div>
-              <div className="text-center mb-4">
-                <h2 className="text-xl font-chewy tracking-widest text-accent  font-semibold">
-                  {pet.name}
-                </h2>
-              </div>
-              <div className="text-center mb-4">
-                <h2 className="text-sm font-playful tracking-widest text-white  font-semibold">
-                  Breed: {pet.breed}
-                </h2>
-              </div>
-              <div className="text-center  mb-8">
-                <h2 className="text-sm font-playful tracking-widest text-white  font-semibold">
-                  Weight: {pet.weight} kg
-                </h2>
-              </div>
-            
+            <div className="p-8 w-2/4  mx-auto flex flex-col justify-center mt-6 rounded-full bg-center bg-cover" >
+            <p className="text-xl font-playful text-center tracking-widest py-2 font-semibold">
+                {pet.name}
+              </p>
+              <p className="text-sm font-playful text-center tracking-widest py-2 font-semibold">
+                Breed: {pet.breed}
+              </p>
+              <p className="text-sm font-playful  text-center tracking-widest font-semibold">
+                Weight: {pet.weight} kg
+              </p>
             </div>
-            <div className="">
+            <div className="p-6 pt-0">
               <Tabs>
-                <h3 className="text-center font-chewy  tracking-widest ">
+                <h3 className="text-center text-xl text-grey-900 font-playful font-bold border-b-2 border-secondary p-2 tracking-widest ">
                   Appointments
                 </h3>
-                <TabList className={"flex justify-around px-8 "}>
-                <div className="w-full max-w-md mx-auto">
-            <div className="flex border-b border-gray-300">
-                  <Tab onClick={() => handleTabClick('tab1')}>Upcoming</Tab>
-                  <Tab onClick={() => handleTabClick('tab2')}>Past </Tab>
-                  </div>
-                  </div>
+                <TabList className={"flex justify-around px-8 py-6 gap-4 text-center "}>
+                  <Tab className="font-playful font-bold  border border-gray-300  text-sm rounded-lg focus:ring-blue-900  focus:border-primary block w-full p-2.5 dark:bg-primary dark:border-primary dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">Upcoming</Tab>
+                  <Tab className="font-playful font-bold  border border-gray-300  text-sm rounded-lg focus:ring-white focus:border-blue-900 block w-full p-2.5 dark:bg-accent dark:border-primary dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">Past </Tab>
                 </TabList>
 
                 <TabPanel>
-                  <div className="max-w-md mx-auto bg-white  h-1/4 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+                  <div className="max-w-md mx-auto bg-secondary  h-1/4 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3 ">
                     {!filterAppointments(petAppointments[pet._id] || [], true)
-                      .length && <p>No appointment</p>}
+                      .length && <div className="w-90 h-24 flex items-center justify-center font-playful font-bold ">No upcoming appointment</div>}
                     {filterAppointments(
                       petAppointments[pet._id] || [],
                       true
@@ -195,10 +154,10 @@ const PetList = () => {
                           </p>
                         </div>
                         <div className="ml-4">
-                          <div className="uppercase tracking-wide text-xl text-indigo-500 font-semibold">
+                          <div className="uppercase tracking-wide text-xl text-primary font-bold">
                             {appointment.time}
                           </div>
-                          <p className="mt-2 font-bold text-gray-500">
+                          <p className="mt-2 font-bold text-primary">
                             {appointment.service}
                           </p>
                         </div>
@@ -208,7 +167,7 @@ const PetList = () => {
                           }
                           className="text-black"
                         >
-                          Cancel
+                          <img src="./src/assets/trashapp.png" className="w-16"></img>
                         </button>
                       </div>
                     ))}
@@ -218,7 +177,7 @@ const PetList = () => {
                 <TabPanel>
                   <div className="max-w-md mx-auto bg-white  rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
                     {!filterAppointments(petAppointments[pet._id] || [], false)
-                      .length && <p>No past appointment</p>}
+                      .length && <div className="w-90 h-24 flex items-center justify-center font-playful font-bold">No past appointment</div>}
                     {filterAppointments(
                       petAppointments[pet._id] || [],
                       false
@@ -230,7 +189,7 @@ const PetList = () => {
                           </p>
                         </div>
                         <div className="ml-4">
-                          <div className="uppercase tracking-wide text-xl text-indigo-500 font-semibold">
+                          <div className="uppercase tracking-wide text-xl text-primary font-bold">
                             {appointment.time}
                           </div>
                           <p className="mt-2 font-bold text-gray-500">
