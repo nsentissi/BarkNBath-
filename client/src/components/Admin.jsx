@@ -5,6 +5,8 @@ import { useAuth } from "../hooks/AuthContext";
 import React, { useState, useEffect } from "react";
 import axiosClient from "../../axiosClient";
 import { useNavigate } from "react-router-dom";
+import deleteIcon from "../assets/delete.png"
+import returnIcon from "../assets/returnIcon.png"
 
 const Admin = () => {
   const [selected, setSelected] = useState(0);
@@ -180,7 +182,7 @@ const Admin = () => {
                       <td className="justify-center">
                       <button onClick={() => handleDeleteAppointment(appointment._id)}>
                           <img
-                            src="../src/assets/delete.png"
+                            src={deleteIcon}
                             alt="delete-icon"
                             className="w-4"
                           />
@@ -241,7 +243,7 @@ const Admin = () => {
                         {user.isActive ? (
                           <button onClick={() => handleDeleteUser(user._id)}>
                             <img
-                              src="../src/assets/delete.png"
+                              src={deleteIcon}
                               alt="delete-icon"
                               className="w-4"
                             />
@@ -249,8 +251,8 @@ const Admin = () => {
                         ) : (
                           <button onClick={() => handlereturnUser(user._id)}>
                             <img
-                              src="../src/assets/returnIcon.png"
-                              alt="delete-icon"
+                              src={returnIcon}
+                              alt="return-icon"
                               className="w-4"
                             />
                           </button>
