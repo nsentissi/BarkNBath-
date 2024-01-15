@@ -8,7 +8,7 @@ const Navbar = () => {
   const { currentUser, isLoading, logout } = useAuth();
 
   return (
-    <nav className="bg-transparent dark:bg-transparent fixed w-full z-20 top-0 start-0 ">
+    <nav className="bg-transparent dark:bg-transparent fixed w-full z-20 top-0 start-0 font-playful font-bold ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
         {/* Logo */}
 
@@ -20,7 +20,7 @@ const Navbar = () => {
         </Link>
 
         <React.Fragment>
-          <div className="nav">
+          <div className="nav ">
             <a href="#">HOME</a>
             <a href="#">ABOUT US</a>
             <a href="#">SERVICES</a>
