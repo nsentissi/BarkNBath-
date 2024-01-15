@@ -140,7 +140,7 @@ const PetList = () => {
                     className="rounded-full border-4 border-success p-1"
                     src={pet.profilePhotoUrl}
                     alt={pet.name}
-                    style={{ width: "100px", height: "100px" }}
+                    style={{ width: "130px", height: "150px" }}
                   />
                 )}
               </div>
@@ -159,6 +159,7 @@ const PetList = () => {
                   Weight: {pet.weight} kg
                 </h2>
               </div>
+            
             </div>
             <div className="">
               <Tabs>

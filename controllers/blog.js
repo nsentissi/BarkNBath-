@@ -34,7 +34,7 @@ const getBlogsByPetId = async (req, res) => {
     const { petId } = req.params;
     const blogs = await Blog.find({ pet: petId })
       .populate("owner", "firstName lastName")
-      .populate("pet", "name photo");
+      .populate("pet", "name profilePhotoUrl");
 
     res.json(blogs);
   } catch (error) {
@@ -52,7 +52,7 @@ const getAllBlogPosts = async (req, res, next) => {
         match: { isActive: true },
         select: "firstName lastName",
       })
-      .populate("pet", "name")
+      .populate("pet", "name profilePhotoUrl")
       .populate({
         path: "comments",
         populate: {

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../../hooks/AuthContext";
 
 const CreateBlog = () => {
+  const { currentUser } = useAuth();
   const [formData, setFormData] = useState({
     title: "",
     paragraph: "",
@@ -13,9 +15,9 @@ const CreateBlog = () => {
   const [commentsVisibility, setCommentsVisibility] = useState({});
 
   const toggleComments = (blogId) => {
-    setCommentsVisibility(prevState => ({
+    setCommentsVisibility((prevState) => ({
       ...prevState,
-      [blogId]: !prevState[blogId]
+      [blogId]: !prevState[blogId],
     }));
   };
   const handleInputChange = (e) => {
@@ -72,13 +74,35 @@ const CreateBlog = () => {
   }, []);
 
   return (
-    
     <div className="h-screen overflow-y-scroll bg-white">
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2 lg:gap-8">
         <div className="post p-5 lg:p-1 rounded-md">
           <div className="lg:fixed lg:top-7 lg:left-14 lg:w-3/12 md:fixed md:w-5/12">
-            <form onSubmit={handleSubmit}>
+            <div className=" bg-accent p-4 rounded-lg shadow-md max-w-md w-full mb-8">
+            <div class="relative">
+              {currentUser.pets.map((pet) => (
+                <div key={pet._id} className="pet-profile flex flex-col items-center justify-center">
+                  <img
+                    src={pet.profilePhotoUrl}
+                    alt={`Profile of ${pet.name}`}
+                    className="w-24 h-32 rounded-full mb-3  border-4 border-success"
+                  />
+                  <div className="pet-info flex flex-col items-center justify-center">
+                    <h2 className="text-xl mb-3 font-playful font-bold text-gray-800">
+                      {pet.name}
+                    </h2>
+
+                    <p className="text-gray-900 mb-4 font-playful">BIO:</p>
+                    <p className="text-gray-900 text-center border-2 border-success p-8 font-playful">{pet.Bio}</p>
+                  </div>
+                 
+                </div>
+              ))}
+            </div>
+            </div>
+            <form onSubmit={handleSubmit} className="border-4 border-accent px-2 py-3">
               {/* <!-- Post Content Section --> */}
+              <h3 className="text-center font-bold text-gray-700 text-xl">Post a blog</h3>
               <div>
                 <label
                   htmlFor="title"
@@ -146,14 +170,16 @@ const CreateBlog = () => {
                       Choose a file
                     </span>
                   </div>
-                  <span className="text-sm text-gray-500">Max file size: 5MB</span>
+                  <span className="text-sm text-gray-500">
+                    Max file size: 5MB
+                  </span>
                 </div>
               </div>
               {/* <!-- Submit Button and Character Limit Section --> */}
               <div className="flex items-center justify-between">
                 <button
                   type="submit"
-                  className="flex justify-center items-center bg-blue-500 hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue text-white py-2 px-4 rounded-md transition duration-300 gap-2"
+                  className="flex justify-center items-center bg-accent hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue text-white py-2 px-4 rounded-md transition duration-300 gap-2"
                 >
                   {" "}
                   Post{" "}
@@ -174,20 +200,18 @@ const CreateBlog = () => {
           </div>
         </div>
 
-
         <div className="lg:col-span-2 p-4 bg-white mt-3" id="posted">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {blogs.map((blog) => {
-            return (
-              <div >
-                
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {blogs.map((blog) => {
+              return (
+                <div>
                   {/* First Column */}
                   <div className="bg-white p-8 rounded-lg shadow-md max-w-md">
                     {/* User Info with Three-Dot Menu */}
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center space-x-2">
                         <img
-                          src={blog.pet.photo} 
+                          src={blog.pet.profilePhotoUrl}
                           alt="User Avatar"
                           className="w-8 h-8 rounded-full"
                         />
@@ -196,9 +220,8 @@ const CreateBlog = () => {
                             {blog.pet.name}
                           </p>
                           <p className="text-gray-500 text-sm">
-                            Posted 2 hours ago
+                         {blog.date}
                           </p>{" "}
-                          
                         </div>
                       </div>
                       <div className="text-gray-500 cursor-pointer">
@@ -237,8 +260,10 @@ const CreateBlog = () => {
                     </div>
                     {/* Like and Comment Section */}
                     <div className="flex items-center justify-between text-gray-500">
-                     
-                      <button  onClick={() => toggleComments(blog._id)} className="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
+                      <button
+                        onClick={() => toggleComments(blog._id)}
+                        className="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1"
+                      >
                         <svg
                           width="22px"
                           height="22px"
@@ -260,7 +285,6 @@ const CreateBlog = () => {
                             ></path>
                           </g>
                         </svg>
-                     
                       </button>
                       <div className="flex items-center space-x-2">
                         <button className="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
@@ -275,29 +299,36 @@ const CreateBlog = () => {
                         </button>
                       </div>
                     </div>
-                       <div className="px-6 py-4">
-                        <h3 className="text-xl font-bold">Comments:</h3>
-                        {commentsVisibility[blog._id] && (
-                <div className="px-6 py-4">
-                  <h3 className="text-xl font-bold">Comments:</h3>
-                  {blog.comments.length > 0 ? (
-                    blog.comments.map((comment) => (
-                      <div key={comment._id} className="border-t border-gray-200 mt-2 pt-2">
-                        <p className="text-sm text-gray-600">{comment.text}</p>
-                        <p className="text-xs text-black">By: {comment.owner?.firstName} {comment.owner?.lastName}</p>
-                      </div>
-                    ))
-                  ) : (
-                    <p className="text-gray-600">No comments yet</p>
-                  )}
-                </div>
-              )}
+                    <div className="px-6 py-4">
+                     
+                      {commentsVisibility[blog._id] && (
+                        <div className="px-6 py-4">
+                          <h3 className="text-xl font-bold">Comments:</h3>
+                          {blog.comments.length > 0 ? (
+                            blog.comments.map((comment) => (
+                              <div
+                                key={comment._id}
+                                className="border-t border-gray-200 mt-2 pt-2"
+                              >
+                                <p className="text-sm text-gray-600">
+                                  {comment.text}
+                                </p>
+                                <p className="text-xs text-black">
+                                  By: {comment.owner?.firstName}{" "}
+                                  {comment.owner?.lastName}
+                                </p>
+                              </div>
+                            ))
+                          ) : (
+                            <p className="text-gray-600">No comments yet</p>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
-              
-            );
-          })}
+              );
+            })}
           </div>
         </div>
       </div>
