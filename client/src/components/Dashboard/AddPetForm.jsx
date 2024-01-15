@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { PetContext } from "../../hooks/PetContext";
+
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/AuthContext";
 
@@ -62,7 +62,7 @@ const AddPetForm = ({ setActiveContent }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div class=" min-h-screen flex items-center justify-center px-4">
+      <div className=" min-h-screen flex items-center justify-center px-4">
         <div className="bg-secondary z-10 flex flex-col gap-8 p-6 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-md w-full">
           <h1 className="text-xl font-chewy tracking-widest  text-center font-semibold text-gray-900">
             Add your puffy friend
