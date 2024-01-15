@@ -126,7 +126,7 @@ const CreateBlog = () => {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2 lg:gap-8">
         <div className="post p-5 lg:p-1 rounded-md">
           <div className="lg:fixed lg:top-7 lg:left-14 lg:w-3/12 md:fixed md:w-5/12">
-            <div className=" bg-accent p-4 rounded-lg shadow-md max-w-md w-full mb-8">
+            {/* <div className=" bg-accent p-4 rounded-lg shadow-md max-w-md w-full mb-8">
               <div class="relative">
                 {blogs.map((blog) => {
                   return (
@@ -150,10 +150,10 @@ const CreateBlog = () => {
                   );
                 })}
               </div>
-            </div>
+            </div> */}
             <form
               onSubmit={handleSubmit}
-              className="border-4 border-accent px-2 py-3"
+              className="border-4 border-accent px-2 py-3 mt-60"
             >
               {/* <!-- Post Content Section --> */}
               <h3 className="text-center font-bold text-gray-700 text-xl">
@@ -275,7 +275,7 @@ const CreateBlog = () => {
                           <p className="text-gray-800 font-semibold">
                             {blog.pet.name}
                           </p>
-
+                          
                           <p className="text-gray-500 text-sm">
                         posted {formatTimeAgo (blog.date)} 
                           </p>{" "}
