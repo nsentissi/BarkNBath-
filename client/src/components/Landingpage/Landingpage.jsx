@@ -4,8 +4,7 @@ import styles from "./bubble.module.css";
 import van from "../../assets/van.png"
 import parkingSign from "../../assets/parking.png"
 import backgroundImage from "../../assets/homepage.svg"
-import dirtyDog from "../../assets/dirtydog.png"
-import cleandog from "../../assets/cleandog.png"
+import dogclean from "../../assets/doggrass.png";
 
 const Landingpage = () => {
   const textVariants = {
@@ -74,7 +73,7 @@ const Landingpage = () => {
         <div className="flex flex-col md:flex-row   items-center z-0 justify-center h-screen">
           <motion.img
             className="absolute bottom-10 left-80 transform"
-            src="./src/assets/doggrass.png"
+            src={dogclean}
             alt="Dog"
             variants={dogVariants}
             initial="hidden"
@@ -120,8 +119,9 @@ const Landingpage = () => {
         src={parkingSign}
         alt="Parking Sign"
         variants={parkingSignVariants}
-
-
+        style={{ maxWidth: "200px" }}
+/>
+</div>
   );
 };
 
