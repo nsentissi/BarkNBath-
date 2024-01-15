@@ -6,7 +6,14 @@ const ErrorResponse = require("../utils/ErrorResponse");
 const register = async (req, res, next) => {
   try {
     const {
-      body: { firstName, lastName, email, phoneNumber, password },
+      body: {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        password,
+        role = "user",
+      },
     } = req;
 
     const found = await User.findOne({ email });
@@ -20,6 +27,7 @@ const register = async (req, res, next) => {
       email,
       phoneNumber,
       password: hash,
+      role,
     });
 
     res.status(201).json({ email: user.email });
@@ -51,6 +59,7 @@ const login = async (req, res, next) => {
       phoneNumber: user.phoneNumber,
       password: user.password,
       pets: user.pets,
+      role: user.role,
     };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "5000m",

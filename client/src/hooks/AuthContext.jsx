@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
       if (response.data) {
         dispatch({ type: "LOGIN", payload: response.data });
         console.log(response.data);
-       
+        return response.data;
       } else {
         throw new Error("Login failed");
       }
