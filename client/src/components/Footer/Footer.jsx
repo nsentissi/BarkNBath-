@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./footer.module.css";
 import { Link } from 'react-scroll';
+import footer1 from "../../assets/footer1.png"
 
 const Footer = () => {
   return (
@@ -19,7 +20,7 @@ const Footer = () => {
       </ul>
       <div
         style={{
-          backgroundImage: `url('./src/assets/footer1.png')`,
+          backgroundImage: `url(${footer1})`,
           height: "49vh",
         }}
         className="h-screen z-0 bg-cover bg-center "

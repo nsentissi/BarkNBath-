@@ -2,6 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
+import bathing from "../../assets/bathing.jpg"
+import pawcare from "../../assets/pawcare.jpg"
+import haircut from "../../assets/haircut.jpg"
+import breed from "../../assets/breed.jpg"
+import thework from "../../assets/thework.jpg"
+import dental from "../../assets/dental.jpg"
 // import WaterDropGrid from "../WaterDropGrid";
 // import styles from "./Service.module.css";
 
@@ -61,7 +67,7 @@ function Services() {
           >
             <a href="#">
               <img
-                src="./src/assets/bathing.jpg"
+                src={bathing}
                 alt="Product"
                 className="h-80 w-80 object-cover rounded-t-xl"
               />
@@ -94,7 +100,7 @@ function Services() {
           >
             <a href="#">
               <img
-                src="./src/assets/pawcare.jpg"
+                src={pawcare}
                 alt="Product"
                 className="h-80 w-80 object-cover rounded-t-xl"
               />
@@ -125,7 +131,7 @@ function Services() {
           >
             <a href="#">
               <img
-                src="./src/assets/haircut.jpg"
+                src={haircut}
                 alt="Product"
                 className="h-80 w-80 object-cover rounded-t-xl"
               />
@@ -157,7 +163,7 @@ function Services() {
           >
             <a href="#">
               <img
-                src="./src/assets/breed.jpg"
+                src={breed}
                 alt="Product"
                 className="h-80 w-80 object-cover rounded-t-xl"
               />
@@ -190,7 +196,7 @@ function Services() {
           >
             <a href="#">
               <img
-                src="./src/assets/thework.jpg"
+                src={thework}
                 alt="Product"
                 className="h-80 w-80 object-cover rounded-t-xl"
               />
@@ -222,7 +228,7 @@ function Services() {
           >
             <a href="#">
               <img
-                src="./src/assets/dental.jpg"
+                src={dental}
                 alt="Product"
                 className="h-80 w-80 object-cover rounded-t-xl"
               />

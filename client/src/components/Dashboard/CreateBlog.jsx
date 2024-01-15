@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosClient from "../../../axiosClient";
 import { useParams } from "react-router-dom";
 
 import { useAuth } from "../../hooks/AuthContext";
@@ -50,8 +50,8 @@ const CreateBlog = () => {
     }
 
     try {
-      const response = await axios.post(
-        `http://localhost:3000/blog/create/${id}`,
+      const response = await axiosClient.post(
+        `/blog/create/${id}`,
         data,
         {
           withCredentials: true,
@@ -70,7 +70,7 @@ const CreateBlog = () => {
 
   const fetchBlogs = async (e) => {
     try {
-      const response = await axios.get(`http://localhost:3000/blog/get/${id}`, {
+      const response = await axiosClient.get(`/blog/get/${id}`, {
         withCredentials: true,
       });
       console.log(response.data);

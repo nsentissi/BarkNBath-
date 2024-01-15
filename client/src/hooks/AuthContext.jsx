@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useContext, useEffect } from "react";
-import axios from "axios";
+import axiosClient from "../../axiosClient";
 
 const AuthContext = createContext();
 
@@ -28,8 +28,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/auth/login",
+      const response = await axiosClient.post(
+        "/auth/login",
         { email, password },
         { withCredentials: true }
       );
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const verifyToken = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/auth/profile", {
+        const response = await axiosClient.get("/auth/profile", {
           withCredentials: true,
         });
         if (response.data) {
@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.get("http://localhost:3000/auth/logout", {
+      await axiosClient.get("/auth/logout", {
         withCredentials: true,
       });
       dispatch({ type: "LOGOUT" });

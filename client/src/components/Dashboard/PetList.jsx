@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../hooks/AuthContext";
-import axios from "axios";
+import axiosClient from "../../../axiosClient";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./Petlist.css";
+import trashapp from "../../assets/trashapp.png"
 
 const PetList = () => {
   const { currentUser } = useAuth();
@@ -19,8 +20,8 @@ const PetList = () => {
   const handleDeleteAppointment = async (appointmentId) => {
     try {
       console.log("Deleting appointment with ID:", appointmentId);
-      await axios.delete(
-        `http://localhost:3000/appointment/delete/${appointmentId}`,
+      await axiosClient.delete(
+        `/appointment/delete/${appointmentId}`,
         { withCredentials: true }
       );
 
@@ -43,8 +44,8 @@ const PetList = () => {
       const appointments = {};
 
       for (const pet of currentUser.pets) {
-        const { data } = await axios.get(
-          `http://localhost:3000/appointment/${pet._id}`,
+        const { data } = await axiosClient.get(
+          `/appointment/${pet._id}`,
           { withCredentials: true }
         );
         appointments[pet._id] = data;
@@ -167,7 +168,7 @@ const PetList = () => {
                           }
                           className="text-black"
                         >
-                          <img src="./src/assets/trashapp.png" className="w-16"></img>
+                          <img src={trashapp} className="w-16"></img>
                         </button>
                       </div>
                     ))}

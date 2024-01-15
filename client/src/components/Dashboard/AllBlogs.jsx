@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosClient from "../../../axiosClient";
 import { useAuth } from "../../hooks/AuthContext";
 import CommentForm from "./CommentForm";
 import moment from "moment";
@@ -27,7 +27,7 @@ const AllBlogs = () => {
 
   const fetchBlogs = async (e) => {
     try {
-      const response = await axios.get("http://localhost:3000/blog/getAll", {
+      const response = await axiosClient.get("/blog/getAll", {
         withCredentials: true,
       });
       console.log(response.data);
@@ -43,8 +43,8 @@ const AllBlogs = () => {
 
   const addComment = async (blogId, text) => {
     try {
-      const response = await axios.post(
-        `http://localhost:3000/blog/${blogId}/comment`,
+      const response = await axiosClient.post(
+        `/blog/${blogId}/comment`,
         { text },
         { withCredentials: true }
       );

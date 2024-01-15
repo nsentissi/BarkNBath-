@@ -3,7 +3,7 @@ import { FaUser, FaDog } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "../hooks/AuthContext";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axiosClient from "../../axiosClient";
 import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
@@ -25,8 +25,8 @@ const Admin = () => {
 
   const handleDeleteUser = async (userId) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3000/auth/delete/${userId}`,
+      const response = await axiosClient.delete(
+        `/auth/delete/${userId}`,
         { withCredentials: true }
       );
       const newUsers = users.map((user) => {
@@ -43,7 +43,7 @@ const Admin = () => {
 
   const handleDeleteAppointment = async (appointmentId) => {
     try {
-      await axios.delete(`http://localhost:3000/appointment/delete/${appointmentId}`, {withCredentials:true});
+      await axiosClient.delete(`/appointment/delete/${appointmentId}`, {withCredentials:true});
 
       const updatedAppointments = appointments.filter(
         (appointment) => appointment._id !== appointmentId
@@ -59,8 +59,8 @@ const Admin = () => {
 
   const handlereturnUser = async (userId) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3000/auth/return/${userId}`,
+      const response = await axiosClient.delete(
+        `/auth/return/${userId}`,
         { withCredentials: true }
       );
       const newUsers = users.map((user) => {
@@ -78,8 +78,8 @@ const Admin = () => {
   useEffect(() => {
     const fetchAllAppointments = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3000/appointment/all",
+        const response = await axiosClient.get(
+          "/appointment/all",
           { withCredentials: true }
         );
         const allAppointments = response.data;
@@ -105,7 +105,7 @@ const Admin = () => {
 
     const fetchAllUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/auth/all", {
+        const response = await axiosClient.get("/auth/all", {
           withCredentials: true,
         });
         setUsers(response.data);
@@ -116,7 +116,7 @@ const Admin = () => {
 
     const fetchAllPets = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/pet/all", {
+        const response = await axiosClient.get("/pet/all", {
           withCredentials: true,
         });
         setPets(response.data);

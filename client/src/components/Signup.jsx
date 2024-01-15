@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import axiosClient from "../../axiosClient";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import PasswordChecklist from "react-password-checklist";
+import barkNBath from "../assets/barkNBath.png"
 
 const Signup = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -19,8 +20,8 @@ const Signup = () => {
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      const response = await axios.post(
-        "http://localhost:3000/auth/signup",
+      const response = await axiosClient.post(
+        "/auth/signup",
         data
       );
       toast("Registration successful!");
@@ -42,7 +43,7 @@ const Signup = () => {
 
     {/* <!-- Signup Form --> */}
       <div className="bg-secondary z-10 h-10/12  p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">
-        <img src="../src/assets/barkNBath.png" className="mb-6 mx-auto w-1/4" />
+        <img src={barkNBath} className="mb-6 mx-auto w-1/4" />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label htmlFor="firstName" className="text-white font-semibold  block mb-2">
