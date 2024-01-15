@@ -6,6 +6,8 @@ import Modal from "./Modal";
 import Profile from "../Profile";
 import Dashboardtwo from "./Dashboardtwo";
 
+
+
 const Dashboard = () => {
   const { currentUser } = useAuth();
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
@@ -15,6 +17,7 @@ const Dashboard = () => {
   return (
     <div>
       <Dashboardtwo onProfileClick={handleOpenProfileModal} />
+  
       <Modal isOpen={isProfileModalOpen} onClose={handleCloseProfileModal}>
         <Profile />
       </Modal>

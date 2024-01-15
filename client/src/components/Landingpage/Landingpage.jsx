@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "./bubble.module.css";
 
 const Landingpage = () => {
+
+ 
+
   const textVariants = {
     hidden: { opacity: 0, y: 100 },
     visible: {
@@ -32,14 +35,18 @@ const Landingpage = () => {
       },
     },
   };
+
+  const vanTextVariants = vanVariants; 
+
+
   const newImageVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { duration: 1, delay: 4 } // Delay of 4 seconds (2 seconds after the van)
+      transition: { duration: 1, delay: 2}, // Delay of 4 seconds (2 seconds after the van)
     },
   };
-  
+
 
   return (
     <div className={styles.area}>
@@ -59,51 +66,40 @@ const Landingpage = () => {
         className="flex items-center justify-center h-screen z-0 bg-cover bg-center  landing-page-bg"
         style={{ backgroundImage: `url('./src/assets/homepage.svg')` }}
       >
-        {/* Text  */}
-        <motion.div
-          className="absolute top-1/10  md:top-1/5 lg:top-1/4 text-center "
-          variants={textVariants}
-          initial="hidden"
-          animate="visible"
-        >
-           <div className=" font-chewy mx-auto">
-              <BubbleText />
-            </div>
-            <div className=" font-chewy">
-              <BubbleText2 />
-            </div>
-          <div>
-            <div className="flex mt-4 items-center justify-center ">
-              <span className="inline-block animate-bounce p-8  text-accent text:hover-accent tracking-widest font-playful font-bold text-xl">
-                Find out more
-                <svg
-                  className="w-6 h-8 mx-auto"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="4"
-                    d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
-                  />
-                </svg>
-              </span>
-            </div>
-           
-            <div className="flex justify-center md:justify-start">
-            <button className="bg-accent animate-pulse hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-xl">
-              Book your appointment
-            </button>
-          </div>
-          </div>
-        </motion.div>
-       
-      
-       
+         <div className="flex flex-col md:flex-row   items-center z-0 justify-center h-screen">
+      {/* Dirty Dog Image */}
+      <motion.div
+        className="w-32 h-40 md:w-48 md:h-96 rounded-full bg-[url('../../src/assets/dirtydog.png')] bg-cover bg-start "
+        variants={newImageVariants}
+        initial="hidden"
+        animate="visible"
+      ></motion.div>
+
+      {/* Headline */}
+      <div >
+      <h1 className="text-xl md:text-3xl font-playful mx-4 my-2"><BubbleText/></h1>
+      <p className="text-xl md:text-3xl font-playful mx-4 my-2"><BubbleText2/></p>
+      </div>
+      {/* Clean Dog Image */}
+      <motion.div
+        className="w-32 h-40 md:w-48 md:h-96 rounded-full bg-[url('../../src/assets/cleandog.png')] bg-cover bg-start"
+        variants={newImageVariants}
+        initial="hidden"
+        animate="visible"
+      ></motion.div>
+    </div>
+        </div>
+
         {/* Van  */}
+        <div className="flex flex-col">
+        <motion.div
+    className="absolute right-14 md:right-32 lg:right-64 mx-auto bottom-4 text-center text-xl md:text-2xl lg:text-3xl font-bold font-playful text-black"
+    variants={vanTextVariants}
+    initial="hidden"
+    animate="visible"
+  >
+    <AnimatedText text="Here we come to help"  />
+  </motion.div>
         <motion.img
           className="absolute bottom-10 right-14 md:right-32 lg:right-50 transform lg:-translate-x-1/2 lg:translate-y-0 w-1/2 md:w-1/3 lg:w-38vw"
           src="./src/assets/van.png"
@@ -113,7 +109,7 @@ const Landingpage = () => {
           animate="visible"
           style={{ maxWidth: "900px" }}
         />
-
+</div>
         {/* Parking Sign  */}
         <motion.img
           className="absolute bottom-16 right-60  md:right-96 lg:right-1/2 lg:mr-36 transform lg:-translate-x-1/2 lg:translate-y-0  w-1/5 md:w-1/5 lg:w-20vw"
@@ -124,15 +120,10 @@ const Landingpage = () => {
           animate="visible"
           style={{ maxWidth: "200px" }}
         />
-        
       </div>
-    </div>
+    
   );
 };
-
-
-
-
 
 const BubbleText = () => {
   return (
@@ -155,6 +146,42 @@ const BubbleText2 = () => {
       ))}
     </h2>
   );
+};
+const AnimatedText = ({ text  }) => {
+  const colors = ["yellow", "orange", "blue"];
+  const [animate, setAnimate] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimate(false);
+      setTimeout(() => setAnimate(true), 3); 
+    }, 2000); 
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const letterAnimation = {
+    hidden: { opacity: 0, y: -20 },
+    visible: custom => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: custom * 0.1 }
+    })
+  };
+
+  return text.split("").map((char, index) => (
+    <motion.span
+      key={index}
+      custom={index}
+      className={styles[colors[index % colors.length]]}
+      variants={letterAnimation}
+      initial="hidden"
+      animate={animate ? "visible" : "hidden"}
+      style={{ display: "inline-block" }}
+    >
+      {char}
+    </motion.span>
+  ));
 };
 
 export default Landingpage;

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useAuth } from "../../hooks/AuthContext";
 import CommentForm from "./CommentForm";
 
+
 const AllBlogs = () => {
 
 const [blogs, setBlogs] = useState([])
@@ -32,6 +33,7 @@ const addComment = async (blogId, text) => {
 };
 
   return (
+    
     <div className="container mx-auto p-5">
         <h2 className="text-2xl font-bold text-center mb-10">Blogs</h2>
         <div className="grid md:grid-cols-3 gap-4">
