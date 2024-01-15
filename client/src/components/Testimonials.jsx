@@ -65,7 +65,7 @@ const variants = {
 
 const Testimonials = () => {
   const [active, setActive] = useState(0);
-  const autorotateTiming = 10000;
+  const autorotateTiming = 5000;
   const [ref, inView] = useInView({
     threshold: 0.1, // Trigger when 10% of the element is visible
     triggerOnce: false, // Only trigger once
