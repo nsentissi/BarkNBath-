@@ -1,11 +1,5 @@
 header {
-  background: hsla(43, 95%, 67%, 1);
-
-  background: radial-gradient(
-    circle,
-    hsla(43, 95%, 67%, 1) 0%,
-    hsla(199, 73%, 36%, 1) 100%
-  );
+  background: linear-gradient(to right, #cc7744, #fbcd59,#cc7744);
 }
 
 .item-1 {

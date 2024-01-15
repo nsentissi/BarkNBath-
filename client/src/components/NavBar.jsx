@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 
 const Navbar = () => {
+
   const { currentUser, isLoading, logout } = useAuth();
 
   return (
@@ -32,6 +33,7 @@ const Navbar = () => {
             <div className="animation start-home"></div>
           </div>
         </React.Fragment>
+
         {!isLoading && currentUser ? (
           <>
             <Link
@@ -76,6 +78,7 @@ const Navbar = () => {
             </div>
           </Link>
         )}
+
       </div>
     </nav>
   );
