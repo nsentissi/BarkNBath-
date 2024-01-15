@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+
+import { useAuth } from "../../hooks/AuthContext";
+import moment from 'moment';
+
 import { Link } from "react-router-dom";
+
 
 const CreateBlog = () => {
  
@@ -14,6 +19,11 @@ const CreateBlog = () => {
   const [blogs, setBlogs] = useState([]);
   const { id } = useParams();
   const [commentsVisibility, setCommentsVisibility] = useState({});
+
+  const formatTimeAgo = (dateString) => {
+    const date = moment(dateString);
+    return date.fromNow();
+};
 
   const toggleComments = (blogId) => {
     setCommentsVisibility((prevState) => ({
@@ -265,7 +275,11 @@ const CreateBlog = () => {
                           <p className="text-gray-800 font-semibold">
                             {blog.pet.name}
                           </p>
-                          <p className="text-gray-500 text-sm">{blog.date}</p>{" "}
+
+                          <p className="text-gray-500 text-sm">
+                        posted {formatTimeAgo (blog.date)} 
+                          </p>{" "}
+
                         </div>
                       </div>
                       <div className="text-gray-500 cursor-pointer">

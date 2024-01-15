@@ -85,6 +85,12 @@ const Login = () => {
             </p>
             <p>
               <Link
+                to="/"
+                className="text-success hover:text-primary font-dosis font-semibold mr-6"
+              >
+                Home
+              </Link>
+              <Link
                 to="/signup"
                 className="text-success hover:text-primary font-dosis font-semibold"
               >
