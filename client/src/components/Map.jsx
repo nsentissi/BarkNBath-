@@ -25,11 +25,11 @@ const Map = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Marker position={position}>
+        {/*   <Marker position={position}>
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
             </Popup>
-          </Marker>
+          </Marker> */}
           {locationData.map((location, index) => (
             <Marker key={index} position={[location.lat, location.lng]}>
               <Popup>
