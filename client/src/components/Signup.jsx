@@ -3,9 +3,8 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PasswordChecklist from "react-password-checklist";
-import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -13,7 +12,7 @@ const Signup = () => {
   const [passwordAgain, setPasswordAgain] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
 
-  
+  const navigate = useNavigate();
    
 
   
@@ -25,6 +24,7 @@ const Signup = () => {
         data
       );
       toast("Registration successful!");
+      navigate("/login")
       console.log(response.data);
     } catch (error) {
       console.error("Registration failed:", error);
@@ -41,7 +41,7 @@ const Signup = () => {
     </div>
 
     {/* <!-- Signup Form --> */}
-      <div className="bg-secondary z-10 h-screen  p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">
+      <div className="bg-secondary z-10 h-10/12  p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">
         <img src="../src/assets/barkNBath.png" className="mb-6 mx-auto w-1/4" />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">

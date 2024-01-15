@@ -6,42 +6,42 @@ const Faqsection = () => {
     {
       question: "What services does BarkNBath offer?",
       answer:
-        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+        "BarkNBath offers a variety of pet grooming services including Premium Bath, Ultimate Paw Care, Doggy Haircut, Breed Standard styling, The Works package, and Doggy Dental Brushing. Each service is tailored to meet the specific grooming needs of your pet.",
     },
     {
       question: "How do I book a spa appointment through the app?",
       answer:
-        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+        "To book a spa appointment through the BarkNBath app, first create an account, then add your pet's details. Next, choose a service and a preferred location, and finally book your appointment.",
     },
     {
       question: "What are your operating hours?",
       answer:
-        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+        "9h to 17h",
     },
     {
       question: "How long does a typical spa session last?",
       answer:
-        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+        "1 hour",
     },
     {
-      question: "How can I update or change my appointment details?",
+      question: "How can I provide feedback about my experience??",
       answer:
-        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+        "You can create a blog for your furry friend after booking an appointment, to share your experience with our other beloved dog owners",
     },
     {
-      question: "Can I request the same therapist for future appointments?",
+      question: "What are the qualifications of your pet groomers??",
       answer:
-        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+        "All our groomers are professionally trained and certified, ensuring top-quality care and expertise in handling different breeds and grooming needs.",
     },
     {
       question: "Are your services allergy-friendly and customizable?",
       answer:
-        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+        "es, our services at BarkNBath are allergy-friendly and fully customizable. We use hypoallergenic grooming products and offer a range of options to cater to pets with specific allergies or sensitivities. You can specify any special requirements when booking your appointment.",
     },
     {
       question: "What is the policy for handling late arrivals or no-shows?",
       answer:
-        "Yes, we can import client and pet data, we just need it in a friendly layout, contact us for more help on this.",
+        "Our policy for late arrivals is to accommodate them within a 15-minute grace period, after which the appointment may need to be rescheduled. For no-shows, a fee may be charged, and frequent no-shows could lead to restrictions on future bookings. We encourage clients to notify us as soon as possible if they cannot make their appointment.",
     },
   ];
 

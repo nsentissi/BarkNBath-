@@ -17,14 +17,14 @@ const Homepage = () => {
     <div>
       <>
         <NavBar />
-        <Landingpage />
-        <Journey />
-        <AboutUs />
-        <Services />
-        <Map/>
-        <Carouseltwo />
-        <Testimonials />
-        <Faqsection />
+        <Landingpage  />
+        <Journey  />
+        <AboutUs id="about-us" />
+        <Services id="services" />
+        <Map id="map"/>
+        <Carouseltwo id="carousel" />
+        <Testimonials id="testimonials" />
+        <Faqsection id="faq" />
         <Footer />
       </>
     </div>
