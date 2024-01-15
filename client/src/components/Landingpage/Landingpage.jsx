@@ -88,13 +88,13 @@ const Landingpage = () => {
             </h2>
             <p className="font-playful text-white font-semibold p-6 text-center">
               We believe wellness shouldn't be a luxury, but a regular part of
-              life.{" "}
+              life and that goes for our furry friends too.
             </p>
             <p className="font-playful text-white font-semibold p-3 text-center">
               So why wait?
             </p>
 
-            <button className="bg-neutral flex justify-center hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 w-1/4 rounded-xl">
+            <button className="bg-success animate-bounce flex justify-center hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 w-1/4 rounded-xl">
               Book your appointment
             </button>
           </div>
