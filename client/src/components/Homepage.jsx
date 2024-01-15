@@ -10,7 +10,7 @@ import Testimonials from "./Testimonials";
 import Carouseltwo from "./Carousel/Carouseltwo";
 import Map from "./Map";
 import NavBar from "./NavBar";
-import MapComponent from "./MapComponent";
+
 
 const Homepage = () => {
   return (
@@ -21,7 +21,7 @@ const Homepage = () => {
         <Journey />
         <AboutUs />
         <Services />
-        <MapComponent />
+        <Map/>
         <Carouseltwo />
         <Testimonials />
         <Faqsection />

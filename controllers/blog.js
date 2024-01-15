@@ -52,7 +52,7 @@ const getAllBlogPosts = async (req, res, next) => {
         match: { isActive: true },
         select: "firstName lastName",
       })
-      .populate("pet", "name")
+      .populate("pet", "name profilePhotoUrl")
       .populate({
         path: "comments",
         populate: {
