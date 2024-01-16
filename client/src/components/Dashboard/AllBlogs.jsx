@@ -56,90 +56,39 @@ const AllBlogs = () => {
   };
 
   return (
-    <div className="">
+    <div className=" font-playful ">
         <div className="flex items-center justify-around py-8">
         <h4 className="text-gray-800 font-semibold text-xl md:text-3xl lg:text-4xl text-center ">
           Puffy Friends Blogs
         </h4>
-        <Link to="/dashboard">
-          <button className=" ">
-            <div className="flex justify-center">
-              <a
-                href="#_"
-                className="group relative  inline-flex items-center justify-center overflow-hidden rounded-xl border-2 border-success p-4 px-5 py-2.5 font-medium text-white shadow-md transition duration-300 ease-out"
-              >
-                <span className="absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-info text-white duration-300 group-hover:translate-x-0">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    ></path>
-                  </svg>
-                </span>
-                <span className="absolute flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
-                  Dashboard
-                </span>
-                <span className="invisible relative">LOG </span>
-              </a>
-            </div>
-          </button>
-        </Link>
+       
       </div>
-      <div className="lg:col-span-3  p-32 mt-3" id="posted">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="flex justify-center col-span-8 mt-3" id="posted">
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-4 ">
           {blogs.map((blog) => {
             return (
               <div>
                 {/* First Column */}
-                <div className="bg-white p-8 rounded-lg shadow-md max-w-md cursor-pointer w-96 hover:-translate-y-1 duration-300">
+                <div className="bg-white p-8 rounded-lg shadow-md max-w-md cursor-pointer w-full hover:-translate-y-1 duration-300">
                   {/* User Info with Three-Dot Menu */}
                   <div className="flex items-center justify-between mb-4 inline relative group">
                     <div className="flex items-center space-x-2 ">
                       <img
                         src={blog.pet.profilePhotoUrl}
                         alt="User Avatar"
-                        className="w-8 h-8 rounded-full"
+                        className="w-20 h-20 rounded-full"
                         
                       />
-                      <div class="flex flex-row absolute justify-end
-                    h-16 w-full bottom-0 px-3 space-x-2
-                    bg-none opacity-0 group-hover:opacity-100
-                    group-hover:bg-gradient-to-t from-black/20 via-gray-800/20 to-transparent 
-                    transition-all ease-in-out duration-200 delay-100">
-                        <button class="bg-gray-50/10 rounded-full 
-                        px-1 h-9 w-9 my-auto hover:bg-gray-50/20
-                        transition-colors duration-200">
-                        <i class="mdi mdi-playlist-plus text-xl text-gray-200
-                            hover:text-white transition-all duration-200"
-                            title="Add to Bookmarks"></i>
-                    </button>
-
-                  
-                    <button class="bg-gray-50/10 rounded-full 
-                        px-1 h-9 w-9 my-auto hover:bg-gray-50/20
-                        transition-colors duration-200">
-                        <i class="mdi mdi-heart text-xl text-gray-200 p-1
-                            hover:text-white transition-all duration-200"
-                            title="Add to Favorites"></i>
-                    </button>
-                </div>
+                    
                       <div>
-                        <p className="text-gray-800 font-semibold">
+                        <p className="text-gray-800 text-sm tracking-widest font-semibold">
                           {blog.pet.name}
                         </p>
-                        <p className="text-gray-800 font-semibold">
+                        <p className="text-gray-800 font-semibold text-xs">
                         Pet owner: {" "}{blog.owner?.firstName}
                         </p>
                         
-                        <p className="text-gray-500 text-sm">
+                        <p className="text-gray-500 text-xs">
                           posted {formatTimeAgo(blog.date)}
                         </p>{" "}
                       </div>
@@ -149,6 +98,7 @@ const AllBlogs = () => {
                       <button className="hover:bg-gray-50 rounded-full p-1">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
+                          className="w-5 h-5 fill-current text-primary"
                           width="24"
                           height="24"
                           viewBox="0 0 24 24"
@@ -166,8 +116,8 @@ const AllBlogs = () => {
                     </div>
                   </div>
                   {/* Message */}
-                  <div className="mb-4">
-                    <p className="text-gray-800">{blog.title}</p>
+                  <div className="mb-4 font-playful text-black ">
+                    <p className="text-gray-800 font-bold">{blog.title}</p>
                     <p className="text-gray-800">{blog.paragraph}</p>
                   </div>
                   {/* Image */}
@@ -175,7 +125,7 @@ const AllBlogs = () => {
                     <img
                       src={blog.photo}
                       alt={blog.title}
-                      className="w-full h-48 object-cover rounded-md"
+                      className="w-full h-72 object-cover rounded-md"
                     />
                   </div>
                   
@@ -189,7 +139,7 @@ const AllBlogs = () => {
                         width="22px"
                         height="22px"
                         viewBox="0 0 24 24"
-                        className="w-5 h-5 fill-current"
+                        className="w-5 h-5 fill-current text-primary"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -210,7 +160,7 @@ const AllBlogs = () => {
                     <div className="flex items-center space-x-2">
                       <button className="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
                         <svg
-                          className="w-5 h-5 fill-current"
+                          className="w-5 h-5 fill-current text-red-500"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                         >
@@ -220,24 +170,25 @@ const AllBlogs = () => {
                       </button>
                     </div>
                   </div>
-                  <div className="px-6 py-4">
+                  <div className="px-6 py-4 font-playful">
                     {commentsVisibility[blog._id] && (
                       <div className="px-6 py-4">
-                        <h3 className="text-xl font-bold">Comments:</h3>
+                        <h3 className="text-sm font-bold">Comments:</h3>
                         {blog.comments.length > 0 ? (
                           blog.comments.map((comment) => (
                             <div
                               key={comment._id}
-                              className="border-t border-gray-200 mt-2 pt-2"
+                              className="mt-3 pt-2 border-t "
                             >
-                                 <p className="text-xs text-black">
-                              By: {comment.author?.firstName} {comment.author?.lastName}
+                                 <p className="text-xs font-semibold mb-4 text-black">
+                              {comment.author?.firstName} {comment.author?.lastName}
                               </p>
-                              <p className="text-xl text-black font-bold">
+                              <p className="text-sm font-bold text-primary italic font-bold">
                                 {comment.text}
                               </p>
-                             
+        
                             </div>
+                            
                           ))
                         ) : (
                           <p className="text-gray-600">No comments yet</p>
