@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
 
 const ShuffleHero = () => {
   const variants = {
@@ -48,9 +49,11 @@ const ShuffleHero = () => {
           life, giving you more time to enjoy precious moments with your beloved
           pets."
         </p>
-        <button className="bg-primary text-white  font-playful font-medium py-2 px-4 rounded transition-all hover:bg-accent active:scale-95">
+        <Link
+         to="/login"
+        className="bg-primary text-white  font-playful font-medium py-2 px-4 rounded transition-all hover:bg-accent active:scale-95">
           Book an appointment
-        </button>
+        </Link>
       </div>
       <ShuffleGrid />
     </motion.section>

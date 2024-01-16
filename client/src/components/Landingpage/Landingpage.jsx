@@ -3,12 +3,15 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./bubble.module.css";
 import van from "../../assets/van.png";
+
 import parkingSign from "../../assets/parking.png";
 import { Link } from "react-router-dom";
 import backgroundImage from "../../assets/homepage.svg";
 import dogclean from "../../assets/doggrass.png";
 
 const Landingpage = () => {
+
+
   const headlineVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -103,18 +106,20 @@ const Landingpage = () => {
               variant={headlineVariants}
               className="text-white text-center font-playful text-2xl  lg:text-5xl w-10/12 mx-auto mt-[-10rem] font-bold"
             >
-              Sit, stay, and relax at home while we pamper your pet on wheels
+              Sit, Stay, and Relax at Home While we Pamper your Pet on Wheels
             </h2>
             <p className="font-playful text-white lg:text-2xl font-semibold p-6 text-center">
-              our mobile spa brings the best pet grooming to your doorstep!
+              Our Mobile Spa Brings the Best Pet Grooming to your Doorstep!
             </p>
            {/*  <p className="font-playful text-white font-semibold p-3 text-center">
               So why wait?
             </p> */}
-            
-            <button className="bg-success animate-bounce mx-auto mt-4 flex justify-center hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 w-1/4 rounded-xl">
+             <Link
+               to="/login"
+              className="bg-success animate-bounce mx-auto mt-4 flex justify-center hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 w-1/2 text-center rounded-xl"
+            >
               GET STARTED
-            </button>
+            </Link>
           </motion.div>
         </div>
       </div>

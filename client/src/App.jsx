@@ -18,6 +18,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Authorize from "./components/Authorize";
 import PetList from "./components/Dashboard/PetList";
 import Dashboardtwo from "./components/Dashboard/Dashboardtwo";
+import ServicesDog from "./components/ServicesDog";
 
 function App() {
   return (
@@ -28,15 +29,15 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/services" element={<ServicesDog />} />
             {/* <Route path="/profile" element={<Profile/>}/> */}
             <Route path="/" element={<ProtectedRoute />}>
               <Route path="/" element={<Authorize role="user" />}>
-                <Route path="dashboard" element={<Dashboardtwo />} >
-                <Route path="pets" element={<PetList/>} />
-                <Route path="addpet" element={<AddPetForm/>} />
-                <Route path="appointment" element={<AppointmentForm />} />
-                <Route path="profile" element={<Profile />} />
-                
+                <Route path="dashboard" element={<Dashboardtwo />}>
+                  <Route path="pets" element={<PetList />} />
+                  <Route path="addpet" element={<AddPetForm />} />
+                  <Route path="appointment" element={<AppointmentForm />} />
+                  <Route path="profile" element={<Profile />} />
                 </Route>
               </Route>
 

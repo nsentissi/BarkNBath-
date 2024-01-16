@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
+import Modal from "react-modal";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import styles from './Service.module.css'
+import styles from "./Service.module.css";
 import { Link } from "react-router-dom";
 import bathing from "../../assets/bathing.jpg";
 import pawcare from "../../assets/pawcare.jpg";
@@ -9,8 +10,23 @@ import haircut from "../../assets/haircut.jpg";
 import breed from "../../assets/breed.jpg";
 import thework from "../../assets/thework.jpg";
 import dental from "../../assets/dental.jpg";
+import ServicesDog from "../ServicesDog";
+import TrashApp from "../../assets/trashapp.png";
+
+
+Modal.setAppElement("#root");
 
 function Services() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   const cardVariants = {
     offscreen: { y: 50, opacity: 0 },
     onscreen: {
@@ -38,22 +54,32 @@ function Services() {
   };
 
   return (
-   
-    
     <div className="w-full z-0 min-h-screen flex flex-col justify-center items-center py-20">
       <div className="text-center py-10">
         <h1 className="font-bold text-4xl mb-4 uppercase font-chewy tracking-widest">
           Dog Grooming Overview
         </h1>
-        <h1 className="text-xl font-playful mb-12">The Complete Grooming Experience</h1>
-        <Link className="font-playful ml-4" to="/appointment">
+        <h1 className="text-xl font-playful mb-12">
+          The Complete Grooming Experience
+        </h1>
+        <div className="font-playful ml-4" to="/services">
           <button
             className="bg-success hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-xl"
-            href="/appointment/create"
+            onClick={openModal}
           >
-            Check the packages
+            Check Pricing Details
           </button>
-        </Link>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            contentLabel="Services Modal"
+          >
+            <ServicesDog />
+            <button onClick={closeModal}>
+              <img src={TrashApp} />
+            </button>
+          </Modal>
+        </div>
       </div>
 
       <section
@@ -254,7 +280,6 @@ function Services() {
         </motion.div>
       </section>
     </div>
- 
   );
 }
 

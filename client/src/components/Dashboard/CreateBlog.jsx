@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axiosClient from "../../../axiosClient";
 import { useParams } from "react-router-dom";
-
 import { useAuth } from "../../hooks/AuthContext";
-import moment from 'moment';
-
+import moment from "moment";
+import trashapp from "../../assets/trashapp.png";
 import { Link } from "react-router-dom";
 
-
 const CreateBlog = () => {
- 
-  
   const [formData, setFormData] = useState({
     title: "",
     paragraph: "",
@@ -23,7 +19,7 @@ const CreateBlog = () => {
   const formatTimeAgo = (dateString) => {
     const date = moment(dateString);
     return date.fromNow();
-};
+  };
 
   const toggleComments = (blogId) => {
     setCommentsVisibility((prevState) => ({
@@ -50,14 +46,10 @@ const CreateBlog = () => {
     }
 
     try {
-      const response = await axiosClient.post(
-        `/blog/create/${id}`,
-        data,
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      const response = await axiosClient.post(`/blog/create/${id}`, data, {
+        withCredentials: true,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       console.log("Response:", response);
       setBlogs([response.data, ...blogs]);
     } catch (error) {
@@ -77,6 +69,20 @@ const CreateBlog = () => {
       setBlogs(response.data);
     } catch (error) {
       console.log(error.response);
+    }
+  };
+
+  const deleteBlog = async (blogId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this blog?"
+    );
+    if (!confirmDelete) return;
+
+    try {
+      await axiosClient.delete(`/blog/delete/${blogId}`);
+      setBlogs(blogs.filter((blog) => blog._id !== blogId));
+    } catch (error) {
+      console.error("Error deleting blog:", error);
     }
   };
 
@@ -156,7 +162,7 @@ const CreateBlog = () => {
               className="border-4 border-accent px-6 py-10 mt-60"
             >
               {/* <!-- Post Content Section --> */}
-              <h3 className="text-center font-bold text-gray-700 text-xl " >
+              <h3 className="text-center font-bold text-gray-700 text-xl ">
                 Post a blog
               </h3>
               <div>
@@ -260,7 +266,7 @@ const CreateBlog = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
             {blogs.map((blog) => {
               return (
-                <div >
+                <div>
                   {/* First Column */}
                   <div className="bg-white p-8 rounded-lg shadow-md max-w-md shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
                     {/* User Info with Three-Dot Menu */}
@@ -275,11 +281,9 @@ const CreateBlog = () => {
                           <p className="text-gray-800 font-semibold">
                             {blog.pet.name}
                           </p>
-                          
                           <p className="text-gray-500 text-sm">
-                        posted {formatTimeAgo (blog.date)} 
+                            posted {formatTimeAgo(blog.date)}
                           </p>{" "}
-
                         </div>
                       </div>
                       <div className="text-gray-500 cursor-pointer">
@@ -300,6 +304,9 @@ const CreateBlog = () => {
                             <circle cx="12" cy="12" r="1" />
                             <circle cx="12" cy="17" r="1" />
                           </svg>
+                        </button>
+                        <button onClick={() => deleteBlog(blog._id)}>
+                          <img src={trashapp} />
                         </button>
                       </div>
                     </div>
@@ -346,11 +353,20 @@ const CreateBlog = () => {
                       </button>
                       <div className="flex items-center space-x-2">
                         <button className="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
-                        <span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500 hover:text-red-400 transition duration-100 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-            </svg>
-          </span>
+                          <span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-7 w-7 text-red-500 hover:text-red-400 transition duration-100 cursor-pointer"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                clip-rule="evenodd"
+                              />
+                            </svg>
+                          </span>
                           <span>4 Likes</span>
                         </button>
                       </div>

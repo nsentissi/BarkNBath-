@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./Petlist.css";
-import trashapp from "../../assets/trashapp.png"
+import trashapp from "../../assets/trashapp.png";
 
 const PetList = () => {
   const { currentUser } = useAuth();
-  const [activeTab, setActiveTab] = useState('upcoming');
+  const [activeTab, setActiveTab] = useState("upcoming");
   const navigate = useNavigate();
   const [petAppointments, setPetAppointments] = useState([]);
 
@@ -17,20 +17,25 @@ const PetList = () => {
     navigate(`/create-blog/${petId}`);
   };
 
-  const handleDeleteAppointment = async (appointmentId) => {
+
+  const handleDeleteAppointment = async (appointmentId, petId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to cancel this appointment?"
+    );
+    if (!confirmDelete) return;
+
     try {
-      console.log("Deleting appointment with ID:", appointmentId);
-      await axiosClient.delete(
-        `/appointment/delete/${appointmentId}`,
-        { withCredentials: true }
-      );
+      await axiosClient.delete(`/appointment/delete/${appointmentId}`, {
+        withCredentials: true,
+      });
 
-      const updatedAppointments = petAppointments?.filter(
-        (appointment) => appointment._id !== appointmentId
-      );
+      setPetAppointments((prevAppointments) => ({
+        ...prevAppointments,
+        [petId]: prevAppointments[petId].filter(
+          (appointment) => appointment._id !== appointmentId
+        ),
+      }));
 
-      setPetAppointments(updatedAppointments);
-      console.log("Updated appointments:", updatedAppointments);
       console.log("Appointment deleted successfully");
     } catch (error) {
       console.error("Failed to delete the appointment:", error);
@@ -44,10 +49,9 @@ const PetList = () => {
       const appointments = {};
 
       for (const pet of currentUser.pets) {
-        const { data } = await axiosClient.get(
-          `/appointment/${pet._id}`,
-          { withCredentials: true }
-        );
+        const { data } = await axiosClient.get(`/appointment/${pet._id}`, {
+          withCredentials: true,
+        });
         appointments[pet._id] = data;
       }
 
@@ -96,7 +100,10 @@ const PetList = () => {
       </div>
       <div className="flex flex-wrap  justify-center gap-14 mt-12">
         {currentUser.pets?.map((pet, index) => (
-          <div key={index} className="relative w-1/3 rounded-xl bg-neutral bg-clip-border text-gray-700 bg-cover bg-center " >
+          <div
+            key={index}
+            className="relative w-1/3 rounded-xl bg-neutral bg-clip-border text-gray-700 bg-cover bg-center "
+          >
             <div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-clip-border text-white  bg-secondary">
               <div className=" flex justify-around p-8 gap-4">
                 <button
@@ -109,7 +116,6 @@ const PetList = () => {
                     Post a blog
                   </span>
                 </button>{" "}
-                
                 <img
                   className="rounded-full border-4 border-success p-1"
                   src={pet.profilePhotoUrl}
@@ -117,10 +123,9 @@ const PetList = () => {
                   style={{ width: "100px", height: "100px" }}
                 />
               </div>
-              
             </div>
-            <div className="p-8 w-2/4  mx-auto flex flex-col justify-center mt-6 rounded-full bg-center bg-cover" >
-            <p className="text-xl font-playful text-center tracking-widest py-2 font-semibold">
+            <div className="p-8 w-2/4  mx-auto flex flex-col justify-center mt-6 rounded-full bg-center bg-cover">
+              <p className="text-xl font-playful text-center tracking-widest py-2 font-semibold">
                 {pet.name}
               </p>
               <p className="text-sm font-playful text-center tracking-widest py-2 font-semibold">
@@ -135,15 +140,25 @@ const PetList = () => {
                 <h3 className="text-center text-xl text-grey-900 font-playful font-bold border-b-2 border-secondary p-2 tracking-widest ">
                   Appointments
                 </h3>
-                <TabList className={"flex justify-around px-8 py-6 gap-4 text-center "}>
-                  <Tab className="font-playful font-bold  border border-gray-300  text-sm rounded-lg focus:ring-blue-900  focus:border-primary block w-full p-2.5 dark:bg-primary dark:border-primary dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">Upcoming</Tab>
-                  <Tab className="font-playful font-bold  border border-gray-300  text-sm rounded-lg focus:ring-white focus:border-blue-900 block w-full p-2.5 dark:bg-accent dark:border-primary dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">Past </Tab>
+                <TabList
+                  className={"flex justify-around px-8 py-6 gap-4 text-center "}
+                >
+                  <Tab className="font-playful font-bold  border border-gray-300  text-sm rounded-lg focus:ring-blue-900  focus:border-primary block w-full p-2.5 dark:bg-primary dark:border-primary dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+                    Upcoming
+                  </Tab>
+                  <Tab className="font-playful font-bold  border border-gray-300  text-sm rounded-lg focus:ring-white focus:border-blue-900 block w-full p-2.5 dark:bg-accent dark:border-primary dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+                    Past{" "}
+                  </Tab>
                 </TabList>
 
                 <TabPanel>
                   <div className="max-w-md mx-auto bg-secondary  h-1/4 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3 ">
                     {!filterAppointments(petAppointments[pet._id] || [], true)
-                      .length && <div className="w-90 h-24 flex items-center justify-center font-playful font-bold ">No upcoming appointment</div>}
+                      .length && (
+                      <div className="w-90 h-24 flex items-center justify-center font-playful font-bold ">
+                        No upcoming appointment
+                      </div>
+                    )}
                     {filterAppointments(
                       petAppointments[pet._id] || [],
                       true
@@ -164,7 +179,7 @@ const PetList = () => {
                         </div>
                         <button
                           onClick={() =>
-                            handleDeleteAppointment(appointment._id)
+                            handleDeleteAppointment(appointment._id, pet._id)
                           }
                           className="text-black"
                         >
@@ -178,7 +193,11 @@ const PetList = () => {
                 <TabPanel>
                   <div className="max-w-md mx-auto bg-white  rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
                     {!filterAppointments(petAppointments[pet._id] || [], false)
-                      .length && <div className="w-90 h-24 flex items-center justify-center font-playful font-bold">No past appointment</div>}
+                      .length && (
+                      <div className="w-90 h-24 flex items-center justify-center font-playful font-bold">
+                        No past appointment
+                      </div>
+                    )}
                     {filterAppointments(
                       petAppointments[pet._id] || [],
                       false

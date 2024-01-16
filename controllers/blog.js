@@ -14,7 +14,7 @@ const addBlogPost = async (req, res, next) => {
       throw new ErrorResponse("Pet not found", 404);
     }
 
-    const newBlogPost = new Blog({
+    const newBlogPost = await Blog.create({
       owner,
       pet: petId,
       title,
@@ -22,8 +22,8 @@ const addBlogPost = async (req, res, next) => {
       photo,
     });
 
-    await newBlogPost.save();
-    res.status(201).json(newBlogPost);
+  
+    res.status(201).json({...newBlogPost._doc, pet});
   } catch (error) {
     next(error);
   }
@@ -39,6 +39,22 @@ const getBlogsByPetId = async (req, res) => {
     res.json(blogs);
   } catch (error) {
     res.status(500).json({ message: "Error retrieving blogs", error: error });
+  }
+};
+
+const deleteBlogPost = async (req, res, next) => {
+  try {
+    const { blogId } = req.params;
+
+    const deletedBlogPost = await Blog.findByIdAndDelete(blogId);
+
+    if (!deletedBlogPost) {
+      throw new ErrorResponse("Blog post not found", 404);
+    }
+
+    res.status(200).json({ message: "Blog post deleted successfully" });
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -69,21 +85,7 @@ const getAllBlogPosts = async (req, res, next) => {
   }
 };
 
-const deleteBlogPost = async (req, res, next) => {
-  try {
-    const { blogPostId } = req.params;
 
-    const deletedBlogPost = await Blog.findByIdAndDelete(blogPostId);
-
-    if (!deletedBlogPost) {
-      throw new ErrorResponse("Blog post not found", 404);
-    }
-
-    res.status(200).json({ message: "Blog post deleted successfully" });
-  } catch (error) {
-    next(error);
-  }
-};
 
 const addComment = async (req, res, next) => {
   try {
