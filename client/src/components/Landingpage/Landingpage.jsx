@@ -8,12 +8,9 @@ import backgroundImage from "../../assets/homepage.svg";
 import dogclean from "../../assets/doggrass.png";
 
 const Landingpage = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.5, // Adjust as needed
-  });
+ 
 
-  // Modify variants to respond to inView
+  
   const headlineVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -65,6 +62,10 @@ const Landingpage = () => {
       },
     },
   };
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+  });
 
   return (
     <div className={styles.area}>
@@ -91,24 +92,17 @@ const Landingpage = () => {
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <div  ref={ref} className="flex flex-col md:flex-row   items-center z-0 justify-center h-screen">
-          <motion.img
-            className="absolute bottom-10 left-80 transform"
-            src={dogclean}
-            alt="Dog"
-            variants={dogVariants}
-            initial="hidden"
-            animate="visible"
-            style={{ maxWidth: "300px" }}
-          />
+          
 
           {/* Headline */}
           <motion.div
+          ref={ref}
             className=""
             variants={textVariants}
-            initial="hidden"
+           
             animate={inView ? "visible" : "hidden"}
           >
-             <h2 className="text-white text-center font-playful text-3xl lg:text-6xl font-bold">
+             <h2 variant= {headlineVariants} className="text-white text-center font-playful text-3xl lg:text-6xl font-bold">
               Welcome to Serenity on Wheels!
             </h2>
             <p className="font-playful text-white font-semibold p-6 text-center">
@@ -120,7 +114,7 @@ const Landingpage = () => {
             </p>
 
             <button className="bg-success animate-bounce flex justify-center hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 w-1/4 rounded-xl">
-              Book your appointment
+              GET STARTED
             </button>
             </motion.div>
         </div>
@@ -129,19 +123,23 @@ const Landingpage = () => {
       {/* Van  */}
 
       <motion.img
+      ref={ref}
         className="absolute bottom-10 right-14 md:right-32 lg:right-52 transform lg:-translate-x-1/2 lg:translate-y-0 w-1/2 md:w-1/3 lg:w-38vw"
         src={van}
         alt="Van"
         variants={vanVariants}
         initial="hidden"
-        animate="visible"
+        animate={inView ? "visible" : "hidden"}
         style={{ maxWidth: "900px" }}
       />
 
       {/* Parking Sign  */}
       <motion.img
+      ref={ref}
         className="absolute bottom-16 right-60  md:right-96 lg:right-1/3 lg:mr-36 transform lg:-translate-x-1/2 lg:translate-y-0  w-1/5 md:w-1/5 lg:w-20vw"
         src={parkingSign}
+        initial="hidden"
+        animate="visible"
         alt="Parking Sign"
         variants={parkingSignVariants}
         style={{ maxWidth: "200px" }}
