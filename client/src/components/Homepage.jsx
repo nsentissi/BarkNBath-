@@ -1,5 +1,5 @@
 import React from "react";
-import AboutUs from "./AboutUs";
+import AboutUs from "./Jorney/AboutUs";
 import Services from "./Services/Services";
 import Landingpage from "./Landingpage/Landingpage";
 import Journey from "./Jorney/Journey";

@@ -88,8 +88,12 @@ const Testimonials = () => {
     animate={inView ? "visible" : "hidden"}
     variants={variants}
   >
-    <div className="w-full max-w-4xl mx-auto px-4 md:px-6 ">
+    
+    
+    <div className="w-full max-w-4xl mx-auto px-4 md:px-8 py-8 ">
+    <h3 className="text-3xl text-white font-playful font-bold mx-auto text-center tracking-widest mb-12  md:mb-8 lg:mb-28 ">TESTIMONIALS</h3>
       <div className="flex justify-center ">
+      
         <div className="w-full max-w-5xl mx-auto text-center ">
           {testimonialsData.map((testimonial, index) => (
             <motion.div

@@ -1,0 +1,70 @@
+import React from "react";
+import { motion } from "framer-motion";
+import dog from "../../assets/dog.svg";
+import ShuffleHero from "./ShuffleHero";
+import AboveaboutUs from "./AboveaboutUs";
+
+const AboutUs = () => {
+  const variants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 80 },
+    },
+    exit: { opacity: 0, x: 100, transition: { duration: 0.5 } },
+  };
+
+  const dogImageVariants = {
+    offscreen: { x: 100, opacity: 0 },
+    onscreen: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.4,
+        duration: 6,
+      },
+    },
+  };
+
+  return (
+    <div>
+      <AboveaboutUs />
+      <div className="bg-secondary py-0 ">
+        <div className="flex justify-center ">
+          <ShuffleHero />
+        </div>
+
+        <div className="flex flex-col md:flex-row items-center justify-center space-y-10 md:space-y-0 md:space-x-10 mt-10 w-full">
+          <motion.div className="w-full md:w-4/12 px-6" variants={variants}>
+            <h1 className="text-7xl text-white font-playful text-center md:text-left">
+              Indulge Your Pet in Luxury
+            </h1>
+            <p className="mt-8 mb-8 text-white text-center font-playful md:text-left">
+              Experience a new level of pet care with our mobile spa services.
+              Treat your furry friend to the best in pet pampering – because
+              they deserve it!
+            </p>
+            <div className="flex justify-center md:justify-start">
+              <button className="bg-success  animate-pulse hover:bg-accent text-gray-800 font-bold py-2 px-4 rounded-xl">
+                Get started
+              </button>
+            </div>
+          </motion.div>
+          <motion.img
+            className="-mb-10 w-full md:w-auto"
+            initial="offscreen"
+            whileInView="onscreen"
+            src={dog}
+            alt="dog picture"
+            viewport={{ once: true }}
+            variants={dogImageVariants}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AboutUs;

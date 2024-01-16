@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import styles from "./bubble.module.css";
-import van from "../../assets/van.png"
-import parkingSign from "../../assets/parking.png"
-import backgroundImage from "../../assets/homepage.svg"
+import van from "../../assets/van.png";
+import parkingSign from "../../assets/parking.png";
+import backgroundImage from "../../assets/homepage.svg";
 import dogclean from "../../assets/doggrass.png";
 
 const Landingpage = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.5, // Adjust as needed
+  });
+
+  // Modify variants to respond to inView
+  const headlineVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 1 },
+    },
+  };
+
   const textVariants = {
     hidden: { opacity: 0, y: 100 },
     visible: {
@@ -64,13 +79,18 @@ const Landingpage = () => {
         <li></li>
         <li></li>
         <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
       </ul>
       <div
+       
         className="flex items-center justify-center h-screen z-0 bg-cover bg-center  landing-page-bg"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-
-        <div className="flex flex-col md:flex-row   items-center z-0 justify-center h-screen">
+        <div  ref={ref} className="flex flex-col md:flex-row   items-center z-0 justify-center h-screen">
           <motion.img
             className="absolute bottom-10 left-80 transform"
             src={dogclean}
@@ -82,13 +102,18 @@ const Landingpage = () => {
           />
 
           {/* Headline */}
-          <div className="">
-            <h2 className="text-white text-center font-playful text-3xl lg:text-6xl font-bold">
-              Welcome to Serenity on Wheels!{" "}
+          <motion.div
+            className=""
+            variants={textVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+          >
+             <h2 className="text-white text-center font-playful text-3xl lg:text-6xl font-bold">
+              Welcome to Serenity on Wheels!
             </h2>
             <p className="font-playful text-white font-semibold p-6 text-center">
               We believe wellness shouldn't be a luxury, but a regular part of
-              life and that goes for our furry friends too.
+              life.
             </p>
             <p className="font-playful text-white font-semibold p-3 text-center">
               So why wait?
@@ -97,7 +122,7 @@ const Landingpage = () => {
             <button className="bg-success animate-bounce flex justify-center hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 w-1/4 rounded-xl">
               Book your appointment
             </button>
-          </div>
+            </motion.div>
         </div>
       </div>
 
@@ -120,8 +145,8 @@ const Landingpage = () => {
         alt="Parking Sign"
         variants={parkingSignVariants}
         style={{ maxWidth: "200px" }}
-/>
-</div>
+      />
+    </div>
   );
 };
 
