@@ -9,7 +9,6 @@ import trashapp from "../../assets/trashapp.png";
 
 const PetList = () => {
   const { currentUser } = useAuth();
-
   const navigate = useNavigate();
   const [petAppointments, setPetAppointments] = useState([]);
 
@@ -218,6 +217,7 @@ const PetList = () => {
                     ))}
                   </div>
                 </div>
+
               </div>
             </div>
           </div>

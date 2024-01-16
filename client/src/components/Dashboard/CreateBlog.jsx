@@ -42,12 +42,13 @@ const CreateBlog = () => {
     const data = new FormData();
     data.append("title", formData.title);
     data.append("paragraph", formData.paragraph);
+    data.append("petId", id)
     if (selectedFile) {
       data.append("photo", selectedFile);
     }
 
     try {
-      const response = await axiosClient.post(`/blog/create/${id}`, data, {
+      const response = await axiosClient.post(`/blog/create`, data, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       });
