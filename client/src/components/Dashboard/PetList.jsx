@@ -9,7 +9,6 @@ import trashapp from "../../assets/trashapp.png";
 
 const PetList = () => {
   const { currentUser } = useAuth();
-
   const navigate = useNavigate();
   const [petAppointments, setPetAppointments] = useState([]);
 
@@ -124,8 +123,20 @@ const PetList = () => {
                   Age : {pet.age} years old
                 </p>
               </div>
+              
             </div>
+            <Link to={`/create-blog/${pet._id}`}>
+            <button
+                className="button type1"
+                
+                onClick={(e) => {
+                  handleCreatePostClick(pet._id);
+                }}
+              >
+                <span className="btnTxt font-playful font-bold px-2">Create Post</span>
+              </button>
 
+              </Link>
             <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4">
               <div className="bg-warning p-8 h-56 w-64 rounded-lg">
                 <div className="flex flex-col space-x-4 space-y-4 items-center">
@@ -208,6 +219,7 @@ const PetList = () => {
                     ))}
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
