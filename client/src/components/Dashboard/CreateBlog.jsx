@@ -3,14 +3,11 @@ import axiosClient from "../../../axiosClient";
 import { useParams } from "react-router-dom";
 
 import { useAuth } from "../../hooks/AuthContext";
-import moment from 'moment';
+import moment from "moment";
 
 import { Link } from "react-router-dom";
 
-
 const CreateBlog = () => {
- 
-  
   const [formData, setFormData] = useState({
     title: "",
     paragraph: "",
@@ -23,7 +20,7 @@ const CreateBlog = () => {
   const formatTimeAgo = (dateString) => {
     const date = moment(dateString);
     return date.fromNow();
-};
+  };
 
   const toggleComments = (blogId) => {
     setCommentsVisibility((prevState) => ({
@@ -50,14 +47,10 @@ const CreateBlog = () => {
     }
 
     try {
-      const response = await axiosClient.post(
-        `/blog/create/${id}`,
-        data,
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      const response = await axiosClient.post(`/blog/create/${id}`, data, {
+        withCredentials: true,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       console.log("Response:", response);
       setBlogs([response.data, ...blogs]);
     } catch (error) {
@@ -85,78 +78,23 @@ const CreateBlog = () => {
   }, []);
 
   return (
-    <div className="h-screen overflow-y-scroll bg-neutral ">
+    <div className="h-screen ">
       <div className="flex items-center justify-around py-8">
         <h4 className="text-gray-800 font-semibold text-4xl text-center ">
           Your Blogs
         </h4>
-        <Link to="/dashboard">
-          <button className=" ">
-            <div className="flex justify-center">
-              <a
-                href="#_"
-                className="group relative  inline-flex items-center justify-center overflow-hidden rounded-xl border-2 border-success p-4 px-5 py-2.5 font-medium text-white shadow-md transition duration-300 ease-out"
-              >
-                <span className="absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-info text-white duration-300 group-hover:translate-x-0">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    ></path>
-                  </svg>
-                </span>
-                <span className="absolute flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
-                  Dashboard
-                </span>
-                <span className="invisible relative">LOG </span>
-              </a>
-            </div>
-          </button>
-        </Link>
+        
       </div>
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2 lg:gap-8">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-2 lg:gap-8">
         <div className="post p-5 lg:p-1 rounded-md">
-          <div className="lg:fixed lg:top-7 lg:left-14 lg:w-3/12 md:fixed md:w-5/12">
-            {/* <div className=" bg-accent p-4 rounded-lg shadow-md max-w-md w-full mb-8">
-              <div class="relative">
-                {blogs.map((blog) => {
-                  return (
-                    <div className="pet-profile flex flex-col items-center justify-center">
-                      <img
-                        src={blog.pet.profilePhotoUrl}
-                        alt={`Profile of ${blog.pet.name}`}
-                        className="w-24 h-32 rounded-full mb-3  border-4 border-success"
-                      />
-                      <div className="pet-info flex flex-col items-center justify-center">
-                        <h2 className="text-xl mb-3 font-playful font-bold text-gray-800">
-                          {blog.pet.name}
-                        </h2>
-
-                        <p className="text-gray-900 mb-4 font-playful">BIO:</p>
-                        <p className="text-gray-900 text-center border-2 border-success p-8 font-playful">
-                          {blog.pet.Bio}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div> */}
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-1 lg:gap-8">
             <form
               onSubmit={handleSubmit}
-              className="border-4 border-accent px-6 py-10 mt-60"
+              className="border-4 border-primary   px-6 py-10 mt-10"
             >
               {/* <!-- Post Content Section --> */}
-              <h3 className="text-center font-bold text-gray-700 text-xl " >
+              <h3 className="text-center font-bold text-gray-700 text-xl ">
                 Post a blog
               </h3>
               <div>
@@ -260,7 +198,7 @@ const CreateBlog = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
             {blogs.map((blog) => {
               return (
-                <div >
+                <div>
                   {/* First Column */}
                   <div className="bg-white p-8 rounded-lg shadow-md max-w-md shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
                     {/* User Info with Three-Dot Menu */}
@@ -275,11 +213,9 @@ const CreateBlog = () => {
                           <p className="text-gray-800 font-semibold">
                             {blog.pet.name}
                           </p>
-                          
                           <p className="text-gray-500 text-sm">
-                        posted {formatTimeAgo (blog.date)} 
+                            posted {formatTimeAgo(blog.date)}
                           </p>{" "}
-
                         </div>
                       </div>
                       <div className="text-gray-500 cursor-pointer">
@@ -346,11 +282,20 @@ const CreateBlog = () => {
                       </button>
                       <div className="flex items-center space-x-2">
                         <button className="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
-                        <span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500 hover:text-red-400 transition duration-100 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-            </svg>
-          </span>
+                          <span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-7 w-7 text-red-500 hover:text-red-400 transition duration-100 cursor-pointer"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                clip-rule="evenodd"
+                              />
+                            </svg>
+                          </span>
                           <span>4 Likes</span>
                         </button>
                       </div>

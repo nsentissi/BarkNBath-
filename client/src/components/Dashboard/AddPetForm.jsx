@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/AuthContext";
 
-const AddPetForm = ({ setActiveContent }) => {
+const AddPetForm = () => {
   const { currentUser, dispatch } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -52,8 +52,8 @@ const AddPetForm = ({ setActiveContent }) => {
         payload: { ...currentUser, pets: [...currentUser.pets, response.data] },
       });
 
-      toast("Pet created!");
-      setActiveContent("overview");
+     
+     navigate("/dashboard/pets")
     } catch (err) {
       console.log(err);
       setError(err.response?.data?.message || "An error occurred");
