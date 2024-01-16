@@ -13,7 +13,7 @@ const PetList = () => {
   const [petAppointments, setPetAppointments] = useState([]);
 
   const handleCreatePostClick = (petId) => {
-    navigate(`/create-blog/${petId}`);
+    navigate(`/dashboard/create-blog/${petId}`);
   };
 
   const handleDeleteAppointment = async (appointmentId, petId) => {
@@ -110,7 +110,7 @@ const PetList = () => {
                   alt={pet.name}
                 />
               </div>
-            
+              
               <div className="absolute bg-primary/90 -bottom-24 w-64 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
                 <span className="text-whitefont-bold text-ml">{pet.name}</span>
                 <span className="text-black font-semibold text-xl">
@@ -125,20 +125,18 @@ const PetList = () => {
               </div>
               
             </div>
-            <Link to={`/create-blog/${pet._id}`}>
-            <button
+
+            <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4">
+              <div className="bg-warning p-8 h-56 w-64 rounded-lg">
+              <button
                 className="button type1"
-                
+
                 onClick={(e) => {
                   handleCreatePostClick(pet._id);
                 }}
               >
                 <span className="btnTxt font-playful font-bold px-2">Create Post</span>
               </button>
-
-              </Link>
-            <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4">
-              <div className="bg-warning p-8 h-56 w-64 rounded-lg">
                 <div className="flex flex-col space-x-4 space-y-4 items-center">
                   <p className="text-black font-bold text-sm ">
                     Upcoming appointments

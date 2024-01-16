@@ -4,8 +4,8 @@ const Pet = require("../models/pet");
 
 const addBlogPost = async (req, res, next) => {
   try {
-    const { petId } = req.params;
-    const { title, paragraph } = req.body;
+   
+    const { title, paragraph, petId  } = req.body;
     const owner = req.user.id;
     const photo = req.file.path;
 
