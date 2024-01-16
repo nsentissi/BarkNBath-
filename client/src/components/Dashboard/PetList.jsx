@@ -9,7 +9,6 @@ import trashapp from "../../assets/trashapp.png";
 
 const PetList = () => {
   const { currentUser } = useAuth();
-
   const navigate = useNavigate();
   const [petAppointments, setPetAppointments] = useState([]);
 
@@ -126,7 +125,7 @@ const PetList = () => {
               </div>
               
             </div>
-           
+
             <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4">
               <div className="bg-warning p-8 h-56 w-64 rounded-lg">
               <button
@@ -218,6 +217,7 @@ const PetList = () => {
                     ))}
                   </div>
                 </div>
+
               </div>
             </div>
           </div>

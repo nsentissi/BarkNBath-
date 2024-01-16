@@ -22,8 +22,7 @@ const addBlogPost = async (req, res, next) => {
       photo,
     });
 
-  
-    res.status(201).json({...newBlogPost._doc, pet});
+    res.status(201).json({ ...newBlogPost._doc, pet });
   } catch (error) {
     next(error);
   }
@@ -82,8 +81,6 @@ const getAllBlogPosts = async (req, res, next) => {
     next(error);
   }
 };
-
-
 
 const addComment = async (req, res, next) => {
   try {

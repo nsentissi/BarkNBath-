@@ -1,5 +1,7 @@
 import React, { Suspense, useState } from "react";
 import { useAuth } from "../../hooks/AuthContext";
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import styles from "./Dashboard.module.css";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import barkNBath from "../../assets/barkNBath.png";
@@ -8,9 +10,9 @@ const Dash = ({ onProfileClick }) => {
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
 
-    const handleViewBlogsClick = () => {
-      navigate(`/blogs`);
-    };
+  const handleViewBlogsClick = () => {
+    navigate(`/blogs`);
+  };
 
   //   const handleHomeClick = () => {
   //     navigate(`/`);
@@ -18,7 +20,12 @@ const Dash = ({ onProfileClick }) => {
   return (
     <div class="antialiased bg-primary w-full min-h-screen font-playful  relative py-4">
       <div class="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
-        <div id="menu" class="bg-success col-span-3 rounded-lg p-4 ">
+        <motion.div
+          initial={{ x: -250 }}
+          animate={{ x: 0 }}
+          transition={{ type: "spring", stiffness: 100 }}
+          className="bg-success col-span-3 rounded-lg p-4"
+        >
           <img src={barkNBath} className=" h-28 w-38 " alt="barknbath Logo" />
 
           <p class="text-black font-playful font-bold text-xl mb-4">
@@ -59,7 +66,9 @@ const Dash = ({ onProfileClick }) => {
                   <p class="font-bold  lg:text-lg  leading-4 group-hover:text-indigo-400">
                     Overview
                   </p>
-                  <p class="text-primary font-bold text-sm hidden md:block">Your dogs</p>
+                  <p class="text-primary font-bold text-sm hidden md:block">
+                    Your dogs
+                  </p>
                 </div>
               </div>
             </NavLink>
@@ -94,13 +103,15 @@ const Dash = ({ onProfileClick }) => {
                   <p class="font-bold  lg:text-lg  leading-4 group-hover:text-indigo-400">
                     Add
                   </p>
-                  <p class="text-primary font-bold text-sm hidden md:block">Add a dog</p>
+                  <p class="text-primary font-bold text-sm hidden md:block">
+                    Add a dog
+                  </p>
                 </div>
               </div>
             </NavLink>
             <NavLink
-             to={"appointment"}
-             style={({ isActive }) => {
+              to={"appointment"}
+              style={({ isActive }) => {
                 return {
                   fontWeight: isActive ? "bold" : "",
                   color: isActive ? "#fff" : "black",
@@ -126,9 +137,7 @@ const Dash = ({ onProfileClick }) => {
                   </svg>
                 </div>
                 <div>
-                  <p class="font-bold  lg:text-lg  leading-4 ">
-                    Book
-                  </p>
+                  <p class="font-bold  lg:text-lg  leading-4 ">Book</p>
                   <p class="text-primary font-bold text-sm hidden md:block">
                     an appointment
                   </p>
@@ -136,8 +145,8 @@ const Dash = ({ onProfileClick }) => {
               </div>
             </NavLink>
             <NavLink
-             to={"blogs"}
-             style={({ isActive }) => {
+              to={"blogs"}
+              style={({ isActive }) => {
                 return {
                   fontWeight: isActive ? "bold" : "",
                   color: isActive ? "#fff" : "black",
@@ -163,18 +172,16 @@ const Dash = ({ onProfileClick }) => {
                   </svg>
                 </div>
                 <div>
-                  <p class="font-bold  lg:text-lg  leading-4 ">
-                    Blogs
-                  </p>
+                  <p class="font-bold  lg:text-lg  leading-4 ">Blogs</p>
                   <p class="text-primary font-bold text-sm hidden md:block">
                     View all blogs
                   </p>
                 </div>
               </div>
             </NavLink>
-            <NavLink
-             to={"create-blog/:id"}
-             style={({ isActive }) => {
+            {/* <NavLink
+              to={"create-blog/:id"}
+              style={({ isActive }) => {
                 return {
                   fontWeight: isActive ? "bold" : "",
                   color: isActive ? "#fff" : "black",
@@ -208,15 +215,15 @@ const Dash = ({ onProfileClick }) => {
                   </p>
                 </div>
               </div>
-            </NavLink>
+            </NavLink> */}
             <NavLink
-             to={"profile"}
-             style={({ isActive }) => {
-               return {
-                 fontWeight: isActive ? "bold" : "",
-                 color: isActive ? "#fff" : "black",
-               };
-             }}
+              to={"profile"}
+              style={({ isActive }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isActive ? "#fff" : "black",
+                };
+              }}
               class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
             >
               <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
@@ -252,47 +259,48 @@ const Dash = ({ onProfileClick }) => {
               </div>
             </NavLink>
             <button onClick={logout} className=" ">
-                <div className="flex justify-center">
-                  <a
-                    href="#_"
-                    className="group relative  inline-flex items-center justify-center overflow-hidden rounded-xl border-2 border-success p-4 px-5 py-2.5 font-medium text-white shadow-md transition duration-300 ease-out"
-                  >
-                    <span className="absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-info text-white duration-300 group-hover:translate-x-0">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span className="absolute text-white flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
-                      LOG OUT
-                    </span>
-                    <span className="invisible relative">LOG </span>
-                  </a>
-                </div>
-              </button>
+              <div className="flex justify-center">
+                <a
+                  href="#_"
+                  className="group relative  inline-flex items-center justify-center overflow-hidden rounded-xl border-2 border-success p-4 px-5 py-2.5 font-medium text-white shadow-md transition duration-300 ease-out"
+                >
+                  <span className="absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-info text-white duration-300 group-hover:translate-x-0">
+                    <svg
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span className="absolute text-white flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
+                    LOG OUT
+                  </span>
+                  <span className="invisible relative">LOG </span>
+                </a>
+              </div>
+            </button>
           </div>
           <p class="text-sm text-center text-gray-600">
             v2.0.0.3 | &copy; 2024 BarkNbath
           </p>
-        </div>
-
+        </motion.div>
 
         {/* Content */}
 
-        <div id="content" class="bg-white/80 col-span-9 rounded-lg p-6">
-          
+        <motion.div
+          initial={{ x: 250 }} 
+          animate={{ x: 0 }} 
+          transition={{ type: "spring", stiffness: 100 ,duration: 6 }} class="bg-white col-span-9 rounded-lg p-6">
           <Outlet />
-        </div>
+        </motion.div>
       </div>
     </div>
   );
