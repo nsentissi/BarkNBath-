@@ -19,7 +19,7 @@ import Authorize from "./components/Authorize";
 import PetList from "./components/Dashboard/PetList";
 
 import Dash from "./components/Dashboard/Dash";
-
+import ServicesDog from "./components/ServicesDog";
 
 function App() {
   return (

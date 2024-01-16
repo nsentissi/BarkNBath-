@@ -13,6 +13,7 @@ const createAppointment = async (req, res, next) => {
       lastGroom,
       address,
       pet,
+      
     });
     await newAppointment.save();
     res.status(201).json(newAppointment);
@@ -42,7 +43,8 @@ const getAppointments = async (req, res) => {
 const getPetAppointmentById = async (req, res) => {
   try {
     const { petId } = req.params;
-    const appointments = await Appointment.find({ pet: petId });
+    const appointments = await Appointment.find({ pet: petId })
+    .populate("pet", "name");
     res.json(appointments);
   } catch (error) {
     res.status(400).json({ message: error.message });

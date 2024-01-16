@@ -17,7 +17,6 @@ const PetList = () => {
     navigate(`/create-blog/${petId}`);
   };
 
-
   const handleDeleteAppointment = async (appointmentId, petId) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to cancel this appointment?"
@@ -25,13 +24,9 @@ const PetList = () => {
     if (!confirmDelete) return;
 
     try {
-==
-      console.log("Deleting appointment with ID:", appointmentId);
-
       await axiosClient.delete(`/appointment/delete/${appointmentId}`, {
         withCredentials: true,
       });
-
 
       setPetAppointments((prevAppointments) => ({
         ...prevAppointments,
@@ -39,7 +34,6 @@ const PetList = () => {
           (appointment) => appointment._id !== appointmentId
         ),
       }));
-
 
       console.log("Appointment deleted successfully");
     } catch (error) {
@@ -107,36 +101,17 @@ const PetList = () => {
         {currentUser.pets?.map((pet, index) => (
           <div
             key={index}
-
-            className="relative w-1/3 rounded-xl bg-neutral bg-clip-border text-gray-700 bg-cover bg-center "
-          >
-            <div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-clip-border text-white  bg-secondary">
-              <div className=" flex justify-around p-8 gap-4">
-                <button
-                  className="button type1"
-                  onClick={(e) => {
-                    handleCreatePostClick(pet._id);
-                  }}
-                >
-                  <span className="btnTxt font-playful text-xl text-white font-bold px-2">
-                    Post a blog
-                  </span>
-                </button>{" "}
-
             className="flex flex-col md:flex-row gap-12 mt-16 w-full"
           >
             <div className="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-64  rounded-2xl hover:duration-700 duration-700">
               <div className="w-62 h-72 bg-success/80">
-
                 <img
                   className="h-72 bg-cover bg-center "
                   src={pet.profilePhotoUrl}
                   alt={pet.name}
                 />
               </div>
-
-            </div>
-           
+            
               <div className="absolute bg-primary/90 -bottom-24 w-64 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
                 <span className="text-whitefont-bold text-ml">{pet.name}</span>
                 <span className="text-black font-semibold text-xl">
@@ -162,7 +137,6 @@ const PetList = () => {
                     {!filterAppointments(petAppointments[pet._id] || [], true)
                       .length && (
                       <div className="w-90 h-24 flex items-center text-white text-sm justify-center font-playful font-bold ">
-
                         No upcoming appointment
                       </div>
                     )}
@@ -208,9 +182,7 @@ const PetList = () => {
                   <div className="max-w-md mx-auto   rounded-xl overflow-hidden md:max-w-2xl m-3">
                     {!filterAppointments(petAppointments[pet._id] || [], false)
                       .length && (
-
                       <div className="w-90 h-24 flex items-center text-gray-400 justify-cente font-playful font-bold">
-
                         No past appointment
                       </div>
                     )}
