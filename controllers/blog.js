@@ -4,8 +4,8 @@ const Pet = require("../models/pet");
 
 const addBlogPost = async (req, res, next) => {
   try {
-    const { petId } = req.params;
-    const { title, paragraph } = req.body;
+   
+    const { title, paragraph, petId  } = req.body;
     const owner = req.user.id;
     const photo = req.file.path;
 
@@ -77,9 +77,7 @@ const getAllBlogPosts = async (req, res, next) => {
         },
       });
 
-    const activeBlogPosts = blogPosts.filter((post) => post.owner);
-
-    res.status(200).json(activeBlogPosts);
+    res.status(200).json(blogPosts);
   } catch (error) {
     next(error);
   }

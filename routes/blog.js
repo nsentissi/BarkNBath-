@@ -12,7 +12,7 @@ const verifyToken = require("../middlewares/verifyToken");
 const upload = require("../middlewares/cloudinaryConfig");
 
 blogRouter.post(
-  "/create/:petId",
+  "/create",
   upload.single("photo"),
   verifyToken,
   addBlogPost
