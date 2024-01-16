@@ -4,13 +4,11 @@ import { useInView } from "react-intersection-observer";
 import styles from "./bubble.module.css";
 import van from "../../assets/van.png";
 import parkingSign from "../../assets/parking.png";
+import { Link } from "react-router-dom";
 import backgroundImage from "../../assets/homepage.svg";
 import dogclean from "../../assets/doggrass.png";
 
 const Landingpage = () => {
- 
-
-  
   const headlineVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -87,43 +85,44 @@ const Landingpage = () => {
         <li></li>
       </ul>
       <div
-       
         className="flex items-center justify-center h-screen z-0 bg-cover bg-center  landing-page-bg"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div  ref={ref} className="flex flex-col md:flex-row   items-center z-0 justify-center h-screen">
-          
-
+        <div
+          ref={ref}
+          className="flex flex-col md:flex-row   items-center z-0 justify-center h-screen"
+        >
           {/* Headline */}
           <motion.div
-          ref={ref}
+            ref={ref}
             className=""
             variants={textVariants}
-           
             animate={inView ? "visible" : "hidden"}
           >
-             <h2 variant= {headlineVariants} className="text-white text-center font-playful text-3xl lg:text-6xl font-bold">
-              Welcome to Serenity on Wheels!
+            <h2
+              variant={headlineVariants}
+              className="text-white text-center font-playful text-2xl  lg:text-5xl w-10/12 mx-auto mt-[-10rem] font-bold"
+            >
+              Sit, stay, and relax at home while we pamper your pet on wheels
             </h2>
-            <p className="font-playful text-white font-semibold p-6 text-center">
-              We believe wellness shouldn't be a luxury, but a regular part of
-              life.
+            <p className="font-playful text-white lg:text-2xl font-semibold p-6 text-center">
+              our mobile spa brings the best pet grooming to your doorstep!
             </p>
-            <p className="font-playful text-white font-semibold p-3 text-center">
+           {/*  <p className="font-playful text-white font-semibold p-3 text-center">
               So why wait?
-            </p>
-
-            <button className="bg-success animate-bounce flex justify-center hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 w-1/4 rounded-xl">
+            </p> */}
+            
+            <button className="bg-success animate-bounce mx-auto mt-4 flex justify-center hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 w-1/4 rounded-xl">
               GET STARTED
             </button>
-            </motion.div>
+          </motion.div>
         </div>
       </div>
 
       {/* Van  */}
 
       <motion.img
-      ref={ref}
+        ref={ref}
         className="absolute bottom-10 right-14 md:right-32 lg:right-52 transform lg:-translate-x-1/2 lg:translate-y-0 w-1/2 md:w-1/3 lg:w-38vw"
         src={van}
         alt="Van"
@@ -135,7 +134,7 @@ const Landingpage = () => {
 
       {/* Parking Sign  */}
       <motion.img
-      ref={ref}
+        ref={ref}
         className="absolute bottom-16 right-60  md:right-96 lg:right-1/3 lg:mr-36 transform lg:-translate-x-1/2 lg:translate-y-0  w-1/5 md:w-1/5 lg:w-20vw"
         src={parkingSign}
         initial="hidden"

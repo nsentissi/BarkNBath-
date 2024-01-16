@@ -4,14 +4,12 @@ import PetList from "./PetList";
 import AddPetForm from "./AddPetForm";
 import AppointmentForm from "./AppointmentForm";
 import styles from "./Dashboard.module.css";
-import { useNavigate } from "react-router-dom";
-import barkNBath from "../../assets/barkNBath.png"
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import barkNBath from "../../assets/barkNBath.png";
 
 const Dashboardtwo = ({ onProfileClick }) => {
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
-
-  const [activeContent, setActiveContent] = useState("overview");
 
   const handleViewBlogsClick = () => {
     navigate(`/blogs`);
@@ -21,45 +19,8 @@ const Dashboardtwo = ({ onProfileClick }) => {
     navigate(`/`);
   };
 
-  const renderOverview = () => {
-    return (
-      <div>
-        <PetList setActiveContent={setActiveContent} />
-      </div>
-    );
-  };
-
-  const renderAddpet = () => {
-    return (
-      <div>
-        <AddPetForm setActiveContent={setActiveContent} />
-      </div>
-    );
-  };
-
-  const renderBook = () => {
-    return (
-      <div>
-        <AppointmentForm setActiveContent={setActiveContent} />
-      </div>
-    );
-  };
-  const renderContent = () => {
-    switch (activeContent) {
-      case "overview":
-        return renderOverview();
-      case "addpet":
-        return renderAddpet();
-      case "book":
-        return renderBook();
-
-      default:
-        return <div>Welcome to the Dashboard</div>;
-    }
-  };
-
   return (
-    <div className=" flex h-screen bg-cover bg-center "  >
+    <div className=" flex h-screen bg-cover bg-center ">
       {/* <!-- Sidebar --> */}
       <aside className="fixed z-50  md:relative">
         <input type="checkbox" className="peer hidden" id="sidebar-open" />
@@ -98,8 +59,17 @@ const Dashboardtwo = ({ onProfileClick }) => {
             </span>
           </div>
           <ul className="mt-8 space-y-3 md:mt-20">
-            <li className="relative">
-              <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-2 text-gray-300 focus:outline-none">
+            <NavLink
+              className="relative"
+              to={"pets"}
+              style={({ isActive }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isActive ? "#fff" : "black",
+                };
+              }}
+            >
+              <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-2  focus:outline-none">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -116,10 +86,19 @@ const Dashboardtwo = ({ onProfileClick }) => {
                     />
                   </svg>
                 </span>
-                <div onClick={() => setActiveContent("overview")}>Overview</div>
+                <div>Overview</div>
               </button>
-            </li>
-            <li className="relative">
+            </NavLink>
+            <NavLink
+              className="relative"
+              to={"addpet"}
+              style={({ isActive }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isActive ? "#fff" : "black",
+                };
+              }}
+            >
               <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 font-semibold focus:outline-none">
                 <span>
                   <svg
@@ -137,9 +116,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
                     />
                   </svg>{" "}
                 </span>
-                <div onClick={() => setActiveContent("addpet")}>
-                  Add your puffy friend
-                </div>
+                <div>Add your puffy friend</div>
               </button>
               <svg
                 className="text-slate-200 absolute -right-1 -top-1/2 z-10 hidden h-32 w-8 md:block"
@@ -153,9 +130,18 @@ const Dashboardtwo = ({ onProfileClick }) => {
                   d="M 499.289 57.696 C 499.289 171.989 399.349 196.304 399.349 257.333 C 399.349 322.485 499.512 354.485 499.512 458.767 C 499.512 483.155 499.289 57.696 499.289 57.696 Z"
                 />
               </svg>
-            </li>
-            <li className="relative ">
-              <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+            </NavLink>
+            <NavLink
+              className="relative "
+              to={"appointment"}
+              style={({ isActive }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isActive ? "#fff" : "black",
+                };
+              }}
+            >
+              <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 focus:outline-none">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -172,13 +158,20 @@ const Dashboardtwo = ({ onProfileClick }) => {
                     />
                   </svg>
                 </span>
-                <div onClick={() => setActiveContent("book")}>
-                  Book an appointment
-                </div>
+                <div>Book an appointment</div>
               </button>
-            </li>
-            <li className="relative">
-              <button className="focus:bg-slate-600 hover:bg-slate-600  flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+            </NavLink>
+            <NavLink
+              className="relative"
+              to={"profile"}
+              style={({ isActive }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isActive ? "#fff" : "black",
+                };
+              }}
+            >
+              <button className="focus:bg-slate-600 hover:bg-slate-600  flex w-full space-x-2 rounded-md px-10 py-4 focus:outline-none">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -201,10 +194,10 @@ const Dashboardtwo = ({ onProfileClick }) => {
                   </svg>
                 </span>
                 <span className="">
-                  <div onClick={onProfileClick}>Your account</div>
+                  <div>Your account</div>
                 </span>
               </button>
-            </li>
+            </NavLink>
           </ul>
 
           <div className="my-6 mt-auto ml-10 flex cursor-pointer">
@@ -335,7 +328,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
               id="dashboard-main"
               className="h-[calc(100vh-10rem)] z-0 px-4  py-0"
             >
-              {renderContent()}
+              <Outlet />
             </main>
           </div>
         </div>
