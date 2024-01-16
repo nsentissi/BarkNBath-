@@ -74,15 +74,17 @@ const AllBlogs = () => {
                   <div className="flex items-center justify-between mb-4 inline relative group">
                     <div className="flex items-center space-x-2 ">
                       <img
-                        src={blog.pet.profilePhotoUrl}
+                        src={blog.pet?.profilePhotoUrl}
                         alt="User Avatar"
                         className="w-20 h-20 rounded-full"
                         
                       />
                     
                       <div>
-                        <p className="text-gray-800 text-sm tracking-widest font-semibold">
-                          {blog.pet.name}
+
+                        <p className="text-gray-800 font-semibold">
+                          {blog.pet?.name}
+
                         </p>
                         <p className="text-gray-800 font-semibold text-xs">
                         Pet owner: {" "}{blog.owner?.firstName}
