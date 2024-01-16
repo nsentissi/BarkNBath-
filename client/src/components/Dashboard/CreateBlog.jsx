@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useAuth } from "../../hooks/AuthContext";
 import moment from "moment";
 import trashapp from "../../assets/trashapp.png";
+
 import { Link } from "react-router-dom";
 
 const CreateBlog = () => {
@@ -91,75 +92,20 @@ const CreateBlog = () => {
   }, []);
 
   return (
-    <div className="h-screen overflow-y-scroll bg-neutral ">
+    <div className="h-screen ">
       <div className="flex items-center justify-around py-8">
         <h4 className="text-gray-800 font-semibold text-4xl text-center ">
           Your Blogs
         </h4>
-        <Link to="/dashboard">
-          <button className=" ">
-            <div className="flex justify-center">
-              <a
-                href="#_"
-                className="group relative  inline-flex items-center justify-center overflow-hidden rounded-xl border-2 border-success p-4 px-5 py-2.5 font-medium text-white shadow-md transition duration-300 ease-out"
-              >
-                <span className="absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-info text-white duration-300 group-hover:translate-x-0">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    ></path>
-                  </svg>
-                </span>
-                <span className="absolute flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
-                  Dashboard
-                </span>
-                <span className="invisible relative">LOG </span>
-              </a>
-            </div>
-          </button>
-        </Link>
+        
       </div>
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2 lg:gap-8">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-2 lg:gap-8">
         <div className="post p-5 lg:p-1 rounded-md">
-          <div className="lg:fixed lg:top-7 lg:left-14 lg:w-3/12 md:fixed md:w-5/12">
-            {/* <div className=" bg-accent p-4 rounded-lg shadow-md max-w-md w-full mb-8">
-              <div class="relative">
-                {blogs.map((blog) => {
-                  return (
-                    <div className="pet-profile flex flex-col items-center justify-center">
-                      <img
-                        src={blog.pet.profilePhotoUrl}
-                        alt={`Profile of ${blog.pet.name}`}
-                        className="w-24 h-32 rounded-full mb-3  border-4 border-success"
-                      />
-                      <div className="pet-info flex flex-col items-center justify-center">
-                        <h2 className="text-xl mb-3 font-playful font-bold text-gray-800">
-                          {blog.pet.name}
-                        </h2>
-
-                        <p className="text-gray-900 mb-4 font-playful">BIO:</p>
-                        <p className="text-gray-900 text-center border-2 border-success p-8 font-playful">
-                          {blog.pet.Bio}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div> */}
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-1 lg:gap-8">
             <form
               onSubmit={handleSubmit}
-              className="border-4 border-accent px-6 py-10 mt-60"
+              className="border-4 border-primary   px-6 py-10 mt-10"
             >
               {/* <!-- Post Content Section --> */}
               <h3 className="text-center font-bold text-gray-700 text-xl ">

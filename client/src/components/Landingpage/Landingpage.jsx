@@ -7,7 +7,7 @@ import van from "../../assets/van.png";
 import parkingSign from "../../assets/parking.png";
 import { Link } from "react-router-dom";
 import backgroundImage from "../../assets/homepage.svg";
-import dogclean from "../../assets/doggrass.png";
+
 
 const Landingpage = () => {
 
