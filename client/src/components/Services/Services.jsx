@@ -1,20 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import styles from './Service.module.css'
 import { Link } from "react-router-dom";
-import bathing from "../../assets/bathing.jpg"
-import pawcare from "../../assets/pawcare.jpg"
-import haircut from "../../assets/haircut.jpg"
-import breed from "../../assets/breed.jpg"
-import thework from "../../assets/thework.jpg"
-import dental from "../../assets/dental.jpg"
-// import WaterDropGrid from "../WaterDropGrid";
-// import styles from "./Service.module.css";
-
-
+import bathing from "../../assets/bathing.jpg";
+import pawcare from "../../assets/pawcare.jpg";
+import haircut from "../../assets/haircut.jpg";
+import breed from "../../assets/breed.jpg";
+import thework from "../../assets/thework.jpg";
+import dental from "../../assets/dental.jpg";
 
 function Services() {
-
   const cardVariants = {
     offscreen: { y: 50, opacity: 0 },
     onscreen: {
@@ -42,229 +38,223 @@ function Services() {
   };
 
   return (
-    // // <div className={styles.servicesContainer}>
-    //   {/* <div className={styles.backgroundContainer}>
-    //     <WaterDropGrid />
-    //   </div> */}
-      <div className="w-full min-h-screen flex flex-col justify-center items-center py-20">
-        <div className="text-center py-10">
-          <h1 className="font-bold text-4xl mb-4 uppercase font-chewy tracking-widest">
-            Dog Grooming Overview
-          </h1>
-          <h1 className="text-xl">The Complete Grooming Experience</h1>
-        </div>
-
-        <section
-          id="Projects"
-          className="w-3/4 mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-10 gap-x-2 mt-10 mb-5"
-        >
-          <motion.div
-            ref={card1Ref}
-            variants={cardVariants}
-            initial="offscreen"
-            animate={card1InView ? "onscreen" : "offscreen"}
-            className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
-          >
-            <a href="#">
-              <img
-                src={bathing}
-                alt="Product"
-                className="h-80 w-80 object-cover rounded-t-xl"
-              />
-              <div className="px-4 py-3 w-72">
-                <span className="text-gray-400 mr-3 uppercase text-xs">
-                  Package
-                </span>
-
-                <div className="flex items-center">
-                  <p className="text-lg font-bold text-black truncate block capitalize">
-                    Premium Bath
-                  </p>
-
-                  <div className="ml-auto"></div>
-                </div>
-                <p className="text-sm font-semibold text-black cursor-auto my-3">
-                  Warm Filtered Water Massage and Nutrient-Enhanced Wash,
-                  Tailored for Breed and Coat Type
-                </p>
-              </div>
-            </a>
-          </motion.div>
-
-          <motion.div
-            ref={card3Ref}
-            variants={cardVariants}
-            initial="offscreen"
-            animate={card3InView ? "onscreen" : "offscreen"}
-            className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
-          >
-            <a href="#">
-              <img
-                src={pawcare}
-                alt="Product"
-                className="h-80 w-80 object-cover rounded-t-xl"
-              />
-              <div className="px-4 py-3 w-72">
-                <span className="text-gray-400 mr-3 uppercase text-xs">
-                  Package
-                </span>
-
-                <div className="flex items-center">
-                  <p className="text-lg font-bold text-black truncate block capitalize">
-                    Ultimate Paw Care
-                  </p>
-
-                  <div className="ml-auto"></div>
-                </div>
-                <p className="text-sm font-semibold text-black cursor-auto my-3">
-                  Pad Shaving, Nail Clipping, Feet Scissoring and More!
-                </p>
-              </div>
-            </a>
-          </motion.div>
-          <motion.div
-            ref={card2Ref}
-            variants={cardVariants}
-            initial="offscreen"
-            animate={card2InView ? "onscreen" : "offscreen"}
-            className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
-          >
-            <a href="#">
-              <img
-                src={haircut}
-                alt="Product"
-                className="h-80 w-80 object-cover rounded-t-xl"
-              />
-              <div className="px-4 py-3 w-72">
-                <span className="text-gray-400 mr-3 uppercase text-xs">
-                  Package
-                </span>
-
-                <div className="flex items-center">
-                  <p className="text-lg font-bold text-black truncate block capitalize">
-                    Doggy Haircut
-                  </p>
-
-                  <div className="ml-auto"></div>
-                </div>
-                <p className="text-sm font-semibold text-black cursor-auto my-3">
-                  A perfect trim for a perfect pup!
-                </p>
-              </div>
-            </a>
-          </motion.div>
-          <motion.div
-            ref={card6Ref}
-            variants={cardVariants}
-            initial="offscreen"
-            whileHover="hover"
-            animate={card6InView ? "onscreen" : "offscreen"}
-            className="w-80 bg-white shadow-md rounded-xl duration-500"
-          >
-            <a href="#">
-              <img
-                src={breed}
-                alt="Product"
-                className="h-80 w-80 object-cover rounded-t-xl"
-              />
-              <div className="px-4 py-3 w-72">
-                <span className="text-gray-400 mr-3 uppercase text-xs">
-                  Package
-                </span>
-
-                <div className="flex items-center">
-                  <p className="text-lg font-bold text-black truncate block capitalize">
-                    Breed Standard
-                  </p>
-
-                  <div className="ml-auto"></div>
-                </div>
-                <p className="text-sm font-semibold text-black cursor-auto my-3">
-                  Full Service Styling According To Your Breed - Show Ready
-                </p>
-              </div>
-            </a>
-          </motion.div>
-          <motion.div
-            ref={card4Ref}
-            variants={cardVariants}
-            initial="offscreen"
-            whileHover="hover"
-            animate={card4InView ? "onscreen" : "offscreen"}
-            
-            className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
-          >
-            <a href="#">
-              <img
-                src={thework}
-                alt="Product"
-                className="h-80 w-80 object-cover rounded-t-xl"
-              />
-              <div className="px-4 py-3 w-72">
-                <span className="text-gray-400 mr-3 uppercase text-xs">
-                  Package
-                </span>
-
-                <div className="flex items-center">
-                  <p className="text-lg font-bold text-black truncate block capitalize">
-                    The Works
-                  </p>
-
-                  <div className="ml-auto"></div>
-                </div>
-                <p className="text-sm font-semibold text-black cursor-auto my-3">
-                  De-shedding, Brushing & Hand Blow Drying
-                </p>
-              </div>
-            </a>
-          </motion.div>
-
-          <motion.div
-            ref={card5Ref}
-            variants={cardVariants}
-            initial="offscreen"
-            animate={card5InView ? "onscreen" : "offscreen"}
-            className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
-          >
-            <a href="#">
-              <img
-                src={dental}
-                alt="Product"
-                className="h-80 w-80 object-cover rounded-t-xl"
-              />
-              <div className="px-4 py-3 w-72">
-                <span className="text-gray-400 mr-3 uppercase text-xs">
-                  Package
-                </span>
-
-                <div className="flex items-center">
-                  <p className="text-lg font-bold text-black truncate block capitalize">
-                    Doggy Dental Brushing
-                  </p>
-
-                  <div className="ml-auto"></div>
-                </div>
-                <p className="text-sm font-semibold text-black cursor-auto my-3">
-                  Keep Your Dog's K-9's clean and strong with a thorough
-                  brushing and fresh breath spray
-                </p>
-              </div>
-            </a>
-          </motion.div>
-          <Link className="font-sans ml-4 md:block" to="/appointment">
-               
-        <div className="flex justify-center md:justify-start">
-            <button className="bg-success hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-xl" href="/appointment/create">
-              Book your appointment
-            </button>
-            
-              
-          </div>
-          </Link>
-        </section>
-        
-      </div>
+   
     
+    <div className="w-full z-0 min-h-screen flex flex-col justify-center items-center py-20">
+      <div className="text-center py-10">
+        <h1 className="font-bold text-4xl mb-4 uppercase font-chewy tracking-widest">
+          Dog Grooming Overview
+        </h1>
+        <h1 className="text-xl font-playful mb-12">The Complete Grooming Experience</h1>
+        <Link className="font-playful ml-4" to="/appointment">
+          <button
+            className="bg-success hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-xl"
+            href="/appointment/create"
+          >
+            Check the packages
+          </button>
+        </Link>
+      </div>
+
+      <section
+        id="Projects"
+        className="lg:w-3/4 md:w-full mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-10 gap-x-2 mt-10 mb-5"
+      >
+        <motion.div
+          ref={card1Ref}
+          variants={cardVariants}
+          initial="offscreen"
+          animate={card1InView ? "onscreen" : "offscreen"}
+          className="w-80  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl "
+        >
+          <a href="#">
+            <img
+              src={bathing}
+              alt="Product"
+              className="h-80 w-80 object-cover rounded-t-xl"
+            />
+            <div className="px-4 py-3 w-72">
+              <span className="text-gray-400 mr-3 uppercase text-xs">
+                Package
+              </span>
+
+              <div className="flex items-center">
+                <p className="text-lg font-bold text-black truncate block capitalize">
+                  Premium Bath
+                </p>
+
+                <div className="ml-auto"></div>
+              </div>
+              <p className="text-sm font-semibold text-black cursor-auto my-3">
+                Warm Filtered Water Massage and Nutrient-Enhanced Wash, Tailored
+                for Breed and Coat Type
+              </p>
+            </div>
+          </a>
+        </motion.div>
+
+        <motion.div
+          ref={card3Ref}
+          variants={cardVariants}
+          initial="offscreen"
+          animate={card3InView ? "onscreen" : "offscreen"}
+          className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+        >
+          <a href="#">
+            <img
+              src={pawcare}
+              alt="Product"
+              className="h-80 w-80 object-cover rounded-t-xl"
+            />
+            <div className="px-4 py-3 w-72">
+              <span className="text-gray-400 mr-3 uppercase text-xs">
+                Package
+              </span>
+
+              <div className="flex items-center">
+                <p className="text-lg font-bold text-black truncate block capitalize">
+                  Ultimate Paw Care
+                </p>
+
+                <div className="ml-auto"></div>
+              </div>
+              <p className="text-sm font-semibold text-black cursor-auto my-3">
+                Pad Shaving, Nail Clipping, Feet Scissoring and More!
+              </p>
+            </div>
+          </a>
+        </motion.div>
+        <motion.div
+          ref={card2Ref}
+          variants={cardVariants}
+          initial="offscreen"
+          animate={card2InView ? "onscreen" : "offscreen"}
+          className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+        >
+          <a href="#">
+            <img
+              src={haircut}
+              alt="Product"
+              className="h-80 w-80 object-cover rounded-t-xl"
+            />
+            <div className="px-4 py-3 w-72">
+              <span className="text-gray-400 mr-3 uppercase text-xs">
+                Package
+              </span>
+
+              <div className="flex items-center">
+                <p className="text-lg font-bold text-black truncate block capitalize">
+                  Doggy Haircut
+                </p>
+
+                <div className="ml-auto"></div>
+              </div>
+              <p className="text-sm font-semibold text-black cursor-auto my-3">
+                A perfect trim for a perfect pup!
+              </p>
+            </div>
+          </a>
+        </motion.div>
+        <motion.div
+          ref={card6Ref}
+          variants={cardVariants}
+          initial="offscreen"
+          whileHover="hover"
+          animate={card6InView ? "onscreen" : "offscreen"}
+          className="w-80 bg-white shadow-md rounded-xl duration-500"
+        >
+          <a href="#">
+            <img
+              src={breed}
+              alt="Product"
+              className="h-80 w-80 object-cover rounded-t-xl"
+            />
+            <div className="px-4 py-3 w-72">
+              <span className="text-gray-400 mr-3 uppercase text-xs">
+                Package
+              </span>
+
+              <div className="flex items-center">
+                <p className="text-lg font-bold text-black truncate block capitalize">
+                  Breed Standard
+                </p>
+
+                <div className="ml-auto"></div>
+              </div>
+              <p className="text-sm font-semibold text-black cursor-auto my-3">
+                Full Service Styling According To Your Breed - Show Ready
+              </p>
+            </div>
+          </a>
+        </motion.div>
+        <motion.div
+          ref={card4Ref}
+          variants={cardVariants}
+          initial="offscreen"
+          whileHover="hover"
+          animate={card4InView ? "onscreen" : "offscreen"}
+          className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+        >
+          <a href="#">
+            <img
+              src={thework}
+              alt="Product"
+              className="h-80 w-80 object-cover rounded-t-xl"
+            />
+            <div className="px-4 py-3 w-72">
+              <span className="text-gray-400 mr-3 uppercase text-xs">
+                Package
+              </span>
+
+              <div className="flex items-center">
+                <p className="text-lg font-bold text-black truncate block capitalize">
+                  The Works
+                </p>
+
+                <div className="ml-auto"></div>
+              </div>
+              <p className="text-sm font-semibold text-black cursor-auto my-3">
+                De-shedding, Brushing & Hand Blow Drying
+              </p>
+            </div>
+          </a>
+        </motion.div>
+
+        <motion.div
+          ref={card5Ref}
+          variants={cardVariants}
+          initial="offscreen"
+          animate={card5InView ? "onscreen" : "offscreen"}
+          className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+        >
+          <a href="#">
+            <img
+              src={dental}
+              alt="Product"
+              className="h-80 w-80 object-cover rounded-t-xl"
+            />
+            <div className="px-4 py-3 w-72">
+              <span className="text-gray-400 mr-3 uppercase text-xs">
+                Package
+              </span>
+
+              <div className="flex items-center">
+                <p className="text-lg font-bold text-black truncate block capitalize">
+                  Doggy Dental Brushing
+                </p>
+
+                <div className="ml-auto"></div>
+              </div>
+              <p className="text-sm font-semibold text-black cursor-auto my-3">
+                Keep Your Dog's K-9's clean and strong with a thorough brushing
+                and fresh breath spray
+              </p>
+            </div>
+          </a>
+        </motion.div>
+      </section>
+    </div>
+ 
   );
 }
 

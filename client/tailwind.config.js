@@ -11,7 +11,7 @@ export default {
       fontFamily: {
         chewy: ['Chewy', 'cursive'],
         dosis: ['Dosis', 'sans-serif'],
-        playful: ['Pacifico', 'cursive'],
+        playful: ['Recursive', 'sans-serif'],
         
       },
       keyframes: {

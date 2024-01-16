@@ -98,15 +98,38 @@ const AllBlogs = () => {
             return (
               <div>
                 {/* First Column */}
-                <div className="bg-white p-8 rounded-lg shadow-md max-w-md">
+                <div className="bg-white p-8 rounded-lg shadow-md max-w-md cursor-pointer w-96 hover:-translate-y-1 duration-300">
                   {/* User Info with Three-Dot Menu */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-2">
+                  <div className="flex items-center justify-between mb-4 inline relative group">
+                    <div className="flex items-center space-x-2 ">
                       <img
                         src={blog.pet.profilePhotoUrl}
                         alt="User Avatar"
                         className="w-8 h-8 rounded-full"
+                        
                       />
+                      <div class="flex flex-row absolute justify-end
+                    h-16 w-full bottom-0 px-3 space-x-2
+                    bg-none opacity-0 group-hover:opacity-100
+                    group-hover:bg-gradient-to-t from-black/20 via-gray-800/20 to-transparent 
+                    transition-all ease-in-out duration-200 delay-100">
+                        <button class="bg-gray-50/10 rounded-full 
+                        px-1 h-9 w-9 my-auto hover:bg-gray-50/20
+                        transition-colors duration-200">
+                        <i class="mdi mdi-playlist-plus text-xl text-gray-200
+                            hover:text-white transition-all duration-200"
+                            title="Add to Bookmarks"></i>
+                    </button>
+
+                  
+                    <button class="bg-gray-50/10 rounded-full 
+                        px-1 h-9 w-9 my-auto hover:bg-gray-50/20
+                        transition-colors duration-200">
+                        <i class="mdi mdi-heart text-xl text-gray-200 p-1
+                            hover:text-white transition-all duration-200"
+                            title="Add to Favorites"></i>
+                    </button>
+                </div>
                       <div>
                         <p className="text-gray-800 font-semibold">
                           {blog.pet.name}
@@ -154,6 +177,7 @@ const AllBlogs = () => {
                       className="w-full h-48 object-cover rounded-md"
                     />
                   </div>
+                  
                   {/* Like and Comment Section */}
                   <div className="flex items-center justify-between text-gray-500">
                     <button

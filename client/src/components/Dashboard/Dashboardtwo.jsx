@@ -333,7 +333,7 @@ const Dashboardtwo = ({ onProfileClick }) => {
             </ul>
             <main
               id="dashboard-main"
-              className="h-[calc(100vh-10rem)] z-0 px-4 overflow-hidden py-0"
+              className="h-[calc(100vh-10rem)] z-0 px-4  py-0"
             >
               {renderContent()}
             </main>
