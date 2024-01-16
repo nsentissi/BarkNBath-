@@ -14,10 +14,10 @@ import ViewBlogs from "./components/Dashboard/ViewBlogs";
 import React from "react";
 import CreateBlog from "./components/Dashboard/CreateBlog";
 import AllBlogs from "./components/Dashboard/AllBlogs";
-import Dashboard from "./components/Dashboard/Dashboard";
+
 import Authorize from "./components/Authorize";
 import PetList from "./components/Dashboard/PetList";
-import Dashboardtwo from "./components/Dashboard/Dashboardtwo";
+import Dash from "./components/Dashboard/Dash";
 
 function App() {
   return (
@@ -31,18 +31,18 @@ function App() {
             {/* <Route path="/profile" element={<Profile/>}/> */}
             <Route path="/" element={<ProtectedRoute />}>
               <Route path="/" element={<Authorize role="user" />}>
-                <Route path="dashboard" element={<Dashboardtwo />} >
+                <Route path="dashboard" element={<Dash />} >
                 <Route path="pets" element={<PetList/>} />
                 <Route path="addpet" element={<AddPetForm/>} />
                 <Route path="appointment" element={<AppointmentForm />} />
                 <Route path="profile" element={<Profile />} />
-                
+                <Route path="pet/create" element={<AddPetForm />} />
+              <Route path="create-blog/:id" element={<CreateBlog />} />
+              <Route path="blogs" element={<AllBlogs />} />
                 </Route>
               </Route>
 
-              <Route path="pet/create" element={<AddPetForm />} />
-              <Route path="create-blog/:id" element={<CreateBlog />} />
-              <Route path="blogs" element={<AllBlogs />} />
+              
               <Route path="admin" element={<Authorize role="admin" />}>
                 <Route path="dashboard" element={<Admin />} />
               </Route>

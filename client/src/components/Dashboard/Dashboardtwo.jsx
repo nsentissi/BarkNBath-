@@ -1,8 +1,5 @@
 import React, { Suspense, useState } from "react";
 import { useAuth } from "../../hooks/AuthContext";
-import PetList from "./PetList";
-import AddPetForm from "./AddPetForm";
-import AppointmentForm from "./AppointmentForm";
 import styles from "./Dashboard.module.css";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import barkNBath from "../../assets/barkNBath.png";

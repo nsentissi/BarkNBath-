@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import { useAuth } from "../../hooks/AuthContext";
@@ -13,6 +13,7 @@ import map from "../../assets/map.png"
 import NewMap from "../MapContainer";
 
 const AppointmentForm = ({ setActiveContent }) => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -46,9 +47,9 @@ const AppointmentForm = ({ setActiveContent }) => {
         "/appointment/create",
         data,
       );
-      setActiveContent("overview");
+      
       toast("Appointment booked!");
-
+      navigate("/dashboard/pets")
       console.log(response.data);
 
       reset();
@@ -63,6 +64,7 @@ const AppointmentForm = ({ setActiveContent }) => {
   };
 
   return (
+    
     <div class=" max-h-screen mt-6 z-0 flex items-center justify-center  px-4">
       <div className="bg-secondary z-1 p-8 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-2xl w-5/6">
         <form
