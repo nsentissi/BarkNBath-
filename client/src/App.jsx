@@ -20,6 +20,9 @@ import PetList from "./components/Dashboard/PetList";
 
 import Dash from "./components/Dashboard/Dash";
 import ServicesDog from "./components/ServicesDog";
+import AdminAppointments from "./components/AdminAppointments";
+import AdminUsers from "./components/AdminUsers";
+import AdminPets from "./components/AdminPets";
 
 function App() {
   return (
@@ -34,22 +37,23 @@ function App() {
             {/* <Route path="/profile" element={<Profile/>}/> */}
             <Route path="/" element={<ProtectedRoute />}>
               <Route path="/" element={<Authorize role="user" />}>
-
-                <Route path="dashboard" element={<Dash />} >
-                <Route path="pets" element={<PetList/>} />
-                <Route path="addpet" element={<AddPetForm/>} />
-                <Route path="appointment" element={<AppointmentForm />} />
-                <Route path="profile" element={<Profile />} />
-                <Route path="pet/create" element={<AddPetForm />} />
-              <Route path="create-blog/:id" element={<CreateBlog />} />
-              <Route path="blogs" element={<AllBlogs />} />
-
+                <Route path="dashboard" element={<Dash />}>
+                  <Route path="pets" element={<PetList />} />
+                  <Route path="addpet" element={<AddPetForm />} />
+                  <Route path="appointment" element={<AppointmentForm />} />
+                  <Route path="profile" element={<Profile />} />
+                  <Route path="pet/create" element={<AddPetForm />} />
+                  <Route path="create-blog/:id" element={<CreateBlog />} />
+                  <Route path="blogs" element={<AllBlogs />} />
                 </Route>
               </Route>
 
-              
               <Route path="admin" element={<Authorize role="admin" />}>
-                <Route path="dashboard" element={<Admin />} />
+                <Route path="dashboard" element={<Admin />}>
+                  <Route path="appointments" element={<AdminAppointments />} />
+                  <Route path="users" element={<AdminUsers />} />
+                  <Route path="pets" element={<AdminPets />} />
+                </Route>
               </Route>
             </Route>
           </Routes>

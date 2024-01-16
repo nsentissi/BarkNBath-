@@ -22,7 +22,7 @@ const Login = () => {
       toast("Login successful!");
 
       if (user.role === "admin") {
-        navigate("/admin/dashboard");
+        navigate("/admin/dashboard/appointments");
       } else {
         navigate("/dashboard");
       }
