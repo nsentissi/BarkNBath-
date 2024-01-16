@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import dog from "../../assets/dog.svg";
 import ShuffleHero from "./ShuffleHero";
 import AboveaboutUs from "./AboveaboutUs";
@@ -27,6 +28,11 @@ const AboutUs = () => {
       },
     },
   };
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+  });
+
 
   return (
     <div>
@@ -37,7 +43,13 @@ const AboutUs = () => {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center space-y-10 md:space-y-0 md:space-x-10 mt-10 w-full">
-          <motion.div className="w-full md:w-4/12 px-6" variants={variants}>
+          <motion.div
+            ref={ref}
+            className="w-full md:w-4/12 px-6"
+            variants={variants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+          >
             <h1 className="text-7xl text-white font-playful text-center md:text-left">
               Indulge Your Pet in Luxury
             </h1>
@@ -53,13 +65,15 @@ const AboutUs = () => {
             </div>
           </motion.div>
           <motion.img
+           ref={ref}
             className="-mb-10 w-full md:w-auto"
-            initial="offscreen"
-            whileInView="onscreen"
+            variants={dogImageVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
             src={dog}
             alt="dog picture"
-            viewport={{ once: true }}
-            variants={dogImageVariants}
+           
+          
           />
         </div>
       </div>

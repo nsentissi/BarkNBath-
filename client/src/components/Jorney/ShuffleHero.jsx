@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 const ShuffleHero = () => {
   const variants = {
@@ -12,15 +13,20 @@ const ShuffleHero = () => {
     },
     exit: { opacity: 0, x: 100, transition: { duration: 0.5 } },
   };
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+  });
 
   return (
     <motion.section
-      
+    ref={ref}
       className=" px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8  mx-auto flex flex-wrap w-4/6 gap-4 justify-center bg-success    rounded-b-3xl "
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
+      animate={inView ? "visible" : "hidden"}
+      
+      
+      transition={{ duration: 1.8, delay: 0.3 }}
       variants={variants}
     >
       <div>
