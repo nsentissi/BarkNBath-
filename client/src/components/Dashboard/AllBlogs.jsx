@@ -104,7 +104,7 @@ const AllBlogs = () => {
                   <div className="flex items-center justify-between mb-4 inline relative group">
                     <div className="flex items-center space-x-2 ">
                       <img
-                        src={blog.pet.profilePhotoUrl}
+                        src={blog.pet?.profilePhotoUrl}
                         alt="User Avatar"
                         className="w-8 h-8 rounded-full"
                         
@@ -133,7 +133,7 @@ const AllBlogs = () => {
                 </div>
                       <div>
                         <p className="text-gray-800 font-semibold">
-                          {blog.pet.name}
+                          {blog.pet?.name}
                         </p>
                         <p className="text-gray-800 font-semibold">
                         Pet owner: {" "}{blog.owner?.firstName}
