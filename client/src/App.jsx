@@ -17,7 +17,9 @@ import AllBlogs from "./components/Dashboard/AllBlogs";
 
 import Authorize from "./components/Authorize";
 import PetList from "./components/Dashboard/PetList";
+
 import Dash from "./components/Dashboard/Dash";
+
 
 function App() {
   return (
@@ -28,9 +30,11 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/services" element={<ServicesDog />} />
             {/* <Route path="/profile" element={<Profile/>}/> */}
             <Route path="/" element={<ProtectedRoute />}>
               <Route path="/" element={<Authorize role="user" />}>
+
                 <Route path="dashboard" element={<Dash />} >
                 <Route path="pets" element={<PetList/>} />
                 <Route path="addpet" element={<AddPetForm/>} />
@@ -39,6 +43,7 @@ function App() {
                 <Route path="pet/create" element={<AddPetForm />} />
               <Route path="create-blog/:id" element={<CreateBlog />} />
               <Route path="blogs" element={<AllBlogs />} />
+
                 </Route>
               </Route>
 

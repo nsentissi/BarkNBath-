@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axiosClient from "../../../axiosClient";
 import { useParams } from "react-router-dom";
-
 import { useAuth } from "../../hooks/AuthContext";
 import moment from "moment";
+import trashapp from "../../assets/trashapp.png";
 
 import { Link } from "react-router-dom";
 
@@ -70,6 +70,20 @@ const CreateBlog = () => {
       setBlogs(response.data);
     } catch (error) {
       console.log(error.response);
+    }
+  };
+
+  const deleteBlog = async (blogId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this blog?"
+    );
+    if (!confirmDelete) return;
+
+    try {
+      await axiosClient.delete(`/blog/delete/${blogId}`);
+      setBlogs(blogs.filter((blog) => blog._id !== blogId));
+    } catch (error) {
+      console.error("Error deleting blog:", error);
     }
   };
 
@@ -236,6 +250,9 @@ const CreateBlog = () => {
                             <circle cx="12" cy="12" r="1" />
                             <circle cx="12" cy="17" r="1" />
                           </svg>
+                        </button>
+                        <button onClick={() => deleteBlog(blog._id)}>
+                          <img src={trashapp} />
                         </button>
                       </div>
                     </div>

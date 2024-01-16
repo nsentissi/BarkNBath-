@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import dog from "../../assets/dog.svg";
 import ShuffleHero from "./ShuffleHero";
 import AboveaboutUs from "./AboveaboutUs";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   const variants = {
@@ -59,9 +60,11 @@ const AboutUs = () => {
               they deserve it!
             </p>
             <div className="flex justify-center md:justify-start">
-              <button className="bg-success  animate-pulse hover:bg-accent text-gray-800 font-bold py-2 px-4 rounded-xl">
+              <Link 
+              to="/login"
+              className="bg-success  animate-pulse hover:bg-accent text-gray-800 font-bold py-2 px-4 rounded-xl">
                 Get started
-              </button>
+              </Link>
             </div>
           </motion.div>
           <motion.img
