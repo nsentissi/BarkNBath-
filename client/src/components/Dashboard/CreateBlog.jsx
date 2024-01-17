@@ -210,7 +210,7 @@ const CreateBlog = () => {
         </div>
 
         <div className="flex justify-center col-span-8 mt-8" id="posted">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 ">
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 ">
             {blogs.map((blog) => {
               return (
                 <div className="">
@@ -238,6 +238,9 @@ const CreateBlog = () => {
                           posted {formatTimeAgo(blog.date)}
                         </p>{" "}
                       </div>
+                      <button onClick={() => deleteBlog(blog._id)}>
+                          <img src={trashapp} className="w-6" />
+                        </button>
                     </div>
                     <div className="text-gray-500 cursor-pointer">
                       
@@ -284,25 +287,7 @@ const CreateBlog = () => {
                           </g>
                         </svg>
                       </button>
-                      <div className="flex items-center space-x-2">
-                        <button className="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
-                          <span>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-7 w-7 text-red-500 hover:text-red-400 transition duration-100 cursor-pointer"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                            >
-                              <path
-                                fill-rule="evenodd"
-                                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                clip-rule="evenodd"
-                              />
-                            </svg>
-                          </span>
-                          <span>4 Likes</span>
-                        </button>
-                      </div>
+                      
                     </div>
                     <div className="px-6 py-4">
                       {commentsVisibility[blog._id] && (

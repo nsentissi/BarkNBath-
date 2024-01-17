@@ -7,6 +7,7 @@ import { useAuth } from "../../hooks/AuthContext";
 
 const AddPetForm = () => {
   const { currentUser, dispatch } = useAuth();
+  const [ageUnit, setAgeUnit] = useState("years");
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [petData, setPetData] = useState({
@@ -22,7 +23,10 @@ const AddPetForm = () => {
   const handleChange = (e) => {
     if (e.target.name === "profilePhoto") {
       setImage(e.target.files[0]);
-    } else {
+    } 
+    if (e.target.name === "ageUnit") {
+      setAgeUnit(e.target.value);
+    }else {
       setPetData({ ...petData, [e.target.name]: e.target.value });
     }
   };
@@ -32,6 +36,7 @@ const AddPetForm = () => {
     const formData = new FormData();
     for (const key in petData) {
       formData.append(key, petData[key]);
+      formData.append("ageUnit", ageUnit);
     }
     if (image) {
       formData.append("profilePhoto", image);
@@ -57,8 +62,8 @@ const AddPetForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className=" min-h-screen flex items-center justify-center px-4">
-        <div className="bg-accent z-10 flex flex-col gap-8 p-6 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-md w-full">
+      <div className=" max-h-screen flex items-center justify-center px-4">
+        <div className="bg-accent/90 z-10 flex flex-col gap-8 p-6 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-2xl w-5/6">
           <h1 className="text-xl font-chewy tracking-widest  text-center font-semibold text-gray-900">
             Add your puffy friend
           </h1>
@@ -90,9 +95,29 @@ const AddPetForm = () => {
             required
           />
           
-
+          <select
+              name="ageUnit"
+              value={ageUnit}
+              onChange={handleChange}
+              className="border border-gray-300 rounded-2xl p-2"
+            >
+              <option value="months">Months</option>
+              <option value="years">Years</option>
+            </select>
+            <div className="flex gap-2">
+            <input
+              className="w-full p-2 border border-gray-300 rounded-2xl"
+              type="number"
+              name="weight"
+              value={petData.weight}
+              onChange={handleChange}
+              placeholder="Weight"
+              required
+            />
+            <span className="self-center font-bold">kg</span>
+          </div>
           <label
-            className="block text-sm -mb-7 font-medium text-gray-900 dark:text-white"
+            className="block text-sm -mb-4 font-medium text-gray-900 dark:text-white"
             for="file_input"
           >
             Profile Photo
@@ -116,7 +141,7 @@ const AddPetForm = () => {
 
           <button
             type="submit"
-            className="bg-success  hover:bg-primary text-white font-bold p-2 rounded w-2/4 sm:w-2/4 mb-4 sm:mb-0"
+            className="bg-success  hover:bg-primary text-white font-bold p-2 rounded w-2/4 sm:w-2/4  sm:mb-0"
           >
             Add Pet
           </button>

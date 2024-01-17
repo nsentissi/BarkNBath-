@@ -76,7 +76,7 @@ function Services() {
           >
             <ServicesDog />
             <button onClick={closeModal}>
-              <img src={TrashApp} />
+              <img src={TrashApp} className="w-8" />
             </button>
           </Modal>
         </div>
