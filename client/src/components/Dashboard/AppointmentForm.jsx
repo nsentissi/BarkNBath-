@@ -226,7 +226,7 @@ const AppointmentForm = ({ setActiveContent }) => {
               <button
                 onClick={handleOpenMapListModal}
                 type="button"
-                className="bg-gray-200 mt-4 mx-auto w-1/4 text-black p-2 rounded-r hover:bg-gray-300"
+                className=" mt-4 mx-auto w-1/4 text-black p-2 rounded-r hover:bg-gray-300"
               >
                 <img className="w-1/2" src={map}/>
               </button>
