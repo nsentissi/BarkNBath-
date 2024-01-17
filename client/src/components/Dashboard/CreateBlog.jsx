@@ -102,11 +102,11 @@ const CreateBlog = () => {
   return (
     <div className=" ">
       <div className="flex flex-col items-center justify-around py-8">
-        <h4 className="text-gray-800 font-semibold text-4xl text-center ">
+        <h4 className="text-black font-semibold text-4xl text-center ">
           Your Blogs
         </h4>
 
-        <p className="mt-4">Share your experience with others</p>
+        <p className="mt-4 text-white text-xl">Share your experience with others</p>
 
       </div>
 
@@ -203,7 +203,7 @@ const CreateBlog = () => {
                 <button
                   type="submit"
                   disabled={isLoading} 
-                  className="flex justify-center items-center bg-accent hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue text-white py-2 px-4 rounded-md transition duration-300 gap-2"
+                  className="flex justify-center items-center bg-accent hover:bg-primary focus:outline-none focus:shadow-outline-blue text-white py-2 px-4 rounded-md transition duration-300 gap-2"
                 >
                   {isLoading ? (
                     <span>Posting...</span>
@@ -235,7 +235,7 @@ const CreateBlog = () => {
               return (
                 <div className="">
                   {/* First Column */}
-                  <div className="bg-success/70 p-8 rounded-lg shadow-md max-w-2xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
+                  <div className="bg-white/80 p-8 rounded-lg shadow-md max-w-2xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
                     {/* User Info with Three-Dot Menu */}
                     <div className="flex items-center justify-between mb-4 inline relative group">
                     <div className="flex items-center space-x-2 ">
@@ -248,13 +248,13 @@ const CreateBlog = () => {
                     
                       <div>
 
-                        <p className="text-gray-800 font-semibold">
+                        <p className="text-black text-xl font-semibold">
                           {blog.pet?.name}
 
                         </p>
                         
                         
-                        <p className="text-gray-500 text-xs">
+                        <p className="text-gray-600 font-bold text-xs">
                           posted {formatTimeAgo(blog.date)}
                         </p>{" "}
                       </div>
@@ -268,28 +268,28 @@ const CreateBlog = () => {
                   </div>
                   {/* Message */}
                   <div className="mb-4 font-playful text-black ">
-                    <p className="text-gray-800 font-bold">{blog.title}</p>
-                    <p className="text-gray-800">{blog.paragraph}</p>
+                    <p className="text-black font-bold text-xl">{blog.title}</p>
+                    <p className="text-gray-800 font-bold">{blog.paragraph}</p>
                   </div>
                   {/* Image */}
-                  <div className="mb-4">
+                  <div className="mb-4 flex justify-center items-center">
                     <img
                       src={blog.photo}
                       alt={blog.title}
-                      className="w-full bg-center bg-cover h-58 object-cover rounded-md"
+                      className=" w-full md:w-1/2 lg:w-5/6 rounded-md"
                     />
                   </div>
                     {/* Like and Comment Section */}
                     <div className="flex items-center justify-between text-gray-500">
                       <button
                         onClick={() => toggleComments(blog._id)}
-                        className="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1"
+                        className="flex justify-center items-center gap-2   rounded-full p-1"
                       >
                         <svg
-                          width="22px"
-                          height="22px"
+                          width="32px"
+                          height="32px"
                           viewBox="0 0 24 24"
-                          className="w-5 h-5 fill-current"
+                          className="fill-current text-primary"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -330,7 +330,7 @@ const CreateBlog = () => {
                              
                            ))
                          ) : (
-                           <p className="text-gray-600">No comments yet</p>
+                           <p className="text-black mt-4">No comments yet</p>
                          )}
                        </div>
                       )}

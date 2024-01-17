@@ -2,7 +2,7 @@ import React, { Suspense, useState } from "react";
 import { useAuth } from "../../hooks/AuthContext";
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-
+import styles from './Dashboard.module.css'
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import barkNBath from "../../assets/barkNBath.png";
 
@@ -18,8 +18,28 @@ const Dash = ({ onProfileClick }) => {
   //     navigate(`/`);
   //   };
   return (
-    <div class="antialiased bg-primary/80 w-full min-h-screen font-playful  relative py-4">
-      <div class="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
+    <div className={styles.area}>
+      <ul className={styles.circles}>
+      <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+        
+      
+    <div class="antialiased z-10  w-full min-h-screen font-playful  relative py-4">
+      <div class="grid grid-cols-12 z-10 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
         <motion.div
           initial={{ x: -250 }}
           animate={{ x: 0 }}
@@ -33,7 +53,7 @@ const Dash = ({ onProfileClick }) => {
             {currentUser.firstName} {currentUser.lastName}
           </p>
 
-          <hr class="my-2 border-1 border-success" />
+          <hr class="my-2 border-1 border-primary" />
           <div id="menu" class="flex flex-col space-y-8 my-5">
             <NavLink
               to={"pets"}
@@ -41,7 +61,7 @@ const Dash = ({ onProfileClick }) => {
               style={({ isActive }) => {
                 return {
                   fontWeight: isActive ? "bold" : "",
-                  color: isActive ? "#fff" : "black",
+                  color: isActive ? "gray" : "black",
                 };
               }}
             >
@@ -79,7 +99,7 @@ const Dash = ({ onProfileClick }) => {
               style={({ isActive }) => {
                 return {
                   fontWeight: isActive ? "bold" : "",
-                  color: isActive ? "#fff" : "black",
+                  color: isActive ? "gray" : "black",
                 };
               }}
             >
@@ -115,7 +135,7 @@ const Dash = ({ onProfileClick }) => {
               style={({ isActive }) => {
                 return {
                   fontWeight: isActive ? "bold" : "",
-                  color: isActive ? "#fff" : "black",
+                  color: isActive ? "gray" : "black",
                 };
               }}
               class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
@@ -150,7 +170,7 @@ const Dash = ({ onProfileClick }) => {
               style={({ isActive }) => {
                 return {
                   fontWeight: isActive ? "bold" : "",
-                  color: isActive ? "#fff" : "black",
+                  color: isActive ? "gray" : "black",
                 };
               }}
               class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
@@ -186,7 +206,7 @@ const Dash = ({ onProfileClick }) => {
               style={({ isActive }) => {
                 return {
                   fontWeight: isActive ? "bold" : "",
-                  color: isActive ? "#fff" : "black",
+                  color: isActive ? "gray" : "black",
                 };
               }}
               class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
@@ -263,12 +283,13 @@ const Dash = ({ onProfileClick }) => {
         <motion.div
           initial={{ x: 250 }} 
           animate={{ x: 0 }} 
-          transition={{ type: "spring", stiffness: 100 ,duration: 6 }} class="flex-grow bg-white/80 col-span-9 rounded-lg p-6">
+          transition={{ type: "spring", stiffness: 100 ,duration: 6 }} class="flex-grow z-0 bg-accent/70 col-span-9 rounded-lg p-6">
             
           <Outlet />
         </motion.div>
         
       </div>
+    </div>
     </div>
   );
 };

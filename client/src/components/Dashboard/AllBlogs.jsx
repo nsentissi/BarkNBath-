@@ -69,7 +69,7 @@ const AllBlogs = () => {
             return (
               <div>
                 {/* First Column */}
-                <div className="bg-success/50 p-8 rounded-lg shadow-md max-w-3xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
+                <div className="bg-white/80 p-8 rounded-lg shadow-md max-w-3xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
                   {/* User Info with Three-Dot Menu */}
                   <div className="flex items-center justify-between mb-4 inline relative group">
                     <div className="flex items-center space-x-2 ">
@@ -86,7 +86,7 @@ const AllBlogs = () => {
                         <p className="text-gray-800 font-semibold text-xs">
                           Pet owner: {blog.owner?.firstName}
                         </p>
-                        <p className="text-gray-500 text-xs">
+                        <p className="text-gray-500 font-bold text-xs">
                           posted {formatTimeAgo(blog.date)}
                         </p>{" "}
                       </div>
@@ -119,11 +119,11 @@ const AllBlogs = () => {
                     <p className="text-gray-800">{blog.paragraph}</p>
                   </div>
                   {/* Image */}
-                  <div className="mb-4">
+                  <div className="mb-4 flex justify-center items-center">
                     <img
                       src={blog.photo}
                       alt={blog.title}
-                      className="w-full bg-center bg-cover h-96 object-cover rounded-md"
+                      className=" w-full md:w-1/2 lg:w-5/6 rounded-md"
                     />
                   </div>
 
@@ -131,13 +131,13 @@ const AllBlogs = () => {
                   <div className="flex items-center justify-between text-gray-500">
                     <button
                       onClick={() => toggleComments(blog._id)}
-                      className="flex justify-center items-center px-2 hover:bg-gray-50 rounded-full "
+                      className="flex justify-center items-center px-2 my-4 rounded-full "
                     >
                       <svg
-                        width="22px"
-                        height="22px"
-                        viewBox="0 0 24 24"
-                        className="w-5 h-5 fill-current text-primary"
+                         width="32px"
+                         height="32px"
+                         viewBox="0 0 24 24"
+                        className="fill-current text-primary"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -176,14 +176,14 @@ const AllBlogs = () => {
                           blog.comments.map((comment) => (
                             <div
                               key={comment._id}
-                              className="mt-1 pt-2 border-t "
+                              className="mt-1 pt-2 border-t border-primary"
                             >
 
                                  <p className="text-xs font-semibold mt-1 text-black">
                               {comment.author?.firstName} {comment.author?.lastName}
 
                               </p>
-                              <span className="text-gray-500 text-xs">
+                              <span className="text-gray-500 font-bold text-xs">
                                 - {moment(comment.date).fromNow()}
                               </span>
                               <p className="text-sm font-bold text-primary italic font-bold">

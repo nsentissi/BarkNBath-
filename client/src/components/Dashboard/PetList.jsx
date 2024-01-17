@@ -90,17 +90,17 @@ const PetList = () => {
   return (
     <>
       <div className="text-center">
-        <h1 className="font-bold text-black tracking-widest pt-8 text-4xl">
+        <h1 className="font-bold text-white tracking-widest pt-6 text-4xl">
           Your puffy friends
         </h1>
-        <hr className="border-2 border-accent mt-12" />
+        <hr className="border-2 border-success rounded-full mt-12" />
       </div>
       <div className="flex flex-col justify-center overflow-hidden">
         
         {currentUser.pets?.map((pet, index) => (
           <div
             key={index}
-            className="flex flex-col md:flex-row gap-12 mt-16 w-full"
+            className="flex flex-col md:flex-row gap-12 mt-12 w-full"
           >
 
             
@@ -109,7 +109,7 @@ const PetList = () => {
               {/* Create Post Button */}
 
               <button
-                className="border-4 border-success bg-primary/80 rounded-full px-6 py-2 mb-4"
+                className="comic-button mb-4"
                 onClick={() => handleCreatePostClick(pet._id)}
               >
                 <span className=" font-playful font-bold px-2">
@@ -119,7 +119,7 @@ const PetList = () => {
 
               {/* Pet Details */}
               <div className="relative group duration-500 cursor-pointer overflow-hidden text-gray-50 h-72 w-64 rounded-2xl hover:duration-700">
-                <div className="w-62 h-72 bg-success/80">
+                <div className="w-62 h-72 bg-accent">
                   <img
                     className="h-72 bg-cover bg-center "
                     src={pet.profilePhotoUrl}
@@ -127,7 +127,7 @@ const PetList = () => {
                   />
                 </div>
 
-                <div className="absolute  bg-primary/90 -bottom-24 w-64 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
+                <div className="absolute  bg-success -bottom-24 w-64 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
                   <span className="text-white font-bold text-ml">
                     {pet.name}
                   </span>
@@ -147,7 +147,7 @@ const PetList = () => {
             {/* Appointments */}
             <div className="flex flex-col">
               {/* Upcoming Appointments */}
-              <div className="max-w-md mx-auto bg-accent/80 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+              <div className="max-w-md mx-auto bg-primary/80 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
                 {!filterAppointments(petAppointments[pet._id] || [], true)
                   .length && (
                   <div className="w-90 h-24 p-6 flex items-center  text-sm justify-center font-playful font-bold ">
@@ -157,18 +157,18 @@ const PetList = () => {
                 {filterAppointments(petAppointments[pet._id] || [], true).map(
                   (appointment, idx) => (
                     <div className="p-4 flex items-center" key={idx}>
-                      <div className="pr-4 bg-success p-2 rounded-lg text-center">
-                        <p className="text-4xl font-bold text-white">
+                      <div className="pr-4 bg-white p-2 rounded-lg text-center">
+                        <p className="text-4xl font-bold text-primary">
                           {formatDate(appointment.date)}
                         </p>
                       </div>
 
                       <div className="ml-4">
-                        <div className="uppercase tracking-wide text-xl text-black font-bold">
+                        <div className="uppercase tracking-wide text-xl text-red-900 font-bold">
                           {appointment.time}
                         </div>
 
-                        <p className="mt-2 font-bold text-black">
+                        <p className="mt-2 font-bold text-white">
                           {appointment.service}
                         </p>
                       </div>

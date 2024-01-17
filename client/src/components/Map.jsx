@@ -1,16 +1,19 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Icon } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import locationData from "../data/map.json";
 import mapBackground from "../assets/map-background.png";
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
 
 const position = [52.5314560163944, 13.403370226299785];
 
 const Map = () => {
   return (
     <>
-      <div className="bg-cover bg-center h-auto md:h-full bg-no-repeat font-playful" 
-        style={{ backgroundImage: `url(${mapBackground})` }}>
+      <div
+        className="bg-cover bg-center h-auto md:h-full bg-no-repeat font-playful"
+        style={{ backgroundImage: `url(${mapBackground})` }}
+      >
         <div className="mx-auto px-4 py-14 gap-4 h-auto md:h-full max-w-7xl">
           <div className="flex flex-col md:flex-row justify-center items-center gap-8">
             {/* Text Container */}
@@ -19,7 +22,11 @@ const Map = () => {
                 Explore our locations
               </h4>
               <p className="text-base md:text-sm text-start font-semibold ">
-                Discover our numerous locations across the city, each offering a unique and delightful experience for your pets. We are located in key areas for your convenience. Whether you're in the heart of downtown or the quiet suburbs, a warm welcome and professional service await you and your furry friends.
+                Discover our numerous locations across the city, each offering a
+                unique and delightful experience for your pets. We are located
+                in key areas for your convenience. Whether you're in the heart
+                of downtown or the quiet suburbs, a warm welcome and
+                professional service await you and your furry friends.
               </p>
             </div>
             {/* Map Container */}
@@ -35,7 +42,17 @@ const Map = () => {
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 />
                 {locationData.map((location, index) => (
-                  <Marker key={index} position={[location.lat, location.lng]}>
+                  <Marker
+                    key={index}
+                    position={[location.lat, location.lng]}
+                    icon={
+                      new Icon({
+                        iconUrl: markerIconPng,
+                        iconSize: [25, 41],
+                        iconAnchor: [12, 41],
+                      })
+                    }
+                  >
                     <Popup>
                       <div className="bg-white p-2 rounded shadow">
                         {location.name}
