@@ -3,9 +3,17 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import locationData from "../data/map.json";
 import mapBackground from "../assets/map-background.png";
-import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import mapMarker from "../assets/mapMarker.webp";
+import L from 'leaflet';
 
 const position = [52.5314560163944, 13.403370226299785];
+
+const customIcon = L.icon({
+  iconUrl: mapMarker,
+  iconSize: [40, 41], 
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34] 
+});
 
 const Map = () => {
   return (
@@ -45,7 +53,7 @@ const Map = () => {
                   <Marker
                     key={index}
                     position={[location.lat, location.lng]}
-                    
+                    icon={customIcon}
                   >
                     <Popup>
                       <div className="bg-white p-2 rounded shadow">
