@@ -164,7 +164,20 @@ const AppointmentForm = ({ setActiveContent }) => {
       </div> */}
 
           <div className="flex flex-col">
-            <label htmlFor="service" className="mb-2 font-semibold">
+          <div>
+          <button  onClick={openModal} className="mb-2 text-smm border-4 py-2 px-2 rounded-full border-success bg-primary/60">View Services</button>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            contentLabel="Services Modal"
+          >
+            <ServicesDog />
+            <button onClick={closeModal}>
+              <img src={TrashApp} className="w-8" />
+            </button>
+          </Modal>
+        </div>
+            <label htmlFor="service" className="mb-2 font-semibold ">
               Service:
             </label>
             <select
@@ -173,15 +186,22 @@ const AppointmentForm = ({ setActiveContent }) => {
             >
               <option value="">Select a Service</option>
               <option value="Basic grooming package">
-                Basic Grooming Package
+                The Works
               </option>
-              <option value="Luxury spa retreat">Luxury Spa Retreat</option>
+              <option value="Luxury spa retreat">Ultimate Paw Care</option>
               <option value="Full grooming makeover">
-                Full Grooming Makeover
+               Breed Standard
+              </option>
+              <option value="Full grooming makeover">
+               Premium Bath
+              </option>
+              <option value="Full grooming makeover">
+               The Complete Grooming Experince
               </option>
               <option value="Wellness and relaxation package">
-                Wellness and Relaxation Package
+              Doggy Haircut
               </option>
+              
             </select>
             {errors.service && (
               <span className="text-red-500 text-sm">Service is required</span>
@@ -224,19 +244,7 @@ const AppointmentForm = ({ setActiveContent }) => {
           </button>
         </form>
         <ToastContainer />
-        <div>
-          <button  onClick={openModal}>View Services</button>
-          <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
-            contentLabel="Services Modal"
-          >
-            <ServicesDog />
-            <button onClick={closeModal}>
-              <img src={TrashApp} className="w-8" />
-            </button>
-          </Modal>
-        </div>
+        
       </div>
     </div>
   );
