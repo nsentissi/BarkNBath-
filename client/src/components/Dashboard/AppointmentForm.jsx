@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import Modal from "react-modal";
+
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import { useAuth } from "../../hooks/AuthContext";
 import axiosClient from "../../../axiosClient";
 import TimePicker from "react-time-picker";
-import Modal from "./Modal";
-import ServicesTable from "../ServicesTable";
+import Modalmap from "./Modalmap";
+import TrashApp from "../../assets/trashapp.svg";
+import ServicesDog from "../ServicesDog";
 import map from "../../assets/map.png"
 
 
@@ -14,6 +17,15 @@ import NewMap from "../MapContainer";
 
 const AppointmentForm = ({ setActiveContent }) => {
   const navigate = useNavigate();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
   const {
     register,
     handleSubmit,
@@ -66,10 +78,10 @@ const AppointmentForm = ({ setActiveContent }) => {
   return (
     
     <div class=" max-h-screen mt-6 z-0 flex items-center justify-center  px-4">
-      <div className="bg-secondary z-1 p-8 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-2xl w-5/6">
+      <div className="bg-accent/90 z-1 p-8 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-2xl w-5/6">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="max-w-xl mx-auto mt-12 space-y-4"
+          className="max-w-xl mx-auto mt-4 space-y-4"
         >
           <div className="flex flex-col">
             <label htmlFor="date" className="mb-2 font-semibold">
@@ -96,7 +108,7 @@ const AppointmentForm = ({ setActiveContent }) => {
             )}
           </div>
           <div className="flex flex-col">
-            <label className="mb-2 font-semibold">pet:</label>
+            <label className="mb-2 font-semibold">Pet:</label>
             <select
               {...register("pet")}
               type="text"
@@ -113,8 +125,8 @@ const AppointmentForm = ({ setActiveContent }) => {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="time" className="mb-2 font semibild">
-              time:
+            <label htmlFor="time" className="mb-2 font-semibold">
+              Time:
             </label>
             <select
               {...register("time", { required: true })}
@@ -178,7 +190,7 @@ const AppointmentForm = ({ setActiveContent }) => {
 
           <div className="flex flex-col">
             <label htmlFor="address" className="mb-2 font-semibold">
-              location
+              Location
             </label>
             <input
               {...register("address", { required: true })}
@@ -198,27 +210,31 @@ const AppointmentForm = ({ setActiveContent }) => {
               >
                 <img className="w-1/2" src={map}/>
               </button>
-              <Modal isOpen={isMapModalOpen} onClose={handleCloseMapModal}>
+              <Modalmap isOpen={isMapModalOpen} onClose={handleCloseMapModal}>
                 <NewMap onMarkerClick={handleAddressSelect} />
-              </Modal>
+              </Modalmap>
             </div>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-3 rounded hover:bg-blue-600 transition-colors"
+            className="lg:ml-36 bg-success hover:bg-primary text-white font-bold p-2 rounded w-2/4 sm:w-2/4 mb-4 sm:mb-0"
           >
             Book Appointment
           </button>
         </form>
         <ToastContainer />
         <div>
-          <button onClick={handleOpenServiceListModal}>View Services</button>
+          <button  onClick={openModal}>View Services</button>
           <Modal
-            isOpen={isServiceListModalOpen}
-            onClose={handleCloseServiceListModal}
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            contentLabel="Services Modal"
           >
-            <ServicesTable />
+            <ServicesDog />
+            <button onClick={closeModal}>
+              <img src={TrashApp} className="w-8" />
+            </button>
           </Modal>
         </div>
       </div>
