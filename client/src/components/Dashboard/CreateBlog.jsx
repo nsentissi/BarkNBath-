@@ -242,7 +242,7 @@ const CreateBlog = () => {
                       <img
                         src={blog.pet?.profilePhotoUrl}
                         alt="User Avatar"
-                        className="w-16 h-16 rounded-full"
+                        className="w-16 h-16 object-cover rounded-full"
                         
                       />
                     
@@ -276,7 +276,7 @@ const CreateBlog = () => {
                     <img
                       src={blog.photo}
                       alt={blog.title}
-                      className=" w-full md:w-1/2 lg:w-5/6 rounded-md"
+                      className=" w-full md:w-1/2 lg:w-5/6  rounded-md"
                     />
                   </div>
                     {/* Like and Comment Section */}

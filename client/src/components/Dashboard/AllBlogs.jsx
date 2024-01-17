@@ -76,7 +76,7 @@ const AllBlogs = () => {
                       <img
                         src={blog.pet?.profilePhotoUrl}
                         alt="User Avatar"
-                        className="w-20 h-20 rounded-full"
+                        className="w-24 h-24 object-cover rounded-full"
                       />
 
                       <div>

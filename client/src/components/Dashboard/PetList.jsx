@@ -121,7 +121,7 @@ const PetList = () => {
               <div className="relative group duration-500 cursor-pointer overflow-hidden text-gray-50 h-72 w-64 rounded-2xl hover:duration-700">
                 <div className="w-62 h-72 bg-accent">
                   <img
-                    className="h-72 bg-cover bg-center "
+                    className="h-72 w-full object-cover"
                     src={pet.profilePhotoUrl}
                     alt={pet.name}
                   />

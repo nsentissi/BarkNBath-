@@ -24,12 +24,12 @@ const Faqsection = () => {
         "1 hour",
     },
     {
-      question: "How can I provide feedback about my experience??",
+      question: "How can I provide feedback about my experience?",
       answer:
         "You can create a blog for your furry friend after booking an appointment, to share your experience with our other beloved dog owners",
     },
     {
-      question: "What are the qualifications of your pet groomers??",
+      question: "What are the qualifications of your pet groomers?",
       answer:
         "All our groomers are professionally trained and certified, ensuring top-quality care and expertise in handling different breeds and grooming needs.",
     },

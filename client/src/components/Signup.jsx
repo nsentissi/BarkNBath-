@@ -119,7 +119,7 @@ const Signup = () => {
             <button
               type="submit"
               className="bg-success  hover:bg-primary text-white font-bold py-2 px-4 rounded-xl w-2/4 sm:w-2/4 mb-2 sm:mb-0"
-              disabled={!isFormValid}
+              // disabled={!isFormValid}
             >
               Register
             </button>
