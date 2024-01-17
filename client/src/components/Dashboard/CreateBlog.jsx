@@ -82,10 +82,7 @@ const CreateBlog = () => {
   };
 
   const deleteBlog = async (blogId) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this blog?"
-    );
-    if (!confirmDelete) return;
+    
 
     try {
       await axiosClient.delete(`/blog/delete/${blogId}`);

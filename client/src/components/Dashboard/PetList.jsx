@@ -18,10 +18,7 @@ const PetList = () => {
   };
 
   const handleDeleteAppointment = async (appointmentId, petId) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to cancel this appointment?"
-    );
-    if (!confirmDelete) return;
+  
 
     try {
       await axiosClient.delete(`/appointment/delete/${appointmentId}`, {
