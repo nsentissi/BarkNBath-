@@ -62,7 +62,7 @@ const AboutUs = () => {
             <div className="flex justify-center md:justify-start">
               <Link 
               to="/login"
-              className="bg-success  animate-pulse hover:bg-accent text-gray-800 font-bold py-2 px-4 rounded-xl">
+              className="bg-success hover:bg-gray-400 text-gray-800 font-bold py-4 px-6 rounded-xl mx-auto mt-4 flex items-center  animate-bounce text-center whitespace-nowrap text-sm lg:text-base min-w-max">
                 Get started
               </Link>
             </div>

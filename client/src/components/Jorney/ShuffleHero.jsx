@@ -71,8 +71,8 @@ const ShuffleHero = () => {
         </p>
         <Link
          to="/login"
-        className="bg-primary text-white  font-playful font-medium py-2 px-4 rounded transition-all hover:bg-accent active:scale-95">
-          Book an appointment
+         className="bg-accent text-white animate-pulse font-playful font-bold py-3 px-16 text-lg rounded transition-all hover:bg-accent active:scale-95">
+         Let's go!
         </Link>
       </div>
       <ShuffleGrid />

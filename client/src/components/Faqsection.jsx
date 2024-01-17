@@ -53,14 +53,14 @@ const Faqsection = () => {
         <div className="max-w-4xl mx-auto">
           {faqs.map((faq, index) => (
             <div key={index} className="mb-4">
-              <details className="p-4 bg-success shadow rounded-lg group">
+              <details className="p-4 bg-primary/60 shadow rounded-lg group">
                 <summary className="text-lg font-medium cursor-pointer">
                   {faq.question}
                   <span className="float-right mt-1">
                     <i className="fas fa-chevron-down transition-transform duration-300 group-open:rotate-180"></i>
                   </span>
                 </summary>
-                <p className="mt-4 text-gray-600">
+                <p className="mt-4 text-black font-bold">
                   {faq.answer}
                 </p>
               </details>

@@ -264,6 +264,7 @@ const Dash = ({ onProfileClick }) => {
           initial={{ x: 250 }} 
           animate={{ x: 0 }} 
           transition={{ type: "spring", stiffness: 100 ,duration: 6 }} class="flex-grow bg-white/80 col-span-9 rounded-lg p-6">
+            
           <Outlet />
         </motion.div>
         

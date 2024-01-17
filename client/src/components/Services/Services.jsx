@@ -64,7 +64,7 @@ function Services() {
         </h1>
         <div className="font-playful ml-4" to="/services">
           <button
-            className="bg-success hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-xl"
+            className="bg-success hover:bg-accent animate-pulse font-bold text-xl text-gray-800 font-bold py-4 px-8 rounded-xl"
             onClick={openModal}
           >
             Check Pricing Details

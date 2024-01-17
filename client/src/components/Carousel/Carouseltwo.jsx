@@ -19,7 +19,7 @@ const Example = () => {
    
       <div className="bg-transparent">
         <div className="flex  items-center justify-center ">
-          <span className="inline-block animate-pulse bg-success rounded-full w-1/4 p-4 text-white text-center font-chewy text-xl">
+          <span className="inline-block animate-pulse bg-primary/60 rounded-full w-1/4 p-4 text-white text-center font-chewy text-xl">
             OUR PHOTO GALLERY
             <svg
               className="w-6 h-6 mx-auto"
@@ -40,7 +40,7 @@ const Example = () => {
         <HorizontalScrollCarousel />
         
         <div className="flex h-48 items-center justify-center">
-          <span className="inline-block animate-pulse bg-success rounded-full w-1/4 p-4 text-white text-center font-chewy text-xl">
+          <span className="inline-block animate-pulse bg-primary/60 rounded-full w-1/4 p-4 text-white text-center font-chewy text-xl">
             <svg
               className="w-6 h-6 mx-auto"
               xmlns="http://www.w3.org/2000/svg"

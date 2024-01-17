@@ -24,13 +24,16 @@ const AllBlogs = () => {
     return date.fromNow();
   };
 
-  const fetchBlogs = async (e) => {
+  const fetchBlogs = async () => {
     try {
       const response = await axiosClient.get("/blog/getAll", {
         withCredentials: true,
       });
-      console.log(response.data);
-      setBlogs(response.data);
+      const sortedBlogs = response.data.sort((a, b) => {
+        
+        return new Date(b.date) - new Date(a.date);
+      });
+      setBlogs(sortedBlogs);
     } catch (error) {
       console.log(error.response);
     }
@@ -61,12 +64,12 @@ const AllBlogs = () => {
         </h4>
       </div>
       <div className="flex justify-center col-span-8 mt-3" id="posted">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-4 ">
           {blogs.map((blog) => {
             return (
               <div>
                 {/* First Column */}
-                <div className="bg-success/50 p-8 rounded-lg shadow-md max-w-md cursor-pointer w-full hover:-translate-y-1 duration-300">
+                <div className="bg-success/50 p-8 rounded-lg shadow-md max-w-4xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
                   {/* User Info with Three-Dot Menu */}
                   <div className="flex items-center justify-between mb-4 inline relative group">
                     <div className="flex items-center space-x-2 ">
@@ -120,7 +123,7 @@ const AllBlogs = () => {
                     <img
                       src={blog.photo}
                       alt={blog.title}
-                      className="w-full bg-center bg-cover h-58 object-cover rounded-md"
+                      className="w-full bg-center bg-cover  object-cover rounded-md"
                     />
                   </div>
 
@@ -161,7 +164,7 @@ const AllBlogs = () => {
                         >
                           <path d="M12 21.35l-1.45-1.32C6.11 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-4.11 6.86-8.55 11.54L12 21.35z" />
                         </svg>
-                        <span>4 Likes</span>
+                       
                       </button>
                     </div>
                   </div>

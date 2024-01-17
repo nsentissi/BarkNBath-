@@ -104,19 +104,18 @@ const Landingpage = () => {
           >
             <h2
               variant={headlineVariants}
-              className="text-white text-center font-playful text-2xl  lg:text-5xl w-10/12 mx-auto mt-[-10rem] font-bold"
+              className="text-white text-center font-playful text-2xl  lg:text-4xl w-10/12 mx-auto mt-[-10rem] font-bold"
             >
               Sit, Stay, and Relax at Home While we Pamper your Pet on Wheels
             </h2>
             <p className="font-playful text-white lg:text-2xl font-semibold p-6 text-center">
               Our Mobile Spa Brings the Best Pet Grooming to your Doorstep!
             </p>
-           {/*  <p className="font-playful text-white font-semibold p-3 text-center">
-              So why wait?
-            </p> */}
+           
              <Link
                to="/login"
-              className="bg-success animate-bounce mx-auto mt-4 flex justify-center hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 w-1/2 text-center rounded-xl"
+             className="bg-success hover:bg-gray-400 text-gray-800 font-bold py-4 px-6 rounded-xl mx-auto mt-4 flex items-center justify-center animate-bounce text-center whitespace-nowrap text-sm lg:text-base min-w-max"
+              
             >
               GET STARTED
             </Link>

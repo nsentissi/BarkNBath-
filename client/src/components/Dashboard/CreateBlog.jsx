@@ -76,6 +76,9 @@ const CreateBlog = () => {
       });
       console.log(response.data);
       setBlogs(response.data);
+      setFormData({ title: "", paragraph: "" });
+      setSelectedFile(null);
+
     } catch (error) {
       console.log(error.response);
     }
@@ -108,11 +111,11 @@ const CreateBlog = () => {
       </div>
 
       <div className="">
-        <div className="w-full px-16" id="posted">
+        <div className="w-full  px-16" id="posted">
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-1  ">
             <form
               onSubmit={handleSubmit}
-              className="border-4 border-primary p-8"
+              className="bg-success/90 p-8 rounded-lg shadow-md max-w-4xl w-11/12 mx-auto hover:-translate-y-1 duration-300"
             >
               {/* <!-- Post Content Section --> */}
               <h3 className="text-center font-bold text-gray-700 text-xl ">
@@ -232,7 +235,7 @@ const CreateBlog = () => {
               return (
                 <div className="">
                   {/* First Column */}
-                  <div className="bg-success/50  p-8 rounded-lg shadow-md max-w-md cursor-pointer w-full hover:-translate-y-1 duration-300">
+                  <div className="bg-success/50 p-8 rounded-lg shadow-md max-w-2xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
                     {/* User Info with Three-Dot Menu */}
                     <div className="flex items-center justify-between mb-4 inline relative group">
                     <div className="flex items-center space-x-2 ">

@@ -93,6 +93,7 @@ const PetList = () => {
         <h1 className="font-bold text-black tracking-widest pt-8 text-4xl">
           Your puffy friends
         </h1>
+        <hr className="border-2 border-accent mt-12" />
       </div>
       <div className="flex flex-col justify-center overflow-hidden">
         
@@ -108,10 +109,10 @@ const PetList = () => {
               {/* Create Post Button */}
 
               <button
-                className="button type1 mb-4"
+                className="border-4 border-primary rounded-full px-6 py-2 mb-4"
                 onClick={() => handleCreatePostClick(pet._id)}
               >
-                <span className="btnTxt font-playful font-bold px-2">
+                <span className=" font-playful font-bold px-2">
                   Create Post
                 </span>
               </button>
@@ -146,17 +147,17 @@ const PetList = () => {
             {/* Appointments */}
             <div className="flex flex-col">
               {/* Upcoming Appointments */}
-              <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+              <div className="max-w-md mx-auto bg-accent/80 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
                 {!filterAppointments(petAppointments[pet._id] || [], true)
                   .length && (
-                  <div className="w-90 h-24 flex items-center text-white text-sm justify-center font-playful font-bold ">
+                  <div className="w-90 h-24 p-6 flex items-center  text-sm justify-center font-playful font-bold ">
                     No upcoming appointment
                   </div>
                 )}
                 {filterAppointments(petAppointments[pet._id] || [], true).map(
                   (appointment, idx) => (
                     <div className="p-4 flex items-center" key={idx}>
-                      <div className="pr-4 bg-neutral p-2 rounded-lg text-center">
+                      <div className="pr-4 bg-success p-2 rounded-lg text-center">
                         <p className="text-4xl font-bold text-white">
                           {formatDate(appointment.date)}
                         </p>
@@ -188,7 +189,7 @@ const PetList = () => {
               <div className="max-w-md mx-auto bg-gray-200 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
                 {!filterAppointments(petAppointments[pet._id] || [], false)
                   .length && (
-                  <div className="w-90 h-24 flex items-center text-white text-sm justify-center font-playful font-bold ">
+                  <div className="w-90 h-24 p-6 flex items-center  text-sm justify-center font-playful font-bold ">
                     No past appointment
                   </div>
                 )}
