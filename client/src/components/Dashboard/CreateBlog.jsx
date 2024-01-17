@@ -4,10 +4,9 @@ import { useParams } from "react-router-dom";
 import { useAuth } from "../../hooks/AuthContext";
 import moment from "moment";
 
-import "./createBlog.css"
+import "./createBlog.css";
 
 import trashapp from "../../assets/trashapp.svg";
-
 
 import { Link } from "react-router-dom";
 
@@ -21,6 +20,13 @@ const CreateBlog = () => {
   const { id } = useParams();
   const [commentsVisibility, setCommentsVisibility] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [blogToDelete, setBlogToDelete] = useState(null);
+
+  const openDeleteModal = (blogId) => {
+    setBlogToDelete(blogId);
+    setShowDeleteModal(true);
+  };
 
   const formatTimeAgo = (dateString) => {
     const date = moment(dateString);
@@ -51,7 +57,7 @@ const CreateBlog = () => {
     if (selectedFile) {
       data.append("photo", selectedFile);
     }
-  
+
     try {
       const response = await axiosClient.post(`/blog/create`, data, {
         withCredentials: true,
@@ -59,7 +65,7 @@ const CreateBlog = () => {
       });
       console.log("Response:", response);
       setBlogs([response.data, ...blogs]);
-      
+
       setFormData({ title: "", paragraph: "" });
       setSelectedFile(null);
     } catch (error) {
@@ -68,7 +74,7 @@ const CreateBlog = () => {
       setIsLoading(false);
     }
   };
-  
+
   const fetchBlogs = async (e) => {
     try {
       const response = await axiosClient.get(`/blog/get/${id}`, {
@@ -78,20 +84,21 @@ const CreateBlog = () => {
       setBlogs(response.data);
       setFormData({ title: "", paragraph: "" });
       setSelectedFile(null);
-
     } catch (error) {
       console.log(error.response);
     }
   };
 
-  const deleteBlog = async (blogId) => {
-    
-
-    try {
-      await axiosClient.delete(`/blog/delete/${blogId}`);
-      setBlogs(blogs.filter((blog) => blog._id !== blogId));
-    } catch (error) {
-      console.error("Error deleting blog:", error);
+  const deleteBlog = async () => {
+    if (blogToDelete) {
+      try {
+        await axiosClient.delete(`/blog/delete/${blogToDelete}`);
+        setBlogs(blogs.filter((blog) => blog._id !== blogToDelete));
+      } catch (error) {
+        console.error("Error deleting blog:", error);
+      } finally {
+        setShowDeleteModal(false); // Close the modal after deletion
+      }
     }
   };
 
@@ -106,8 +113,9 @@ const CreateBlog = () => {
           Your Blogs
         </h4>
 
-        <p className="mt-4 text-white text-xl">Share your experience with others</p>
-
+        <p className="mt-4 text-white text-xl">
+          Share your experience with others
+        </p>
       </div>
 
       <div className="">
@@ -202,7 +210,7 @@ const CreateBlog = () => {
               <div className="flex items-center justify-between">
                 <button
                   type="submit"
-                  disabled={isLoading} 
+                  disabled={isLoading}
                   className="flex justify-center items-center bg-accent hover:bg-primary focus:outline-none focus:shadow-outline-blue text-white py-2 px-4 rounded-md transition duration-300 gap-2"
                 >
                   {isLoading ? (
@@ -238,47 +246,44 @@ const CreateBlog = () => {
                   <div className="bg-white/80 p-8 rounded-lg shadow-md max-w-2xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
                     {/* User Info with Three-Dot Menu */}
                     <div className="flex items-center justify-between mb-4 inline relative group">
-                    <div className="flex items-center space-x-2 ">
-                      <img
-                        src={blog.pet?.profilePhotoUrl}
-                        alt="User Avatar"
-                        className="w-16 h-16 object-cover rounded-full"
-                        
-                      />
-                    
-                      <div>
+                      <div className="flex items-center space-x-2 ">
+                        <img
+                          src={blog.pet?.profilePhotoUrl}
+                          alt="User Avatar"
+                          className="w-16 h-16 object-cover rounded-full"
+                        />
 
-                        <p className="text-black text-xl font-semibold">
-                          {blog.pet?.name}
-
-                        </p>
-                        
-                        
-                        <p className="text-gray-600 font-bold text-xs">
-                          posted {formatTimeAgo(blog.date)}
-                        </p>{" "}
-                      </div>
-                      <button onClick={() => deleteBlog(blog._id)}>
+                        <div>
+                          <p className="text-black text-xl font-semibold">
+                            {blog.pet?.name}
+                          </p>
+                          <p className="text-gray-600 font-bold text-xs">
+                            posted {formatTimeAgo(blog.date)}
+                          </p>{" "}
+                        </div>
+                        <button onClick={() => openDeleteModal(blog._id)}>
                           <img src={trashapp} className="w-6 ml-72" />
                         </button>
+                      </div>
+                      <div className="text-gray-500 cursor-pointer"></div>
                     </div>
-                    <div className="text-gray-500 cursor-pointer">
-                      
+                    {/* Message */}
+                    <div className="mb-4 font-playful text-black ">
+                      <p className="text-black font-bold text-xl">
+                        {blog.title}
+                      </p>
+                      <p className="text-gray-800 font-bold">
+                        {blog.paragraph}
+                      </p>
                     </div>
-                  </div>
-                  {/* Message */}
-                  <div className="mb-4 font-playful text-black ">
-                    <p className="text-black font-bold text-xl">{blog.title}</p>
-                    <p className="text-gray-800 font-bold">{blog.paragraph}</p>
-                  </div>
-                  {/* Image */}
-                  <div className="mb-4 flex justify-center items-center">
-                    <img
-                      src={blog.photo}
-                      alt={blog.title}
-                      className=" w-full md:w-1/2 lg:w-5/6  rounded-md"
-                    />
-                  </div>
+                    {/* Image */}
+                    <div className="mb-4 flex justify-center items-center">
+                      <img
+                        src={blog.photo}
+                        alt={blog.title}
+                        className=" w-full md:w-1/2 lg:w-5/6  rounded-md"
+                      />
+                    </div>
                     {/* Like and Comment Section */}
                     <div className="flex items-center justify-between text-gray-500">
                       <button
@@ -307,32 +312,30 @@ const CreateBlog = () => {
                           </g>
                         </svg>
                       </button>
-                      
                     </div>
                     <div className="px-6 py-4">
                       {commentsVisibility[blog._id] && (
-                         <div className="">
-                         <h3 className="text-sm font-bold">Comments:</h3>
-                         {blog.comments.length > 0 ? (
-                           blog.comments.map((comment) => (
-                             <div
-                               key={comment._id}
-                               className="mt-1 pt-2 border-t "
-                             >
-                                  <p className="text-xs font-semibold mt-1 text-black">
-                               {comment.author?.firstName} {comment.author?.lastName}
-                               </p>
-                               <p className="text-sm font-bold text-primary italic font-bold">
-                                 {comment.text}
-                               </p>
-         
-                             </div>
-                             
-                           ))
-                         ) : (
-                           <p className="text-black mt-4">No comments yet</p>
-                         )}
-                       </div>
+                        <div className="">
+                          <h3 className="text-sm font-bold">Comments:</h3>
+                          {blog.comments.length > 0 ? (
+                            blog.comments.map((comment) => (
+                              <div
+                                key={comment._id}
+                                className="mt-1 pt-2 border-t "
+                              >
+                                <p className="text-xs font-semibold mt-1 text-black">
+                                  {comment.author?.firstName}{" "}
+                                  {comment.author?.lastName}
+                                </p>
+                                <p className="text-sm font-bold text-primary italic font-bold">
+                                  {comment.text}
+                                </p>
+                              </div>
+                            ))
+                          ) : (
+                            <p className="text-black mt-4">No comments yet</p>
+                          )}
+                        </div>
                       )}
                     </div>
                   </div>
@@ -340,6 +343,43 @@ const CreateBlog = () => {
               );
             })}
           </div>
+          {showDeleteModal && (
+            <>
+             <div
+             className="fixed inset-0 bg-black bg-opacity-30 z-40"
+             style={{ backdropFilter: 'blur(5px)' }}
+           ></div>
+            <div
+              id="popup-modal"
+              tabindex="-1"
+              className="overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex justify-center items-center"
+            >
+              <div className="relative p-4 w-full max-w-md max-h-full">
+                <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                  <div className="p-4 md:p-5 text-center">
+                    <h3 className="mb-5 text-lg font-normal text-white dark:text-white">
+                      Are you sure you want to delete this blog post?
+                    </h3>
+                    <button
+                      onClick={deleteBlog}
+                      type="button"
+                      className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"
+                    >
+                      Yes, I'm sure
+                    </button>
+                    <button
+                      onClick={() => setShowDeleteModal(false)}
+                      type="button"
+                      className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                    >
+                      No, cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </>
+          )}
         </div>
       </div>
     </div>

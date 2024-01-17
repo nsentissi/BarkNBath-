@@ -48,8 +48,8 @@ const Dash = ({ onProfileClick }) => {
         >
           <img src={barkNBath} className=" h-28 w-38 " alt="barknbath Logo" />
 
-          <p class="text-black font-playful font-bold text-xl mb-4">
-            Welcome <span className="animate-waving-hand">👋🏻</span>{" "}
+          <p class="text-black font-playful font-bold text-sm mb-4 bg-white p-2 bg-opacity-50 rounded-full">
+            Welcome <span className="animate-waving-hand">👋</span>{" "}
             {currentUser.firstName} {currentUser.lastName}
           </p>
 
