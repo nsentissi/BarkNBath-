@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const Modal = ({ children, isOpen, onClose }) => {
+const Modalmap = ({ children, isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const handleOverlayClick = () => {
@@ -35,4 +35,4 @@ const Modal = ({ children, isOpen, onClose }) => {
   );
 };
 
-export default Modal;
+export default Modalmap;

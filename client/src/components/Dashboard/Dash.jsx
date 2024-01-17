@@ -2,7 +2,7 @@ import React, { Suspense, useState } from "react";
 import { useAuth } from "../../hooks/AuthContext";
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import styles from "./Dashboard.module.css";
+
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import barkNBath from "../../assets/barkNBath.png";
 
@@ -18,13 +18,13 @@ const Dash = ({ onProfileClick }) => {
   //     navigate(`/`);
   //   };
   return (
-    <div class="antialiased bg-primary w-full min-h-screen font-playful  relative py-4">
+    <div class="antialiased bg-primary/80 w-full min-h-screen font-playful  relative py-4">
       <div class="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
         <motion.div
           initial={{ x: -250 }}
           animate={{ x: 0 }}
           transition={{ type: "spring", stiffness: 100 }}
-          className="bg-success col-span-3 rounded-lg p-4"
+          className="bg-success col-span-3 rounded-lg p-4 sticky top-10 bottom-10 h-[750px] "
         >
           <img src={barkNBath} className=" h-28 w-38 " alt="barknbath Logo" />
 
@@ -33,7 +33,7 @@ const Dash = ({ onProfileClick }) => {
             {currentUser.firstName} {currentUser.lastName}
           </p>
 
-          <hr class="my-2 border-1 border-primary" />
+          <hr class="my-2 border-1 border-success" />
           <div id="menu" class="flex flex-col space-y-8 my-5">
             <NavLink
               to={"pets"}
@@ -45,7 +45,7 @@ const Dash = ({ onProfileClick }) => {
                 };
               }}
             >
-              <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
+              <div className="flex flex-row items-center space-x-2">
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -63,15 +63,16 @@ const Dash = ({ onProfileClick }) => {
                   </svg>
                 </div>
                 <div>
-                  <p class="font-bold  lg:text-lg  leading-4 group-hover:text-indigo-400">
+                  <p className="font-bold lg:text-lg leading-4 whitespace-nowrap">
                     Overview
                   </p>
-                  <p class="text-primary font-bold text-sm hidden md:block">
+                  <p className="text-primary font-bold text-sm hidden md:block whitespace-nowrap">
                     Your dogs
                   </p>
                 </div>
               </div>
             </NavLink>
+            
             <NavLink
               to={"addpet"}
               class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
@@ -82,7 +83,7 @@ const Dash = ({ onProfileClick }) => {
                 };
               }}
             >
-              <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
+              <div className="flex flex-row items-center space-x-2">
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -100,11 +101,11 @@ const Dash = ({ onProfileClick }) => {
                   </svg>
                 </div>
                 <div>
-                  <p class="font-bold  lg:text-lg  leading-4 group-hover:text-indigo-400">
-                    Add
+                  <p className="font-bold lg:text-lg leading-4 whitespace-nowrap">
+                    Add your puffy friend
                   </p>
-                  <p class="text-primary font-bold text-sm hidden md:block">
-                    Add a dog
+                  <p className="text-primary font-bold text-sm hidden md:block whitespace-nowrap">
+                   List
                   </p>
                 </div>
               </div>
@@ -119,7 +120,7 @@ const Dash = ({ onProfileClick }) => {
               }}
               class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
             >
-              <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
+              <div className="flex flex-row items-center space-x-2">
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -137,9 +138,9 @@ const Dash = ({ onProfileClick }) => {
                   </svg>
                 </div>
                 <div>
-                  <p class="font-bold  lg:text-lg  leading-4 ">Book</p>
-                  <p class="text-primary font-bold text-sm hidden md:block">
-                    an appointment
+                  <p className="font-bold lg:text-lg leading-4 whitespace-nowrap">Book an appointment</p>
+                  <p className="text-primary font-bold text-sm hidden md:block whitespace-nowrap">
+                    Spa Day
                   </p>
                 </div>
               </div>
@@ -154,7 +155,7 @@ const Dash = ({ onProfileClick }) => {
               }}
               class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
             >
-              <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
+              <div className="flex flex-row items-center space-x-2">
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -172,50 +173,14 @@ const Dash = ({ onProfileClick }) => {
                   </svg>
                 </div>
                 <div>
-                  <p class="font-bold  lg:text-lg  leading-4 ">Blogs</p>
-                  <p class="text-primary font-bold text-sm hidden md:block">
+                  <p className="font-bold lg:text-lg leading-4 whitespace-nowrap">Blogs</p>
+                  <p className="text-primary font-bold text-sm hidden md:block whitespace-nowrap">
                     View all blogs
                   </p>
                 </div>
               </div>
             </NavLink>
-            {/* <NavLink
-              to={"create-blog/:id"}
-              style={({ isActive }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  color: isActive ? "#fff" : "black",
-                };
-              }}
-              class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
-            >
-              <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-6 h-6 group-hover:text-indigo-400"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p class="font-bold  lg:text-lg  leading-4 ">
-                    Share your experience
-                  </p>
-                  <p class="text-primary font-bold text-sm hidden md:block">
-                    Post a blog
-                  </p>
-                </div>
-              </div>
-            </NavLink> */}
+           
             <NavLink
               to={"profile"}
               style={({ isActive }) => {
@@ -226,7 +191,7 @@ const Dash = ({ onProfileClick }) => {
               }}
               class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
             >
-              <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
+              <div className="flex flex-row items-center space-x-2">
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -249,10 +214,10 @@ const Dash = ({ onProfileClick }) => {
                   </svg>
                 </div>
                 <div>
-                  <p class="font-bold  lg:text-lg leading-4 group-hover:text-indigo-400">
+                  <p className="font-bold lg:text-lg leading-4 whitespace-nowrap">
                     Your account
                   </p>
-                  <p class="text-primary font-bold text-sm hidden md:block">
+                  <p className="text-primary font-bold text-sm hidden md:block whitespace-nowrap">
                     Edit settings
                   </p>
                 </div>
@@ -264,7 +229,7 @@ const Dash = ({ onProfileClick }) => {
                   href="#_"
                   className="group relative  inline-flex items-center justify-center overflow-hidden rounded-xl border-2 border-success p-4 px-5 py-2.5 font-medium text-white shadow-md transition duration-300 ease-out"
                 >
-                  <span className="absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-info text-white duration-300 group-hover:translate-x-0">
+                  <span className="absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-accent text-white duration-300 group-hover:translate-x-0">
                     <svg
                       className="h-6 w-6"
                       fill="none"
@@ -280,7 +245,7 @@ const Dash = ({ onProfileClick }) => {
                       ></path>
                     </svg>
                   </span>
-                  <span className="absolute text-white flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
+                  <span className="absolute text-white bg-primary flex h-full w-full transform items-center justify-center text-[#003B46] transition-all duration-300 group-hover:translate-x-full">
                     LOG OUT
                   </span>
                   <span className="invisible relative">LOG </span>
@@ -298,9 +263,10 @@ const Dash = ({ onProfileClick }) => {
         <motion.div
           initial={{ x: 250 }} 
           animate={{ x: 0 }} 
-          transition={{ type: "spring", stiffness: 100 ,duration: 6 }} class="bg-white col-span-9 rounded-lg p-6">
+          transition={{ type: "spring", stiffness: 100 ,duration: 6 }} class="flex-grow bg-white/80 col-span-9 rounded-lg p-6">
           <Outlet />
         </motion.div>
+        
       </div>
     </div>
   );

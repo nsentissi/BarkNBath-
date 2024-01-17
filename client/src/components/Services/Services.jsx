@@ -11,7 +11,7 @@ import breed from "../../assets/breed.jpg";
 import thework from "../../assets/thework.jpg";
 import dental from "../../assets/dental.jpg";
 import ServicesDog from "../ServicesDog";
-import TrashApp from "../../assets/trashapp.png";
+import TrashApp from "../../assets/trashapp.svg";
 
 
 Modal.setAppElement("#root");
@@ -76,7 +76,7 @@ function Services() {
           >
             <ServicesDog />
             <button onClick={closeModal}>
-              <img src={TrashApp} />
+              <img src={TrashApp} className="w-8" />
             </button>
           </Modal>
         </div>
