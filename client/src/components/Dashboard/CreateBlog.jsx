@@ -93,20 +93,20 @@ const CreateBlog = () => {
   }, []);
 
   return (
-    <div className="h-screen ">
-      <div className="flex items-center justify-around py-8">
+    <div className=" ">
+      <div className="flex flex-col items-center justify-around py-8">
         <h4 className="text-gray-800 font-semibold text-4xl text-center ">
           Your Blogs
         </h4>
-        
+        <p className="mt-4">Share your experience with others</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-2 lg:gap-8">
-        <div className="post p-5 lg:p-1 rounded-md">
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-1 lg:gap-8">
+      <div className="">
+        <div className="w-full px-16" id="posted">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-1  ">
             <form
               onSubmit={handleSubmit}
-              className="border-4 border-primary   px-6 py-10 mt-10"
+              className="border-4 border-primary p-8"
             >
               {/* <!-- Post Content Section --> */}
               <h3 className="text-center font-bold text-gray-700 text-xl ">
@@ -209,67 +209,53 @@ const CreateBlog = () => {
           </div>
         </div>
 
-        <div className="lg:col-span-2 p-4  mt-3 " id="posted">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
+        <div className="flex justify-center col-span-8 mt-8" id="posted">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 ">
             {blogs.map((blog) => {
               return (
-                <div>
+                <div className="">
                   {/* First Column */}
-                  <div className="bg-white p-8 rounded-lg shadow-md max-w-md shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                  <div className="bg-white p-8 rounded-lg shadow-md max-w-md cursor-pointer w-full hover:-translate-y-1 duration-300">
                     {/* User Info with Three-Dot Menu */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center space-x-2">
-                        <img
-                          src={blog.pet.profilePhotoUrl}
-                          alt="User Avatar"
-                          className="w-8 h-8 rounded-full"
-                        />
-                        <div>
-                          <p className="text-gray-800 font-semibold">
-                            {blog.pet.name}
-                          </p>
-                          <p className="text-gray-500 text-sm">
-                            posted {formatTimeAgo(blog.date)}
-                          </p>{" "}
-                        </div>
-                      </div>
-                      <div className="text-gray-500 cursor-pointer">
-                        {/* Three-dot menu icon */}
-                        <button className="hover:bg-gray-50 rounded-full p-1">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="7" r="1" />
-                            <circle cx="12" cy="12" r="1" />
-                            <circle cx="12" cy="17" r="1" />
-                          </svg>
-                        </button>
-                        <button onClick={() => deleteBlog(blog._id)}>
-                          <img src={trashapp} />
-                        </button>
-                      </div>
-                    </div>
-                    {/* Message */}
-                    <div className="mb-4">
-                      <p className="text-gray-800">{blog.title}</p>
-                      <p className="text-gray-800">{blog.paragraph}</p>
-                    </div>
-                    {/* Image */}
-                    <div className="mb-4">
+                    <div className="flex items-center justify-between mb-4 inline relative group">
+                    <div className="flex items-center space-x-2 ">
                       <img
-                        src={blog.photo}
-                        alt={blog.title}
-                        className="w-full h-48 object-cover rounded-md"
+                        src={blog.pet?.profilePhotoUrl}
+                        alt="User Avatar"
+                        className="w-16 h-16 rounded-full"
+                        
                       />
+                    
+                      <div>
+
+                        <p className="text-gray-800 font-semibold">
+                          {blog.pet?.name}
+
+                        </p>
+                        
+                        
+                        <p className="text-gray-500 text-xs">
+                          posted {formatTimeAgo(blog.date)}
+                        </p>{" "}
+                      </div>
                     </div>
+                    <div className="text-gray-500 cursor-pointer">
+                      
+                    </div>
+                  </div>
+                  {/* Message */}
+                  <div className="mb-4 font-playful text-black ">
+                    <p className="text-gray-800 font-bold">{blog.title}</p>
+                    <p className="text-gray-800">{blog.paragraph}</p>
+                  </div>
+                  {/* Image */}
+                  <div className="mb-4">
+                    <img
+                      src={blog.photo}
+                      alt={blog.title}
+                      className="w-full bg-center bg-cover h-58 object-cover rounded-md"
+                    />
+                  </div>
                     {/* Like and Comment Section */}
                     <div className="flex items-center justify-between text-gray-500">
                       <button
@@ -320,27 +306,28 @@ const CreateBlog = () => {
                     </div>
                     <div className="px-6 py-4">
                       {commentsVisibility[blog._id] && (
-                        <div className="px-6 py-4">
-                          <h3 className="text-xl font-bold">Comments:</h3>
-                          {blog.comments.length > 0 ? (
-                            blog.comments.map((comment) => (
-                              <div
-                                key={comment._id}
-                                className="border-t border-gray-200 mt-2 pt-2"
-                              >
-                                <p className="text-sm text-gray-600">
-                                  {comment.text}
-                                </p>
-                                <p className="text-xs text-black">
-                                  By: {comment.owner?.firstName}{" "}
-                                  {comment.owner?.lastName}
-                                </p>
-                              </div>
-                            ))
-                          ) : (
-                            <p className="text-gray-600">No comments yet</p>
-                          )}
-                        </div>
+                         <div className="">
+                         <h3 className="text-sm font-bold">Comments:</h3>
+                         {blog.comments.length > 0 ? (
+                           blog.comments.map((comment) => (
+                             <div
+                               key={comment._id}
+                               className="mt-1 pt-2 border-t "
+                             >
+                                  <p className="text-xs font-semibold mt-1 text-black">
+                               {comment.author?.firstName} {comment.author?.lastName}
+                               </p>
+                               <p className="text-sm font-bold text-primary italic font-bold">
+                                 {comment.text}
+                               </p>
+         
+                             </div>
+                             
+                           ))
+                         ) : (
+                           <p className="text-gray-600">No comments yet</p>
+                         )}
+                       </div>
                       )}
                     </div>
                   </div>

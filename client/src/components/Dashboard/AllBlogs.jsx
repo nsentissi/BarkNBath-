@@ -64,7 +64,7 @@ const AllBlogs = () => {
        
       </div>
       <div className="flex justify-center col-span-8 mt-3" id="posted">
-        <div className="grid grid-cols-1 lg:grid-cols-1 gap-4 ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
           {blogs.map((blog) => {
             return (
               <div>
@@ -127,7 +127,7 @@ const AllBlogs = () => {
                     <img
                       src={blog.photo}
                       alt={blog.title}
-                      className="w-full h-72 object-cover rounded-md"
+                      className="w-full bg-center bg-cover h-58 object-cover rounded-md"
                     />
                   </div>
                   
@@ -135,7 +135,7 @@ const AllBlogs = () => {
                   <div className="flex items-center justify-between text-gray-500">
                     <button
                       onClick={() => toggleComments(blog._id)}
-                      className="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1"
+                      className="flex justify-center items-center px-2 hover:bg-gray-50 rounded-full "
                     >
                       <svg
                         width="22px"
@@ -172,17 +172,17 @@ const AllBlogs = () => {
                       </button>
                     </div>
                   </div>
-                  <div className="px-6 py-4 font-playful">
+                  <div className="px-2  font-playful">
                     {commentsVisibility[blog._id] && (
-                      <div className="px-6 py-4">
+                      <div className="">
                         <h3 className="text-sm font-bold">Comments:</h3>
                         {blog.comments.length > 0 ? (
                           blog.comments.map((comment) => (
                             <div
                               key={comment._id}
-                              className="mt-3 pt-2 border-t "
+                              className="mt-1 pt-2 border-t "
                             >
-                                 <p className="text-xs font-semibold mb-4 text-black">
+                                 <p className="text-xs font-semibold mt-1 text-black">
                               {comment.author?.firstName} {comment.author?.lastName}
                               </p>
                               <p className="text-sm font-bold text-primary italic font-bold">
