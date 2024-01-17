@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import PasswordChecklist from "react-password-checklist";
 import barkNBath from "../assets/barkNBath.png"
+import homepagelog from "../assets/homepagelog.png"
 
 const Signup = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -37,7 +38,7 @@ const Signup = () => {
     <div class="bg-gray-100 h-screen flex items-center justify-center">
       {/* <!-- Background Image --> */}
     <div class="absolute inset-0 z-0">
-        <img src="./src/assets/homepagelog.png" alt=""
+        <img src={homepagelog} alt=""
             class="w-full h-full object-cover filter blur-lg brightness-50"/>
     </div>
 
@@ -106,13 +107,13 @@ const Signup = () => {
             onChange={(e) => setPasswordAgain(e.target.value)}
           />
         </div>
-        <PasswordChecklist
+        {/* <PasswordChecklist
           rules={["minLength", "specialChar", "number", "capital", "match"]}
           minLength={5}
           value={password}
           valueAgain={passwordAgain}
           onChange={(isValid) => setIsFormValid(isValid)}
-        />
+        /> */}
 
           <div className="flex flex-col sm:flex-col gap-2 md:gap-4 gap-6-lg items-center justify-between">
             <button
