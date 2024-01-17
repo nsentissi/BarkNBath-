@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   return (
-    <div class="bg-gray-100 min-h-screen flex items-center justify-center px-4">
+    <div class="bg-gray-100 p-4  min-h-screen flex items-center justify-center  ">
       {/* Background Image */}
       <div class="absolute inset-0 z-0">
         <img

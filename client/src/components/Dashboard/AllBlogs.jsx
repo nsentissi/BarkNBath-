@@ -66,7 +66,7 @@ const AllBlogs = () => {
             return (
               <div>
                 {/* First Column */}
-                <div className="bg-white p-8 rounded-lg shadow-md max-w-md cursor-pointer w-full hover:-translate-y-1 duration-300">
+                <div className="bg-success/50 p-8 rounded-lg shadow-md max-w-md cursor-pointer w-full hover:-translate-y-1 duration-300">
                   {/* User Info with Three-Dot Menu */}
                   <div className="flex items-center justify-between mb-4 inline relative group">
                     <div className="flex items-center space-x-2 ">
