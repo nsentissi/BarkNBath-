@@ -5,7 +5,6 @@ import CommentForm from "./CommentForm";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
-
 const AllBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [commentsVisibility, setCommentsVisibility] = useState({});
@@ -37,7 +36,6 @@ const AllBlogs = () => {
     }
   };
 
-
   useEffect(() => {
     fetchBlogs();
   }, []);
@@ -57,11 +55,10 @@ const AllBlogs = () => {
 
   return (
     <div className=" font-playful ">
-        <div className="flex items-center justify-around py-8">
+      <div className="flex items-center justify-around py-8">
         <h4 className="text-gray-800 font-semibold text-xl md:text-3xl lg:text-4xl text-center ">
           Puffy Friends Blogs
         </h4>
-       
       </div>
       <div className="flex justify-center col-span-8 mt-3" id="posted">
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-4 ">
@@ -77,19 +74,15 @@ const AllBlogs = () => {
                         src={blog.pet?.profilePhotoUrl}
                         alt="User Avatar"
                         className="w-20 h-20 rounded-full"
-                        
                       />
-                    
-                      <div>
 
+                      <div>
                         <p className="text-gray-800 font-semibold">
                           {blog.pet?.name}
-
                         </p>
                         <p className="text-gray-800 font-semibold text-xs">
-                        Pet owner: {" "}{blog.owner?.firstName}
+                          Pet owner: {blog.owner?.firstName}
                         </p>
-                        
                         <p className="text-gray-500 text-xs">
                           posted {formatTimeAgo(blog.date)}
                         </p>{" "}
@@ -130,7 +123,7 @@ const AllBlogs = () => {
                       className="w-full h-72 object-cover rounded-md"
                     />
                   </div>
-                  
+
                   {/* Like and Comment Section */}
                   <div className="flex items-center justify-between text-gray-500">
                     <button
@@ -182,21 +175,22 @@ const AllBlogs = () => {
                               key={comment._id}
                               className="mt-3 pt-2 border-t "
                             >
-                                 <p className="text-xs font-semibold mb-4 text-black">
-                              {comment.author?.firstName} {comment.author?.lastName}
+                              <p className="text-xs font-semibold mb-4 text-black">
+                                {comment.author?.firstName}{" "}
+                                {comment.author?.lastName}
                               </p>
+                              <span className="text-gray-500 text-xs">
+                                - {moment(comment.date).fromNow()}
+                              </span>
                               <p className="text-sm font-bold text-primary italic font-bold">
                                 {comment.text}
                               </p>
-        
                             </div>
-                            
                           ))
                         ) : (
                           <p className="text-gray-600">No comments yet</p>
                         )}
                       </div>
-                      
                     )}
                   </div>
                   <CommentForm blogId={blog._id} onCommentSubmit={addComment} />
@@ -206,8 +200,6 @@ const AllBlogs = () => {
           })}
         </div>
       </div>
-
-      
     </div>
   );
 };
