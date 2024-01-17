@@ -94,6 +94,7 @@ const addComment = async (req, res, next) => {
     }
 
     const newComment = { author, text };
+    console.log(newComment)
     blog.comments.push(newComment);
 
     await blog.save();

@@ -21,7 +21,9 @@ const CommentForm = ({ blogId, onCommentSubmit }) => {
   <textarea
     class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 pl-8"
     placeholder="Add your comment here..."
+
     onChange={(e) => setText(e.target.value)}
+
   ></textarea>
   <svg
     class="w-5 h-5 absolute left-2 top-2 text-green-500"

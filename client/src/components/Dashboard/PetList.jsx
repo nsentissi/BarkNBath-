@@ -9,6 +9,7 @@ import trashapp from "../../assets/trashapp.svg";
 
 const PetList = () => {
   const { currentUser } = useAuth();
+
   const navigate = useNavigate();
   const [petAppointments, setPetAppointments] = useState([]);
 
@@ -103,10 +104,12 @@ const PetList = () => {
             key={index}
             className="flex flex-col md:flex-row gap-12 mt-16 w-full"
           >
+
             
             {/* Pet card */}
             <div className="flex flex-col items-center">
               {/* Create Post Button */}
+
               <button
                 className="button type1 mb-4"
                 onClick={() => handleCreatePostClick(pet._id)}
@@ -206,6 +209,7 @@ const PetList = () => {
                           {appointment.time}
                         </div>
 
+
                         <p className="mt-2 font-bold text-black">
                           {appointment.service}
                         </p>
@@ -213,6 +217,7 @@ const PetList = () => {
                     </div>
                   )
                 )}
+
               </div>
             </div>
           </div>
