@@ -28,6 +28,7 @@ const Profile = () => {
   };
 
   return (
+    
     <div>
       <h2>Profile</h2>
       <p>Email: {currentUser.email}</p>

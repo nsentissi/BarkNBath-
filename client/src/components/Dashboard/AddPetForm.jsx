@@ -38,22 +38,17 @@ const AddPetForm = () => {
     }
 
     try {
-      const response = await axiosClient.post(
-        "/pet/create",
-        formData,
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      const response = await axiosClient.post("/pet/create", formData, {
+        withCredentials: true,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
       dispatch({
         type: "LOGIN",
         payload: { ...currentUser, pets: [...currentUser.pets, response.data] },
       });
 
-     
-     navigate("/dashboard/pets")
+      navigate("/dashboard/pets");
     } catch (err) {
       console.log(err);
       setError(err.response?.data?.message || "An error occurred");
@@ -63,7 +58,7 @@ const AddPetForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className=" min-h-screen flex items-center justify-center px-4">
-        <div className="bg-secondary z-10 flex flex-col gap-8 p-6 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-md w-full">
+        <div className="bg-accent z-10 flex flex-col gap-8 p-6 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-md w-full">
           <h1 className="text-xl font-chewy tracking-widest  text-center font-semibold text-gray-900">
             Add your puffy friend
           </h1>
@@ -94,26 +89,21 @@ const AddPetForm = () => {
             placeholder="Age"
             required
           />
+          
+
+          <label
+            className="block text-sm -mb-7 font-medium text-gray-900 dark:text-white"
+            for="file_input"
+          >
+            Profile Photo
+          </label>
           <input
             className="w-full p-2 border border-gray-300 rounded-2xl"
-            type="number"
-            name="weight"
-            value={petData.weight}
+            name="profilePhoto"
             onChange={handleChange}
-            placeholder="Weight"
-            required
+            id="file_input"
+            type="file"
           />
-          <div>
-            <label class="block text-sm font-medium text-gray-700">
-              Cover photo
-            </label>
-            <input
-              className="w-full p-2 border border-gray-300 rounded-2xl"
-              type="file"
-              name="profilePhoto"
-              onChange={handleChange}
-            />
-          </div>
 
           <textarea
             className="w-full p-2 border border-gray-300 rounded-2xl"

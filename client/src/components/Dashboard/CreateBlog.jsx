@@ -3,7 +3,7 @@ import axiosClient from "../../../axiosClient";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../hooks/AuthContext";
 import moment from "moment";
-import trashapp from "../../assets/trashapp.png";
+import trashapp from "../../assets/trashapp.svg";
 
 import { Link } from "react-router-dom";
 

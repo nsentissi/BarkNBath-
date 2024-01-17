@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./Petlist.css";
-import trashapp from "../../assets/trashapp.png";
+import trashapp from "../../assets/trashapp.svg";
 
 const PetList = () => {
   const { currentUser } = useAuth();
@@ -92,132 +92,127 @@ const PetList = () => {
   return (
     <>
       <div className="text-center">
-        <h1 className="font-bold text-black tracking-widest pt-8 text-4xl ">
+        <h1 className="font-bold text-black tracking-widest pt-8 text-4xl">
           Your puffy friends
         </h1>
       </div>
-      <div className="flex flex-col justify-center overflow-hidden ">
+      <div className="flex flex-col justify-center overflow-hidden">
+        
         {currentUser.pets?.map((pet, index) => (
           <div
             key={index}
             className="flex flex-col md:flex-row gap-12 mt-16 w-full"
           >
-            <div className="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-64  rounded-2xl hover:duration-700 duration-700">
-              <div className="w-62 h-72 bg-success/80">
-                <img
-                  className="h-72 bg-cover bg-center "
-                  src={pet.profilePhotoUrl}
-                  alt={pet.name}
-                />
-              </div>
-              
-              <div className="absolute bg-primary/90 -bottom-24 w-64 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
-                <span className="text-whitefont-bold text-ml">{pet.name}</span>
-                <span className="text-black font-semibold text-xl">
-                  {pet.breed}
-                </span>
-                <p className="text-neutral-800 font-bold">
-                  Weight : {pet.weight} kg
-                </p>
-                <p className="text-neutral-800 font-bold">
-                  Age : {pet.age} years old
-                </p>
-              </div>
-              
-            </div>
-           
-            <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4">
-              <div className="bg-warning p-8 h-56 w-64 rounded-lg">
+            
+            {/* Pet card */}
+            <div className="flex flex-col items-center">
+              {/* Create Post Button */}
               <button
-                className="button type1"
-
-                onClick={(e) => {
-                  handleCreatePostClick(pet._id);
-                }}
+                className="button type1 mb-4"
+                onClick={() => handleCreatePostClick(pet._id)}
               >
-                <span className="btnTxt font-playful font-bold px-2">Create Post</span>
+                <span className="btnTxt font-playful font-bold px-2">
+                  Create Post
+                </span>
               </button>
-                <div className="flex flex-col space-x-4 space-y-4 items-center">
-                  <p className="text-black font-bold text-sm ">
-                    Upcoming appointments
+
+              {/* Pet Details */}
+              <div className="relative group duration-500 cursor-pointer overflow-hidden text-gray-50 h-72 w-64 rounded-2xl hover:duration-700">
+                <div className="w-62 h-72 bg-success/80">
+                  <img
+                    className="h-72 bg-cover bg-center "
+                    src={pet.profilePhotoUrl}
+                    alt={pet.name}
+                  />
+                </div>
+
+                <div className="absolute  bg-primary/90 -bottom-24 w-64 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
+                  <span className="text-white font-bold text-ml">
+                    {pet.name}
+                  </span>
+                  <span className="text-black font-semibold text-xl">
+                    {pet.breed}
+                  </span>
+                  <p className="text-white font-bold">
+                    Weight : {pet.weight} kg
                   </p>
-
-                  <div className="max-w-md mx-auto rounded-xl overflow-hidden md:max-w-2xl m-3">
-                    {!filterAppointments(petAppointments[pet._id] || [], true)
-                      .length && (
-                      <div className="w-90 h-24 flex items-center text-white text-sm justify-center font-playful font-bold ">
-                        No upcoming appointment
-                      </div>
-                    )}
-                    {filterAppointments(
-                      petAppointments[pet._id] || [],
-                      true
-                    ).map((appointment, idx) => (
-                      <div className="p-4 flex items-center" key={idx}>
-                        <div className="pr-4 bg-neutral p-2 rounded-lg text-center">
-                          <p className="text-4xl font-bold text-white">
-                            {formatDate(appointment.date)}
-                          </p>
-                        </div>
-
-                        <div className="ml-4">
-                          <div className="uppercase tracking-wide text-xl text-white font-bold">
-                            {appointment.time}
-                          </div>
-
-                          <p className="mt-2 font-bold text-white">
-                            {appointment.service}
-                          </p>
-                        </div>
-                        <button
-                          onClick={() =>
-                            handleDeleteAppointment(appointment._id, pet._id)
-                          }
-                          className="text-black"
-                        >
-                          <img src={trashapp} className="w-16"></img>
-                        </button>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-white font-bold">
+                    Age : {pet.age} years old
+                  </p>
                 </div>
               </div>
-              <div class="bg-gray-300 py-8 h-56 w-64 rounded-lg">
-                <div class="flex flex-col space-x-4 space-y-4 items-center">
-                  <p className="text-black font-bold text-sm ">
-                    Past appointments{" "}
-                  </p>
+            </div>
 
-                  <div className="max-w-md mx-auto   rounded-xl overflow-hidden md:max-w-2xl m-3">
-                    {!filterAppointments(petAppointments[pet._id] || [], false)
-                      .length && (
-                      <div className="w-90 h-24 flex items-center text-gray-400 justify-cente font-playful font-bold">
-                        No past appointment
-                      </div>
-                    )}
-                    {filterAppointments(
-                      petAppointments[pet._id] || [],
-                      false
-                    ).map((appointment, idx) => (
-                      <div className="p-4 flex items-center" key={idx}>
-                        <div className="pr-4 bg-primary/60 p-2 rounded-lg text-center">
-                          <p className="text-4xl font-bold text-white">
-                            {formatDate(appointment.date)}
-                          </p>
-                        </div>
-                        <div className="ml-4">
-                          <div className="uppercase tracking-wide text-xl text-primary font-bold">
-                            {appointment.time}
-                          </div>
-                          <p className="mt-2 font-bold text-gray-500">
-                            {appointment.service}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
+            {/* Appointments */}
+            <div className="flex flex-col">
+              {/* Upcoming Appointments */}
+              <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+                {!filterAppointments(petAppointments[pet._id] || [], true)
+                  .length && (
+                  <div className="w-90 h-24 flex items-center text-white text-sm justify-center font-playful font-bold ">
+                    No upcoming appointment
                   </div>
-                </div>
+                )}
+                {filterAppointments(petAppointments[pet._id] || [], true).map(
+                  (appointment, idx) => (
+                    <div className="p-4 flex items-center" key={idx}>
+                      <div className="pr-4 bg-neutral p-2 rounded-lg text-center">
+                        <p className="text-4xl font-bold text-white">
+                          {formatDate(appointment.date)}
+                        </p>
+                      </div>
 
+                      <div className="ml-4">
+                        <div className="uppercase tracking-wide text-xl text-black font-bold">
+                          {appointment.time}
+                        </div>
+
+                        <p className="mt-2 font-bold text-black">
+                          {appointment.service}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() =>
+                          handleDeleteAppointment(appointment._id, pet._id)
+                        }
+                        className="text-black"
+                      >
+                        <img src={trashapp} className="w-6"></img>
+                      </button>
+                    </div>
+                  )
+                )}
+              </div>
+
+              {/* Past Appointments */}
+              <div className="max-w-md mx-auto bg-gray-200 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+                {!filterAppointments(petAppointments[pet._id] || [], false)
+                  .length && (
+                  <div className="w-90 h-24 flex items-center text-white text-sm justify-center font-playful font-bold ">
+                    No past appointment
+                  </div>
+                )}
+                {filterAppointments(petAppointments[pet._id] || [], false).map(
+                  (appointment, idx) => (
+                    <div className="p-4 flex items-center" key={idx}>
+                      <div className="pr-4 bg-primary/30 p-2 rounded-lg text-center">
+                        <p className="text-4xl font-bold text-white">
+                          {formatDate(appointment.date)}
+                        </p>
+                      </div>
+
+                      <div className="ml-4">
+                        <div className="uppercase tracking-wide text-xl text-black font-bold">
+                          {appointment.time}
+                        </div>
+
+                        <p className="mt-2 font-bold text-black">
+                          {appointment.service}
+                        </p>
+                      </div>
+                    </div>
+                  )
+                )}
               </div>
             </div>
           </div>
