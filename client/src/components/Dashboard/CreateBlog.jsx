@@ -235,7 +235,7 @@ const CreateBlog = () => {
               return (
                 <div className="">
                   {/* First Column */}
-                  <div className="bg-success/50 p-8 rounded-lg shadow-md max-w-2xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
+                  <div className="bg-success/70 p-8 rounded-lg shadow-md max-w-2xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
                     {/* User Info with Three-Dot Menu */}
                     <div className="flex items-center justify-between mb-4 inline relative group">
                     <div className="flex items-center space-x-2 ">
@@ -259,7 +259,7 @@ const CreateBlog = () => {
                         </p>{" "}
                       </div>
                       <button onClick={() => deleteBlog(blog._id)}>
-                          <img src={trashapp} className="w-6 ml-36" />
+                          <img src={trashapp} className="w-6 ml-72" />
                         </button>
                     </div>
                     <div className="text-gray-500 cursor-pointer">

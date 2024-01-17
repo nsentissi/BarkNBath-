@@ -109,7 +109,7 @@ const PetList = () => {
               {/* Create Post Button */}
 
               <button
-                className="border-4 border-primary rounded-full px-6 py-2 mb-4"
+                className="border-4 border-success bg-primary/80 rounded-full px-6 py-2 mb-4"
                 onClick={() => handleCreatePostClick(pet._id)}
               >
                 <span className=" font-playful font-bold px-2">

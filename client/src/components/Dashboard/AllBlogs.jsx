@@ -59,7 +59,7 @@ const AllBlogs = () => {
   return (
     <div className=" font-playful ">
       <div className="flex items-center justify-around py-8">
-        <h4 className="text-gray-800 font-semibold text-xl md:text-3xl lg:text-4xl text-center ">
+        <h4 className="text-gray-800 font-bold text-xl md:text-3xl lg:text-4xl text-center ">
           Puffy Friends Blogs
         </h4>
       </div>
@@ -69,7 +69,7 @@ const AllBlogs = () => {
             return (
               <div>
                 {/* First Column */}
-                <div className="bg-success/50 p-8 rounded-lg shadow-md max-w-4xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
+                <div className="bg-success/50 p-8 rounded-lg shadow-md max-w-3xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
                   {/* User Info with Three-Dot Menu */}
                   <div className="flex items-center justify-between mb-4 inline relative group">
                     <div className="flex items-center space-x-2 ">
@@ -123,7 +123,7 @@ const AllBlogs = () => {
                     <img
                       src={blog.photo}
                       alt={blog.title}
-                      className="w-full bg-center bg-cover  object-cover rounded-md"
+                      className="w-full bg-center bg-cover h-96 object-cover rounded-md"
                     />
                   </div>
 
