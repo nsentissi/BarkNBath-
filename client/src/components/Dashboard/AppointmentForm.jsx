@@ -165,20 +165,25 @@ const AppointmentForm = ({ setActiveContent }) => {
               </svg>
             </button>
             <Modal
-              isOpen={modalIsOpen}
-              onRequestClose={closeModal}
-              contentLabel="Services Modal"
-              style={{
-                overlay: {
-                  zIndex: 1000, // Ensure this value is higher than the z-index of your dashboard
-                },
-              }}
-            >
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            contentLabel="Services Modal"
+            style={{
+              overlay: {
+                zIndex: 1000, 
+              },
+            }}
+            overlayClassName="fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto"
+            className="relative w-full h-full flex justify-center items-start pt-10"
+          >
+            <div className="w-full  bg-black bg-opacity-50 overflow-y-auto rounded-none">
               <ServicesDog />
-              <button onClick={closeModal}>
-                <img src={TrashApp} className="w-8 z-10" />
+              <button onClick={closeModal} className="absolute top-5 right-5">
+                <img src={TrashApp} className="w-8" />
               </button>
-            </Modal>
+            </div>
+          </Modal>
+           
           </div>
           <div className="flex flex-col">
             <label htmlFor="service" className="mb-2 font-semibold ">

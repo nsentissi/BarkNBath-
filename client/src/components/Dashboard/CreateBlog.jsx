@@ -51,7 +51,7 @@ const CreateBlog = () => {
     if (selectedFile) {
       data.append("photo", selectedFile);
     }
-
+  
     try {
       const response = await axiosClient.post(`/blog/create`, data, {
         withCredentials: true,
@@ -59,16 +59,16 @@ const CreateBlog = () => {
       });
       console.log("Response:", response);
       setBlogs([response.data, ...blogs]);
+      
+      setFormData({ title: "", paragraph: "" });
+      setSelectedFile(null);
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {
       setIsLoading(false);
     }
-
-    console.log("Form submitted:", formData);
-    console.log("Selected File:", selectedFile);
   };
-
+  
   const fetchBlogs = async (e) => {
     try {
       const response = await axiosClient.get(`/blog/get/${id}`, {

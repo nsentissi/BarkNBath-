@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -12,7 +12,6 @@ import thework from "../../assets/thework.jpg";
 import dental from "../../assets/dental.jpg";
 import ServicesDog from "../ServicesDog";
 import TrashApp from "../../assets/trashapp.svg";
-
 
 Modal.setAppElement("#root");
 
@@ -73,11 +72,15 @@ function Services() {
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             contentLabel="Services Modal"
+            overlayClassName="fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto"
+            className="relative w-full h-full flex justify-center items-start pt-10"
           >
-            <ServicesDog />
-            <button onClick={closeModal}>
-              <img src={TrashApp} className="w-8" />
-            </button>
+            <div className="w-full  bg-black bg-opacity-50 overflow-y-auto rounded-none">
+              <ServicesDog />
+              <button onClick={closeModal} className="absolute top-5 right-5">
+                <img src={TrashApp} className="w-8" />
+              </button>
+            </div>
           </Modal>
         </div>
       </div>

@@ -5,10 +5,10 @@ const CommentForm = ({ blogId, onCommentSubmit }) => {
   const [text, setText] = useState("");
   const { currentUser } = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onCommentSubmit(blogId, text);
-    setText("");
+    await onCommentSubmit(blogId, text);
+    setText(""); 
   };
 
   return (
@@ -21,7 +21,7 @@ const CommentForm = ({ blogId, onCommentSubmit }) => {
   <textarea
     class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 pl-8"
     placeholder="Add your comment here..."
-
+    value={text}
     onChange={(e) => setText(e.target.value)}
 
   ></textarea>
