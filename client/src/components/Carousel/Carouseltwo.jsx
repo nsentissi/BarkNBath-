@@ -151,11 +151,11 @@ const cards = [
   {
     url: carousel8,
     title: "Title 7",
-    id: 7,
+    id: 8,
   },
   {
     url: carousel9,
     title: "Title 7",
-    id: 7,
+    id: 9,
   },
 ];

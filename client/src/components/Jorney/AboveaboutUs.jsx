@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 const AboveaboutUs = () => {
     const variants = {
         hidden: { y: -200, opacity: 0 },
-        visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100, delay: 1, duration:1.5 } },
+        visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100, delay: 0.5, duration:1.5 } },
       };
       
       const [ref, inView] = useInView({
