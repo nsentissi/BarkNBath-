@@ -118,7 +118,7 @@ const AddPetForm = () => {
           </div>
           <label
             className="block text-sm -mb-4 font-medium text-gray-900 dark:text-white"
-            for="file_input"
+            htmlFor="file_input"
           >
             Profile Photo
           </label>

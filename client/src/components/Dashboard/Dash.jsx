@@ -57,7 +57,7 @@ const Dash = ({ onProfileClick }) => {
           <div id="menu" className="flex flex-col space-y-8 my-5">
             <NavLink
               to={"pets"}
-              className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
+              className=" transition duration-150 ease-linear rounded-lg py-3 px-2 group"
               style={({ isActive }) => {
                 return {
                   fontWeight: isActive ? "bold" : "",
@@ -73,7 +73,7 @@ const Dash = ({ onProfileClick }) => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-6 h-6 group-hover:text-indigo-400"
+                    className="w-6 h-6 "
                   >
                     <path
                       strokeLinecap="round"
@@ -95,7 +95,7 @@ const Dash = ({ onProfileClick }) => {
             
             <NavLink
               to={"addpet"}
-              className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
+              className=" transition duration-150 ease-linear rounded-lg py-3 px-2 group"
               style={({ isActive }) => {
                 return {
                   fontWeight: isActive ? "bold" : "",
@@ -111,7 +111,7 @@ const Dash = ({ onProfileClick }) => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-6 h-6 group-hover:text-indigo-400"
+                    className="w-6 h-6 "
                   >
                     <path
                       strokeLinecap="round"
@@ -138,7 +138,7 @@ const Dash = ({ onProfileClick }) => {
                   color: isActive ? "gray" : "black",
                 };
               }}
-              className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
+              className=" transition duration-150 ease-linear rounded-lg py-3 px-2 group"
             >
               <div className="flex flex-row items-center space-x-2">
                 <div>
@@ -148,7 +148,7 @@ const Dash = ({ onProfileClick }) => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-6 h-6 group-hover:text-indigo-400"
+                    className="w-6 h-6 "
                   >
                     <path
                       strokeLinecap="round"
@@ -173,7 +173,7 @@ const Dash = ({ onProfileClick }) => {
                   color: isActive ? "gray" : "black",
                 };
               }}
-              className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
+              className=" transition duration-150 ease-linear rounded-lg py-3 px-2 group"
             >
               <div className="flex flex-row items-center space-x-2">
                 <div>
@@ -183,7 +183,7 @@ const Dash = ({ onProfileClick }) => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-6 h-6 group-hover:text-indigo-400"
+                    className="w-6 h-6 "
                   >
                     <path
                       strokeLinecap="round"
@@ -209,7 +209,7 @@ const Dash = ({ onProfileClick }) => {
                   color: isActive ? "gray" : "black",
                 };
               }}
-              className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
+              className=" transition duration-150 ease-linear rounded-lg py-3 px-2 group"
             >
               <div className="flex flex-row items-center space-x-2">
                 <div>
@@ -219,7 +219,7 @@ const Dash = ({ onProfileClick }) => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-6 h-6 group-hover:text-indigo-400"
+                    className="w-6 h-6 "
                   >
                     <path
                       strokeLinecap="round"

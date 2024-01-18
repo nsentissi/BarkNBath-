@@ -17,25 +17,25 @@ const CommentForm = ({ blogId, onCommentSubmit }) => {
         {currentUser.firstName} {currentUser.lastName}{" "}
       </p>
       
-      <div class="relative">
+      <div className="relative">
   <textarea
-    class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 pl-8"
+    className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 pl-8"
     placeholder="Add your comment here..."
     value={text}
     onChange={(e) => setText(e.target.value)}
 
   ></textarea>
   <svg
-    class="w-5 h-5 absolute left-2 top-2 text-green-500"
+    className="w-5 h-5 absolute left-2 top-2 text-green-500"
     fill="none"
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
       d="M13.408 7.5h.01m-6.876 0h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM4.6 11a5.5 5.5 0 0 0 10.81 0H4.6Z"
     />
   </svg>

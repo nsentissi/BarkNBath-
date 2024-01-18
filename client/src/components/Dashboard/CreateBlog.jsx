@@ -145,9 +145,9 @@ const CreateBlog = () => {
                   onChange={handleInputChange}
                 />
               </div>
-              <div class="mb-6">
+              <div className="mb-6">
                 <label
-                  for="postContent"
+                  htmlFor="postContent"
                   className="block text-gray-700 text-sm font-bold mb-2"
                 >
                   Post Content:
@@ -165,7 +165,7 @@ const CreateBlog = () => {
               {/* <!-- File Attachment Section --> */}
               <div className="mb-6">
                 <label
-                  for="fileAttachment"
+                  htmlFor="fileAttachment"
                   className="block text-gray-700 text-sm font-bold mb-2"
                 >
                   Attach File:
@@ -186,9 +186,9 @@ const CreateBlog = () => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                       ></path>
                     </svg>
@@ -241,7 +241,7 @@ const CreateBlog = () => {
           <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 ">
             {blogs.map((blog) => {
               return (
-                <div className="">
+                <div key={blog._id} className="">
                   {/* First Column */}
                   <div className="bg-white/80 p-8 rounded-lg shadow-md max-w-2xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
                     {/* User Info with Three-Dot Menu */}
@@ -297,16 +297,16 @@ const CreateBlog = () => {
                           className="fill-current text-primary"
                           xmlns="http://www.w3.org/2000/svg"
                         >
-                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                           <g
                             id="SVGRepo_tracerCarrier"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                           ></g>
                           <g id="SVGRepo_iconCarrier">
                             <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
+                              fillRule="evenodd"
+                              clipRule="evenodd"
                               d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22ZM8 13.25C7.58579 13.25 7.25 13.5858 7.25 14C7.25 14.4142 7.58579 14.75 8 14.75H13.5C13.9142 14.75 14.25 14.4142 14.25 14C14.25 13.5858 13.9142 13.25 13.5 13.25H8ZM7.25 10.5C7.25 10.0858 7.58579 9.75 8 9.75H16C16.4142 9.75 16.75 10.0858 16.75 10.5C16.75 10.9142 16.4142 11.25 16 11.25H8C7.58579 11.25 7.25 10.9142 7.25 10.5Z"
                             ></path>
                           </g>
@@ -345,39 +345,39 @@ const CreateBlog = () => {
           </div>
           {showDeleteModal && (
             <>
-             <div
-             className="fixed inset-0 bg-black bg-opacity-30 z-40"
-             style={{ backdropFilter: 'blur(5px)' }}
-           ></div>
-            <div
-              id="popup-modal"
-              tabindex="-1"
-              className="overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex justify-center items-center"
-            >
-              <div className="relative p-4 w-full max-w-md max-h-full">
-                <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                  <div className="p-4 md:p-5 text-center">
-                    <h3 className="mb-5 text-lg font-normal text-white dark:text-white">
-                      Are you sure you want to delete this blog post?
-                    </h3>
-                    <button
-                      onClick={deleteBlog}
-                      type="button"
-                      className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"
-                    >
-                      Yes, I'm sure
-                    </button>
-                    <button
-                      onClick={() => setShowDeleteModal(false)}
-                      type="button"
-                      className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
-                    >
-                      No, cancel
-                    </button>
+              <div
+                className="fixed inset-0 bg-black bg-opacity-30 z-40"
+                style={{ backdropFilter: "blur(5px)" }}
+              ></div>
+              <div
+                id="popup-modal"
+                tabIndex="-1"
+                className="overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex justify-center items-center"
+              >
+                <div className="relative p-4 w-full max-w-md max-h-full">
+                  <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div className="p-4 md:p-5 text-center">
+                      <h3 className="mb-5 text-lg font-normal text-white dark:text-white">
+                        Are you sure you want to delete this blog post?
+                      </h3>
+                      <button
+                        onClick={deleteBlog}
+                        type="button"
+                        className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"
+                      >
+                        Yes, I'm sure
+                      </button>
+                      <button
+                        onClick={() => setShowDeleteModal(false)}
+                        type="button"
+                        className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                      >
+                        No, cancel
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </>
           )}
         </div>
