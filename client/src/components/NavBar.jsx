@@ -21,11 +21,11 @@ const Navbar = () => {
 
         <React.Fragment>
           <div className="nav ">
-            <a href="#">HOME</a>
-            <a href="#">ABOUT US</a>
-            <a href="#">SERVICES</a>
-            <a href="#">OUR LOCATIONS</a>
-            <a href="#">CONTACT US</a>
+          <a href="#home">HOME</a>
+          <a href="#about-us">ABOUT US</a>
+          <a href="#services">SERVICES</a>
+          <a href="#map">OUR LOCATIONS</a>
+          <a href="#faq">CONTACT US</a>
             <div className="animation start-home"></div>
           </div>
         </React.Fragment>

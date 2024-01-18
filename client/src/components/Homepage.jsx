@@ -11,20 +11,31 @@ import Carouseltwo from "./Carousel/Carouseltwo";
 import Map from "./Map";
 import NavBar from "./NavBar";
 
-
 const Homepage = () => {
   return (
     <div>
       <>
         <NavBar />
-        <Landingpage  />
-        <Journey  />
-        <AboutUs id="about-us" />
-        <Services id="services" />
-        <Map id="map"/>
+        <section id="home">
+          <Landingpage />
+        </section>
+        <Journey />
+        <section id="about-us">
+          <AboutUs />
+        </section>
+        <section id="services">
+          <Services />
+        </section>
+        <section id="map">
+          <Map />
+        </section>
+
         <Carouseltwo id="carousel" />
         <Testimonials id="testimonials" />
-        <Faqsection id="faq" />
+        
+        <section id="faq">
+        <Faqsection  />
+        </section>
         <Footer />
       </>
     </div>
