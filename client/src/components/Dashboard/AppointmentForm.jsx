@@ -71,11 +71,11 @@ const AppointmentForm = ({ setActiveContent }) => {
   };
 
   return (
-    <div className=" max-h-screen mt-6 z-0 flex items-center justify-center  px-4">
+    <div className=" max-h-screen mt-6 z-0 flex items-center justify-center font-playful  px-4">
       <div className="bg-transparent z-1 p-8 sm:p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl max-w-2xl w-5/6">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="max-w-xl mx-auto mt-4 space-y-4"
+          className="max-w-xl mx-auto mt-4 space-y-4 font-playful"
         >
           <div className="flex flex-col">
             <label htmlFor="date" className="mb-2 font-semibold">
@@ -95,10 +95,12 @@ const AppointmentForm = ({ setActiveContent }) => {
                 },
               })}
               type="date"
-              className="border p-2 rounded"
+              className="border p-2 rounded font-playful"
             />
             {errors.date && (
-              <span className="text-red-500 text-sm">Date is required</span>
+              <span className="text-red-500 text-sm font-playful">
+                Date is required
+              </span>
             )}
           </div>
           <div className="flex flex-col">
@@ -106,7 +108,7 @@ const AppointmentForm = ({ setActiveContent }) => {
             <select
               {...register("pet")}
               type="text"
-              className="flex flex-col border p-2 rounded"
+              className="border p-3 rounded focus:outline-none focus:ring focus:ring-opacity-50 font-playful"
             >
               <option>Select a pet</option>
               {currentUser.pets.map((pet, index) => (
@@ -125,7 +127,7 @@ const AppointmentForm = ({ setActiveContent }) => {
             <select
               {...register("time", { required: true })}
               type="text"
-              className="border p-2 rounded"
+              className="border p-3 rounded focus:ring focus:ring-opacity-50"
             >
               <option disabled={getDisabledDate("9:00")} value="9:00">
                 9-10
@@ -153,7 +155,7 @@ const AppointmentForm = ({ setActiveContent }) => {
 
           {/* <div className="flex flex-col">
         <label htmlFor="time" className="mb-2 font-semibold">Time:</label>
-        <input {...register("time", { required: true })} type="text" className="border p-2 rounded" placeholder="HH:MM"/>
+        <input {...register("time", { required: true })} type="text" className="border p rounded" placeholder="HH:MM"/>
         {errors.time && <span className="text-red-500 text-sm">Time is required</span>}
       </div> */}
           <div>
@@ -165,25 +167,24 @@ const AppointmentForm = ({ setActiveContent }) => {
               </svg>
             </button>
             <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
-            contentLabel="Services Modal"
-            style={{
-              overlay: {
-                zIndex: 1000, 
-              },
-            }}
-            overlayClassName="fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto"
-            className="relative w-full h-full flex justify-center items-start pt-10"
-          >
-            <div className="w-full  bg-black bg-opacity-50 overflow-y-auto rounded-none">
-              <ServicesDog />
-              <button onClick={closeModal} className="absolute top-5 right-5">
-                <img src={TrashApp} className="w-8" />
-              </button>
-            </div>
-          </Modal>
-           
+              isOpen={modalIsOpen}
+              onRequestClose={closeModal}
+              contentLabel="Services Modal"
+              style={{
+                overlay: {
+                  zIndex: 1000,
+                },
+              }}
+              overlayClassName="fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto"
+              className="relative w-full h-full flex justify-center items-start pt-10"
+            >
+              <div className="w-full  bg-black bg-opacity-50 overflow-y-auto rounded-none">
+                <ServicesDog />
+                <button onClick={closeModal} className="absolute top-5 right-5">
+                  <img src={TrashApp} className="w-8" />
+                </button>
+              </div>
+            </Modal>
           </div>
           <div className="flex flex-col">
             <label htmlFor="service" className="mb-2 font-semibold ">
@@ -191,7 +192,7 @@ const AppointmentForm = ({ setActiveContent }) => {
             </label>
             <select
               {...register("service", { required: true })}
-              className="border p-2 rounded"
+              className="border p-3 rounded  "
             >
               <option value="">Select a Service</option>
               <option value="Basic grooming package">The Works</option>

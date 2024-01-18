@@ -99,7 +99,7 @@ const AddPetForm = () => {
               name="ageUnit"
               value={ageUnit}
               onChange={handleChange}
-              className="border border-gray-300 rounded-2xl p-2"
+              className="border border-gray-300 text-black font-bold rounded-2xl p-2 "
             >
               <option value="months">Months</option>
               <option value="years">Years</option>
