@@ -37,7 +37,7 @@ const Journey = () => (
       <div className="overflow-y-hidden">
         <div className="mx-auto  container f-f-p px-4 xl:px-0 py-24">
           <motion.h1
-            className=" font-chewy focus:outline-none text-center text-3xl lg:text-4xl font-extrabold lg:leading-9 tracking-wider text-gray-900"
+            className=" font-playful focus:outline-none text-center text-3xl lg:text-4xl font-extrabold lg:leading-9 tracking-wider text-gray-900"
             variants={titleVariants}
             initial="hidden"
             whileInView="visible"
@@ -65,12 +65,11 @@ const Journey = () => (
                   <img className="focus:outline-none w-14 mt-24" src={nr2} />
                 </div>
                 <div className="flex mt-12 flex-col items-center lg:items-end md:w-8/12">
-                  <h1 className="focus:outline-none text-xl font-bold leading-5 font-chewy">
+                  <h1 className="focus:outline-none text-xl font-bold leading-5 font-playful">
                     Create your Pet's Profile
                   </h1>
-                  <h2 className="focus:outline-none text-gray-500 mt-3 pl-3 text-center md:text-right text-base leading-6 tracking-wide">
-                    Create your Pet's(/s) profile and link a payment method that
-                    you are comfortable with. Paypal, Visa and more..
+                  <h2 className="focus:outline-none font-playful text-gray-500 mt-3 pl-3 text-center md:text-right text-base leading-6 tracking-wide">
+                    Create your Pet's(/s) profile and connect with other users and more..
                   </h2>
                 </div>
                 <div aria-label="transactions" role="img">
@@ -95,10 +94,10 @@ const Journey = () => (
                   <img className="focus:outline-none w-14 " src={nr1} />
                 </div>
                 <div className="flex mt-6 flex-col items-center md:items-start md:w-8/12">
-                  <h1 className=" font-chewy focus:outline-none text-xl font-bold leading-5">
+                  <h1 className=" font-playful focus:outline-none text-xl font-bold leading-5">
                     Sign Up for an Account
                   </h1>
-                  <h2 className="focus:outline-none text-gray-500 mt-3 text-base leading-6 tracking-wide">
+                  <h2 className="focus:outline-none font-playful text-gray-500 mt-3 text-base leading-6 tracking-wide">
                     Sign up on our website and opt for a service that suits you
                     best.
                   </h2>
@@ -113,10 +112,10 @@ const Journey = () => (
                   <img className="focus:outline-none w-14 mt-20" src={nr3} />
                 </div>
                 <div className="flex mt-6 flex-col items-center md:items-start md:w-8/12">
-                  <h1 className=" font-chewy focus:outline-none text-xl font-bold leading-5">
+                  <h1 className=" font-playful focus:outline-none text-xl font-bold leading-5">
                     Join our community and services!
                   </h1>
-                  <h2 className="focus:outline-none text-gray-500 mt-3 text-base leading-6 tracking-wide">
+                  <h2 className="focus:outline-none font-playful text-gray-500 mt-3 text-base leading-6 tracking-wide">
                     Start conversations right away. Why wait longer?
                   </h2>
                 </div>

@@ -26,15 +26,13 @@ const Map = () => {
           <div className="flex flex-col md:flex-row justify-center items-center gap-8">
             {/* Text Container */}
             <div className="bg-success lg rounded-lg p-6 md:w-1/3 text-center">
-              <h4 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 text-gray-900 ">
+              <h4 className="text-xl md:text-2xl lg:text-6xl font-bold mb-4 text-gray-800 ">
                 Explore our locations
               </h4>
               <p className="text-base md:text-sm text-start font-semibold ">
                 Discover our numerous locations across the city, each offering a
                 unique and delightful experience for your pets. We are located
-                in key areas for your convenience. Whether you're in the heart
-                of downtown or the quiet suburbs, a warm welcome and
-                professional service await you and your furry friends.
+                in key areas for your convenience. 
               </p>
             </div>
             {/* Map Container */}

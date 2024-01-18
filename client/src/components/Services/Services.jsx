@@ -55,7 +55,7 @@ function Services() {
   return (
     <div className="w-full z-0 min-h-screen flex flex-col justify-center items-center py-20">
       <div className="text-center py-10">
-        <h1 className="font-bold text-4xl mb-4 uppercase font-chewy tracking-widest">
+        <h1 className="font-bold text-4xl mb-4 uppercase font-playful tracking-widest">
           Dog Grooming Overview
         </h1>
         <h1 className="text-xl font-playful mb-12">
@@ -94,7 +94,7 @@ function Services() {
           variants={cardVariants}
           initial="offscreen"
           animate={card1InView ? "onscreen" : "offscreen"}
-          className="w-80  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl "
+          className="w-80  bg-success/70 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl "
         >
           <a href="#">
             <img
@@ -103,7 +103,7 @@ function Services() {
               className="h-80 w-80 object-cover rounded-t-xl"
             />
             <div className="px-4 py-3 w-72">
-              <span className="text-gray-400 mr-3 uppercase text-xs">
+              <span className="text-gray-900 font-semibold mr-3 uppercase text-xs">
                 Package
               </span>
 
@@ -127,7 +127,7 @@ function Services() {
           variants={cardVariants}
           initial="offscreen"
           animate={card3InView ? "onscreen" : "offscreen"}
-          className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+          className="w-80 bg-success/70 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
         >
           <a href="#">
             <img
@@ -136,7 +136,7 @@ function Services() {
               className="h-80 w-80 object-cover rounded-t-xl"
             />
             <div className="px-4 py-3 w-72">
-              <span className="text-gray-400 mr-3 uppercase text-xs">
+              <span className="text-gray-900 font-semibold mr-3 uppercase text-xs">
                 Package
               </span>
 
@@ -158,7 +158,7 @@ function Services() {
           variants={cardVariants}
           initial="offscreen"
           animate={card2InView ? "onscreen" : "offscreen"}
-          className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+          className="w-80 bg-success/70 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
         >
           <a href="#">
             <img
@@ -167,7 +167,7 @@ function Services() {
               className="h-80 w-80 object-cover rounded-t-xl"
             />
             <div className="px-4 py-3 w-72">
-              <span className="text-gray-400 mr-3 uppercase text-xs">
+              <span className="text-gray-900 font-semibold mr-3 uppercase text-xs">
                 Package
               </span>
 
@@ -190,7 +190,7 @@ function Services() {
           initial="offscreen"
           whileHover="hover"
           animate={card6InView ? "onscreen" : "offscreen"}
-          className="w-80 bg-white shadow-md rounded-xl duration-500"
+          className="w-80 bg-accent/70 shadow-md rounded-xl duration-500"
         >
           <a href="#">
             <img
@@ -199,7 +199,7 @@ function Services() {
               className="h-80 w-80 object-cover rounded-t-xl"
             />
             <div className="px-4 py-3 w-72">
-              <span className="text-gray-400 mr-3 uppercase text-xs">
+              <span className="text-gray-900 font-semibold mr-3 uppercase text-xs">
                 Package
               </span>
 
@@ -222,7 +222,7 @@ function Services() {
           initial="offscreen"
           whileHover="hover"
           animate={card4InView ? "onscreen" : "offscreen"}
-          className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+          className="w-80 bg-accent/70 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
         >
           <a href="#">
             <img
@@ -231,7 +231,7 @@ function Services() {
               className="h-80 w-80 object-cover rounded-t-xl"
             />
             <div className="px-4 py-3 w-72">
-              <span className="text-gray-400 mr-3 uppercase text-xs">
+              <span className="text-gray-900 font-semibold mr-3 uppercase text-xs">
                 Package
               </span>
 
@@ -254,7 +254,7 @@ function Services() {
           variants={cardVariants}
           initial="offscreen"
           animate={card5InView ? "onscreen" : "offscreen"}
-          className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+          className="w-80 bg-accent/70 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
         >
           <a href="#">
             <img
@@ -263,7 +263,7 @@ function Services() {
               className="h-80 w-80 object-cover rounded-t-xl"
             />
             <div className="px-4 py-3 w-72">
-              <span className="text-gray-400 mr-3 uppercase text-xs">
+              <span className="text-gray-900 font-semibold mr-3 uppercase text-xs">
                 Package
               </span>
 
