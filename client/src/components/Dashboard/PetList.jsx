@@ -11,50 +11,51 @@ const PetList = () => {
   const { currentUser } = useAuth();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [appointmentToDelete, setAppointmentToDelete] = useState(null);
-
-  const openDeleteModal = (appointmentId) => {
-    setAppointmentToDelete(appointmentId);
-    setShowDeleteModal(true);
-  };
+  const [currentPetId, setCurrentPetId] = useState(null);
+  
+const openDeleteModal = (appointmentId, petId) => {
+  setAppointmentToDelete(appointmentId);
+  setCurrentPetId(petId);
+  setShowDeleteModal(true);
+};
   const navigate = useNavigate();
   const [petAppointments, setPetAppointments] = useState([]);
 
   const handleCreatePostClick = (petId) => {
     navigate(`/dashboard/create-blog/${petId}`);
   };
-
   const handleDeleteAppointment = async (appointmentId, petId) => {
-  
-
     try {
-      await axiosClient.delete(`/appointment/delete/${appointmentId}`, {
-        withCredentials: true,
-      });
+        await axiosClient.delete(`/appointment/delete/${appointmentId}`, {
+            withCredentials: true,
+        });
 
-      setPetAppointments((prevAppointments) => ({
-        ...prevAppointments,
-        [petId]: prevAppointments[petId].filter(
-          (appointment) => appointment._id !== appointmentId
-        ),
-      }));
+        setPetAppointments(prevAppointments => {
+            const updatedAppointments = prevAppointments[petId].filter(
+                (appointment) => appointment._id !== appointmentId
+            );
 
-      console.log("Appointment deleted successfully");
-    } catch (error) {
-      console.error("Failed to delete the appointment:", error);
-    }
-  };
-  const deleteAppointment = async () => {
-    if (appointmentToDelete) {
-      try {
-        await handleDeleteAppointment(appointmentToDelete);
-        setShowDeleteModal(false);
+            return {
+                ...prevAppointments,
+                [petId]: updatedAppointments,
+            };
+        });
+
         console.log("Appointment deleted successfully");
-      } catch (error) {
+    } catch (error) {
         console.error("Failed to delete the appointment:", error);
-      }
     }
-  };
-  
+};
+
+const deleteAppointment = async () => {
+    if (appointmentToDelete && currentPetId) { // Assume currentPetId is the id of the pet whose appointment is being deleted
+        await handleDeleteAppointment(appointmentToDelete, currentPetId);
+        setShowDeleteModal(false);
+        // Reset the state
+        setAppointmentToDelete(null);
+    }
+};
+
   useEffect(() => {
    
     const fetchAppointments = async () => {
