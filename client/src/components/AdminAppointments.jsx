@@ -55,42 +55,45 @@ const AdminAppointments = () => {
   });
 
   return (
-    <div className="p-5 w-5/6">
-      <h1 className="text-xl font-bold text-white mb-4">All Appointments</h1>
+    <div className="p-5 w-5/6 ">
+      <h1 className="text-xl font-bold text-black mb-4">All Appointments</h1>
       <div class="overflow-x-auto">
-        <table class="min-w-full divide-y-2  bg-transparent text-sm">
+        <table class="min-w-full divide-y-2 bg-primary/40 border-4 border-slate-700  text-sm">
           <thead class="ltr:text-left rtl:text-right">
             <tr>
-              <th class="px-4 py-4 font-medium text-white bg-gray-700">
+              <th class="px-4 py-4 font-medium text-white bg-gray-700 text-xl">
                 Owner Name
               </th>
-              <th class="px-4 py-4 font-medium text-white bg-gray-700">
+              <th class="px-4 py-4 font-medium text-white bg-gray-700 text-xl">
                 Pet Name
               </th>
-              <th class="px-4 py-4 font-medium text-white bg-gray-700">Date</th>
-              <th class="px-4 py-4 font-medium text-white bg-gray-700">Time</th>
-              <th class="px-4 py-4 font-medium text-white bg-gray-700">
+              <th class="px-4 py-4 font-medium text-white bg-gray-700 text-xl">Date</th>
+              <th class="px-4 py-4 font-medium text-white bg-gray-700 text-xl">Time</th>
+              <th class="px-4 py-4 font-medium text-white bg-gray-700 text-xl">
                 Service
+              </th>
+              <th class="px-4 py-4 font-medium text-white bg-gray-700">
+                
               </th>
             </tr>
           </thead>
 
-          <tbody class="divide-y divide-gray-200">
+          <tbody class="divide-y divide-gray-900 ">
             {appointments.map((appointment, index) => (
               <tr key={index}>
-                <td class="px-4 py-4 text-center text-white">
+                <td class=" py-4 text-center text-black font-bold ">
                   {appointment.owner?.firstName} {appointment.owner?.lastName}
                 </td>
-                <td class="px-4 py-4 text-center text-white">
+                <td class=" py-4 text-center text-black font-bold ">
                   {appointment.pet?.name}
                 </td>
-                <td class="px-4 py-4 text-center text-white">
+                <td class=" py-4 text-center text-black font-bold ">
                   {new Date(appointment.date).toDateString()}
                 </td>
-                <td class="px-4 py-4 text-center text-white">
+                <td class=" py-4 text-center text-black font-bold ">
                   {appointment.time}
                 </td>
-                <td class="px-4 py-4 text-center text-white">
+                <td class=" py-4 text-center text-black font-bold ">
                   {appointment.service}
                 </td>
                 <td className="justify-center">

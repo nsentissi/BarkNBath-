@@ -13,11 +13,11 @@ const Admin = () => {
 
 
   return (
-    <div className="bg-slate-900 text-slate-100 flex">
+    <div className="font-playful text-success flex min-h-screen">
       <SideNav  />
-      <div className="w-full rounded bg-slate-800  px-4 py-2">
+      <div className="flex-grow rounded bg-slate-400  px-4 py-2">
         <div className="flex justify-between items-center m-4"></div>
-        <div className="h-screen m-4 rounded bg-slate-800 flex justify-center">
+        <div className="m-4 rounded bg-transparent flex justify-center">
           <Outlet/>
         </div>
       </div>
@@ -38,7 +38,7 @@ const SideNav = ({ selected, setSelected }) => {
     }
   };
   return (
-    <nav className="h-[100vh] w-fit bg-slate-950 p-4 flex flex-col justify-between">
+    <nav className="bg-slate-800 p-4 flex flex-col justify-between" style={{ width: '120px' }}>
       <div className="flex flex-col items-center gap-2">
       <NavItem to="appointments" currentPath={location.pathname}>
           <MdHomeRepairService />
@@ -53,7 +53,7 @@ const SideNav = ({ selected, setSelected }) => {
       <>
         <button
           onClick={handleLogout}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-red-800 hover:bg-red-400 text-white font-bold py-2 px-4 rounded"
         >
           <FaPowerOff />
         </button>
