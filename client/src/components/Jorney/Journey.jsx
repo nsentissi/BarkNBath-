@@ -43,7 +43,7 @@ const Journey = () => (
             whileInView="visible"
             viewport={{ once: true }}
           >
-            How it works?
+            How it works ?
           </motion.h1>
           <div className="md:mt-24 f-f-p">
             <div className="hidden md:flex justify-center w-full">
