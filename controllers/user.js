@@ -57,7 +57,7 @@ const login = async (req, res, next) => {
       firstName: user.firstName,
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
-      password: user.password,
+     /*  password: user.password, */
       pets: user.pets,
       role: user.role,
     };
