@@ -6,9 +6,16 @@ const ErrorResponse = require("../utils/ErrorResponse");
 const register = async (req, res, next) => {
   try {
     const {
-      body: { firstName, lastName, email, phoneNumber, password },
+      body: {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        password,
+        role = "user",
+      },
     } = req;
-    
+
     const found = await User.findOne({ email });
     if (found) throw new ErrorResponse("User Already Exist", 409);
 
@@ -20,7 +27,7 @@ const register = async (req, res, next) => {
       email,
       phoneNumber,
       password: hash,
-    
+      role,
     });
 
     res.status(201).json({ email: user.email });
@@ -35,7 +42,9 @@ const login = async (req, res, next) => {
       body: { email, password },
     } = req;
 
-    const user = await User.findOne({ email }).select("+password").populate("pets");
+    const user = await User.findOne({ email })
+      .select("+password")
+      .populate("pets");
     if (!user) throw new ErrorResponse("User Doesn't Exist", 404);
 
     const match = await bcrypt.compare(password, user.password);
@@ -48,8 +57,9 @@ const login = async (req, res, next) => {
       firstName: user.firstName,
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
-      password: user.password,
-      pets: user.pets
+     /*  password: user.password, */
+      pets: user.pets,
+      role: user.role,
     };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "5000m",
@@ -58,12 +68,54 @@ const login = async (req, res, next) => {
     res
       .cookie("access_token", token, {
         httpOnly: true,
-        maxAge: 980000,
+        maxAge: 9800000,
         /* secure: process.env.NODE_ENV === "production", */
         sameSite: "lax",
       })
-      .json({...payload, pets: user.pets});
+      .json({ ...payload, pets: user.pets });
   } catch (error) {
+    next(error);
+  }
+};
+
+const deleteUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByIdAndUpdate(
+      id,
+      { $set: { isActive: false } },
+      { new: true }
+    );
+
+    console.log(user);
+    if (!user) {
+      throw new ErrorResponse("User not found", 404);
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
+
+const returnUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByIdAndUpdate(
+      id,
+      { $set: { isActive: true } },
+      { new: true }
+    );
+
+    console.log(user);
+    if (!user) {
+      throw new ErrorResponse("User not found", 404);
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error);
     next(error);
   }
 };
@@ -81,7 +133,7 @@ const getProfile = async (req, res, next) => {
     const user = await User.findOne({ _id: id }).populate("pets");
     res.json(user);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     next(error);
   }
 };
@@ -94,7 +146,7 @@ const updateUser = async (req, res, next) => {
     if (!newPassword && !newPhoneNumber) {
       throw new ErrorResponse("No new data provided", 400);
     }
-    
+
     const user = await User.findOne({ _id: id });
     if (!user) throw new ErrorResponse("User not found", 404);
 
@@ -110,24 +162,26 @@ const updateUser = async (req, res, next) => {
     await user.save();
     res.status(200).json({ message: "User updated successfully" });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
 const getAllUsers = async (req, res, next) => {
   try {
-    const users = await User.find()
-    res.json(users)
+    const users = await User.find();
+    res.json(users);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 module.exports = {
   register,
   login,
   logout,
   getProfile,
-  updateUser, 
-  getAllUsers
+  updateUser,
+  getAllUsers,
+  deleteUser,
+  returnUser,
 };

@@ -1,22 +1,17 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../hooks/AuthContext';
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "../hooks/AuthContext";
 
+const ProtectedRoute = () => {
+  const { currentUser, isLoading } = useAuth();
 
-
-const ADMIN_EMAIL = 'client@gmail.com'
-
-
-const ProtectedRoute = ({ children }) => {
-  const { currentUser } = useAuth();
-
-
-  if (!currentUser || currentUser.email !== ADMIN_EMAIL) {
-    return <Navigate to="/" />;
-  }
-
-  return children;
+  return (
+    <>
+      {!isLoading && (
+        <> {currentUser ? <Outlet /> : <Navigate to="/login" />} </>
+      )}
+    </>
+  );
 };
-
 
 export default ProtectedRoute;

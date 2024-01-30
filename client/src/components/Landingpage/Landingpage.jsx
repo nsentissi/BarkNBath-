@@ -1,8 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import styles from "./bubble.module.css";
+import van from "../../assets/van.png";
+
+import parkingSign from "../../assets/parking.png";
+import { Link } from "react-router-dom";
+import backgroundImage from "../../assets/homepage.svg";
+
 
 const Landingpage = () => {
+
+
+  const headlineVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 1 },
+    },
+  };
+
   const textVariants = {
     hidden: { opacity: 0, y: 100 },
     visible: {
@@ -33,6 +50,24 @@ const Landingpage = () => {
     },
   };
 
+  const dogVariants = {
+    hidden: { scale: 0 },
+    visible: {
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+        duration: 2,
+        delay: 3,
+      },
+    },
+  };
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+  });
+
   return (
     <div className={styles.area}>
       <ul className={styles.circles}>
@@ -46,149 +81,73 @@ const Landingpage = () => {
         <li></li>
         <li></li>
         <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
       </ul>
       <div
         className="flex items-center justify-center h-screen z-0 bg-cover bg-center  landing-page-bg"
-        style={{ backgroundImage: `url('./src/assets/homepage.svg')` }}
+        style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        {/* Text  */}
-        <motion.div
-          className="absolute top-1/10  md:top-1/5 lg:top-1/4 text-center"
-          variants={textVariants}
-          initial="hidden"
-          animate="visible"
+        <div
+          ref={ref}
+          className="flex flex-col md:flex-row   items-center z-0 justify-center h-screen"
         >
-          <div className=" flex justify-between items-center md:flex lg-flex mb-10 p-10">
-            <div className="">
-              <div className="flex flex-col md:flex-row items-start justify-center space-y-10 md:space-y-0 md:space-x-10 mx-auto  w-full">
-                <motion.div className="w-full md:w-6/12 px-6 leading-8">
-                <h2 className="text-5xl font-bold font-chewy mx-auto">
-                    <BubbleText />
-                  </h2>
-                  <p className="mb-10 font-chewy">
-                    <BubbleText2 />
-                  </p>
-                  <p className="mt-8 mb-8  text-white text-center font-dosis font-semibold  md:text-left">
-                    <p className="italic">
-                      Pamper Your Purry friend on the Go!{" "}
-                    </p>
-                    <div className="flex flex-row items-center ">
-                      <p className="text-success font-chewy tracking-widest font-bold py-2 px-4 mb-2 sm:mb-0 mr-2">
-                        Sign up
-                      </p>
-                      <svg
-                        className="w-6 h-8 -ml-2  animate-pulse  "
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
-                        />
-                      </svg>
-                    </div>{" "}
-                    <div className="flex flex-row items-center">
-                      <p className="text-success font-chewy tracking-widest font-bold py-2 px-4 mb-2 sm:mb-0 mr-2">
-                        Book the Mobile Spa Session
-                      </p>
-                      <svg
-                        className="w-6 h-8 -ml-2  animate-pulse "
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
-                        />
-                      </svg>
-                    </div>
-                    <p className="italic">
-                      and Share Your Furry Friend's Blissful Experience with Our
-                      Community. Join Us Now and Treat Your Pet to the Ultimate
-                      Indulgence!
-                    </p>
-                  </p>
-                </motion.div>
-                <div>
-                  
-                  <div className="flex  items-center justify-center ">
-                    <span className="inline-block animate-bounce   p-8 text-success tracking-widest font-chewy text-xl">
-                      Find out more
-                      <svg
-                        className="w-6 h-8 mx-auto"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="4"
-                          d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-        {/* Van  */}
-        <motion.img
-          className="absolute bottom-10 right-14 md:right-32 lg:right-80 transform lg:-translate-x-1/2 lg:translate-y-0 w-1/2 md:w-1/3 lg:w-38vw"
-          src="./src/assets/van.png"
-          alt="Van"
-          variants={vanVariants}
-          initial="hidden"
-          animate="visible"
-          style={{ maxWidth: "900px" }}
-        />
-
-        {/* Parking Sign  */}
-        <motion.img
-          className="absolute bottom-14 right-60  md:right-96 lg:right-1/2 lg:mr-36 transform lg:-translate-x-1/2 lg:translate-y-0  w-1/5 md:w-1/5 lg:w-20vw"
-          src="./src/assets/parking.png"
-          alt="Parking Sign"
-          variants={parkingSignVariants}
-          initial="hidden"
-          animate="visible"
-          style={{ maxWidth: "200px" }}
-        />
+          {/* Headline */}
+          <motion.div
+            ref={ref}
+            className=""
+            variants={textVariants}
+            animate={inView ? "visible" : "hidden"}
+          >
+            <h2
+              variant={headlineVariants}
+              className="text-white text-center font-playful text-2xl  lg:text-4xl w-10/12 mx-auto mt-[-10rem] font-bold"
+            >
+              Sit, Stay, and Relax at Home While we Pamper your Pet on Wheels
+            </h2>
+            <p className="font-playful text-white lg:text-2xl font-semibold p-6 text-center">
+              Our Mobile Spa Brings the Best Pet Grooming to your Doorstep!
+            </p>
+           
+             <Link
+               to="/login"
+             className="bg-success hover:bg-gray-400 text-gray-800 font-bold py-4 px-6 rounded-xl mx-auto mt-4 flex items-center justify-center animate-bounce text-center whitespace-nowrap text-sm lg:text-base min-w-max"
+              
+            >
+              GET STARTED
+            </Link>
+          </motion.div>
+        </div>
       </div>
-    </div>
-  );
-};
 
-const BubbleText = () => {
-  return (
-    <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-thin text-white text-center">
-      {"Spa Day".split("").map((child, idx) => (
-        <span className={styles.hoverText} key={idx}>
-          {child}
-        </span>
-      ))}
-    </h2>
-  );
-};
-const BubbleText2 = () => {
-  return (
-    <h2 className="text-3xl md:text-4xl lg:text-4xl xl:text-3xl font-thin text-white text-center pt-12">
-      {"the Doggy Way".split("").map((child, idx) => (
-        <span className={styles.hoverText} key={idx}>
-          {child}
-        </span>
-      ))}
-    </h2>
+      {/* Van  */}
+
+      <motion.img
+        ref={ref}
+        className="absolute bottom-10 right-14 md:right-32 lg:right-52 transform lg:-translate-x-1/2 lg:translate-y-0 w-1/2 md:w-1/3 lg:w-38vw"
+        src={van}
+        alt="Van"
+        variants={vanVariants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        style={{ maxWidth: "900px" }}
+      />
+
+      {/* Parking Sign  */}
+      <motion.img
+        ref={ref}
+        className="absolute bottom-16 right-60  md:right-96 lg:right-1/3 lg:mr-36 transform lg:-translate-x-1/2 lg:translate-y-0  w-1/5 md:w-1/5 lg:w-20vw"
+        src={parkingSign}
+        initial="hidden"
+        animate="visible"
+        alt="Parking Sign"
+        variants={parkingSignVariants}
+        style={{ maxWidth: "200px" }}
+      />
+    </div>
   );
 };
 

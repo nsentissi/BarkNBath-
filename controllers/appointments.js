@@ -13,6 +13,7 @@ const createAppointment = async (req, res, next) => {
       lastGroom,
       address,
       pet,
+      
     });
     await newAppointment.save();
     res.status(201).json(newAppointment);
@@ -42,27 +43,53 @@ const getAppointments = async (req, res) => {
 const getPetAppointmentById = async (req, res) => {
   try {
     const { petId } = req.params;
-    const appointments = await Appointment.find({ pet: petId });
+    const appointments = await Appointment.find({ pet: petId })
+    .populate("pet", "name");
     res.json(appointments);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
 
-const getAllAppointments = async ( req, res) => {
+const getAllAppointments = async (req, res) => {
   try {
     const appointments = await Appointment.find()
-      .populate('owner', 'firstName lastName') 
-      .populate('pet', 'name'); 
-    res.json(appointments);
+      .populate({
+        path: "owner",
+        match: { isActive: true },
+        select: "firstName lastName",
+      })
+      .populate("pet", "name");
+
+    const validAppointments = appointments.filter(
+      (appointment) => appointment.owner
+    );
+
+    res.json(validAppointments);
   } catch (error) {
     res.status(500).send(error);
   }
-}
+};
+
+const deleteAppointment = async (req, res) => {
+  try {
+    const { appointmentId } = req.params;
+
+    const appointment = await Appointment.findByIdAndDelete(appointmentId);
+
+    if (!appointment) {
+      return res.status(404).json({ message: "Appointment not found" });
+    }
+    res.status(200).json({ message: "Appointment deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 module.exports = {
   createAppointment,
   getAppointments,
   getPetAppointmentById,
-  getAllAppointments
+  getAllAppointments,
+  deleteAppointment,
 };

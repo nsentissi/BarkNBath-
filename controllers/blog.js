@@ -4,8 +4,8 @@ const Pet = require("../models/pet");
 
 const addBlogPost = async (req, res, next) => {
   try {
-    const { petId } = req.params;
-    const { title, paragraph } = req.body;
+   
+    const { title, paragraph, petId  } = req.body;
     const owner = req.user.id;
     const photo = req.file.path;
 
@@ -14,7 +14,7 @@ const addBlogPost = async (req, res, next) => {
       throw new ErrorResponse("Pet not found", 404);
     }
 
-    const newBlogPost = new Blog({
+    const newBlogPost = await Blog.create({
       owner,
       pet: petId,
       title,
@@ -22,8 +22,7 @@ const addBlogPost = async (req, res, next) => {
       photo,
     });
 
-    await newBlogPost.save();
-    res.status(201).json(newBlogPost);
+    res.status(201).json({ ...newBlogPost._doc, pet });
   } catch (error) {
     next(error);
   }
@@ -34,7 +33,7 @@ const getBlogsByPetId = async (req, res) => {
     const { petId } = req.params;
     const blogs = await Blog.find({ pet: petId })
       .populate("owner", "firstName lastName")
-      .populate("pet", "name photo");
+      .populate("pet", "name Bio profilePhotoUrl");
 
     res.json(blogs);
   } catch (error) {
@@ -42,38 +41,42 @@ const getBlogsByPetId = async (req, res) => {
   }
 };
 
-const getAllBlogPosts = async (req, res, next) => {
-  try {
-      const currentUserId = req.user.id;
-
-      const blogPosts = await Blog.find({ owner: { $ne: currentUserId } })
-          .populate("owner", "firstName lastName")
-          .populate("pet", "name")
-          .populate({
-              path: "comments",
-              populate: {
-                  path: "author",
-                  select: "firstName lastName"
-              }
-          });
-
-      res.status(200).json(blogPosts);
-  } catch (error) {
-      next(error);
-  }
-};
-
 const deleteBlogPost = async (req, res, next) => {
   try {
-    const { blogPostId } = req.params;
+    const { blogId } = req.params;
 
-    const deletedBlogPost = await Blog.findByIdAndDelete(blogPostId);
+    const deletedBlogPost = await Blog.findByIdAndDelete(blogId);
 
     if (!deletedBlogPost) {
       throw new ErrorResponse("Blog post not found", 404);
     }
 
     res.status(200).json({ message: "Blog post deleted successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getAllBlogPosts = async (req, res, next) => {
+  try {
+    const currentUserId = req.user.id;
+
+    const blogPosts = await Blog.find({ owner: { $ne: currentUserId } })
+      .populate({
+        path: "owner",
+        match: { isActive: true },
+        select: "firstName lastName",
+      })
+      .populate("pet", "name profilePhotoUrl")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "author",
+          select: "firstName lastName",
+        },
+      });
+
+    res.status(200).json(blogPosts);
   } catch (error) {
     next(error);
   }
@@ -91,6 +94,7 @@ const addComment = async (req, res, next) => {
     }
 
     const newComment = { author, text };
+    console.log(newComment)
     blog.comments.push(newComment);
 
     await blog.save();

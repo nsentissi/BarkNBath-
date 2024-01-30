@@ -12,13 +12,13 @@ const verifyToken = require("../middlewares/verifyToken");
 const upload = require("../middlewares/cloudinaryConfig");
 
 blogRouter.post(
-  "/create/:petId",
+  "/create",
   upload.single("photo"),
   verifyToken,
   addBlogPost
 );
 blogRouter.get("/getAll", verifyToken, getAllBlogPosts);
-blogRouter.delete("/delete/:petId", verifyToken, deleteBlogPost);
+blogRouter.delete("/delete/:blogId", verifyToken, deleteBlogPost);
 blogRouter.post("/:blogId/comment", verifyToken, addComment);
 blogRouter.get("/:blogId/comments", verifyToken, getComments);
 blogRouter.get("/get/:petId", verifyToken, getBlogsByPetId )

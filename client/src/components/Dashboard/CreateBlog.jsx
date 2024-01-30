@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosClient from "../../../axiosClient";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../../hooks/AuthContext";
+import moment from "moment";
+
+import "./createBlog.css";
+
+import trashapp from "../../assets/trashapp.svg";
+
+import { Link } from "react-router-dom";
 
 const CreateBlog = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +18,27 @@ const CreateBlog = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [blogs, setBlogs] = useState([]);
   const { id } = useParams();
+  const [commentsVisibility, setCommentsVisibility] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [blogToDelete, setBlogToDelete] = useState(null);
 
+  const openDeleteModal = (blogId) => {
+    setBlogToDelete(blogId);
+    setShowDeleteModal(true);
+  };
+
+  const formatTimeAgo = (dateString) => {
+    const date = moment(dateString);
+    return date.fromNow();
+  };
+
+  const toggleComments = (blogId) => {
+    setCommentsVisibility((prevState) => ({
+      ...prevState,
+      [blogId]: !prevState[blogId],
+    }));
+  };
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -21,42 +49,56 @@ const CreateBlog = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsLoading(true);
     const data = new FormData();
     data.append("title", formData.title);
     data.append("paragraph", formData.paragraph);
+    data.append("petId", id);
     if (selectedFile) {
       data.append("photo", selectedFile);
     }
 
     try {
-      const response = await axios.post(
-        `http://localhost:3000/blog/create/${id}`,
-        data,
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      const response = await axiosClient.post(`/blog/create`, data, {
+        withCredentials: true,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       console.log("Response:", response);
-      setBlogs([ response.data, ...blogs])
+      setBlogs([response.data, ...blogs]);
+
+      setFormData({ title: "", paragraph: "" });
+      setSelectedFile(null);
     } catch (error) {
       console.error("Error submitting form:", error);
+    } finally {
+      setIsLoading(false);
     }
-
-    console.log("Form submitted:", formData);
-    console.log("Selected File:", selectedFile);
   };
 
   const fetchBlogs = async (e) => {
     try {
-      const response = await axios.get(`http://localhost:3000/blog/get/${id}`, {
+      const response = await axiosClient.get(`/blog/get/${id}`, {
         withCredentials: true,
       });
       console.log(response.data);
       setBlogs(response.data);
+      setFormData({ title: "", paragraph: "" });
+      setSelectedFile(null);
     } catch (error) {
       console.log(error.response);
+    }
+  };
+
+  const deleteBlog = async () => {
+    if (blogToDelete) {
+      try {
+        await axiosClient.delete(`/blog/delete/${blogToDelete}`);
+        setBlogs(blogs.filter((blog) => blog._id !== blogToDelete));
+      } catch (error) {
+        console.error("Error deleting blog:", error);
+      } finally {
+        setShowDeleteModal(false); // Close the modal after deletion
+      }
     }
   };
 
@@ -65,51 +107,282 @@ const CreateBlog = () => {
   }, []);
 
   return (
-	
-<div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title</label>
-          <input
-            name="title"
-            type="text"
-            value={formData.title}
-            onChange={handleInputChange}
-          />
+    <div className=" ">
+      <div className="flex flex-col items-center justify-around py-8">
+        <h4 className="text-black font-semibold text-4xl text-center ">
+          Your Blogs
+        </h4>
+
+        <p className="mt-4 text-white text-xl">
+          Share your experience with others
+        </p>
+      </div>
+
+      <div className="">
+        <div className="w-full  px-16" id="posted">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-1  ">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-success/90 p-8 rounded-lg shadow-md max-w-4xl w-11/12 mx-auto hover:-translate-y-1 duration-300"
+            >
+              {/* <!-- Post Content Section --> */}
+              <h3 className="text-center font-bold text-gray-700 text-xl ">
+                Post a blog
+              </h3>
+              <div>
+                <label
+                  htmlFor="title"
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                >
+                  Title
+                </label>
+                <input
+                  className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+          sm:leading-5 resize-none focus:outline-none focus:border-blue-500"
+                  name="title"
+                  type="text"
+                  value={formData.title}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="mb-6">
+                <label
+                  htmlFor="postContent"
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                >
+                  Post Content:
+                </label>
+                <textarea
+                  name="paragraph"
+                  value={formData.paragraph}
+                  onChange={handleInputChange}
+                  rows="4"
+                  className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+                    sm:leading-5 resize-none focus:outline-none focus:border-blue-500"
+                  placeholder="What's on your mind?"
+                ></textarea>
+              </div>
+              {/* <!-- File Attachment Section --> */}
+              <div className="mb-6">
+                <label
+                  htmlFor="fileAttachment"
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                >
+                  Attach File:
+                </label>
+                <div className="relative border-2 rounded-md px-4 py-3 bg-white flex items-center justify-between hover:border-blue-500 transition duration-150 ease-in-out">
+                  <input
+                    name="photo"
+                    type="file"
+                    onChange={handleFileChange}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  />
+                  <div className="flex items-center">
+                    <svg
+                      className="w-6 h-6 text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      ></path>
+                    </svg>
+                    <span className="ml-2 text-sm text-gray-600">
+                      Choose a file
+                    </span>
+                  </div>
+                  <span className="text-sm text-gray-500">
+                    Max file size: 5MB
+                  </span>
+                </div>
+              </div>
+              {isLoading && (
+                <div className="flex justify-center items-center my-2">
+                  <div className="loader"></div>
+                </div>
+              )}
+              {/* <!-- Submit Button and Character Limit Section --> */}
+              <div className="flex items-center justify-between">
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="flex justify-center items-center bg-accent hover:bg-primary focus:outline-none focus:shadow-outline-blue text-white py-2 px-4 rounded-md transition duration-300 gap-2"
+                >
+                  {isLoading ? (
+                    <span>Posting...</span>
+                  ) : (
+                    <>
+                      Post
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="19"
+                        height="19"
+                        viewBox="0 0 24 24"
+                        id="send"
+                        fill="#fff"
+                      >
+                        <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        <path d="M3.4 20.4l17.45-7.48c.81-.35.81-1.49 0-1.84L3.4 3.6c-.66-.29-1.39.2-1.39.91L2 9.12c0 .5.37.93.87.99L17 12 2.87 13.88c-.5.07-.87.5-.87 1l.01 4.61c0 .71.73 1.2 1.39.91z"></path>
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="paragraph">Paragraph</label>
-          <textarea
-            name="paragraph"
-            value={formData.paragraph}
-            onChange={handleInputChange}
-          ></textarea>
-        </div>
+        <div className="flex justify-center col-span-8 mt-8" id="posted">
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 ">
+            {blogs.map((blog) => {
+              return (
+                <div key={blog._id} className="">
+                  {/* First Column */}
+                  <div className="bg-white/80 p-8 rounded-lg shadow-md max-w-2xl w-11/12 mx-auto hover:-translate-y-1 duration-300">
+                    {/* User Info with Three-Dot Menu */}
+                    <div className="flex items-center justify-between mb-4 inline relative group">
+                      <div className="flex items-center space-x-2 ">
+                        <img
+                          src={blog.pet?.profilePhotoUrl}
+                          alt="User Avatar"
+                          className="w-16 h-16 object-cover rounded-full"
+                        />
 
-        <div>
-          <label htmlFor="photo">Photo</label>
-          <input name="photo" type="file" onChange={handleFileChange} />
+                        <div>
+                          <p className="text-black text-xl font-semibold">
+                            {blog.pet?.name}
+                          </p>
+                          <p className="text-gray-600 font-bold text-xs">
+                            posted {formatTimeAgo(blog.date)}
+                          </p>{" "}
+                        </div>
+                        <button onClick={() => openDeleteModal(blog._id)}>
+                          <img src={trashapp} className="w-6 ml-72" />
+                        </button>
+                      </div>
+                      <div className="text-gray-500 cursor-pointer"></div>
+                    </div>
+                    {/* Message */}
+                    <div className="mb-4 font-playful text-black ">
+                      <p className="text-black font-bold text-xl">
+                        {blog.title}
+                      </p>
+                      <p className="text-gray-800 font-bold">
+                        {blog.paragraph}
+                      </p>
+                    </div>
+                    {/* Image */}
+                    <div className="mb-4 flex justify-center items-center">
+                      <img
+                        src={blog.photo}
+                        alt={blog.title}
+                        className=" w-full md:w-1/2 lg:w-5/6  rounded-md"
+                      />
+                    </div>
+                    {/* Like and Comment Section */}
+                    <div className="flex items-center justify-between text-gray-500">
+                      <button
+                        onClick={() => toggleComments(blog._id)}
+                        className="flex justify-center items-center gap-2   rounded-full p-1"
+                      >
+                        <svg
+                          width="32px"
+                          height="32px"
+                          viewBox="0 0 24 24"
+                          className="fill-current text-primary"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              fillRule="evenodd"
+                              clipRule="evenodd"
+                              d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22ZM8 13.25C7.58579 13.25 7.25 13.5858 7.25 14C7.25 14.4142 7.58579 14.75 8 14.75H13.5C13.9142 14.75 14.25 14.4142 14.25 14C14.25 13.5858 13.9142 13.25 13.5 13.25H8ZM7.25 10.5C7.25 10.0858 7.58579 9.75 8 9.75H16C16.4142 9.75 16.75 10.0858 16.75 10.5C16.75 10.9142 16.4142 11.25 16 11.25H8C7.58579 11.25 7.25 10.9142 7.25 10.5Z"
+                            ></path>
+                          </g>
+                        </svg>
+                      </button>
+                    </div>
+                    <div className="px-6 py-4">
+                      {commentsVisibility[blog._id] && (
+                        <div className="">
+                          <h3 className="text-sm font-bold">Comments:</h3>
+                          {blog.comments.length > 0 ? (
+                            blog.comments.map((comment) => (
+                              <div
+                                key={comment._id}
+                                className="mt-1 pt-2 border-t "
+                              >
+                                <p className="text-xs font-semibold mt-1 text-black">
+                                  {comment.author?.firstName}{" "}
+                                  {comment.author?.lastName}
+                                </p>
+                                <p className="text-sm font-bold text-primary italic font-bold">
+                                  {comment.text}
+                                </p>
+                              </div>
+                            ))
+                          ) : (
+                            <p className="text-black mt-4">No comments yet</p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          {showDeleteModal && (
+            <>
+              <div
+                className="fixed inset-0 bg-black bg-opacity-30 z-40"
+                style={{ backdropFilter: "blur(5px)" }}
+              ></div>
+              <div
+                id="popup-modal"
+                tabIndex="-1"
+                className="overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex justify-center items-center"
+              >
+                <div className="relative p-4 w-full max-w-md max-h-full">
+                  <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div className="p-4 md:p-5 text-center">
+                      <h3 className="mb-5 text-lg font-normal text-white dark:text-white">
+                        Are you sure you want to delete this blog post?
+                      </h3>
+                      <button
+                        onClick={deleteBlog}
+                        type="button"
+                        className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"
+                      >
+                        Yes, I'm sure
+                      </button>
+                      <button
+                        onClick={() => setShowDeleteModal(false)}
+                        type="button"
+                        className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                      >
+                        No, cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
-
-        <button type="submit">Submit Blog</button>
-      </form>
-      <div>
-        {blogs.map((blog) => {
-          return (
-            <ul key={blog._id}>
-              <li>{blog.title}</li>
-              <li>{blog.paragraph}</li>
-              <li>{blog.owner.firstName}</li>
-              <li>{blog.pet.name}</li>
-              <img src={blog.photo} alt={blog.title} />
-            </ul>
-          );
-        })}
       </div>
     </div>
-
-
   );
 };
 

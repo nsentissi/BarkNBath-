@@ -1,31 +1,72 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../hooks/AuthContext";
-import axios from "axios";
+import axiosClient from "../../../axiosClient";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "./Petlist.css";
+import trashapp from "../../assets/trashapp.svg";
 
 const PetList = () => {
   const { currentUser } = useAuth();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [appointmentToDelete, setAppointmentToDelete] = useState(null);
+  const [currentPetId, setCurrentPetId] = useState(null);
+  
+const openDeleteModal = (appointmentId, petId) => {
+  setAppointmentToDelete(appointmentId);
+  setCurrentPetId(petId);
+  setShowDeleteModal(true);
+};
   const navigate = useNavigate();
-  const [petAppointments, setPetAppointments] = useState({});
+  const [petAppointments, setPetAppointments] = useState([]);
 
   const handleCreatePostClick = (petId) => {
-    navigate(`/create-blog/${petId}`);
+    navigate(`/dashboard/create-blog/${petId}`);
   };
+  const handleDeleteAppointment = async (appointmentId, petId) => {
+    try {
+        await axiosClient.delete(`/appointment/delete/${appointmentId}`, {
+            withCredentials: true,
+        });
+
+        setPetAppointments(prevAppointments => {
+            const updatedAppointments = prevAppointments[petId].filter(
+                (appointment) => appointment._id !== appointmentId
+            );
+
+            return {
+                ...prevAppointments,
+                [petId]: updatedAppointments,
+            };
+        });
+
+        console.log("Appointment deleted successfully");
+    } catch (error) {
+        console.error("Failed to delete the appointment:", error);
+    }
+};
+
+const deleteAppointment = async () => {
+    if (appointmentToDelete && currentPetId) { // Assume currentPetId is the id of the pet whose appointment is being deleted
+        await handleDeleteAppointment(appointmentToDelete, currentPetId);
+        setShowDeleteModal(false);
+        // Reset the state
+        setAppointmentToDelete(null);
+    }
+};
 
   useEffect(() => {
+   
     const fetchAppointments = async () => {
       if (!currentUser || !currentUser.pets) return;
 
       const appointments = {};
 
       for (const pet of currentUser.pets) {
-        const { data } = await axios.get(
-          `http://localhost:3000/appointment/${pet._id}`,
-          { withCredentials: true }
-        );
+        const { data } = await axiosClient.get(`/appointment/${pet._id}`, {
+          withCredentials: true,
+        });
         appointments[pet._id] = data;
       }
 
@@ -66,122 +107,176 @@ const PetList = () => {
   };
 
   return (
-    <div class="flex flex-wrap gap-x-4 gap-y-8">
-      <h1 className="text-center font-chewy text-xl font-bold">
-        Here you find all your puffy friends
-      </h1>
-      <div className="w-full  flex flex-wrap justify-center gap-4 pt-10">
+    <>
+      <div className="text-center">
+        <h1 className="font-bold text-white tracking-widest pt-6 text-4xl">
+          Your puffy friends
+        </h1>
+        <hr className="border-2 border-success rounded-full mt-12" />
+      </div>
+      <div className="flex flex-col justify-center overflow-hidden">
+        
         {currentUser.pets?.map((pet, index) => (
           <div
-            className="bg-primary rounded-lg profile-card w-96  p-6 mb-4"
             key={index}
+            className="flex flex-col md:flex-row gap-12 mt-12 w-full"
           >
-            <div class="flex justify-between items-center mb-4">
-              <div class="flex items-center">
-                <span class="ml-2 text-lg font-semibold text-gray-800">
-                  Pet Profile
-                </span>
-              </div>
-              <button
-                onClick={(e) => {
-                  handleCreatePostClick(pet._id);
-                }}
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              >
-                create post
-              </button>
-            </div>
-            {/* OVERVIEW  */}
-            <div class="flex justify-center mb-4">
-              <div class="border-b-2 border-gray-200 w-full">
-                <ul class="flex justify-around">
-                  <li class="text-center">
-                    <a
-                      href="#"
-                      class="text-blue-500 pb-2 border-b-2 border-blue-500 font-semibold"
-                    >
-                      Overview
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="flex justify-center mb-6">
-              {pet.profilePhotoUrl && (
-                <img
-                  className="rounded-full border-2 border-green-500 p-1"
-                  src={pet.profilePhotoUrl}
-                  alt={pet.name}
-                  style={{ width: "100px", height: "100px" }}
-                />
-              )}
-            </div>
-            <div className="text-center mb-4">
-              <h2 className="text-xl font-semibold">{pet.name}</h2>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-            <Tabs>
-    <TabList>
-      <Tab>Past Appointments</Tab>
-      <Tab>Upcoming Appointments</Tab>
-    </TabList>
 
-    <TabPanel>
-    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
-                <h3 className="text-lg font-semibold">Past Appointments</h3>
-                {filterAppointments(petAppointments[pet._id] || [], false).map(
-                  (appointment, idx) => (
-                    <div className="p-4 flex items-center" key={idx}>
-                      <div className="pr-4 bg-blue-500 p-2 rounded-lg text-center">
-                        <p className="text-4xl font-bold text-white">
-                          {formatDate(appointment.date)}
-                        </p>
-                      </div>
-                      <div className="ml-4">
-                        <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-                          {appointment.time}
-                        </div>
-                        <p className="mt-2 text-gray-500">
-                          {appointment.service}
-                        </p>
-                      </div>
-                    </div>
-                  )
-                )}
+            
+            {/* Pet card */}
+            <div className="flex flex-col items-center">
+              {/* Create Post Button */}
+
+              <button
+                className="comic-button mb-4"
+                onClick={() => handleCreatePostClick(pet._id)}
+              >
+                <span className=" font-playful font-bold px-2">
+                  Create Post
+                </span>
+              </button>
+
+              {/* Pet Details */}
+              <div className="relative group duration-500 cursor-pointer overflow-hidden text-gray-50 h-72 w-64 rounded-2xl hover:duration-700">
+                <div className="w-62 h-72 bg-accent">
+                  <img
+                    className="h-72 w-full object-cover"
+                    src={pet.profilePhotoUrl}
+                    alt={pet.name}
+                  />
+                </div>
+
+                <div className="absolute  bg-success -bottom-24 w-64 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
+                  <span className="text-white font-bold text-ml">
+                    {pet.name}
+                  </span>
+                  <span className="text-black font-semibold text-xl">
+                    {pet.breed}
+                  </span>
+                  <p className="text-white font-bold">
+                    Weight : {pet.weight} kg
+                  </p>
+                  <p className="text-white font-bold">
+                    Age : {pet.age} years old
+                  </p>
+                </div>
               </div>
-    </TabPanel>
-    <TabPanel>
-    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
-                <h3 className="text-lg font-semibold">Upcoming Appointments</h3>
+            </div>
+
+            {/* Appointments */}
+            <div className="flex flex-col">
+              {/* Upcoming Appointments */}
+              <div className="max-w-md mx-auto bg-primary/80 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+                {!filterAppointments(petAppointments[pet._id] || [], true)
+                  .length && (
+                  <div className="w-90 h-24 p-6 flex items-center  text-sm justify-center font-playful font-bold ">
+                    No upcoming appointment
+                  </div>
+                )}
                 {filterAppointments(petAppointments[pet._id] || [], true).map(
                   (appointment, idx) => (
                     <div className="p-4 flex items-center" key={idx}>
-                      <div className="pr-4 bg-blue-500 p-2 rounded-lg text-center">
+                      <div className="pr-4 bg-white p-2 rounded-lg text-center">
+                        <p className="text-4xl font-bold text-primary">
+                          {formatDate(appointment.date)}
+                        </p>
+                      </div>
+
+                      <div className="ml-4">
+                        <div className="uppercase tracking-wide text-xl text-red-900 font-bold">
+                          {appointment.time}
+                        </div>
+
+                        <p className="mt-2 font-bold text-white">
+                          {appointment.service}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => openDeleteModal(appointment._id, pet._id)
+                        }
+                        className="text-black"
+                      >
+                        <img src={trashapp} className="w-6"></img>
+                      </button>
+                    </div>
+                  )
+                )}
+              </div>
+
+              {/* Past Appointments */}
+              <div className="max-w-md mx-auto bg-gray-200 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+                {!filterAppointments(petAppointments[pet._id] || [], false)
+                  .length && (
+                  <div className="w-90 h-24 p-6 flex items-center  text-sm justify-center font-playful font-bold ">
+                    No past appointment
+                  </div>
+                )}
+                {filterAppointments(petAppointments[pet._id] || [], false).map(
+                  (appointment, idx) => (
+                    <div className="p-4 flex items-center" key={idx}>
+                      <div className="pr-4 bg-primary/30 p-2 rounded-lg text-center">
                         <p className="text-4xl font-bold text-white">
                           {formatDate(appointment.date)}
                         </p>
                       </div>
+
                       <div className="ml-4">
-                        <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                        <div className="uppercase tracking-wide text-xl text-black font-bold">
                           {appointment.time}
                         </div>
-                        <p className="mt-2 text-gray-500">
+
+
+                        <p className="mt-2 font-bold text-black">
                           {appointment.service}
                         </p>
                       </div>
                     </div>
                   )
                 )}
+
               </div>
-    </TabPanel>
-  </Tabs>
-             
-        
             </div>
           </div>
         ))}
+        {showDeleteModal && (
+            <>
+              <div
+                className="fixed inset-0 bg-black bg-opacity-30 z-40"
+                style={{ backdropFilter: "blur(5px)" }}
+              ></div>
+              <div
+                id="popup-modal"
+                tabIndex="-1"
+                className="overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex justify-center items-center"
+              >
+                <div className="relative p-4 w-full max-w-md max-h-full">
+                  <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div className="p-4 md:p-5 text-center">
+                      <h3 className="mb-5 text-lg font-normal text-white dark:text-white">
+                        Are you sure you want to delete this appointment?
+                      </h3>
+                      <button
+                        onClick={deleteAppointment}
+                        type="button"
+                        className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"
+                      >
+                        Yes, I'm sure
+                      </button>
+                      <button
+                        onClick={() => setShowDeleteModal(false)}
+                        type="button"
+                        className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                      >
+                        No, cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
       </div>
-    </div>
+    </>
   );
 };
 

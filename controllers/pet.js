@@ -1,7 +1,6 @@
-const Pet = require('../models/pet'); 
-const User = require('../models/user');
-const ErrorResponse = require('../utils/ErrorResponse');
-
+const Pet = require("../models/pet");
+const User = require("../models/user");
+const ErrorResponse = require("../utils/ErrorResponse");
 
 //  creating a new pet
 
@@ -9,31 +8,37 @@ const createPet = async (req, res, next) => {
   try {
     const { name, breed, age, weight, Bio } = req.body;
     if (!req.file) {
-      return res.status(400).send('No file uploaded.');
+      return res.status(400).send("No file uploaded.");
     }
     const profilePhotoUrl = req.file.path;
-    const userId = req.user.id; 
-    const newPet = new Pet({ owner: userId, name, breed, age, weight, Bio, profilePhotoUrl });
+    const userId = req.user.id;
+    const newPet = new Pet({
+      owner: userId,
+      name,
+      breed,
+      age,
+      weight,
+      Bio,
+      profilePhotoUrl,
+    });
     await newPet.save();
     await User.findByIdAndUpdate(userId, { $push: { pets: newPet._id } });
     res.status(201).json(newPet);
   } catch (error) {
-    next(error); 
+    next(error);
   }
 };
 
-
 const getPetName = async (req, res) => {
   try {
-    const userId = req.user.id; 
-    const user = await User.findById(userId).populate('pets');
+    const userId = req.user.id;
+    const user = await User.findById(userId).populate("pets");
 
     const pets = user.pets;
 
-    res.json({ pets});
-
+    res.json({ pets });
   } catch (error) {
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 };
 
@@ -45,7 +50,7 @@ const getPetDetails = async (req, res, next) => {
     const pet = await Pet.findById(petId);
 
     if (!pet) {
-      throw new ErrorResponse('Pet not found', 404);
+      throw new ErrorResponse("Pet not found", 404);
     }
 
     res.status(200).json(pet);
@@ -53,7 +58,6 @@ const getPetDetails = async (req, res, next) => {
     next(error);
   }
 };
-
 
 // updating pet information
 
@@ -69,7 +73,7 @@ const updatePet = async (req, res, next) => {
     );
 
     if (!updatedPet) {
-      throw new ErrorResponse('Pet not found', 404);
+      throw new ErrorResponse("Pet not found", 404);
     }
 
     res.status(200).json(updatedPet);
@@ -87,10 +91,10 @@ const deletePet = async (req, res, next) => {
     const deletedPet = await Pet.findByIdAndDelete(petId);
 
     if (!deletedPet) {
-      throw new ErrorResponse('Pet not found', 404);
+      throw new ErrorResponse("Pet not found", 404);
     }
 
-    res.status(200).json({ message: 'Pet deleted successfully' });
+    res.status(200).json({ message: "Pet deleted successfully" });
   } catch (error) {
     next(error);
   }
@@ -98,13 +102,19 @@ const deletePet = async (req, res, next) => {
 
 const getAllPets = async (req, res, next) => {
   try {
-    const dogs = await Pet.find()
-    res.json(dogs)
-  } catch (error) {
-    console.log(error)
-  }
-}
+    const petsWithOwners = await Pet.find().populate({
+      path: "owner",
+      match: { isActive: true },
+    });
 
+    const activeOwnerPets = petsWithOwners.filter((pet) => pet.owner);
+
+    res.json(activeOwnerPets);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
 
 module.exports = {
   createPet,
@@ -112,5 +122,5 @@ module.exports = {
   updatePet,
   deletePet,
   getPetName,
-  getAllPets
+  getAllPets,
 };

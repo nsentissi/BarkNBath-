@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import axiosClient from "../../axiosClient";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PasswordChecklist from "react-password-checklist";
+import barkNBath from "../assets/barkNBath.png"
+import homepagelog from "../assets/homepagelog.png"
 
 const Signup = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -12,18 +14,19 @@ const Signup = () => {
   const [passwordAgain, setPasswordAgain] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
 
-  
+  const navigate = useNavigate();
    
 
   
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      const response = await axios.post(
-        "http://localhost:3000/auth/signup",
+      const response = await axiosClient.post(
+        "/auth/signup",
         data
       );
       toast("Registration successful!");
+      navigate("/login")
       console.log(response.data);
     } catch (error) {
       console.error("Registration failed:", error);
@@ -35,13 +38,13 @@ const Signup = () => {
     <div class="bg-gray-100 h-screen flex items-center justify-center">
       {/* <!-- Background Image --> */}
     <div class="absolute inset-0 z-0">
-        <img src="./src/assets/homepagelog.png" alt=""
+        <img src={homepagelog} alt=""
             class="w-full h-full object-cover filter blur-lg brightness-50"/>
     </div>
 
     {/* <!-- Signup Form --> */}
-      <div className="bg-secondary z-10 h-screen  p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">
-        <img src="../src/assets/barkNBath.png" className="mb-6 mx-auto w-1/4" />
+      <div className="bg-secondary z-10 h-10/12  p-8 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl">
+        <img src={barkNBath} className="mb-6 mx-auto w-1/4" />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label htmlFor="firstName" className="text-white font-semibold  block mb-2">
@@ -104,19 +107,19 @@ const Signup = () => {
             onChange={(e) => setPasswordAgain(e.target.value)}
           />
         </div>
-        <PasswordChecklist
+        {/* <PasswordChecklist
           rules={["minLength", "specialChar", "number", "capital", "match"]}
           minLength={5}
           value={password}
           valueAgain={passwordAgain}
           onChange={(isValid) => setIsFormValid(isValid)}
-        />
+        /> */}
 
           <div className="flex flex-col sm:flex-col gap-2 md:gap-4 gap-6-lg items-center justify-between">
             <button
               type="submit"
               className="bg-success  hover:bg-primary text-white font-bold py-2 px-4 rounded-xl w-2/4 sm:w-2/4 mb-2 sm:mb-0"
-              disabled={!isFormValid}
+              // disabled={!isFormValid}
             >
               Register
             </button>

@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { useAuth } from "../hooks/AuthContext";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import axiosClient from "../../axiosClient";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
   const { currentUser } = useAuth();
   const [editMode, setEditMode] = useState(false);
- 
-
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   if (!currentUser) {
     return <div>Please log in.</div>;
@@ -18,58 +16,94 @@ const Profile = () => {
 
   const onSubmit = async (data) => {
     try {
-      await axios.put("http://localhost:3000/auth/updateUser", data, { withCredentials: true });
+      await axiosClient.put("/auth/updateUser", data, { withCredentials: true });
       toast.success("Profile updated successfully!");
       setEditMode(false);
     } catch (error) {
       console.error('Error updating user:', error);
-      next(error); 
+      toast.error('Error updating profile');
     }
   };
 
   return (
+    <div className="max-w-lg mx-auto my-10 p-5">
+    <h2 className="text-2xl font-bold text-center mb-6">Profile</h2>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
     <div>
-      <h2>Profile</h2>
-      <p>Email: {currentUser.email}</p>
-      <p>Phone Number: {currentUser.phoneNumber}</p>
-      <p>First Name: {currentUser.firstName}</p>
-      <p>Last Name: {currentUser.lastName} </p>
-      {/* <ul className="mr-4">
-  {currentUser.pets.map((pet, index) => (
-    <li key={index}> {pet.name}</li>
-  ))}
-</ul> */}
+        <label className="block text-sm font-medium text-gray-700">
+         First Name:
+        </label>
+        <input
+          type="name"
+          value={currentUser.firstName}
+          disabled
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 disabled:bg-gray-100"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">
+          Lat Name:
+        </label>
+        <input
+          type="name"
+          value={currentUser.lastName}
+          disabled
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 disabled:bg-gray-100"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">
+          Email:
+        </label>
+        <input
+          type="email"
+          value={currentUser.email}
+          disabled
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 disabled:bg-gray-100"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">
+         Phone Number:
+        </label>
+        <input
+          type="email"
+          value={currentUser.phoneNumber}
+          disabled
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 disabled:bg-gray-100"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">
+          New Phone Number:
+        </label>
+        <input
+          type="text"
+          {...register("newPhoneNumber")}
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+        />
+      </div>
 
-      <button onClick={() => setEditMode(!editMode)}>Edit</button>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">
+          New Password:
+        </label>
+        <input
+          type="password"
+          {...register("newPassword")}
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+        />
+      </div>
 
-      {editMode && (
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <label>New Phone Number:</label>
-            <input type="text" {...register("newPhoneNumber")} />
-           {/*  {errors.newPhoneNumber && <p>{errors.newPhoneNumber.message}</p>} */}
-          </div>
-          <div>
-            <label>New Password:</label>
-            <input
-              type="password"
-              {...register("newPassword", {
-                required: "Password is required",
-                /* minLength: {
-                  value: 8,
-                  message: "Password must be at least 8 characters",
-                }, */
-              })}
-            />
-            {/* {errors.newPassword && <p>{errors.newPassword.message}</p>} */}
-          </div>
-          <button type="submit">Save Changes</button>
-        </form>
-        
-      )}
-      <ToastContainer/>
-    </div>
-  );
+      <button
+        type="submit"
+        className="w-full bg-success hover:bg-primary text-white font-bold py-2 px-4 rounded"
+      >
+        Save Changes
+      </button>
+    </form>
+  </div>
+);
 };
 
 export default Profile;
