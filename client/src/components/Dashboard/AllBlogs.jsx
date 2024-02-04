@@ -87,7 +87,7 @@ const AllBlogs = () => {
                           Pet owner: {blog.owner?.firstName}
                         </p>
                         <p className="text-gray-500 font-bold text-xs">
-                          posted {formatTimeAgo(blog.date)}
+                          Posted {formatTimeAgo(blog.date)}
                         </p>{" "}
                       </div>
                     </div>
