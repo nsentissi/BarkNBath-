@@ -2,6 +2,8 @@
 
 Welcome to BarkNBath, the premier mobile spa experience for your beloved pets. Our full-stack application, built with the MERN stack (MongoDB, Express, React, and Node.js), offers a comprehensive suite of services aimed at pampering your pet. From detailed service descriptions to user testimonials, BarkNBath is more than a spa—it's a community for pet lovers.
 
+🚀 **Live Demo**: [Visit BarkNBath](https://barknbath.onrender.com/)
+
 ## Features
 
 - **Comprehensive Service Overview**: Learn all about our mobile spa offerings, what we provide, and where our services are available.
