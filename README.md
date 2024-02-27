@@ -5,7 +5,8 @@ Welcome to BarkNBath, the premier mobile spa experience for your beloved pets. O
 🚀 **Live Demo**: [Visit BarkNBath](https://barknbath.onrender.com/)
 
 
-![BarkNBath Home Page](/assets/homepage.png)
+![BarkNBath Home Page](client/src/assets/homepage.png)
+
 
 ## Features
 
