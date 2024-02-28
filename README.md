@@ -48,6 +48,6 @@ After setting up the project, you can:
 This project exists thanks to all the people who contributed. A special thanks to:
 
 - Nawfal Sentissi
-- Xheni gega 
+- Xheni Gega 
 
  
